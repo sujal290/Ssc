@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ramsar Sites Quiz — SSC CGL 2026</title>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  html, body { margin: 0; padding: 0; height: 100%; background: #0A2E2B; }
+
+  .rq-root {
+    --bg-deep: #0A2E2B;
+    --bg-panel: #123B37;
+    --bg-panel-2: #16443F;
+    --bg-card: #1B4F49;
+    --accent-gold: #D3A94C;
+    --accent-teal: #4FBDB4;
+    --accent-green: #4FAE68;
+    --accent-red: #E0594B;
+    --text-primary: #F4EFE1;
+    --text-muted: #A9C9C2;
+    --border: rgba(244,239,225,0.14);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(79,189,180,0.16), transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(211,169,76,0.10), transparent 50%),
+      var(--bg-deep);
+    min-height: 100vh;
+    width: 100%;
+    padding: 28px 16px 60px;
+    box-sizing: border-box;
+  }
+  .rq-root * { box-sizing: border-box; }
+
+  .rq-wrap { max-width: 1080px; margin: 0 auto; }
+
+  .rq-header { text-align: center; margin-bottom: 22px; }
+  .rq-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-gold); font-weight: 700; margin-bottom: 10px;
+  }
+  .rq-title {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .rq-title em { font-style: normal; color: var(--accent-teal); }
+  .rq-subtitle {
+    margin-top: 10px; color: var(--text-muted); font-size: 14.5px;
+  }
+
+  .rq-progress-track {
+    position: relative; height: 6px; border-radius: 6px;
+    background: rgba(244,239,225,0.10); margin: 22px 0 6px; overflow: visible;
+  }
+  .rq-progress-fill {
+    position: absolute; top: 0; left: 0; height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent-teal), var(--accent-gold));
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  }
+  .rq-progress-bird {
+    position: absolute; top: 50%; transform: translate(-50%, -50%);
+    transition: left 0.5s cubic-bezier(.4,0,.2,1);
+    background: var(--bg-deep); border: 2px solid var(--accent-gold);
+    border-radius: 50%; width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-gold);
+  }
+  .rq-progress-label {
+    display: flex; justify-content: space-between; font-size: 12.5px;
+    color: var(--text-muted); margin-bottom: 18px;
+  }
+
+  .rq-grid {
+    display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; align-items: start;
+  }
+  @media (max-width: 840px) {
+    .rq-grid { grid-template-columns: 1fr; }
+  }
+
+  .rq-card {
+    background: linear-gradient(160deg, var(--bg-card), var(--bg-panel));
+    border: 1px solid var(--border); border-radius: 18px;
+    padding: 26px 26px 24px;
+    box-shadow: 0 20px 45px -20px rgba(0,0,0,0.55);
+    animation: rq-fade-in 0.4s ease;
+  }
+  @keyframes rq-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .rq-cat-pill {
+    display: inline-block; font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--bg-deep); background: var(--accent-teal);
+    padding: 5px 11px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .rq-qnum { color: var(--text-muted); font-size: 12.5px; font-weight: 600; float: right; margin-top: 4px; }
+
+  .rq-question {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(19px, 2.6vw, 24px); line-height: 1.35; margin: 4px 0 22px;
+    clear: both;
+  }
+
+  .rq-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .rq-options { grid-template-columns: 1fr; } }
+
+  .rq-opt {
+    display: flex; align-items: center; gap: 12px; text-align: left;
+    background: rgba(244,239,225,0.05); border: 1px solid var(--border);
+    border-radius: 12px; padding: 13px 14px; color: var(--text-primary);
+    font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 500;
+    cursor: pointer; transition: all 0.18s ease; width: 100%;
+  }
+  .rq-opt:hover:not(:disabled) {
+    border-color: var(--accent-teal); background: rgba(79,189,180,0.10);
+    transform: translateY(-1px);
+  }
+  .rq-opt:disabled { cursor: default; }
+  .rq-opt-letter {
+    flex: none; width: 26px; height: 26px; border-radius: 8px;
+    background: rgba(244,239,225,0.10); display: flex; align-items: center;
+    justify-content: center; font-size: 12.5px; font-weight: 700;
+  }
+  .rq-opt.correct {
+    border-color: var(--accent-green); background: rgba(79,174,104,0.18);
+    animation: rq-pop 0.3s ease;
+  }
+  .rq-opt.wrong {
+    border-color: var(--accent-red); background: rgba(224,89,75,0.18);
+    animation: rq-shake 0.35s ease;
+  }
+  .rq-opt.correct .rq-opt-letter { background: var(--accent-green); color: #06251A; }
+  .rq-opt.wrong .rq-opt-letter { background: var(--accent-red); color: #2A0906; }
+  .rq-opt-icon { margin-left: auto; flex: none; display: flex; }
+
+  @keyframes rq-pop { 0% { transform: scale(0.97); } 60% { transform: scale(1.015); } 100% { transform: scale(1); } }
+  @keyframes rq-shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+  }
+
+  .rq-feedback {
+    margin-top: 18px; font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .rq-feedback.correct { color: var(--accent-green); }
+  .rq-feedback.wrong { color: var(--accent-red); }
+
+  .rq-explanation {
+    margin-top: 14px; padding: 14px 16px; border-radius: 12px;
+    background: rgba(211,169,76,0.09); border: 1px solid rgba(211,169,76,0.28);
+    font-size: 13.5px; line-height: 1.6; color: var(--text-primary);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .rq-explanation strong { color: var(--accent-gold); }
+  .rq-explanation svg, .rq-explanation i { flex: none; margin-top: 2px; color: var(--accent-gold); }
+
+  .rq-next {
+    margin-top: 20px; display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-gold); color: #2B2107; border: none;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
+    padding: 11px 20px; border-radius: 10px; cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .rq-next:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+  .rq-sidebar {
+    position: sticky; top: 16px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .rq-score-card {
+    background: linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));
+    border: 1px solid var(--border); border-radius: 18px; padding: 22px;
+  }
+  .rq-score-title {
+    display: flex; align-items: center; gap: 8px; font-weight: 700;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent-gold); margin-bottom: 14px;
+  }
+  .rq-score-main { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .rq-score-num { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 700; }
+  .rq-score-den { color: var(--text-muted); font-size: 15px; }
+
+  .rq-bar-track {
+    height: 8px; border-radius: 6px; background: rgba(244,239,225,0.10);
+    overflow: hidden; margin: 12px 0 4px;
+  }
+  .rq-bar-fill {
+    height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-teal));
+    transition: width 0.4s ease;
+  }
+  .rq-bar-label { font-size: 12.5px; color: var(--text-muted); }
+
+  .rq-stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-top: 1px solid var(--border); font-size: 13.5px;
+  }
+  .rq-stat-row span:first-child { color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+  .rq-stat-row span:last-child { font-weight: 700; }
+  .rq-flame { color: var(--accent-gold); }
+  .rq-flame.active { animation: rq-flicker 1s infinite alternate; }
+  @keyframes rq-flicker { from { opacity: 0.7; } to { opacity: 1; transform: scale(1.08); } }
+
+  .rq-restart-btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; border: 1px solid var(--border); color: var(--text-primary);
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13.5px;
+    padding: 11px; border-radius: 10px; cursor: pointer; margin-top: 14px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .rq-restart-btn:hover { border-color: var(--accent-teal); background: rgba(79,189,180,0.08); }
+
+  .rq-note-card {
+    border: 1px dashed var(--border); border-radius: 14px; padding: 16px 18px;
+    font-size: 12.5px; color: var(--text-muted); line-height: 1.55;
+    display: flex; gap: 10px;
+  }
+
+  .rq-complete {
+    text-align: center; padding: 50px 24px;
+  }
+  .rq-complete-icon { font-size: 46px; margin-bottom: 12px; }
+  .rq-complete-title {
+    font-family: 'Fraunces', serif; font-size: 30px; font-weight: 700; margin: 0 0 6px;
+  }
+  .rq-complete-rank { color: var(--accent-gold); font-weight: 700; margin-bottom: 22px; }
+  .rq-complete-score {
+    font-family: 'Fraunces', serif; font-size: 52px; font-weight: 700; margin-bottom: 4px;
+  }
+  .rq-complete-acc { color: var(--text-muted); margin-bottom: 26px; }
+  .rq-complete-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-gold); color: #2B2107; border: none;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14.5px;
+    padding: 13px 26px; border-radius: 11px; cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rq-card, .rq-opt.correct, .rq-opt.wrong, .rq-flame.active { animation: none !important; }
+    .rq-progress-fill, .rq-progress-bird, .rq-bar-fill { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="rq-root">
+  <div class="rq-wrap" id="rq-wrap"></div>
+</div>
+
+<script>
+/* =========================================================================
+   RAW DATA — sourced from the "Ramsar Sites in India" SSC CGL notes (2026)
+   ========================================================================= */
+
+const SITES = [
+  ["Karikili Bird Sanctuary", "Tamil Nadu"],
+  ["Kanjirankulam Bird Sanctuary", "Tamil Nadu"],
+  ["Point Calimere Wildlife & Bird Sanctuary", "Tamil Nadu"],
+  ["Pichavaram Mangrove", "Tamil Nadu"],
+  ["Pallikaranai Marsh Reserve Forest", "Tamil Nadu"],
+  ["Gulf of Mannar Marine Biosphere Reserve", "Tamil Nadu"],
+  ["Vembannur Wetland Complex", "Tamil Nadu"],
+  ["Suchindram Theroor Wetland Complex", "Tamil Nadu"],
+  ["Udhayamarthandapuram Bird Sanctuary", "Tamil Nadu"],
+  ["Vellode Bird Sanctuary", "Tamil Nadu"],
+  ["Vettangudi Bird Sanctuary", "Tamil Nadu"],
+  ["Therthangal Bird Sanctuary", "Tamil Nadu"],
+  ["Koonthankulam Bird Sanctuary", "Tamil Nadu"],
+  ["Nanjarayan Bird Sanctuary", "Tamil Nadu"],
+  ["Kazhuveli Bird Sanctuary", "Tamil Nadu"],
+  ["Upper Ganga River", "Uttar Pradesh"],
+  ["Nawabganj Bird Sanctuary", "Uttar Pradesh"],
+  ["Saman Bird Sanctuary", "Uttar Pradesh"],
+  ["Samaspur Bird Sanctuary", "Uttar Pradesh"],
+  ["Sarsai Nawar Jheel", "Uttar Pradesh"],
+  ["Sur Sarovar", "Uttar Pradesh"],
+  ["Haiderpur Wetland", "Uttar Pradesh"],
+  ["Patna Bird Sanctuary", "Uttar Pradesh"],
+  ["Shekha Jheel Bird Sanctuary", "Uttar Pradesh"],
+  ["Jai Prakash Narayan Bird Sanctuary (Surha Tal)", "Uttar Pradesh"],
+  ["Nalsarovar", "Gujarat"],
+  ["Khijadia", "Gujarat"],
+  ["Thol Lake", "Gujarat"],
+  ["Wadhvana", "Gujarat"],
+  ["Chhari-Dhand", "Gujarat"],
+  ["Pariej Wetland", "Gujarat"],
+  ["Marine National Park (Gulf of Kachchh)", "Gujarat"],
+  ["Sundarban Wetland", "West Bengal"],
+  ["East Kolkata Wetlands", "West Bengal"],
+  ["Rasik Beel", "West Bengal"],
+  ["Sundarban National Park Buffer Wetlands", "West Bengal"],
+  ["Chintamoni Kar Bird Sanctuary Wetland", "West Bengal"],
+  ["Raiganj Wildlife Sanctuary Wetland", "West Bengal"],
+  ["Bakreshwar Wetland", "West Bengal"],
+  ["Keoladeo National Park", "Rajasthan"],
+  ["Sambhar Lake", "Rajasthan"],
+  ["Menar Wetland", "Rajasthan"],
+  ["Khichan Wetland", "Rajasthan"],
+  ["Tal Chhapar Wetland", "Rajasthan"],
+  ["Jawai Bandh Wetland", "Rajasthan"],
+  ["Lonar Lake", "Maharashtra"],
+  ["Nandur Madhmeshwar", "Maharashtra"],
+  ["Thane Creek Flamingo Sanctuary", "Maharashtra"],
+  ["Nandgaon Wetland", "Maharashtra"],
+  ["Jayakwadi Bird Sanctuary", "Maharashtra"],
+  ["Bhoj Wetland", "Madhya Pradesh"],
+  ["Sakhya Sagar", "Madhya Pradesh"],
+  ["Sirpur Wetland", "Madhya Pradesh"],
+  ["Gandhi Sagar Reservoir", "Madhya Pradesh"],
+  ["Upper Narmada River Wetland", "Madhya Pradesh"],
+  ["Chilika Lake", "Odisha"],
+  ["Bhitarkanika Mangroves", "Odisha"],
+  ["Hirakud Reservoir", "Odisha"],
+  ["Ansupa Lake", "Odisha"],
+  ["Kolleru Lake", "Andhra Pradesh"],
+  ["Coringa Wildlife Sanctuary", "Andhra Pradesh"],
+  ["Pulicat Lake (AP)", "Andhra Pradesh"],
+  ["Ranganathittu Bird Sanctuary", "Karnataka"],
+  ["Aghanashini Estuary", "Karnataka"],
+  ["Magadi Kere Conservation Reserve", "Karnataka"],
+  ["Deepor Beel", "Assam"],
+  ["Beel of Pobitora", "Assam"],
+  ["Hail Haor", "Assam"],
+  ["Harike Wetland", "Punjab"],
+  ["Kanjli Wetland", "Punjab"],
+  ["Sultanpur National Park", "Haryana"],
+  ["Bhindawas Wildlife Sanctuary", "Haryana"],
+  ["Kanwar Lake", "Bihar"],
+  ["Kabar Tal", "Bihar"],
+  ["Hokersar Wetland", "Jammu & Kashmir"],
+  ["Wular Lake", "Jammu & Kashmir"],
+  ["Ashtamudi Lake", "Kerala"],
+  ["Nanda Lake", "Goa"],
+  ["Sitanadi Wetland", "Chhattisgarh"],
+  ["Udhwa Lake", "Jharkhand"],
+  ["Rudrasagar Lake", "Tripura"],
+  ["Palak Lake", "Mizoram"],
+  ["Pong Wetland", "Arunachal Pradesh"],
+  ["Renuka Wetland", "Himachal Pradesh"],
+  ["Asan Conservation Reserve", "Uttarakhand"],
+  ["Intanki Wetland", "Nagaland"],
+  ["Umiam Lake", "Meghalaya"],
+  ["Loktak Lake", "Manipur"],
+  ["Khecheopalri Wetland", "Sikkim"],
+  ["Tso Kar Wetland Complex", "Ladakh"],
+  ["Satmala Marsh", "Dadra & Nagar Haveli and Daman & Diu"],
+  ["Campbell Bay Wetland", "Andaman & Nicobar Islands"],
+  ["Pitti Bird Sanctuary", "Lakshadweep"],
+];
+
+const STATE_COUNTS = SITES.reduce((acc, [, st]) => {
+  acc[st] = (acc[st] || 0) + 1;
+  return acc;
+}, {});
+const ALL_STATES = Object.keys(STATE_COUNTS);
+
+const YEAR_DATA = [
+  { year: 1981, total: 2, added: 2, site: "Chilika Lake" },
+  { year: 1990, total: 4, added: 2, site: "Wadhvana Wetland" },
+  { year: 2002, total: 19, added: 15, site: "Bhitarkanika Mangroves" },
+  { year: 2005, total: 25, added: 6, site: "Bhoj Wetland" },
+  { year: 2012, total: 26, added: 1, site: "Sundarban Wetland" },
+  { year: 2019, total: 27, added: 1, site: "Rudrasagar Lake" },
+  { year: 2020, total: 37, added: 10, site: "Vembannur Wetland Complex" },
+  { year: 2021, total: 47, added: 10, site: "Sirpur Wetland" },
+  { year: 2022, total: 75, added: 28, site: "Gulf of Mannar Marine Biosphere Reserve" },
+  { year: 2024, total: 89, added: 14, site: "Upper Ganga River" },
+  { year: 2025, total: 96, added: 7, site: "Intanki Wetland" },
+  { year: 2026, total: 100, added: 4, site: "Patna Bird Sanctuary" },
+];
+
+const NEW_2026 = [
+  { no: 97, site: "Patna Bird Sanctuary", date: "31 January 2026" },
+  { no: 98, site: "Chhari-Dhand Wetland", date: "31 January 2026" },
+  { no: 99, site: "Shekha Jheel Bird Sanctuary", date: "22 April 2026" },
+  { no: 100, site: "Jai Prakash Narayan Bird Sanctuary (Surha Tal), Ballia", date: "5 June 2026" },
+];
+
+const MANUAL_QUESTIONS = [
+  { q: "In which year was the Ramsar Convention signed?", opts: ["1971", "1975", "1982", "1992"], ans: "1971", exp: "The Ramsar Convention was signed on 2 February 1971 in the city of Ramsar, Iran." },
+  { q: "In which country was the Ramsar Convention signed?", opts: ["Iran", "Switzerland", "India", "France"], ans: "Iran", exp: "It was signed in the Iranian city of Ramsar, on the shore of the Caspian Sea — which is also where the convention gets its name." },
+  { q: "In which city was the Ramsar Convention signed?", opts: ["Ramsar", "Tehran", "Geneva", "Bonn"], ans: "Ramsar", exp: "The convention takes its name directly from the city of Ramsar, Iran, where it was signed on 2 February 1971." },
+  { q: "In which year did the Ramsar Convention come into force?", opts: ["1975", "1971", "1980", "1982"], ans: "1975", exp: "The convention was signed in 1971 but only came into force in 1975, once enough countries had ratified it." },
+  { q: "On what date did India join the Ramsar Convention?", opts: ["1 February 1982", "2 February 1971", "1 February 1975", "2 February 1982"], ans: "1 February 1982", exp: "India joined the Ramsar Convention on 1 February 1982, becoming a contracting party." },
+  { q: "World Wetlands Day is observed every year on:", opts: ["2 February", "22 March", "5 June", "5 October"], ans: "2 February", exp: "World Wetlands Day falls on 2 February every year — the anniversary of the Ramsar Convention's signing in 1971." },
+  { q: "A Ramsar Site is best defined as:", opts: ["A wetland of international importance designated under the Ramsar Convention", "Any lake bigger than 100 sq km", "A UNESCO World Heritage forest", "A river protected under Indian law"], ans: "A wetland of international importance designated under the Ramsar Convention", exp: "By definition, a Ramsar Site is a wetland formally recognised as being of international importance under the Ramsar Convention — size or country-specific law isn't the criterion." },
+  { q: "How many Ramsar Sites did India designate first, in 1981?", opts: ["2", "4", "5", "10"], ans: "2", exp: "India's Ramsar journey began in 1981 with just 2 sites — Chilika Lake (Odisha) and Keoladeo National Park (Rajasthan)." },
+  { q: "What is the total number of Ramsar Sites in India as of 2026?", opts: ["100", "96", "89", "75"], ans: "100", exp: "After 4 additions in 2026 (all in UP and Gujarat), India's Ramsar Site count reached a century — 100 sites." },
+  { q: "Which state recorded India's 100th Ramsar Site in 2026?", opts: ["Uttar Pradesh", "Gujarat", "Tamil Nadu", "West Bengal"], ans: "Uttar Pradesh", exp: "The 100th site, Jai Prakash Narayan Bird Sanctuary (Surha Tal) in Ballia, was added on 5 June 2026 — making Uttar Pradesh home to the milestone site." },
+  { q: "As per the notes, wetlands are areas where water remains:", opts: ["Permanently or seasonally", "Only during monsoon", "Frozen year-round", "Never present"], ans: "Permanently or seasonally", exp: "The notes define wetlands as areas where water remains either permanently or seasonally — not just during a specific season." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Marshes", "Deserts", "Glaciers", "Volcanoes"], ans: "Marshes", exp: "The notes list marshes among wetland examples, alongside lakes, rivers, swamps, mangroves, peatlands, floodplains, coral reefs, estuaries, and backwaters." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Peatlands", "Plateaus", "Grasslands", "Deserts"], ans: "Peatlands", exp: "Peatlands are explicitly named as a wetland type in the notes, as their waterlogged, peat-rich soil holds water for long periods." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Coral reefs", "Sand dunes", "Deciduous forests", "Ice sheets"], ans: "Coral reefs", exp: "Coral reefs appear on the notes' list of wetland examples alongside lakes, rivers, and mangroves." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Backwaters", "Highlands", "Savannas", "Tundra"], ans: "Backwaters", exp: "Backwaters are listed as a wetland example — relevant since several Indian Ramsar Sites (like Ashtamudi Lake) are backwater systems." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Floodplains", "Canyons", "Deserts", "Steppes"], ans: "Floodplains", exp: "Floodplains are named as a wetland example, since they hold water seasonally when rivers overflow." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Swamps", "Prairies", "Cliffs", "Dunes"], ans: "Swamps", exp: "Swamps are one of the core wetland examples listed in the notes." },
+  { q: "Which of these is listed as an example of a wetland in the notes?", opts: ["Mangroves", "Deserts", "Glaciers", "Highlands"], ans: "Mangroves", exp: "Mangroves are listed as a wetland type — and several Ramsar Sites like Pichavaram and Bhitarkanika are named directly after them." },
+  { q: "Which of the following is an objective of the Ramsar Convention?", opts: ["Conservation of wetlands", "Promotion of mining", "Urban expansion", "Deforestation"], ans: "Conservation of wetlands", exp: "Conservation of wetlands is the very first objective listed for the Ramsar Convention in the notes." },
+  { q: "Which of the following is an objective of the Ramsar Convention?", opts: ["Wise use of wetlands", "Draining marshlands", "Industrial expansion", "Coastal reclamation"], ans: "Wise use of wetlands", exp: "\"Wise use of wetlands\" — sustainable use rather than exploitation — is a named objective of the convention." },
+  { q: "Which of the following is an objective of the Ramsar Convention?", opts: ["Protection of migratory birds", "Hunting promotion", "Wetland reclamation", "Deforestation"], ans: "Protection of migratory birds", exp: "Protecting migratory birds is a core objective, since wetlands are critical stopover and breeding habitats along migration routes." },
+  { q: "Which of the following is an objective of the Ramsar Convention?", opts: ["Protection of biodiversity", "Land grabbing", "Overfishing", "Pollution promotion"], ans: "Protection of biodiversity", exp: "Protection of biodiversity is listed as one of the convention's objectives, alongside conservation and wise use of wetlands." },
+  { q: "Which of the following is an objective of the Ramsar Convention?", opts: ["International cooperation", "Trade restriction", "Border disputes", "Currency control"], ans: "International cooperation", exp: "International cooperation rounds off the convention's objectives — since migratory species and shared water systems cross borders." },
+  { q: "According to the notes, Ramsar Sites are important for:", opts: ["Flood control", "Desertification", "Deforestation", "Soil erosion"], ans: "Flood control", exp: "Flood control is listed first among the reasons Ramsar Sites matter — wetlands absorb and slow excess water." },
+  { q: "According to the notes, Ramsar Sites help with:", opts: ["Groundwater recharge", "Ozone depletion", "Soil salination", "Overgrazing"], ans: "Groundwater recharge", exp: "Groundwater recharge is one of the key benefits listed, as wetlands allow water to percolate down into aquifers." },
+  { q: "According to the notes, Ramsar Sites contribute to:", opts: ["Climate regulation and carbon storage", "Global warming", "Ice cap melting", "Air pollution"], ans: "Climate regulation and carbon storage", exp: "The notes list climate regulation and carbon storage together as a key benefit — wetlands are major natural carbon sinks." },
+  { q: "According to the notes, Ramsar Sites support which economic activities?", opts: ["Fisheries and tourism", "Mining and logging", "Heavy industry", "Nuclear power"], ans: "Fisheries and tourism", exp: "Fisheries and tourism are both listed as economic benefits Ramsar wetlands provide to local communities." },
+  { q: "According to the notes, wetlands help in:", opts: ["Water purification", "Water contamination", "Soil erosion", "Air pollution"], ans: "Water purification", exp: "Water purification is listed as a benefit — East Kolkata Wetlands is the classic example, naturally treating Kolkata's sewage." },
+  { q: "According to the notes, wetlands provide habitat for:", opts: ["Birds", "Only fish", "Only insects", "No wildlife"], ans: "Birds", exp: "\"Habitat for birds\" is listed explicitly — which is why so many Ramsar Sites are literally named \"Bird Sanctuary.\"" },
+  { q: "Which is the largest Ramsar Site in India?", opts: ["Sundarban Wetland", "Chilika Lake", "Sambhar Lake", "Loktak Lake"], ans: "Sundarban Wetland", exp: "Sundarban Wetland (West Bengal) is the largest Ramsar Site in India, per the notes' Quick Facts." },
+  { q: "Which is the smallest Ramsar Site in India?", opts: ["Renuka Wetland", "Ashtamudi Lake", "Nanda Lake", "Khecheopalri Wetland"], ans: "Renuka Wetland", exp: "Renuka Wetland in Himachal Pradesh is named as India's smallest Ramsar Site." },
+  { q: "Which is the largest brackish water lagoon among India's Ramsar Sites?", opts: ["Chilika Lake", "Pulicat Lake", "Vembanad Lake", "Kolleru Lake"], ans: "Chilika Lake", exp: "Chilika Lake (Odisha) is India's largest brackish water lagoon and was also one of the country's first two Ramsar Sites (1981)." },
+  { q: "Which is the largest saltwater lake among India's Ramsar Sites?", opts: ["Sambhar Lake", "Chilika Lake", "Pulicat Lake", "Lonar Lake"], ans: "Sambhar Lake", exp: "Sambhar Lake in Rajasthan is India's largest saltwater (inland) lake." },
+  { q: "Which Ramsar Site is known as India's 'Floating National Park'?", opts: ["Loktak Lake", "Chilika Lake", "Wular Lake", "Deepor Beel"], ans: "Loktak Lake", exp: "Loktak Lake in Manipur is called the Floating National Park because of its floating vegetation islands called Phumdis." },
+  { q: "Which Ramsar Site region is the largest mangrove area in India?", opts: ["Sundarbans", "Pichavaram", "Bhitarkanika", "Coringa"], ans: "Sundarbans", exp: "The Sundarbans is confirmed in the notes as India's largest mangrove area." },
+  { q: "Which Ramsar Site in Odisha was among India's first two sites (1981)?", opts: ["Chilika Lake", "Bhitarkanika Mangroves", "Ansupa Lake", "Hirakud Reservoir"], ans: "Chilika Lake", exp: "Chilika Lake was designated in 1981 alongside Keoladeo National Park — India's very first two Ramsar Sites." },
+  { q: "Which Ramsar Site in Rajasthan was among India's first two sites (1981)?", opts: ["Keoladeo National Park", "Sambhar Lake", "Menar Wetland", "Tal Chhapar Wetland"], ans: "Keoladeo National Park", exp: "Keoladeo National Park (Bharatpur) was designated in 1981 alongside Chilika Lake, forming India's first two Ramsar Sites." },
+  { q: "In which year was Chilika Lake removed from the Montreux Record after successful restoration?", opts: ["2002", "1990", "2012", "1981"], ans: "2002", exp: "Chilika Lake was placed on the Montreux Record for ecological concerns, then removed in 2002 after a successful restoration effort — a favourite SSC PYQ fact." },
+  { q: "Loktak Lake is famous for which unique floating vegetation?", opts: ["Phumdis", "Water hyacinth mats", "Coral beds", "Peat islands"], ans: "Phumdis", exp: "Phumdis are floating masses of vegetation, soil, and organic matter that give Loktak Lake its \"Floating National Park\" identity." },
+  { q: "Bhitarkanika Ramsar Site is well known for which species?", opts: ["Saltwater crocodiles", "Bengal tigers", "Snow leopards", "Asiatic lions"], ans: "Saltwater crocodiles", exp: "Bhitarkanika Mangroves in Odisha is well known for its saltwater crocodile population." },
+  { q: "Harike Wetland lies at the confluence of which two rivers?", opts: ["Beas and Sutlej", "Ganga and Yamuna", "Chenab and Jhelum", "Ravi and Beas"], ans: "Beas and Sutlej", exp: "Harike Wetland (Punjab) sits at the confluence of the Beas and Sutlej rivers." },
+  { q: "Wular Lake is considered one of Asia's largest what?", opts: ["Freshwater lakes", "Saltwater lakes", "Mangrove forests", "Coral reefs"], ans: "Freshwater lakes", exp: "Wular Lake in Jammu & Kashmir is recognised as one of Asia's largest freshwater lakes." },
+  { q: "East Kolkata Wetlands are notable for naturally treating what?", opts: ["Kolkata's sewage", "Industrial waste from Mumbai", "Delhi's drinking water", "Chennai's floodwater"], ans: "Kolkata's sewage", exp: "East Kolkata Wetlands act as a natural, low-cost sewage treatment system for the city — a widely tested PYQ fact." },
+];
+
+const ODD_ONE_OUT = [
+  { q: 'Which of these is NOT a "Bird Sanctuary" Ramsar Site?', opts: ["Karikili Bird Sanctuary", "Nawabganj Bird Sanctuary", "Sultanpur National Park", "Vellode Bird Sanctuary"], ans: "Sultanpur National Park", exp: "Sultanpur is designated as a National Park, not a Bird Sanctuary — the other three carry \"Bird Sanctuary\" in their official name." },
+  { q: 'Which of these is NOT a "Wildlife Sanctuary" Ramsar Site?', opts: ["Raiganj Wildlife Sanctuary Wetland", "Bhindawas Wildlife Sanctuary", "Coringa Wildlife Sanctuary", "Sundarban Wetland"], ans: "Sundarban Wetland", exp: "Sundarban Wetland is named simply as a \"Wetland,\" while the other three are formally Wildlife Sanctuaries." },
+  { q: 'Which of these is NOT a "National Park" Ramsar Site?', opts: ["Keoladeo National Park", "Sultanpur National Park", "Point Calimere Wildlife & Bird Sanctuary", "Marine National Park (Gulf of Kachchh)"], ans: "Point Calimere Wildlife & Bird Sanctuary", exp: "Point Calimere is designated a Wildlife & Bird Sanctuary, not a National Park — unlike the other three." },
+  { q: 'Which of these is NOT a "Lake" named Ramsar Site?', opts: ["Sambhar Lake", "Lonar Lake", "Ashtamudi Lake", "Bhoj Wetland"], ans: "Bhoj Wetland", exp: "Bhoj Wetland (Madhya Pradesh) carries \"Wetland\" in its name, while the other three are all named as lakes." },
+  { q: 'Which of these is NOT a "Wetland" named Ramsar Site?', opts: ["Bhoj Wetland", "Wadhvana", "Haiderpur Wetland", "Chilika Lake"], ans: "Chilika Lake", exp: "Chilika is named as a lake, while Bhoj, Wadhvana, and Haiderpur are all officially named as wetlands." },
+];
+
+/* =========================================================================
+   HELPERS
+   ========================================================================= */
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickDistractors(correct, pool, n) {
+  const filtered = [...new Set(pool.filter((x) => x !== correct))];
+  return shuffle(filtered).slice(0, n);
+}
+
+function buildPairs(items, keyFn, maxCount, filterFn) {
+  const pairs = [];
+  const used = new Set();
+  let step = 1;
+  while (pairs.length < maxCount && step < items.length) {
+    for (let i = 0; i < items.length && pairs.length < maxCount; i++) {
+      const j = (i + step) % items.length;
+      if (i === j) continue;
+      const a = items[i];
+      const b = items[j];
+      if (filterFn && !filterFn(a, b)) continue;
+      const key = [keyFn(a), keyFn(b)].sort().join("|");
+      if (used.has(key)) continue;
+      used.add(key);
+      pairs.push([a, b]);
+    }
+    step++;
+  }
+  return pairs;
+}
+
+function buildAllQuestions() {
+  let qid = 0;
+  const questions = [];
+
+  const mk = (category, question, correct, pool, count = 3, exp = "") => {
+    const distractors = pickDistractors(correct, pool, count);
+    const options = shuffle([correct, ...distractors]);
+    questions.push({ id: qid++, category, question, options, answer: correct, exp });
+  };
+
+  SITES.forEach(([site, st]) => {
+    mk("Site → State", `Which state is the Ramsar Site "${site}" located in?`, st, ALL_STATES, 3,
+      `${site} is a Ramsar Site located in ${st}.`);
+  });
+
+  const uniqueCounts = [...new Set(Object.values(STATE_COUNTS))].map(String);
+  ALL_STATES.forEach((st) => {
+    mk("State-wise Count", `How many Ramsar Sites does ${st} have (as of 2026)?`, String(STATE_COUNTS[st]), uniqueCounts, 3,
+      `${st} has ${STATE_COUNTS[st]} Ramsar Site${STATE_COUNTS[st] > 1 ? "s" : ""} as of 2026.`);
+  });
+
+  const allTotals = YEAR_DATA.map((y) => String(y.total));
+  YEAR_DATA.forEach((y) => {
+    mk("Year-wise Growth", `What was the total number of Ramsar Sites in India by the year ${y.year}?`, String(y.total), allTotals, 3,
+      `By ${y.year}, India had a total of ${y.total} Ramsar Sites.`);
+  });
+
+  const allYears = YEAR_DATA.map((y) => String(y.year));
+  YEAR_DATA.forEach((y) => {
+    mk("Year-wise Growth", `In which year did India's total Ramsar Site count first reach ${y.total}?`, String(y.year), allYears, 3,
+      `India's Ramsar Site count first reached ${y.total} in ${y.year}.`);
+  });
+
+  const allAdded = YEAR_DATA.map((y) => String(y.added));
+  YEAR_DATA.forEach((y) => {
+    mk("Year-wise Growth", `How many NEW Ramsar Sites were added to India's list in ${y.year}?`, String(y.added), allAdded, 3,
+      `${y.added} new Ramsar Site${y.added > 1 ? "s were" : " was"} added to India's list in ${y.year}, bringing the total to ${y.total}.`);
+  });
+
+  const allYearSites = YEAR_DATA.map((y) => y.site);
+  YEAR_DATA.forEach((y) => {
+    mk("Year-wise Growth", `Which of these Ramsar Sites was added to the list in ${y.year}?`, y.site, allYearSites, 3,
+      `${y.site} was one of the sites added to India's Ramsar list in ${y.year}.`);
+  });
+
+  const allDates = [...new Set(NEW_2026.map((s) => s.date)), "15 August 2025", "1 January 2027", "10 October 2026"];
+  NEW_2026.forEach((s) => {
+    mk("2026 Additions", `On what date in 2026 was "${s.site}" designated a Ramsar Site?`, s.date, allDates, 3,
+      `"${s.site}" was designated a Ramsar Site on ${s.date}, as site number ${s.no}.`);
+  });
+  const allSerials = NEW_2026.map((s) => String(s.no));
+  NEW_2026.forEach((s) => {
+    mk("2026 Additions", `What serial number was assigned to "${s.site}" among India's 100 Ramsar Sites?`, String(s.no), allSerials, 3,
+      `"${s.site}" was assigned serial number ${s.no}, designated on ${s.date}.`);
+  });
+
+  ODD_ONE_OUT.forEach((item) => {
+    questions.push({ id: qid++, category: "Odd One Out", question: item.q, options: shuffle(item.opts), answer: item.ans, exp: item.exp });
+  });
+
+  const statePairs = buildPairs(ALL_STATES, (x) => x, 45, (a, b) => STATE_COUNTS[a] !== STATE_COUNTS[b]);
+  statePairs.forEach(([a, b]) => {
+    const higher = STATE_COUNTS[a] > STATE_COUNTS[b] ? a : b;
+    const lower = higher === a ? b : a;
+    questions.push({
+      id: qid++,
+      category: "Compare States",
+      question: `Which state has MORE Ramsar Sites — ${a} or ${b}?`,
+      options: shuffle([a, b, "Both have an equal number", "Cannot be determined"]),
+      answer: higher,
+      exp: `${higher} has ${STATE_COUNTS[higher]} Ramsar Sites, more than ${lower}'s ${STATE_COUNTS[lower]}.`,
+    });
+  });
+
+  const yearPairs = buildPairs(YEAR_DATA, (y) => y.year, 32, null);
+  yearPairs.forEach(([y1, y2]) => {
+    const higherYear = y1.total > y2.total ? y1 : y2;
+    const lowerYear = higherYear === y1 ? y2 : y1;
+    questions.push({
+      id: qid++,
+      category: "Compare Years",
+      question: `In which year was India's total Ramsar Site count higher — ${y1.year} or ${y2.year}?`,
+      options: shuffle([String(y1.year), String(y2.year), "Both were equal", "Cannot be determined"]),
+      answer: String(higherYear.year),
+      exp: `By ${higherYear.year}, India had ${higherYear.total} Ramsar Sites — more than the ${lowerYear.total} recorded by ${lowerYear.year}.`,
+    });
+  });
+
+  MANUAL_QUESTIONS.forEach((item) => {
+    questions.push({ id: qid++, category: "General Facts", question: item.q, options: shuffle(item.opts), answer: item.ans, exp: item.exp });
+  });
+
+  return shuffle(questions);
+}
+
+function getRank(pct) {
+  if (pct >= 90) return { label: "Wetland Grandmaster", icon: "🦆" };
+  if (pct >= 75) return { label: "Ramsar Ranger", icon: "🐦" };
+  if (pct >= 60) return { label: "Wetland Explorer", icon: "🌿" };
+  if (pct >= 40) return { label: "Getting There — Keep Revising", icon: "📓" };
+  return { label: "Time To Revisit The Notes", icon: "💧" };
+}
+
+/* =========================================================================
+   STATE + RENDER
+   ========================================================================= */
+
+let state = {
+  questions: buildAllQuestions(),
+  index: 0,
+  selected: null,
+  score: { correct: 0, wrong: 0 },
+  streak: 0,
+  bestStreak: 0,
+};
+
+const wrap = document.getElementById("rq-wrap");
+const LETTERS = ["A", "B", "C", "D"];
+
+function icon(name, size = 16, extraAttrs = "") {
+  return `<i data-lucide="${name}" style="width:${size}px;height:${size}px" ${extraAttrs}></i>`;
+}
+
+function renderScoreCard() {
+  const { score, streak, bestStreak } = state;
+  const attempted = score.correct + score.wrong;
+  const accuracy = attempted > 0 ? Math.round((score.correct / attempted) * 100) : 0;
+  return `
+    <div class="rq-score-card">
+      <div class="rq-score-title">${icon("trophy", 15)} Scoreboard</div>
+      <div class="rq-score-main">
+        <span class="rq-score-num">${score.correct}</span>
+        <span class="rq-score-den">/ ${attempted} attempted</span>
+      </div>
+      <div class="rq-bar-track"><div class="rq-bar-fill" style="width:${accuracy}%"></div></div>
+      <div class="rq-bar-label">${accuracy}% accuracy</div>
+
+      <div class="rq-stat-row">
+        <span>${icon("flame", 14, `class="rq-flame ${streak >= 3 ? "active" : ""}"`)} Current streak</span>
+        <span>${streak}</span>
+      </div>
+      <div class="rq-stat-row">
+        <span>Best streak</span>
+        <span>${bestStreak}</span>
+      </div>
+      <div class="rq-stat-row">
+        <span>Wrong answers</span>
+        <span>${score.wrong}</span>
+      </div>
+
+      <button class="rq-restart-btn" id="rq-restart-side">${icon("rotate-ccw", 14)} Restart Quiz</button>
+    </div>
+  `;
+}
+
+function render() {
+  const { questions, index, selected, score } = state;
+  const total = questions.length;
+  const finished = index >= total;
+  const attempted = score.correct + score.wrong;
+  const accuracy = attempted > 0 ? Math.round((score.correct / attempted) * 100) : 0;
+  const progressPct = total > 0 ? Math.min(100, (index / total) * 100) : 0;
+
+  let html = `
+    <div class="rq-header">
+      <div class="rq-eyebrow">${icon("leaf", 14)} SSC CGL &middot; 100 Wetlands of International Importance</div>
+      <h1 class="rq-title">Ramsar Sites <em>Quiz</em></h1>
+      <p class="rq-subtitle">${total}+ questions from the 2026 Ramsar notes &middot; answer reveals instantly &middot; score tracked live</p>
+    </div>
+  `;
+
+  if (!finished) {
+    html += `
+      <div class="rq-progress-track">
+        <div class="rq-progress-fill" style="width:${progressPct}%"></div>
+        <div class="rq-progress-bird" style="left:${progressPct}%">${icon("bird", 14)}</div>
+      </div>
+      <div class="rq-progress-label">
+        <span>Question ${index + 1} of ${total}</span>
+        <span>${attempted} attempted</span>
+      </div>
+    `;
+  }
+
+  if (finished) {
+    const rank = getRank(accuracy);
+    html += `
+      <div class="rq-grid">
+        <div class="rq-card rq-complete">
+          <div class="rq-complete-icon">${rank.icon}</div>
+          <h2 class="rq-complete-title">Quiz Complete!</h2>
+          <div class="rq-complete-rank">${rank.label}</div>
+          <div class="rq-complete-score">${score.correct} / ${total}</div>
+          <div class="rq-complete-acc">${accuracy}% accuracy &middot; best streak ${state.bestStreak}</div>
+          <button class="rq-complete-btn" id="rq-restart-main">${icon("rotate-ccw", 16)} Restart Quiz</button>
+        </div>
+        <div class="rq-sidebar">${renderScoreCard()}</div>
+      </div>
+    `;
+  } else {
+    const current = questions[index];
+    let optionsHtml = "";
+    current.options.forEach((opt, i) => {
+      const isSelected = selected === opt;
+      const isCorrectOpt = opt === current.answer;
+      let cls = "rq-opt";
+      let extraIcon = "";
+      if (selected !== null) {
+        if (isCorrectOpt) { cls += " correct"; extraIcon = `<span class="rq-opt-icon">${icon("check-circle-2", 18)}</span>`; }
+        else if (isSelected) { cls += " wrong"; extraIcon = `<span class="rq-opt-icon">${icon("x-circle", 18)}</span>`; }
+      }
+      optionsHtml += `
+        <button class="${cls}" data-opt="${i}" ${selected !== null ? "disabled" : ""}>
+          <span class="rq-opt-letter">${LETTERS[i]}</span>
+          <span>${opt}</span>
+          ${extraIcon}
+        </button>
+      `;
+    });
+
+    let feedbackHtml = "";
+    if (selected !== null) {
+      const isCorrect = selected === current.answer;
+      const explanationHtml = current.exp
+        ? `<div class="rq-explanation">${icon("sparkles", 15)}<span><strong>Why:</strong> ${current.exp}</span></div>`
+        : "";
+      feedbackHtml = `
+        <div class="rq-feedback ${isCorrect ? "correct" : "wrong"}">
+          ${isCorrect ? icon("check-circle-2", 16) + " Correct!" : icon("x-circle", 16) + " Not quite &mdash; correct answer is highlighted above."}
+        </div>
+        ${explanationHtml}
+        <button class="rq-next" id="rq-next-btn">${index + 1 === total ? "See Final Score" : "Next Question"} &rarr;</button>
+      `;
+    }
+
+    html += `
+      <div class="rq-grid">
+        <div class="rq-card">
+          <span class="rq-qnum">#${index + 1}</span>
+          <div class="rq-cat-pill">${current.category}</div>
+          <h2 class="rq-question">${current.question}</h2>
+          <div class="rq-options">${optionsHtml}</div>
+          ${feedbackHtml}
+        </div>
+        <div class="rq-sidebar">
+          ${renderScoreCard()}
+          <div class="rq-note-card">
+            ${icon("sparkles", 16, 'style="flex:none;margin-top:2px;width:16px;height:16px"')}
+            <span>Every option is graded the moment you tap it &mdash; the correct answer is always shown before you move on.</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  wrap.innerHTML = html;
+  attachHandlers(finished);
+  if (window.lucide) lucide.createIcons();
+}
+
+function attachHandlers(finished) {
+  if (finished) {
+    const restartMain = document.getElementById("rq-restart-main");
+    if (restartMain) restartMain.addEventListener("click", handleRestart);
+  } else {
+    document.querySelectorAll(".rq-opt").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const i = Number(btn.getAttribute("data-opt"));
+        const current = state.questions[state.index];
+        handleSelect(current.options[i]);
+      });
+    });
+    const nextBtn = document.getElementById("rq-next-btn");
+    if (nextBtn) nextBtn.addEventListener("click", handleNext);
+  }
+  const restartSide = document.getElementById("rq-restart-side");
+  if (restartSide) restartSide.addEventListener("click", handleRestart);
+}
+
+function handleSelect(opt) {
+  if (state.selected !== null) return;
+  const current = state.questions[state.index];
+  const isCorrect = opt === current.answer;
+  state.selected = opt;
+  state.score = {
+    correct: state.score.correct + (isCorrect ? 1 : 0),
+    wrong: state.score.wrong + (isCorrect ? 0 : 1),
+  };
+  state.streak = isCorrect ? state.streak + 1 : 0;
+  state.bestStreak = Math.max(state.bestStreak, state.streak);
+  render();
+}
+
+function handleNext() {
+  state.selected = null;
+  state.index += 1;
+  render();
+}
+
+function handleRestart() {
+  state = {
+    questions: buildAllQuestions(),
+    index: 0,
+    selected: null,
+    score: { correct: 0, wrong: 0 },
+    streak: 0,
+    bestStreak: 0,
+  };
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

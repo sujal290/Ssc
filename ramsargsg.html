@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramsar Sites Practice Bank</title>
+<style>
+  :root{
+    --deep:#143C36; --mid:#1F5C50; --gold:#C9A227; --cream:#F4EFE1;
+    --grey:#4C6B72; --clay:#B5533C; --card:#FFFDF8; --line:#DED5BC;
+    --display: 'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--cream);font-family:var(--body);color:var(--deep);}
+  #root{min-height:100vh;display:flex;justify-content:center;padding:32px 18px;}
+  .wrap{max-width:640px;width:100%;}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .eyebrow span{letter-spacing:2px;font-size:12px;text-transform:uppercase;color:var(--grey);font-weight:600;}
+  h1.title{font-family:var(--display);color:var(--deep);font-size:42px;line-height:1.05;margin:0 0 10px;}
+  p.lead{color:var(--grey);font-size:15.5px;line-height:1.55;margin-bottom:28px;max-width:520px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px;}
+  .section-label{font-family:var(--display);font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:10px;font-weight:700;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--deep);font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--body);}
+  .pill.active{border-color:var(--deep);background:var(--deep);color:var(--cream);}
+  .pill.gold-active{border-color:var(--gold);background:#FBF3DC;color:var(--deep);}
+  .pill:disabled{color:#B9AF97;cursor:not-allowed;}
+  .btn-primary{width:100%;padding:16px 20px;border-radius:14px;border:none;background:var(--deep);color:var(--cream);
+    font-family:var(--display);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .btn-primary:hover{opacity:.92;}
+  .btn-outline{flex:1;padding:14px;border-radius:14px;border:1.5px solid var(--deep);background:transparent;color:var(--deep);
+    font-family:var(--display);font-weight:700;font-size:15px;cursor:pointer;}
+  .progress-outer{background:#E4DCC5;border-radius:999px;height:10px;overflow:hidden;border:1px solid var(--line);}
+  .progress-inner{height:100%;background:linear-gradient(90deg,var(--mid),var(--gold));transition:width .35s ease;}
+  .quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .quiz-top .cat{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);font-weight:700;}
+  .quiz-top .count{font-size:12.5px;color:var(--grey);font-weight:600;}
+  .qhead{display:flex;gap:8px;margin-bottom:14px;}
+  .qhead h2{font-family:var(--display);color:var(--deep);font-size:19px;line-height:1.4;margin:0;font-weight:700;}
+  .opt-list{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+  .opt{text-align:left;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);
+    color:var(--deep);font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--body);width:100%;}
+  .opt:hover:not(:disabled){border-color:var(--mid);}
+  .opt:disabled{cursor:default;}
+  .opt.correct{background:#E9F3EA;border-color:var(--mid);}
+  .opt.wrong{background:#F7E9E4;border-color:var(--clay);}
+  .explain{margin-top:18px;padding:14px 16px;background:#FBF6E9;border:1px solid var(--line);border-radius:12px;display:flex;gap:8px;}
+  .explain p{margin:0;font-size:14px;line-height:1.55;color:var(--grey);}
+  .next-btn{width:100%;margin-top:16px;padding:14px 20px;border-radius:14px;border:none;background:var(--deep);color:var(--cream);
+    font-family:var(--display);font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .result-wrap{max-width:480px;width:100%;text-align:center;margin:40px auto;}
+  .result-wrap h1{font-family:var(--display);color:var(--deep);font-size:32px;margin:0 0 6px;}
+  .result-wrap p{color:var(--grey);font-size:15px;margin-bottom:26px;}
+  .stat-row{display:flex;justify-content:space-between;font-size:14px;color:var(--grey);margin-bottom:8px;}
+  .btn-row{display:flex;gap:10px;}
+  .icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+  svg{display:block;}
+  @media (max-width:480px){ h1.title{font-size:32px;} }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+/* ============================================================
+   ICONS (inline SVG, no external deps)
+   ============================================================ */
+function icon(name, size, color){
+  size = size || 18; color = color || 'currentColor';
+  const paths = {
+    check: '<polyline points="20 6 9 17 4 12"></polyline>',
+    x: '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>',
+    chevron: '<polyline points="9 18 15 12 9 6"></polyline>',
+    retry: '<polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>',
+    trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>',
+    pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle>',
+    leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>',
+    book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>',
+    waves: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>'
+  };
+  return '<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+paths[name]+'</svg>';
+}
+
+/* ============================================================
+   SOURCE DATA — extracted from the provided Ramsar Sites study
+   material (state-wise list, key facts panel, and the 25-item
+   PYQ set with its answer key).
+   ============================================================ */
+const SITES = [
+  ["Point Calimere","Tamil Nadu"],["Pallikaranai Marsh","Tamil Nadu"],["Pichavaram Mangroves","Tamil Nadu"],
+  ["Gulf of Mannar Marine Biosphere Reserve","Tamil Nadu"],["Vedanthangal Bird Sanctuary","Tamil Nadu"],
+  ["Vembannur Wetland","Tamil Nadu"],["Karikili Bird Sanctuary","Tamil Nadu"],["Udhayamarthandapuram Bird Sanctuary","Tamil Nadu"],
+  ["Vaduvur Bird Sanctuary","Tamil Nadu"],["Koonthankulam Bird Sanctuary","Tamil Nadu"],
+  ["Upper Ganga River (Brijghat–Narora)","Uttar Pradesh"],["Nawabganj Bird Sanctuary","Uttar Pradesh"],
+  ["Saman Bird Sanctuary","Uttar Pradesh"],["Samaspur Bird Sanctuary","Uttar Pradesh"],["Sandi Bird Sanctuary","Uttar Pradesh"],
+  ["Parvati Arga Bird Sanctuary","Uttar Pradesh"],["Bakhira Wildlife Sanctuary","Uttar Pradesh"],["Haiderpur Wetland","Uttar Pradesh"],
+  ["Sur Sarovar (Keetham Lake)","Uttar Pradesh"],["Patna Bird Sanctuary","Uttar Pradesh"],["Shekha Jheel Bird Sanctuary","Uttar Pradesh"],
+  ["Jai Prakash Narayan Bird Sanctuary (Surha Tal)","Uttar Pradesh"],["Sarsai Nawar Jheel","Uttar Pradesh"],
+  ["Harike Wetland","Punjab"],["Kanjli Wetland","Punjab"],["Nangal Wildlife Sanctuary","Punjab"],["Ropar Wetland","Punjab"],
+  ["Beas Conservation Reserve","Punjab"],["Keshopur-Miani Community Reserve","Punjab"],
+  ["Nalsarovar Bird Sanctuary","Gujarat"],["Thol Lake Wildlife Sanctuary","Gujarat"],["Khijadiya Wildlife Sanctuary","Gujarat"],
+  ["Wadhvana Wetland","Gujarat"],["Chhari-Dhand Wetland","Gujarat"],
+  ["Chilika Lake","Odisha"],["Bhitarkanika Mangroves","Odisha"],["Ansupa Lake","Odisha"],["Tampara Lake","Odisha"],["Hirakud Reservoir","Odisha"],
+  ["Sundarban Wetland","West Bengal"],["East Kolkata Wetlands","West Bengal"],["Santragachi Jheel","West Bengal"],
+  ["Sasthamkotta Lake","Kerala"],["Ashtamudi Lake","Kerala"],["Vembanad Kol Wetland","Kerala"],
+  ["Bhoj Wetland","Madhya Pradesh"],["Sakhya Sagar","Madhya Pradesh"],["Sirpur Wetland","Madhya Pradesh"],["Yashwant Sagar","Madhya Pradesh"],
+  ["Sambhar Lake","Rajasthan"],["Keoladeo National Park","Rajasthan"],["Menar Wetland","Rajasthan"],
+  ["Wular Lake","Jammu & Kashmir"],["Hokersar Wetland","Jammu & Kashmir"],["Surinsar-Mansar Lakes","Jammu & Kashmir"],
+  ["Shallabugh Wetland","Jammu & Kashmir"],["Hygam Wetland","Jammu & Kashmir"],
+  ["Kolleru Lake","Andhra Pradesh"],["Coringa Wildlife Sanctuary","Andhra Pradesh"],["Pulicat Lake","Andhra Pradesh"],
+  ["Deepor Beel","Assam"],
+  ["Loktak Lake","Manipur"],
+  ["Kabartal Wetland","Bihar"],["Nagi-Nakti Bird Sanctuaries","Bihar"],
+  ["Bhindawas Wildlife Sanctuary","Haryana"],["Sultanpur National Park","Haryana"],
+  ["Ranganathittu Bird Sanctuary","Karnataka"],["Attiveri Bird Sanctuary","Karnataka"],
+  ["Pong Dam Lake","Himachal Pradesh"],["Renuka Wetland","Himachal Pradesh"],["Chandra Taal","Himachal Pradesh"],
+  ["Kanger Valley National Park","Chhattisgarh"],["Achanakmar-Amarkantak Biosphere Reserve","Chhattisgarh"],
+  ["Palak Lake","Mizoram"],["Rih Dil","Mizoram"],
+  ["Rudrasagar Lake","Tripura"],["Trishna Wildlife Sanctuary","Tripura"],
+  ["Nanda Lake","Goa"],["Khecheopalri Wetland","Sikkim"],["Asan Barrage","Uttarakhand"],
+  ["Pakhal Lake","Telangana"],["Najafgarh Jheel","Delhi"],
+  ["Tso Kar","Ladakh"],["Tsomoriri","Ladakh"]
+];
+const ALL_STATES = [...new Set(SITES.map(s=>s[1]))];
+
+const KEY_FACTS = [
+  {q:"In which city was the Convention on Wetlands signed?",opts:["Ramsar, Iran","Kyoto, Japan","Geneva, Switzerland","Nairobi, Kenya"],a:0,ex:"The Convention on Wetlands is called the 'Ramsar Convention' because it was signed in the city of Ramsar, Iran, on 2 February 1971."},
+  {q:"On what date was the Ramsar Convention signed?",opts:["21 December 1975","1 February 1982","2 February 1971","2 February 1982"],a:2,ex:"The Ramsar Convention was signed on 2 February 1971 in Ramsar, Iran."},
+  {q:"When did the Ramsar Convention enter into force?",opts:["2 February 1971","21 December 1975","1 February 1982","5 June 1982"],a:1,ex:"Although signed in 1971, the Convention on Wetlands entered into force on 21 December 1975."},
+  {q:"When did India become a Contracting Party to the Ramsar Convention?",opts:["2 February 1971","1 February 1982","21 December 1975","5 June 1990"],a:1,ex:"India became a Contracting Party to the Ramsar Convention on 1 February 1982."},
+  {q:"World Wetlands Day is observed every year on:",opts:["22 April","5 June","2 February","16 September"],a:2,ex:"World Wetlands Day is celebrated every year on 2 February, marking the date the Ramsar Convention was signed."},
+  {q:"What is the main objective of the Ramsar Convention?",opts:["Promotion of coastal tourism","Conservation and wise use of wetlands","Regulation of international fishing","Construction of dams on wetlands"],a:1,ex:"The Ramsar Convention's core objective is the conservation and wise use of wetlands, for the benefit of present and future generations."},
+  {q:"Which two sites were India's first Ramsar Sites (designated in 1981)?",opts:["Chilika Lake & Keoladeo National Park","Sundarban & Wular Lake","Sambhar Lake & Bhoj Wetland","Loktak Lake & Harike Wetland"],a:0,ex:"Chilika Lake (Odisha) and Keoladeo National Park (Rajasthan) were designated as India's first Ramsar Sites in 1981."},
+  {q:"Keoladeo National Park is also popularly known as:",opts:["Bharatpur Bird Sanctuary","Ranganathittu Sanctuary","Vedanthangal Sanctuary","Sultanpur Sanctuary"],a:0,ex:"Keoladeo National Park, one of India's first Ramsar Sites, is also known as Bharatpur Bird Sanctuary and is a man-made wetland."},
+  {q:"Chilika Lake, one of India's first Ramsar Sites, is home to which marine mammal?",opts:["Gangetic Dolphin","Irrawaddy Dolphin","Blue Whale","Dugong"],a:1,ex:"Chilika Lake, Asia's largest brackish-water lagoon, is home to the Irrawaddy dolphin."},
+  {q:"As per the source material (till 10 July 2026), how many Ramsar Sites does India have?",opts:["75","85","100","112"],a:2,ex:"India has 100 Ramsar Sites as of 10 July 2026, per the reference material, following the addition of the Jai Prakash Narayan Bird Sanctuary as the 100th site."},
+  {q:"What is the total Ramsar area in India (approx.), per the reference material?",opts:["≈8.5 lakh hectares","≈13.88 lakh hectares","≈20 lakh hectares","≈5.2 lakh hectares"],a:1,ex:"India's total Ramsar area is stated as approximately 13.88 lakh hectares in the reference material."},
+  {q:"Which state has the highest number of Ramsar Sites in India?",opts:["Uttar Pradesh","Punjab","Tamil Nadu","Odisha"],a:2,ex:"Tamil Nadu has the highest number of Ramsar Sites among Indian states, with 20 sites."},
+  {q:"How many Ramsar Sites does Tamil Nadu have, per the reference material?",opts:["13","20","6","5"],a:1,ex:"Tamil Nadu tops the state-wise list with 20 Ramsar Sites."},
+  {q:"How many Ramsar Sites does Uttar Pradesh have, per the reference material?",opts:["20","13","6","9"],a:1,ex:"Uttar Pradesh has 13 Ramsar Sites, the second-highest count among Indian states."},
+  {q:"Which is the largest Ramsar Site in India by area?",opts:["Chilika Lake","Vembanad Lake","Sundarban Wetland","Sambhar Lake"],a:2,ex:"The Sundarban Wetland (West Bengal) is the largest Ramsar Site in India by area."},
+  {q:"Which is the smallest Ramsar Site in India?",opts:["Renuka Wetland","Khecheopalri Wetland","Nanda Lake","Rih Dil"],a:0,ex:"Renuka Wetland, located in Himachal Pradesh, is the smallest Ramsar Site in India."},
+  {q:"In which district of Himachal Pradesh is the Renuka Wetland (India's smallest Ramsar Site) located?",opts:["Kangra","Sirmaur","Shimla","Kullu"],a:1,ex:"Renuka Wetland is located in the Sirmaur district of Himachal Pradesh."},
+  {q:"Which site was declared India's 100th Ramsar Site, per the reference material?",opts:["Patna Bird Sanctuary","Chhari-Dhand Wetland","Jai Prakash Narayan Bird Sanctuary (Surha Tal)","Shekha Jheel Bird Sanctuary"],a:2,ex:"The Jai Prakash Narayan Bird Sanctuary (Surha Tal), Uttar Pradesh, was declared in June 2026 as India's 100th Ramsar Site."},
+  {q:"In which state is the Jai Prakash Narayan Bird Sanctuary (Surha Tal) — India's 100th Ramsar Site — located?",opts:["Bihar","Uttar Pradesh","West Bengal","Punjab"],a:1,ex:"This site, India's 100th Ramsar Site (June 2026), is located in Uttar Pradesh."},
+  {q:"Wetlands are valuable ecologically because they act as:",opts:["Deserts","Carbon sinks","Volcanic buffers","Mineral mines"],a:1,ex:"Wetlands act as carbon sinks and help in climate regulation, besides supporting flood control, groundwater recharge and biodiversity."},
+  {q:"Which of the following is NOT typically listed as a wetland type under the Ramsar definition?",opts:["Mangroves","Peatlands","Coral reefs","Desert dunes"],a:3,ex:"Wetlands under the Ramsar definition include lakes, rivers, marshes, swamps, peatlands, mangroves, coral reefs and estuaries — not desert dunes."},
+  {q:"Which of these best describes a Ramsar Site?",opts:["Any protected forest area","A wetland of international importance designated under the Ramsar Convention","A UNESCO World Heritage cultural site","A river basin shared by two countries"],a:1,ex:"A Ramsar Site is specifically a wetland of international importance, designated under the Convention on Wetlands (Ramsar Convention)."},
+  {q:"The Ramsar Convention works primarily through:",opts:["Military cooperation","National action and international cooperation","Private corporate funding only","Unilateral state action"],a:1,ex:"The Ramsar Convention aims to halt the worldwide loss of wetlands through national action and international cooperation."}
+];
+
+const PYQ = [
+  {q:"Match List-I (Ramsar Site) with List-II (State): a. Chilika Lake  b. Keoladeo Ghana  c. Point Calimere  d. Wular Lake — with (1) Tamil Nadu (2) Odisha (3) Rajasthan (4) Jammu & Kashmir",opts:["a-2, b-3, c-1, d-4","a-3, b-2, c-4, d-1","a-2, b-4, c-1, d-3","a-1, b-3, c-2, d-4"],a:0,ex:"Chilika Lake is in Odisha (2), Keoladeo Ghana in Rajasthan (3), Point Calimere in Tamil Nadu (1), and Wular Lake in Jammu & Kashmir (4). [SSC CGL 2023]"},
+  {q:"Which of the following statements about Ramsar Sites is NOT correct?",opts:["The Ramsar Convention is an international treaty for the conservation of wetlands","India has 85 Ramsar Sites as of 2026","The convention was signed in Iran in 1971","Chilika Lake was the first Ramsar Site in India"],a:1,ex:"India's Ramsar Site count is well beyond 85 (100, per the latest reference material as of July 2026), so this statement is incorrect. [SSC CGL 2024]"},
+  {q:"Consider the following statements about Loktak Lake: 1. It is located in Manipur. 2. It contains Keibul Lamjao, the world's only floating national park. Which is/are correct?",opts:["Neither 1 nor 2","1 only","Both 1 and 2","2 only"],a:2,ex:"Loktak Lake is in Manipur, and it hosts Keibul Lamjao National Park, the world's only floating national park. Both statements are correct. [SSC CPO 2022]"},
+  {q:"'Deepor Beel', a Ramsar Site, is located in which state?",opts:["West Bengal","Assam","Meghalaya","Tripura"],a:1,ex:"Deepor Beel is a freshwater lake and Ramsar Site located near Guwahati, Assam. [SSC CHSL 2021]"},
+  {q:"Match List-I (Ramsar Site) with List-II (State): a. Bhoj Wetland  b. Harike Wetland  c. Asthamudi Lake  d. Parvati Arga — with (1) Punjab (2) Madhya Pradesh (3) Kerala (4) Uttar Pradesh",opts:["a-2, b-1, c-3, d-4","a-1, b-2, c-4, d-3","a-3, b-2, c-1, d-4","a-2, b-3, c-1, d-4"],a:0,ex:"Bhoj Wetland is in Madhya Pradesh (2), Harike Wetland in Punjab (1), Asthamudi Lake in Kerala (3), and Parvati Arga in Uttar Pradesh (4). [SSC CGL 2022]"},
+  {q:"Which of the following is the largest Ramsar Site in India by area?",opts:["Vembanad Lake","Chilika Lake","Sambhar Lake","Sundarbans Wetland"],a:3,ex:"The Sundarbans Wetland is the largest Ramsar Site in India by area. [SSC CGL 2023]"},
+  {q:"Consider the following statements: 1. 'Nalsarovar' is a bird sanctuary in Gujarat. 2. 'Ashtamudi' is a Ramsar Site in Kerala. Which is/are correctly matched?",opts:["2 only","1 only","Both 1 and 2","Neither 1 nor 2"],a:2,ex:"Both statements are correct — Nalsarovar Bird Sanctuary is in Gujarat, and Ashtamudi Lake is a Ramsar Site in Kerala. [SSC CPO 2023]"},
+  {q:"'Renuka Wetland', the smallest Ramsar Site in India, is located in:",opts:["Himachal Pradesh","Uttarakhand","Haryana","Punjab"],a:0,ex:"Renuka Wetland is located in the Sirmaur district of Himachal Pradesh, and is India's smallest Ramsar Site. [SSC MTS 2022]"},
+  {q:"Match the sites with their states: a. Sambhar Lake  b. Kanjli Lake  c. Rudrasagar Lake  d. Kolleru Lake — with (1) Punjab (2) Rajasthan (3) Tripura (4) Andhra Pradesh",opts:["a-2, b-1, c-3, d-4","a-1, b-2, c-4, d-3","a-4, b-3, c-2, d-1","a-3, b-4, c-1, d-2"],a:0,ex:"Sambhar Lake is in Rajasthan (2), Kanjli Lake in Punjab (1), Rudrasagar Lake in Tripura (3), and Kolleru Lake in Andhra Pradesh (4). [SSC CGL 2021]"},
+  {q:"Which statement is NOT correct regarding Ramsar Sites in India?",opts:["The number of Ramsar Sites has increased significantly since 2020","All Ramsar Sites are necessarily National Parks","Ramsar Sites are important for migratory birds","Some Ramsar Sites are man-made wetlands"],a:1,ex:"This is incorrect — not all Ramsar Sites are National Parks; many are wildlife sanctuaries, community reserves, or other wetland types. [SSC CGL 2024]"},
+  {q:"'Sur Sarovar' (Keetham Lake) is a Ramsar Site located in:",opts:["Uttar Pradesh","Bihar","Madhya Pradesh","Rajasthan"],a:0,ex:"Sur Sarovar, also known as Keetham Lake, is located in Agra, Uttar Pradesh. [SSC CPO 2021]"},
+  {q:"Match the Ramsar Site with the State/UT: a. Tsomoriri  b. Chandertal  c. Point Calimere  d. Sasthamkotta — with (1) Ladakh (2) Himachal Pradesh (3) Tamil Nadu (4) Kerala",opts:["a-1, b-2, c-3, d-4","a-2, b-1, c-4, d-3","a-3, b-2, c-1, d-4","a-4, b-3, c-2, d-1"],a:0,ex:"Tsomoriri is in Ladakh (1), Chandertal in Himachal Pradesh (2), Point Calimere in Tamil Nadu (3), and Sasthamkotta in Kerala (4). [SSC CGL 2022]"},
+  {q:"'Bhitarkanika Mangroves' is a Ramsar Site located in:",opts:["West Bengal","Andhra Pradesh","Odisha","Tamil Nadu"],a:2,ex:"Bhitarkanika Mangroves is located in the Kendrapara district of Odisha. [SSC CHSL 2020]"},
+  {q:"Consider the statements: 1. 'Sultanpur National Park' is a Ramsar Site in Haryana. 2. 'Thol Lake' is a Ramsar Site in Gujarat. Which is correct?",opts:["1 only","2 only","Both 1 and 2","Neither 1 nor 2"],a:2,ex:"Both statements are correct — Sultanpur National Park is in Haryana, and Thol Lake is in Gujarat. [SSC CGL 2023]"},
+  {q:"'Deepor Beel' Ramsar Site is associated with which major river system?",opts:["Brahmaputra","Ganga","Indus","Mahanadi"],a:0,ex:"Deepor Beel is a wetland connected to the flood plains of the Brahmaputra river. [SSC CGL 2022]"},
+  {q:"Which pair is NOT correctly matched?",opts:["Vembannur Wetland - Tamil Nadu","Yashwant Sagar - Madhya Pradesh","Pala Wetland - Mizoram","Khijadiya Wildlife Sanctuary - Punjab"],a:3,ex:"Khijadiya Wildlife Sanctuary is located in Gujarat, not Punjab, making this pair incorrect. [SSC CGL 2024]"},
+  {q:"'Hygam Wetland' conservation reserve is in:",opts:["Jammu & Kashmir","Ladakh","Himachal Pradesh","Uttarakhand"],a:0,ex:"Hygam Wetland Conservation Reserve is located in Jammu & Kashmir. [SSC CPO 2023]"},
+  {q:"Match List-I with List-II: a. Nandur Madhameshwar  b. Nalsarovar  c. Ansupa Lake  d. Pala Wetland — with (1) Gujarat (2) Maharashtra (3) Odisha (4) Mizoram",opts:["a-2, b-1, c-3, d-4","a-1, b-2, c-3, d-4","a-3, b-1, c-2, d-4","a-2, b-3, c-1, d-4"],a:0,ex:"Nandur Madhameshwar is in Maharashtra (2), Nalsarovar in Gujarat (1), Ansupa Lake in Odisha (3), and Pala Wetland in Mizoram (4). [SSC CGL 2023]"},
+  {q:"'Karikili Bird Sanctuary' is a Ramsar Site in which state?",opts:["Karnataka","Tamil Nadu","Kerala","Andhra Pradesh"],a:1,ex:"Karikili Bird Sanctuary is located in the Kanchipuram district of Tamil Nadu. [SSC CGL 2022]"},
+  {q:"Which of the following is a Ramsar Site in Bihar?",opts:["Kabartal Wetland","Keshopur Miani","Beas Conservation Reserve","Ropar Wetland"],a:0,ex:"Kabartal Wetland (Kanwar Lake), located in Begusarai, was declared Bihar's first Ramsar Site. [SSC CGL 2021]"},
+  {q:"Consider the statements: 1. 'Upper Ganga River' (Brijghat to Narora) is a Ramsar Site. 2. It was included in the list in 2005. Which is correct?",opts:["1 only","2 only","Both 1 and 2","Neither 1 nor 2"],a:2,ex:"The Upper Ganga River stretch from Brijghat to Narora was included in the Ramsar list in 2005. Both statements are correct. [SSC CGL 2022]"},
+  {q:"Match List-I with List-II: a. Point Calimere  b. Kanjli  c. Ropar  d. Pulicat — with (1) Tamil Nadu (2) Punjab (3) Punjab (4) Andhra Pradesh",opts:["a-1, b-2, c-3, d-4","a-1, b-3, c-2, d-4","a-4, b-2, c-3, d-1","a-3, b-2, c-1, d-4"],a:0,ex:"Point Calimere is in Tamil Nadu (1), Kanjli and Ropar are both in Punjab (2, 3), and Pulicat is in Andhra Pradesh (4). [SSC CGL 2021]"},
+  {q:"'Tso Kar' Wetland complex is located in:",opts:["Ladakh","Jammu & Kashmir","Himachal Pradesh","Sikkim"],a:0,ex:"Tso Kar Wetland Complex is located in the Changthang region of Ladakh. [SSC CGL 2022]"},
+  {q:"Which is among the more recent Ramsar Sites (as of 2025/2026) per the reference material?",opts:["Magadi Kere","Nagi-Nakti Bird Sanctuaries","Bakhira","Haiderpur"],a:1,ex:"Nagi-Nakti Bird Sanctuaries (Bihar) are cited as among the recent Ramsar Site additions in the reference material. [SSC CGL 2024]"},
+  {q:"'Bakhira Wildlife Sanctuary' is in which state?",opts:["Madhya Pradesh","Uttar Pradesh","Bihar","Rajasthan"],a:1,ex:"Bakhira Wildlife Sanctuary is located in the Sant Kabir Nagar district of Uttar Pradesh. [SSC CGL 2023]"}
+];
+
+/* ============================================================
+   QUESTION GENERATION
+   ============================================================ */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    const t=a[i]; a[i]=a[j]; a[j]=t;
+  }
+  return a;
+}
+function pickN(arr,n,exclude){
+  const pool = arr.filter(x=>x!==exclude);
+  return shuffle(pool).slice(0,n);
+}
+function buildOptions(correct,distractors){
+  const opts = shuffle([correct].concat(distractors));
+  return {opts:opts, a:opts.indexOf(correct)};
+}
+
+function generateQuestions(){
+  const out = [];
+
+  SITES.forEach(function(pair){
+    const site=pair[0], state=pair[1];
+    const r = buildOptions(state, pickN(ALL_STATES,3,state));
+    out.push({cat:"State Match", q:"In which state / UT is '"+site+"' located as a Ramsar Site?", opts:r.opts, a:r.a,
+      ex: site+" is a Ramsar Site located in "+state+"."});
+  });
+
+  ALL_STATES.forEach(function(state){
+    const inState = SITES.filter(function(s){return s[1]===state;}).map(function(s){return s[0];});
+    const correct = shuffle(inState)[0];
+    const others = SITES.filter(function(s){return s[1]!==state;}).map(function(s){return s[0];});
+    const r = buildOptions(correct, pickN(others,3));
+    out.push({cat:"State Match", q:"Which of the following is a Ramsar Site located in "+state+"?", opts:r.opts, a:r.a,
+      ex: correct+" is a Ramsar Site located in "+state+"."});
+  });
+
+  SITES.forEach(function(pair){
+    const site=pair[0], state=pair[1];
+    out.push({cat:"True or False", q:"Statement: '"+site+"' is a Ramsar Site located in "+state+". Is this correct?",
+      opts:["True","False"], a:0, ex:"Correct — "+site+" is indeed located in "+state+"."});
+    const wrongStates = pickN(ALL_STATES,3,state);
+    wrongStates.forEach(function(wrongState){
+      out.push({cat:"True or False", q:"Statement: '"+site+"' is a Ramsar Site located in "+wrongState+". Is this correct?",
+        opts:["True","False"], a:1, ex:"Incorrect — "+site+" is actually located in "+state+", not "+wrongState+"."});
+    });
+  });
+
+  // Type C2 — "does NOT belong" style, 4-option MCQ per state with >=3 sites
+  ALL_STATES.forEach(function(state){
+    const inState = SITES.filter(function(s){return s[1]===state;}).map(function(s){return s[0];});
+    if(inState.length < 3) return;
+    const three = shuffle(inState).slice(0,3);
+    const outsider = shuffle(SITES.filter(function(s){return s[1]!==state;}).map(function(s){return s[0];}))[0];
+    const r = buildOptions(outsider, three);
+    out.push({cat:"State Match", q:"Three of these Ramsar Sites are in "+state+". Which one is NOT?", opts:r.opts, a:r.a,
+      ex: outsider+" is not in "+state+" — the other three options are."});
+  });
+
+  KEY_FACTS.forEach(function(f){
+    const r = buildOptions(f.opts[f.a], f.opts.filter(function(_,i){return i!==f.a;}));
+    out.push({cat:"Key Facts", q:f.q, opts:r.opts, a:r.a, ex:f.ex});
+  });
+
+  PYQ.forEach(function(f){
+    out.push({cat:"Previous Year Qs", q:f.q, opts:f.opts, a:f.a, ex:f.ex});
+  });
+
+  return shuffle(out).slice(0,500).map(function(q,i){ q.id=i; return q; });
+}
+
+/* ============================================================
+   APP STATE + RENDER
+   ============================================================ */
+const BANK = generateQuestions();
+const LENGTH_OPTIONS = [10,25,50,100,BANK.length];
+const CATEGORIES = ["All","State Match","True or False","Key Facts","Previous Year Qs"];
+
+const state = {
+  screen: "home",
+  length: 25,
+  category: "All",
+  session: [],
+  idx: 0,
+  selected: null,
+  revealed: false,
+  answers: []
+};
+
+function availableCount(){
+  return state.category==="All" ? BANK.length : BANK.filter(function(q){return q.cat===state.category;}).length;
+}
+
+function startQuiz(){
+  const pool = state.category==="All" ? BANK : BANK.filter(function(q){return q.cat===state.category;});
+  const n = Math.min(state.length, pool.length);
+  state.session = shuffle(pool).slice(0,n);
+  state.idx = 0;
+  state.selected = null;
+  state.revealed = false;
+  state.answers = [];
+  state.screen = "quiz";
+  render();
+}
+
+function choose(i){
+  if(state.revealed) return;
+  const current = state.session[state.idx];
+  state.selected = i;
+  state.revealed = true;
+  state.answers.push({correct: i===current.a});
+  render();
+}
+
+function next(){
+  if(state.idx+1 >= state.session.length){
+    state.screen = "result";
+  } else {
+    state.idx += 1;
+    state.selected = null;
+    state.revealed = false;
+  }
+  render();
+}
+
+function esc(s){
+  const d = document.createElement('div');
+  d.innerText = s;
+  return d.innerHTML;
+}
+
+function renderHome(){
+  const av = availableCount();
+  let catPills = CATEGORIES.map(function(c){
+    const active = state.category===c ? "active" : "";
+    return '<button class="pill '+active+'" data-cat="'+esc(c)+'">'+esc(c)+'</button>';
+  }).join('');
+  let lenPills = LENGTH_OPTIONS.map(function(n){
+    const disabled = n>av;
+    const active = state.length===n ? "gold-active" : "";
+    return '<button class="pill '+active+'" '+(disabled?'disabled':'')+' data-len="'+n+'">'+(n===BANK.length?"All "+n:n)+'</button>';
+  }).join('');
+
+  return ''+
+  '<div class="wrap">'+
+    '<div class="eyebrow">'+icon('waves',22,'#1F5C50')+'<span>Wetlands of International Importance</span></div>'+
+    '<h1 class="title">Ramsar Sites<br>Practice Bank</h1>'+
+    '<p class="lead">'+BANK.length+' questions built from the Ramsar Sites reference sheet — state-wise matching, true/false checks, key facts, and previous-year SSC-style questions — each with a short explanation.</p>'+
+    '<div class="card">'+
+      '<div class="section-label">Category</div>'+
+      '<div class="pill-row" id="catRow" style="margin-bottom:20px;">'+catPills+'</div>'+
+      '<div class="section-label">Number of questions ('+av+' available)</div>'+
+      '<div class="pill-row" id="lenRow">'+lenPills+'</div>'+
+    '</div>'+
+    '<button class="btn-primary" id="beginBtn">'+icon('leaf',18,'#F4EFE1')+' Begin Quiz '+icon('chevron',18,'#F4EFE1')+'</button>'+
+  '</div>';
+}
+
+function renderQuiz(){
+  const current = state.session[state.idx];
+  const pct = ((state.idx + (state.revealed?1:0)) / state.session.length) * 100;
+
+  let optsHtml = current.opts.map(function(opt,i){
+    const isCorrect = i===current.a;
+    const isPicked = i===state.selected;
+    let cls = "";
+    let mark = "";
+    if(state.revealed && isCorrect){ cls="correct"; mark=icon('check',18,'#1F5C50'); }
+    else if(state.revealed && isPicked && !isCorrect){ cls="wrong"; mark=icon('x',18,'#B5533C'); }
+    return '<button class="opt '+cls+'" '+(state.revealed?'disabled':'')+' data-i="'+i+'">'+
+      '<span>'+esc(opt)+'</span><span>'+mark+'</span></button>';
+  }).join('');
+
+  let explainHtml = state.revealed ? (
+    '<div class="explain">'+icon('book',16,'#C9A227')+'<p>'+esc(current.ex)+'</p></div>'
+  ) : '';
+
+  let nextBtn = state.revealed ? (
+    '<button class="next-btn" id="nextBtn">'+(state.idx+1>=state.session.length ? "See Results" : "Next Question")+' '+icon('chevron',18,'#F4EFE1')+'</button>'
+  ) : '';
+
+  return ''+
+  '<div class="wrap">'+
+    '<div class="quiz-top"><span class="cat">'+esc(current.cat)+'</span><span class="count">'+(state.idx+1)+' / '+state.session.length+'</span></div>'+
+    '<div class="progress-outer"><div class="progress-inner" style="width:'+pct+'%;"></div></div>'+
+    '<div class="card" style="margin-top:20px;">'+
+      '<div class="qhead">'+icon('pin',18,'#1F5C50')+'<h2>'+esc(current.q)+'</h2></div>'+
+      '<div class="opt-list">'+optsHtml+'</div>'+
+      explainHtml+
+    '</div>'+
+    nextBtn+
+  '</div>';
+}
+
+function renderResult(){
+  const score = state.answers.filter(function(a){return a.correct;}).length;
+  const pct = Math.round((score/state.session.length)*100);
+  return ''+
+  '<div class="result-wrap">'+
+    icon('trophy',40,'#C9A227')+
+    '<h1>'+pct+'% Correct</h1>'+
+    '<p>You answered '+score+' out of '+state.session.length+' questions correctly.</p>'+
+    '<div class="card" style="text-align:left;">'+
+      '<div class="stat-row"><span>Category</span><span>'+esc(state.category)+'</span></div>'+
+      '<div class="stat-row" style="margin-bottom:0;"><span>Questions attempted</span><span>'+state.session.length+'</span></div>'+
+    '</div>'+
+    '<div class="btn-row">'+
+      '<button class="btn-primary" id="retryBtn" style="flex:1;">'+icon('retry',16,'#F4EFE1')+' Retry</button>'+
+      '<button class="btn-outline" id="homeBtn">New Setup</button>'+
+    '</div>'+
+  '</div>';
+}
+
+function render(){
+  const root = document.getElementById('root');
+  if(state.screen==="home"){
+    root.innerHTML = renderHome();
+    document.querySelectorAll('#catRow .pill').forEach(function(btn){
+      btn.addEventListener('click', function(){ state.category = btn.getAttribute('data-cat'); render(); });
+    });
+    document.querySelectorAll('#lenRow .pill').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(btn.disabled) return;
+        state.length = parseInt(btn.getAttribute('data-len'),10);
+        render();
+      });
+    });
+    document.getElementById('beginBtn').addEventListener('click', startQuiz);
+  } else if(state.screen==="quiz"){
+    root.innerHTML = renderQuiz();
+    document.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', function(){ choose(parseInt(btn.getAttribute('data-i'),10)); });
+    });
+    const nb = document.getElementById('nextBtn');
+    if(nb) nb.addEventListener('click', next);
+  } else if(state.screen==="result"){
+    root.innerHTML = renderResult();
+    document.getElementById('retryBtn').addEventListener('click', startQuiz);
+    document.getElementById('homeBtn').addEventListener('click', function(){ state.screen="home"; render(); });
+  }
+}
+
+render();
+</script>
+</body>
+</html>

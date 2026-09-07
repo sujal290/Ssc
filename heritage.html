@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heritage Sites of India — Mock Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #E8E3D3;
+    --card: #FBF8F0;
+    --card-line: #D9D2BC;
+    --ink: #1F2D50;
+    --ink-soft: #3A4A72;
+    --pen-red: #A33B2E;
+    --brass: #93701F;
+    --brass-light: #F1E4BE;
+    --pass-green: #3F6644;
+    --pass-green-bg: #E3ECDD;
+    --fail-bg: #F3E0DC;
+    --shadow: 0 1px 2px rgba(31,45,80,.06), 0 8px 24px rgba(31,45,80,.08);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(180deg, transparent 0 27px, rgba(31,45,80,.05) 27px 28px),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    padding:28px 14px 60px;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+
+  /* ===== Header / Admit Card strip ===== */
+  .admit{
+    background:var(--card);
+    border:1px solid var(--card-line);
+    border-radius:6px;
+    box-shadow:var(--shadow);
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .admit::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:repeating-linear-gradient(180deg, var(--brass) 0 10px, transparent 10px 20px);
+  }
+  .seal{
+    width:64px;height:64px;border-radius:50%;
+    border:2.5px solid var(--brass);
+    display:grid;place-items:center;
+    flex-shrink:0;
+    position:relative;
+    color:var(--brass);
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+  }
+  .seal::before{
+    content:"";
+    position:absolute; inset:5px;
+    border:1px dashed var(--brass);
+    border-radius:50%;
+  }
+  .seal span{font-size:18px;}
+  .admit-text{flex:1; min-width:0;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brass); font-weight:700;
+  }
+  .title{
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size:22px; line-height:1.15; margin:4px 0 2px;
+    letter-spacing:-.01em;
+  }
+  .subtitle{font-size:12.5px;color:var(--ink-soft);}
+  .roll{
+    font-family:'Space Mono',monospace; font-size:12px;
+    background:var(--brass-light); color:var(--brass);
+    padding:3px 9px; border-radius:20px; white-space:nowrap;
+  }
+
+  /* ===== Progress strip (OMR shading) ===== */
+  .progress-row{display:flex; align-items:center; gap:10px; margin:16px 0 20px;}
+  .progress-track{
+    flex:1; height:14px; border-radius:3px;
+    background:repeating-linear-gradient(90deg, var(--card) 0 3px, var(--card-line) 3px 4px);
+    border:1px solid var(--card-line);
+    overflow:hidden;
+    display:flex;
+  }
+  .progress-fill{
+    height:100%;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 3px, var(--ink-soft) 3px 4px);
+    transition:width .35s ease;
+  }
+  .progress-label{font-family:'Space Mono',monospace; font-size:11.5px; color:var(--ink-soft); white-space:nowrap;}
+
+  /* ===== Question card ===== */
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--card-line);
+    border-radius:6px;
+    box-shadow:var(--shadow);
+    padding:24px 22px 20px;
+    position:relative;
+  }
+  .qmeta{
+    font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--brass); font-weight:700; margin-bottom:10px;
+  }
+  .qtext{
+    font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.4;
+    margin:0 0 20px; color:var(--ink);
+  }
+  .options{display:flex; flex-direction:column; gap:10px;}
+  .opt{
+    display:flex; align-items:center; gap:12px;
+    background:#fff; border:1.5px solid var(--card-line);
+    border-radius:8px; padding:11px 14px;
+    cursor:pointer; font-size:14.5px; color:var(--ink);
+    text-align:left; font-family:'Inter',sans-serif;
+    transition:border-color .15s, background .15s, transform .1s;
+  }
+  .opt:hover:not(:disabled){border-color:var(--ink-soft); background:#fdfcf8;}
+  .opt:focus-visible{outline:2.5px solid var(--ink); outline-offset:2px;}
+  .opt:active:not(:disabled){transform:scale(.995);}
+  .bubble{
+    width:26px; height:26px; border-radius:50%;
+    border:2px solid var(--ink); flex-shrink:0;
+    position:relative; display:grid; place-items:center;
+    font-family:'Space Mono',monospace; font-size:12px; font-weight:700; color:var(--ink);
+  }
+  .bubble svg{position:absolute; inset:-2px; width:30px; height:30px;}
+  .bubble svg path{
+    fill:none; stroke:var(--ink); stroke-width:5; stroke-linecap:round;
+    stroke-dasharray:340; stroke-dashoffset:340;
+  }
+  .opt.selected .bubble svg path{animation:scribble .38s ease forwards;}
+  .opt.selected .bubble span{opacity:0;}
+  @keyframes scribble{ to{stroke-dashoffset:0;} }
+
+  .opt.correct{border-color:var(--pass-green); background:var(--pass-green-bg);}
+  .opt.correct .bubble, .opt.correct .bubble svg path{border-color:var(--pass-green); stroke:var(--pass-green); color:var(--pass-green);}
+  .opt.incorrect{border-color:var(--pen-red); background:var(--fail-bg);}
+  .opt.incorrect .bubble, .opt.incorrect .bubble svg path{border-color:var(--pen-red); stroke:var(--pen-red); color:var(--pen-red);}
+  .opt:disabled{cursor:default;}
+  .opt:disabled:not(.selected):not(.correct){opacity:.55;}
+
+  .stamp{
+    position:absolute; top:18px; right:20px;
+    font-family:'Space Mono',monospace; font-weight:700; font-size:12.5px;
+    letter-spacing:.06em; padding:5px 12px; border-radius:4px;
+    border:2px solid; transform:rotate(-6deg) scale(0);
+    animation:stampIn .28s cubic-bezier(.2,1.4,.5,1) forwards;
+  }
+  .stamp.pass{color:var(--pass-green); border-color:var(--pass-green);}
+  .stamp.fail{color:var(--pen-red); border-color:var(--pen-red);}
+  @keyframes stampIn{ to{transform:rotate(-6deg) scale(1);} }
+
+  .explain{
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--card-line);
+    font-size:13px; color:var(--ink-soft); line-height:1.5;
+  }
+  .explain b{color:var(--ink);}
+
+  .nextbar{display:flex; justify-content:flex-end; margin-top:18px;}
+  .btn{
+    font-family:'Space Mono',monospace; font-weight:700; font-size:13px;
+    letter-spacing:.04em; text-transform:uppercase;
+    background:var(--ink); color:#fff; border:none;
+    padding:11px 22px; border-radius:5px; cursor:pointer;
+    transition:background .15s, transform .1s;
+  }
+  .btn:hover{background:var(--ink-soft);}
+  .btn:active{transform:scale(.97);}
+  .btn:focus-visible{outline:2.5px solid var(--brass); outline-offset:2px;}
+  .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn.ghost:hover{background:var(--card-line);}
+
+  /* ===== Result / Marksheet ===== */
+  .marksheet{
+    background:var(--card); border:1px solid var(--card-line); border-radius:6px;
+    box-shadow:var(--shadow); padding:26px 24px; position:relative; overflow:hidden;
+  }
+  .marksheet::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:repeating-linear-gradient(180deg, var(--brass) 0 10px, transparent 10px 20px);
+  }
+  .ms-head{text-align:center; margin-bottom:18px;}
+  .ms-eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; color:var(--brass); text-transform:uppercase; font-weight:700;}
+  .ms-title{font-family:'Fraunces',serif; font-weight:700; font-size:26px; margin:6px 0 2px;}
+  .score-ring-row{display:flex; justify-content:center; margin:18px 0;}
+  .score-big{
+    font-family:'Fraunces',serif; font-weight:700; font-size:52px; line-height:1;
+    color:var(--ink);
+  }
+  .score-big span{font-size:22px; color:var(--ink-soft); font-family:'Space Mono',monospace; font-weight:400;}
+  .grade{
+    text-align:center; font-family:'Space Mono',monospace; font-weight:700;
+    font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+    padding:6px 16px; border-radius:20px; display:inline-block; margin:0 auto 6px;
+  }
+  .grade-wrap{text-align:center; margin-bottom:20px;}
+
+  .catgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:20px 0;}
+  .catbox{background:#fff; border:1px solid var(--card-line); border-radius:6px; padding:12px 14px;}
+  .catbox .n{font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--brass); font-weight:700;}
+  .catbox .v{font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin-top:2px;}
+
+  .review{margin-top:22px;}
+  .review h3{font-family:'Fraunces',serif; font-size:16px; margin:0 0 12px;}
+  .review-item{
+    border-left:3px solid var(--pen-red); background:#fff; border-radius:0 6px 6px 0;
+    padding:10px 14px; margin-bottom:10px; font-size:13px; line-height:1.5;
+  }
+  .review-item .rq{font-weight:600; margin-bottom:4px;}
+  .review-item .ra{color:var(--ink-soft);}
+  .review-item .ra b{color:var(--pass-green);}
+  .review-item .ra .wrong{color:var(--pen-red); text-decoration:line-through;}
+
+  .actions{display:flex; gap:10px; justify-content:center; margin-top:22px; flex-wrap:wrap;}
+
+  footer{text-align:center; margin-top:26px; font-size:11px; color:var(--ink-soft); font-family:'Space Mono',monospace;}
+
+  @media (max-width:480px){
+    .catgrid{grid-template-columns:1fr 1fr;}
+    .title{font-size:19px;}
+    .qtext{font-size:17px;}
+    .score-big{font-size:42px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="admit">
+    <div class="seal"><span id="sealNum">45</span></div>
+    <div class="admit-text">
+      <div class="eyebrow">Mock Test · Admit Card</div>
+      <div class="title">Heritage Sites of India</div>
+      <div class="subtitle">UNESCO World Heritage — SSC CGL / CHSL / MTS / Railway</div>
+    </div>
+    <div class="roll" id="rollNo">ROLL —</div>
+  </div>
+
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    <div class="progress-label" id="progLabel">0 / 20</div>
+  </div>
+
+  <div id="quizArea"></div>
+  <div id="resultArea"></div>
+
+  <footer>OMR-style practice test · click a bubble to lock your answer · all 200 questions in this attempt</footer>
+</div>
+
+<script>
+const BANK = [{"q":"\"Sundarbans National Park\" is located in which state/UT?","options":["Goa","Madhya Pradesh","Himachal Pradesh","West Bengal"],"correct":3,"explain":"Inscribed 1987 — Largest mangrove, Royal Bengal Tiger","cat":"State"},{"q":"\"Mountain Railways of India\" is located in which state/UT?","options":["Goa","WB / TN / HP","Uttar Pradesh","Maharashtra & TN"],"correct":1,"explain":"Inscribed 1999 — Darjeeling 1999, Nilgiri 2005, Kalka-Shimla 2008","cat":"State"},{"q":"In which year was \"Sacred Ensembles of Hoysalas\" inscribed as a UNESCO World Heritage Site?","options":["2002","2023","2025","1987"],"correct":1,"explain":"Sacred Ensembles of Hoysalas (Karnataka) — Belur-Halebid-Somanathapura","cat":"Year"},{"q":"In which year was \"Elephanta Caves\" inscribed as a UNESCO World Heritage Site?","options":["2002","1987","2003","2025"],"correct":1,"explain":"Elephanta Caves (Maharashtra) — Trimurti of Shiva","cat":"Year"},{"q":"\"Great Living Chola Temples\" is located in which state/UT?","options":["Uttar Pradesh","Delhi","Tamil Nadu","Madhya Pradesh"],"correct":2,"explain":"Inscribed 1987 — Brihadisvara, Gangaikonda, Airavatesvara","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Portuguese Manueline architecture\"?","options":["Ramappa Temple","Churches and Convents of Goa","Sacred Ensembles of Hoysalas","Great Himalayan National Park"],"correct":1,"explain":"Churches and Convents of Goa — Goa, inscribed 1986","cat":"Identify"},{"q":"\"Khajuraho Group\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Madhya Pradesh, 1986 — 85 temples, erotic sculptures","cat":"Type"},{"q":"\"Mahabodhi Temple\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Bihar, 2002 — Buddha attained enlightenment","cat":"Type"},{"q":"\"Capitol Complex, Chandigarh\" is located in which state/UT?","options":["Maharashtra & TN","Assam","West Bengal","Chandigarh"],"correct":3,"explain":"Inscribed 2016 — Le Corbusier modernist architecture","cat":"State"},{"q":"Tentative list as of July 2026 has how many sites?","options":["62","65","69","72"],"correct":2,"explain":"69 Sites (49 Cultural, 17 Natural, 3 Mixed)","cat":"General"},{"q":"\"Keoladeo National Park\" is located in which state/UT?","options":["Rajasthan","Uttarakhand","Maharashtra","Bihar"],"correct":0,"explain":"Inscribed 1985 — Bharatpur bird paradise, Siberian crane","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Two-thirds of world's one-horn rhino\"?","options":["Taj Mahal","Capitol Complex, Chandigarh","Kaziranga National Park","Khajuraho Group"],"correct":2,"explain":"Kaziranga National Park — Assam, inscribed 1985","cat":"Identify"},{"q":"\"Western Ghats\" is located in which state/UT?","options":["Karnataka","7 States","Himachal Pradesh","WB / TN / HP"],"correct":1,"explain":"Inscribed 2012 — 39 components, older than Himalayas","cat":"State"},{"q":"\"Agra Fort\" is located in which state/UT?","options":["Uttarakhand","Uttar Pradesh","Tamil Nadu","Sikkim"],"correct":1,"explain":"Inscribed 1983 — Mughal red sandstone fort","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Darjeeling 1999, Nilgiri 2005, Kalka-Shimla 2008\"?","options":["Western Ghats","Qutub Minar Complex","Hill Forts of Rajasthan","Mountain Railways of India"],"correct":3,"explain":"Mountain Railways of India — WB / TN / HP, inscribed 1999","cat":"Identify"},{"q":"\"Churches and Convents of Goa\" is located in which state/UT?","options":["Delhi","Maharashtra","Sikkim","Goa"],"correct":3,"explain":"Inscribed 1986 — Portuguese Manueline architecture","cat":"State"},{"q":"Maratha Military Landscapes (2025) includes how many forts?","options":["6","8","12","15"],"correct":2,"explain":"12 forts in Maharashtra & Tamil Nadu","cat":"General"},{"q":"In which year was \"Ajanta Caves\" inscribed as a UNESCO World Heritage Site?","options":["1999","1987","1983","2014"],"correct":2,"explain":"Ajanta Caves (Maharashtra) — 30 Buddhist caves, mural paintings","cat":"Year"},{"q":"In which year was \"Capitol Complex, Chandigarh\" inscribed as a UNESCO World Heritage Site?","options":["2024","2014","2016","1988"],"correct":2,"explain":"Capitol Complex, Chandigarh (Chandigarh) — Le Corbusier modernist architecture","cat":"Year"},{"q":"\"Group of Monuments, Mahabalipuram\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Tamil Nadu, 1984 — Pallava shore temples","cat":"Type"},{"q":"In which year was \"Sundarbans National Park\" inscribed as a UNESCO World Heritage Site?","options":["2003","2026","2004","1987"],"correct":3,"explain":"Sundarbans National Park (West Bengal) — Largest mangrove, Royal Bengal Tiger","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"Queen's stepwell, Maru-Gurjara style\"?","options":["Sarnath - Ancient Buddhist Site","Moidams - Ahom Burial Mounds","Historic City of Ahmedabad","Rani-ki-Vav"],"correct":3,"explain":"Rani-ki-Vav — Gujarat, inscribed 2014","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Tagore's abode, University town\"?","options":["Santiniketan","Humayun's Tomb","Great Living Chola Temples","Champaner-Pavagadh Park"],"correct":0,"explain":"Santiniketan — West Bengal, inscribed 2023","cat":"Identify"},{"q":"In which year was \"Western Ghats\" inscribed as a UNESCO World Heritage Site?","options":["2023","2012","2024","2026"],"correct":1,"explain":"Western Ghats (7 States) — 39 components, older than Himalayas","cat":"Year"},{"q":"\"Rani-ki-Vav\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Gujarat, 2014 — Queen's stepwell, Maru-Gurjara style","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Brihadisvara, Gangaikonda, Airavatesvara\"?","options":["Victorian & Art Deco Mumbai","Fatehpur Sikri","Taj Mahal","Great Living Chola Temples"],"correct":3,"explain":"Great Living Chola Temples — Tamil Nadu, inscribed 1987","cat":"Identify"},{"q":"In which year was \"Khajuraho Group\" inscribed as a UNESCO World Heritage Site?","options":["2003","1984","1993","1986"],"correct":3,"explain":"Khajuraho Group (Madhya Pradesh) — 85 temples, erotic sculptures","cat":"Year"},{"q":"In which year was \"Qutub Minar Complex\" inscribed as a UNESCO World Heritage Site?","options":["1993","2003","2004","2012"],"correct":0,"explain":"Qutub Minar Complex (Delhi) — Tallest minaret 73m, Indo-Islamic","cat":"Year"},{"q":"Which site was inscribed as 45th site in July 2026 at Busan?","options":["Sarnath","Moidams","Maratha Forts","Santiniketan"],"correct":0,"explain":"Sarnath, UP – where Buddha gave first sermon","cat":"General"},{"q":"\"Chhatrapati Shivaji Terminus\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra, 2004 — Victorian Gothic, Mumbai","cat":"Type"},{"q":"In which year was \"Champaner-Pavagadh Park\" inscribed as a UNESCO World Heritage Site?","options":["1999","1988","2004","1987"],"correct":2,"explain":"Champaner-Pavagadh Park (Gujarat) — Hindu-Muslim architecture","cat":"Year"},{"q":"Which of these UNESCO sites is NOT located in Madhya Pradesh?","options":["Santiniketan","Buddhist Monuments at Sanchi","Rock Shelters of Bhimbetka","Ramappa Temple"],"correct":0,"explain":"Rock Shelters of Bhimbetka, Buddhist Monuments at Sanchi are in Madhya Pradesh.","cat":"State"},{"q":"\"Taj Mahal\" is located in which state/UT?","options":["Uttar Pradesh","Bihar","Sikkim","Telangana"],"correct":0,"explain":"Inscribed 1983 — White marble wonder, Shah Jahan","cat":"State"},{"q":"Historic City of Ahmedabad was inscribed in which year?","options":["2016","2017","2019","2018"],"correct":1,"explain":"2017 – First Heritage City of India","cat":"General"},{"q":"Which UNESCO site matches this clue: \"Tallest minaret 73m, Indo-Islamic\"?","options":["Nanda Devi & Valley of Flowers","Khajuraho Group","Qutub Minar Complex","Group of Monuments, Hampi"],"correct":2,"explain":"Qutub Minar Complex — Delhi, inscribed 1993","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Inspiration for Taj, Mughal Garden\"?","options":["Kaziranga National Park","Humayun's Tomb","Taj Mahal","Nanda Devi & Valley of Flowers"],"correct":1,"explain":"Humayun's Tomb — Delhi, inscribed 1993","cat":"Identify"},{"q":"In which year was \"Jantar Mantar, Jaipur\" inscribed as a UNESCO World Heritage Site?","options":["2010","2019","2016","2012"],"correct":0,"explain":"Jantar Mantar, Jaipur (Rajasthan) — World's largest stone sundial","cat":"Year"},{"q":"In which year was \"Hill Forts of Rajasthan\" inscribed as a UNESCO World Heritage Site?","options":["2025","2016","2013","2003"],"correct":2,"explain":"Hill Forts of Rajasthan (Rajasthan) — 6 forts: Chittorgarh, Kumbhalgarh etc","cat":"Year"},{"q":"\"Keoladeo National Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"Rajasthan, 1985 — Bharatpur bird paradise, Siberian crane","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Oval Maidan ensemble\"?","options":["Moidams - Ahom Burial Mounds","Mountain Railways of India","Buddhist Monuments at Sanchi","Victorian & Art Deco Mumbai"],"correct":3,"explain":"Victorian & Art Deco Mumbai — Maharashtra, inscribed 2018","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Bharatpur bird paradise, Siberian crane\"?","options":["Agra Fort","Keoladeo National Park","Victorian & Art Deco Mumbai","Chhatrapati Shivaji Terminus"],"correct":1,"explain":"Keoladeo National Park — Rajasthan, inscribed 1985","cat":"Identify"},{"q":"\"Historic City of Ahmedabad\" is located in which state/UT?","options":["Gujarat","Rajasthan","Sikkim","Assam"],"correct":0,"explain":"Inscribed 2017 — India's first World Heritage City","cat":"State"},{"q":"\"Ramappa Temple\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Telangana, 2021 — Kakatiya Rudreshwara, floating bricks","cat":"Type"},{"q":"\"Historic City of Ahmedabad\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Gujarat, 2017 — India's first World Heritage City","cat":"Type"},{"q":"\"Jaipur City\" is located in which state/UT?","options":["Sikkim","Maharashtra & TN","Rajasthan","Odisha"],"correct":2,"explain":"Inscribed 2019 — Pink City, second heritage city","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Oldest university, 5th century\"?","options":["Nalanda Mahavihara","Hill Forts of Rajasthan","Maratha Military Landscapes","Western Ghats"],"correct":0,"explain":"Nalanda Mahavihara — Bihar, inscribed 2016","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Kakatiya Rudreshwara, floating bricks\"?","options":["Ramappa Temple","Group of Monuments, Hampi","Jaipur City","Champaner-Pavagadh Park"],"correct":0,"explain":"Ramappa Temple — Telangana, inscribed 2021","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Vijayanagara Empire capital\"?","options":["Great Living Chola Temples","Hill Forts of Rajasthan","Nalanda Mahavihara","Group of Monuments, Hampi"],"correct":3,"explain":"Group of Monuments, Hampi — Karnataka, inscribed 1986","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"India's first World Heritage City\"?","options":["Historic City of Ahmedabad","Churches and Convents of Goa","Mountain Railways of India","Kaziranga National Park"],"correct":0,"explain":"Historic City of Ahmedabad — Gujarat, inscribed 2017","cat":"Identify"},{"q":"\"Churches and Convents of Goa\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Goa, 1986 — Portuguese Manueline architecture","cat":"Type"},{"q":"\"Ajanta Caves\" is located in which state/UT?","options":["Telangana","Madhya Pradesh","Himachal Pradesh","Maharashtra"],"correct":3,"explain":"Inscribed 1983 — 30 Buddhist caves, mural paintings","cat":"State"},{"q":"Which UNESCO site matches this clue: \"39 components, older than Himalayas\"?","options":["Western Ghats","Nalanda Mahavihara","Group of Monuments, Pattadakal","Elephanta Caves"],"correct":0,"explain":"Western Ghats — 7 States, inscribed 2012","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"6 forts: Chittorgarh, Kumbhalgarh etc\"?","options":["Champaner-Pavagadh Park","Great Himalayan National Park","Elephanta Caves","Hill Forts of Rajasthan"],"correct":3,"explain":"Hill Forts of Rajasthan — Rajasthan, inscribed 2013","cat":"Identify"},{"q":"In which year was \"Sarnath - Ancient Buddhist Site\" inscribed as a UNESCO World Heritage Site?","options":["2014","2019","2026","1983"],"correct":2,"explain":"Sarnath - Ancient Buddhist Site (Uttar Pradesh) — Buddha's first sermon, Dhamek Stupa, 48th session Busan","cat":"Year"},{"q":"In which year was \"Group of Monuments, Hampi\" inscribed as a UNESCO World Heritage Site?","options":["2019","1986","2002","2018"],"correct":1,"explain":"Group of Monuments, Hampi (Karnataka) — Vijayanagara Empire capital","cat":"Year"},{"q":"\"Hill Forts of Rajasthan\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Rajasthan, 2013 — 6 forts: Chittorgarh, Kumbhalgarh etc","cat":"Type"},{"q":"\"Maratha Military Landscapes\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra & TN, 2025 — 12 forts incl Raigad, Shivneri, Gingee","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"World's largest stone sundial\"?","options":["Humayun's Tomb","Buddhist Monuments at Sanchi","Group of Monuments, Mahabalipuram","Jantar Mantar, Jaipur"],"correct":3,"explain":"Jantar Mantar, Jaipur — Rajasthan, inscribed 2010","cat":"Identify"},{"q":"\"Elephanta Caves\" is located in which state/UT?","options":["Maharashtra","Bihar","Gujarat","Maharashtra & TN"],"correct":0,"explain":"Inscribed 1987 — Trimurti of Shiva","cat":"State"},{"q":"\"Santiniketan\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"West Bengal, 2023 — Tagore's abode, University town","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"34 caves Hindu-Buddhist-Jain, Kailasa Temple\"?","options":["Ellora Caves","Great Living Chola Temples","Qutub Minar Complex","Historic City of Ahmedabad"],"correct":0,"explain":"Ellora Caves — Maharashtra, inscribed 1983","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Mughal red sandstone fort\"?","options":["Kaziranga National Park","Churches and Convents of Goa","Agra Fort","Western Ghats"],"correct":2,"explain":"Agra Fort — Uttar Pradesh, inscribed 1983","cat":"Identify"},{"q":"\"Santiniketan\" is located in which state/UT?","options":["Goa","Himachal Pradesh","Tamil Nadu","West Bengal"],"correct":3,"explain":"Inscribed 2023 — Tagore's abode, University town","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Great Stupa, Ashoka\"?","options":["Hill Forts of Rajasthan","Buddhist Monuments at Sanchi","Kaziranga National Park","Chhatrapati Shivaji Terminus"],"correct":1,"explain":"Buddhist Monuments at Sanchi — Madhya Pradesh, inscribed 1989","cat":"Identify"},{"q":"Dholavira is famous for?","options":["Temple","Fort","Harappan water management","Cave"],"correct":2,"explain":"Harappan City with advanced water management, Gujarat 2021","cat":"General"},{"q":"Which UNESCO site matches this clue: \"30 Buddhist caves, mural paintings\"?","options":["Group of Monuments, Mahabalipuram","Ajanta Caves","Manas Wildlife Sanctuary","Jantar Mantar, Jaipur"],"correct":1,"explain":"Ajanta Caves — Maharashtra, inscribed 1983","cat":"Identify"},{"q":"\"Capitol Complex, Chandigarh\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Chandigarh, 2016 — Le Corbusier modernist architecture","cat":"Type"},{"q":"\"Fatehpur Sikri\" is located in which state/UT?","options":["Chandigarh","Uttar Pradesh","Karnataka","Goa"],"correct":1,"explain":"Inscribed 1986 — Akbar's capital, Buland Darwaza","cat":"State"},{"q":"\"Group of Monuments, Hampi\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Karnataka, 1986 — Vijayanagara Empire capital","cat":"Type"},{"q":"\"Rani-ki-Vav\" is located in which state/UT?","options":["Himachal Pradesh","Tamil Nadu","Assam","Gujarat"],"correct":3,"explain":"Inscribed 2014 — Queen's stepwell, Maru-Gurjara style","cat":"State"},{"q":"\"Kaziranga National Park\" is located in which state/UT?","options":["Gujarat","Maharashtra","Assam","Odisha"],"correct":2,"explain":"Inscribed 1985 — Two-thirds of world's one-horn rhino","cat":"State"},{"q":"\"Jantar Mantar, Jaipur\" is located in which state/UT?","options":["West Bengal","Gujarat","Rajasthan","Sikkim"],"correct":2,"explain":"Inscribed 2010 — World's largest stone sundial","cat":"State"},{"q":"In which year was \"Red Fort Complex\" inscribed as a UNESCO World Heritage Site?","options":["1988","1989","1983","2007"],"correct":3,"explain":"Red Fort Complex (Delhi) — Shah Jahan's palace fort","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"Chalukya Vesara style\"?","options":["Ramappa Temple","Group of Monuments, Pattadakal","Group of Monuments, Hampi","Khajuraho Group"],"correct":1,"explain":"Group of Monuments, Pattadakal — Karnataka, inscribed 1987","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Buddha attained enlightenment\"?","options":["Fatehpur Sikri","Keoladeo National Park","Ramappa Temple","Mahabodhi Temple"],"correct":3,"explain":"Mahabodhi Temple — Bihar, inscribed 2002","cat":"Identify"},{"q":"In which year was \"Khangchendzonga National Park\" inscribed as a UNESCO World Heritage Site?","options":["2026","2023","2016","2021"],"correct":2,"explain":"Khangchendzonga National Park (Sikkim) — India's only Mixed site, sacred mountain","cat":"Year"},{"q":"In which year was \"Agra Fort\" inscribed as a UNESCO World Heritage Site?","options":["1983","2010","2018","1984"],"correct":0,"explain":"Agra Fort (Uttar Pradesh) — Mughal red sandstone fort","cat":"Year"},{"q":"\"Sundarbans National Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"West Bengal, 1987 — Largest mangrove, Royal Bengal Tiger","cat":"Type"},{"q":"In which year was \"Fatehpur Sikri\" inscribed as a UNESCO World Heritage Site?","options":["2002","1986","1988","1984"],"correct":1,"explain":"Fatehpur Sikri (Uttar Pradesh) — Akbar's capital, Buland Darwaza","cat":"Year"},{"q":"In which year was \"Nanda Devi & Valley of Flowers\" inscribed as a UNESCO World Heritage Site?","options":["2004","1988","2003","2010"],"correct":1,"explain":"Nanda Devi & Valley of Flowers (Uttarakhand) — Extended 2005, Himalayan biodiversity","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"Pink City, second heritage city\"?","options":["Jaipur City","Sundarbans National Park","Elephanta Caves","Maratha Military Landscapes"],"correct":0,"explain":"Jaipur City — Rajasthan, inscribed 2019","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"White marble wonder, Shah Jahan\"?","options":["Taj Mahal","Rock Shelters of Bhimbetka","Khangchendzonga National Park","Group of Monuments, Hampi"],"correct":0,"explain":"Taj Mahal — Uttar Pradesh, inscribed 1983","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Pyramids of Assam, Charaideo\"?","options":["Moidams - Ahom Burial Mounds","Agra Fort","Manas Wildlife Sanctuary","Maratha Military Landscapes"],"correct":0,"explain":"Moidams - Ahom Burial Mounds — Assam, inscribed 2024","cat":"Identify"},{"q":"\"Rock Shelters of Bhimbetka\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Madhya Pradesh, 2003 — Mesolithic paintings, 30,000 yrs","cat":"Type"},{"q":"\"Ellora Caves\" is located in which state/UT?","options":["Bihar","Maharashtra","Chandigarh","Karnataka"],"correct":1,"explain":"Inscribed 1983 — 34 caves Hindu-Buddhist-Jain, Kailasa Temple","cat":"State"},{"q":"\"Nalanda Mahavihara\" is located in which state/UT?","options":["Gujarat","7 States","Chandigarh","Bihar"],"correct":3,"explain":"Inscribed 2016 — Oldest university, 5th century","cat":"State"},{"q":"In which year was \"Victorian & Art Deco Mumbai\" inscribed as a UNESCO World Heritage Site?","options":["2018","1988","1984","2023"],"correct":0,"explain":"Victorian & Art Deco Mumbai (Maharashtra) — Oval Maidan ensemble","cat":"Year"},{"q":"\"Sacred Ensembles of Hoysalas\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Karnataka, 2023 — Belur-Halebid-Somanathapura","cat":"Type"},{"q":"\"Sarnath - Ancient Buddhist Site\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Uttar Pradesh, 2026 — Buddha's first sermon, Dhamek Stupa, 48th session Busan","cat":"Type"},{"q":"In which year was \"Rock Shelters of Bhimbetka\" inscribed as a UNESCO World Heritage Site?","options":["1987","1984","1986","2003"],"correct":3,"explain":"Rock Shelters of Bhimbetka (Madhya Pradesh) — Mesolithic paintings, 30,000 yrs","cat":"Year"},{"q":"\"Champaner-Pavagadh Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Gujarat, 2004 — Hindu-Muslim architecture","cat":"Type"},{"q":"India's first 4 World Heritage Sites inscribed in 1983 were?","options":["Taj, Qutub, Red Fort, Hampi","Ajanta, Ellora, Agra Fort, Taj Mahal","Sanchi, Bhimbetka, Khajuraho, Konark","None"],"correct":1,"explain":"Ajanta, Ellora, Agra Fort, Taj Mahal","cat":"General"},{"q":"\"Victorian & Art Deco Mumbai\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra, 2018 — Oval Maidan ensemble","cat":"Type"},{"q":"\"Sun Temple, Konark\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Odisha, 1984 — Chariot of Sun God, Kalinga architecture","cat":"Type"},{"q":"In which year was \"Dholavira\" inscribed as a UNESCO World Heritage Site?","options":["2021","2018","1985","2004"],"correct":0,"explain":"Dholavira (Gujarat) — Harappan city, water management","cat":"Year"},{"q":"\"Moidams - Ahom Burial Mounds\" is located in which state/UT?","options":["Himachal Pradesh","Assam","Maharashtra","Karnataka"],"correct":1,"explain":"Inscribed 2024 — Pyramids of Assam, Charaideo","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Western Himalayan biodiversity\"?","options":["Great Himalayan National Park","Qutub Minar Complex","Elephanta Caves","Jantar Mantar, Jaipur"],"correct":0,"explain":"Great Himalayan National Park — Himachal Pradesh, inscribed 2014","cat":"Identify"},{"q":"\"Jaipur City\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Rajasthan, 2019 — Pink City, second heritage city","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Extended 2005, Himalayan biodiversity\"?","options":["Manas Wildlife Sanctuary","Taj Mahal","Champaner-Pavagadh Park","Nanda Devi & Valley of Flowers"],"correct":3,"explain":"Nanda Devi & Valley of Flowers — Uttarakhand, inscribed 1988","cat":"Identify"},{"q":"In which year was \"Humayun's Tomb\" inscribed as a UNESCO World Heritage Site?","options":["2019","1999","1993","1986"],"correct":2,"explain":"Humayun's Tomb (Delhi) — Inspiration for Taj, Mughal Garden","cat":"Year"},{"q":"Sarnath's Dhamek Stupa is related to?","options":["Birth","Enlightenment","First Sermon","Nirvana"],"correct":2,"explain":"Buddha's first sermon – Dhammachakkappavattana","cat":"General"},{"q":"Which UNESCO site matches this clue: \"Akbar's capital, Buland Darwaza\"?","options":["Humayun's Tomb","Fatehpur Sikri","Group of Monuments, Hampi","Kaziranga National Park"],"correct":1,"explain":"Fatehpur Sikri — Uttar Pradesh, inscribed 1986","cat":"Identify"},{"q":"In which year was \"Great Himalayan National Park\" inscribed as a UNESCO World Heritage Site?","options":["1987","2014","2007","1984"],"correct":1,"explain":"Great Himalayan National Park (Himachal Pradesh) — Western Himalayan biodiversity","cat":"Year"},{"q":"\"Manas Wildlife Sanctuary\" is located in which state/UT?","options":["Sikkim","Goa","Maharashtra & TN","Assam"],"correct":3,"explain":"Inscribed 1985 — Bengal tiger, in danger list 1992-2011","cat":"State"},{"q":"Which of these UNESCO sites is NOT located in Uttar Pradesh?","options":["Taj Mahal","Moidams - Ahom Burial Mounds","Sacred Ensembles of Hoysalas","Sarnath - Ancient Buddhist Site"],"correct":1,"explain":"Taj Mahal, Sarnath - Ancient Buddhist Site are in Uttar Pradesh.","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Harappan city, water management\"?","options":["Mahabodhi Temple","Manas Wildlife Sanctuary","Dholavira","Nalanda Mahavihara"],"correct":2,"explain":"Dholavira — Gujarat, inscribed 2021","cat":"Identify"},{"q":"\"Dholavira\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Gujarat, 2021 — Harappan city, water management","cat":"Type"},{"q":"In which year was \"Ellora Caves\" inscribed as a UNESCO World Heritage Site?","options":["2023","1983","2026","2013"],"correct":1,"explain":"Ellora Caves (Maharashtra) — 34 caves Hindu-Buddhist-Jain, Kailasa Temple","cat":"Year"},{"q":"\"Mahabodhi Temple\" is located in which state/UT?","options":["Gujarat","Rajasthan","Goa","Bihar"],"correct":3,"explain":"Inscribed 2002 — Buddha attained enlightenment","cat":"State"},{"q":"\"Great Himalayan National Park\" is located in which state/UT?","options":["Telangana","Madhya Pradesh","Sikkim","Himachal Pradesh"],"correct":3,"explain":"Inscribed 2014 — Western Himalayan biodiversity","cat":"State"},{"q":"In which year was \"Taj Mahal\" inscribed as a UNESCO World Heritage Site?","options":["2013","2026","1993","1983"],"correct":3,"explain":"Taj Mahal (Uttar Pradesh) — White marble wonder, Shah Jahan","cat":"Year"},{"q":"In which year was \"Jaipur City\" inscribed as a UNESCO World Heritage Site?","options":["2003","2002","2019","2013"],"correct":2,"explain":"Jaipur City (Rajasthan) — Pink City, second heritage city","cat":"Year"},{"q":"\"Manas Wildlife Sanctuary\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"Assam, 1985 — Bengal tiger, in danger list 1992-2011","cat":"Type"},{"q":"Which site is known as 'Pyramids of Assam'?","options":["Manas","Kaziranga","Moidams","Dholavira"],"correct":2,"explain":"Moidams – Ahom burial system, 2024","cat":"General"},{"q":"India ratified UNESCO Convention on?","options":["1972","1975","1977","1983"],"correct":2,"explain":"14 November 1977","cat":"General"},{"q":"\"Agra Fort\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Uttar Pradesh, 1983 — Mughal red sandstone fort","cat":"Type"},{"q":"\"Western Ghats\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"7 States, 2012 — 39 components, older than Himalayas","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Largest mangrove, Royal Bengal Tiger\"?","options":["Mahabodhi Temple","Sundarbans National Park","Rock Shelters of Bhimbetka","Hill Forts of Rajasthan"],"correct":1,"explain":"Sundarbans National Park — West Bengal, inscribed 1987","cat":"Identify"},{"q":"\"Dholavira\" is located in which state/UT?","options":["WB / TN / HP","Uttar Pradesh","Gujarat","Rajasthan"],"correct":2,"explain":"Inscribed 2021 — Harappan city, water management","cat":"State"},{"q":"In which year was \"Sun Temple, Konark\" inscribed as a UNESCO World Heritage Site?","options":["2021","1986","1984","1985"],"correct":2,"explain":"Sun Temple, Konark (Odisha) — Chariot of Sun God, Kalinga architecture","cat":"Year"},{"q":"In which year was \"Mountain Railways of India\" inscribed as a UNESCO World Heritage Site?","options":["1993","1999","2019","2023"],"correct":1,"explain":"Mountain Railways of India (WB / TN / HP) — Darjeeling 1999, Nilgiri 2005, Kalka-Shimla 2008","cat":"Year"},{"q":"\"Khangchendzonga National Park\" is located in which state/UT?","options":["7 States","Karnataka","Maharashtra & TN","Sikkim"],"correct":3,"explain":"Inscribed 2016 — India's only Mixed site, sacred mountain","cat":"State"},{"q":"\"Ajanta Caves\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra, 1983 — 30 Buddhist caves, mural paintings","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Shah Jahan's palace fort\"?","options":["Mahabodhi Temple","Humayun's Tomb","Ajanta Caves","Red Fort Complex"],"correct":3,"explain":"Red Fort Complex — Delhi, inscribed 2007","cat":"Identify"},{"q":"\"Taj Mahal\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Uttar Pradesh, 1983 — White marble wonder, Shah Jahan","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"Mesolithic paintings, 30,000 yrs\"?","options":["Elephanta Caves","Ajanta Caves","Keoladeo National Park","Rock Shelters of Bhimbetka"],"correct":3,"explain":"Rock Shelters of Bhimbetka — Madhya Pradesh, inscribed 2003","cat":"Identify"},{"q":"In which year was \"Manas Wildlife Sanctuary\" inscribed as a UNESCO World Heritage Site?","options":["2004","2017","1989","1985"],"correct":3,"explain":"Manas Wildlife Sanctuary (Assam) — Bengal tiger, in danger list 1992-2011","cat":"Year"},{"q":"\"Chhatrapati Shivaji Terminus\" is located in which state/UT?","options":["Assam","Maharashtra","Uttar Pradesh","Delhi"],"correct":1,"explain":"Inscribed 2004 — Victorian Gothic, Mumbai","cat":"State"},{"q":"\"Sacred Ensembles of Hoysalas\" is located in which state/UT?","options":["Uttarakhand","Karnataka","7 States","West Bengal"],"correct":1,"explain":"Inscribed 2023 — Belur-Halebid-Somanathapura","cat":"State"},{"q":"\"Khangchendzonga National Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":2,"explain":"Sikkim, 2016 — India's only Mixed site, sacred mountain","cat":"Type"},{"q":"\"Group of Monuments, Hampi\" is located in which state/UT?","options":["Rajasthan","Sikkim","Maharashtra","Karnataka"],"correct":3,"explain":"Inscribed 1986 — Vijayanagara Empire capital","cat":"State"},{"q":"\"Qutub Minar Complex\" is located in which state/UT?","options":["Delhi","Tamil Nadu","Gujarat","Himachal Pradesh"],"correct":0,"explain":"Inscribed 1993 — Tallest minaret 73m, Indo-Islamic","cat":"State"},{"q":"\"Group of Monuments, Pattadakal\" is located in which state/UT?","options":["Assam","7 States","Telangana","Karnataka"],"correct":3,"explain":"Inscribed 1987 — Chalukya Vesara style","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Bengal tiger, in danger list 1992-2011\"?","options":["Khajuraho Group","Manas Wildlife Sanctuary","Ramappa Temple","Nanda Devi & Valley of Flowers"],"correct":1,"explain":"Manas Wildlife Sanctuary — Assam, inscribed 1985","cat":"Identify"},{"q":"In which year was \"Chhatrapati Shivaji Terminus\" inscribed as a UNESCO World Heritage Site?","options":["2019","2026","1984","2004"],"correct":3,"explain":"Chhatrapati Shivaji Terminus (Maharashtra) — Victorian Gothic, Mumbai","cat":"Year"},{"q":"Western Ghats is older than Himalayas and spans how many states?","options":["3 States","5 States","7 States","9 States"],"correct":2,"explain":"7 States, 39 components, inscribed 2012","cat":"General"},{"q":"Which of these UNESCO sites is NOT located in Karnataka?","options":["Victorian & Art Deco Mumbai","Sacred Ensembles of Hoysalas","Sun Temple, Konark","Group of Monuments, Pattadakal"],"correct":0,"explain":"Sacred Ensembles of Hoysalas, Group of Monuments, Pattadakal are in Karnataka.","cat":"State"},{"q":"In which year was \"Historic City of Ahmedabad\" inscribed as a UNESCO World Heritage Site?","options":["2007","2012","2017","2025"],"correct":2,"explain":"Historic City of Ahmedabad (Gujarat) — India's first World Heritage City","cat":"Year"},{"q":"Which is India's only Mixed World Heritage Site?","options":["Western Ghats","Sundarbans","Khangchendzonga","Nanda Devi"],"correct":2,"explain":"Khangchendzonga National Park, Sikkim (2016)","cat":"General"},{"q":"\"Great Himalayan National Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"Himachal Pradesh, 2014 — Western Himalayan biodiversity","cat":"Type"},{"q":"\"Ellora Caves\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra, 1983 — 34 caves Hindu-Buddhist-Jain, Kailasa Temple","cat":"Type"},{"q":"In which year was \"Santiniketan\" inscribed as a UNESCO World Heritage Site?","options":["2013","2023","2025","1985"],"correct":1,"explain":"Santiniketan (West Bengal) — Tagore's abode, University town","cat":"Year"},{"q":"In which year was \"Mahabodhi Temple\" inscribed as a UNESCO World Heritage Site?","options":["2018","2002","2024","1993"],"correct":1,"explain":"Mahabodhi Temple (Bihar) — Buddha attained enlightenment","cat":"Year"},{"q":"\"Nanda Devi & Valley of Flowers\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"Uttarakhand, 1988 — Extended 2005, Himalayan biodiversity","cat":"Type"},{"q":"\"Buddhist Monuments at Sanchi\" is located in which state/UT?","options":["Madhya Pradesh","Karnataka","Uttarakhand","WB / TN / HP"],"correct":0,"explain":"Inscribed 1989 — Great Stupa, Ashoka","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Chariot of Sun God, Kalinga architecture\"?","options":["Buddhist Monuments at Sanchi","Sun Temple, Konark","Santiniketan","Sarnath - Ancient Buddhist Site"],"correct":1,"explain":"Sun Temple, Konark — Odisha, inscribed 1984","cat":"Identify"},{"q":"\"Red Fort Complex\" is located in which state/UT?","options":["WB / TN / HP","Assam","Himachal Pradesh","Delhi"],"correct":3,"explain":"Inscribed 2007 — Shah Jahan's palace fort","cat":"State"},{"q":"\"Champaner-Pavagadh Park\" is located in which state/UT?","options":["Maharashtra & TN","Assam","7 States","Gujarat"],"correct":3,"explain":"Inscribed 2004 — Hindu-Muslim architecture","cat":"State"},{"q":"\"Victorian & Art Deco Mumbai\" is located in which state/UT?","options":["Karnataka","Telangana","Maharashtra","WB / TN / HP"],"correct":2,"explain":"Inscribed 2018 — Oval Maidan ensemble","cat":"State"},{"q":"Which of these UNESCO sites is NOT located in Delhi?","options":["Ellora Caves","Khajuraho Group","Red Fort Complex","Humayun's Tomb"],"correct":0,"explain":"Red Fort Complex, Humayun's Tomb are in Delhi.","cat":"State"},{"q":"\"Fatehpur Sikri\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Uttar Pradesh, 1986 — Akbar's capital, Buland Darwaza","cat":"Type"},{"q":"Which of these UNESCO sites is NOT located in Rajasthan?","options":["Hill Forts of Rajasthan","Keoladeo National Park","Group of Monuments, Mahabalipuram","Great Himalayan National Park"],"correct":2,"explain":"Hill Forts of Rajasthan, Keoladeo National Park are in Rajasthan.","cat":"State"},{"q":"\"Group of Monuments, Mahabalipuram\" is located in which state/UT?","options":["WB / TN / HP","Tamil Nadu","Odisha","Uttarakhand"],"correct":1,"explain":"Inscribed 1984 — Pallava shore temples","cat":"State"},{"q":"In which year was \"Moidams - Ahom Burial Mounds\" inscribed as a UNESCO World Heritage Site?","options":["2024","2013","1988","2021"],"correct":0,"explain":"Moidams - Ahom Burial Mounds (Assam) — Pyramids of Assam, Charaideo","cat":"Year"},{"q":"\"Ramappa Temple\" is located in which state/UT?","options":["Bihar","Goa","Telangana","Gujarat"],"correct":2,"explain":"Inscribed 2021 — Kakatiya Rudreshwara, floating bricks","cat":"State"},{"q":"Nalanda Mahavihara is located in which state and year?","options":["Bihar 2016","UP 2016","Bihar 2014","Odisha 2016"],"correct":0,"explain":"Bihar, 2016 – Ancient University","cat":"General"},{"q":"Which UNESCO site matches this clue: \"Hindu-Muslim architecture\"?","options":["Manas Wildlife Sanctuary","Sarnath - Ancient Buddhist Site","Champaner-Pavagadh Park","Sacred Ensembles of Hoysalas"],"correct":2,"explain":"Champaner-Pavagadh Park — Gujarat, inscribed 2004","cat":"Identify"},{"q":"In which year was \"Ramappa Temple\" inscribed as a UNESCO World Heritage Site?","options":["2021","2012","2013","1986"],"correct":0,"explain":"Ramappa Temple (Telangana) — Kakatiya Rudreshwara, floating bricks","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"Trimurti of Shiva\"?","options":["Elephanta Caves","Qutub Minar Complex","Humayun's Tomb","Hill Forts of Rajasthan"],"correct":0,"explain":"Elephanta Caves — Maharashtra, inscribed 1987","cat":"Identify"},{"q":"In which year was \"Group of Monuments, Pattadakal\" inscribed as a UNESCO World Heritage Site?","options":["2021","2017","1987","1999"],"correct":2,"explain":"Group of Monuments, Pattadakal (Karnataka) — Chalukya Vesara style","cat":"Year"},{"q":"In which year was \"Group of Monuments, Mahabalipuram\" inscribed as a UNESCO World Heritage Site?","options":["1984","2012","1988","2017"],"correct":0,"explain":"Group of Monuments, Mahabalipuram (Tamil Nadu) — Pallava shore temples","cat":"Year"},{"q":"\"Nalanda Mahavihara\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Bihar, 2016 — Oldest university, 5th century","cat":"Type"},{"q":"In which year was \"Keoladeo National Park\" inscribed as a UNESCO World Heritage Site?","options":["2013","1985","1989","1999"],"correct":1,"explain":"Keoladeo National Park (Rajasthan) — Bharatpur bird paradise, Siberian crane","cat":"Year"},{"q":"\"Mountain Railways of India\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"WB / TN / HP, 1999 — Darjeeling 1999, Nilgiri 2005, Kalka-Shimla 2008","cat":"Type"},{"q":"\"Humayun's Tomb\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Delhi, 1993 — Inspiration for Taj, Mughal Garden","cat":"Type"},{"q":"\"Sarnath - Ancient Buddhist Site\" is located in which state/UT?","options":["Maharashtra & TN","7 States","Uttar Pradesh","Tamil Nadu"],"correct":2,"explain":"Inscribed 2026 — Buddha's first sermon, Dhamek Stupa, 48th session Busan","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Pallava shore temples\"?","options":["Red Fort Complex","Group of Monuments, Mahabalipuram","Ramappa Temple","Churches and Convents of Goa"],"correct":1,"explain":"Group of Monuments, Mahabalipuram — Tamil Nadu, inscribed 1984","cat":"Identify"},{"q":"In which year was \"Maratha Military Landscapes\" inscribed as a UNESCO World Heritage Site?","options":["2016","2017","2019","2025"],"correct":3,"explain":"Maratha Military Landscapes (Maharashtra & TN) — 12 forts incl Raigad, Shivneri, Gingee","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"Le Corbusier modernist architecture\"?","options":["Victorian & Art Deco Mumbai","Mountain Railways of India","Rock Shelters of Bhimbetka","Capitol Complex, Chandigarh"],"correct":3,"explain":"Capitol Complex, Chandigarh — Chandigarh, inscribed 2016","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Victorian Gothic, Mumbai\"?","options":["Mountain Railways of India","Humayun's Tomb","Chhatrapati Shivaji Terminus","Dholavira"],"correct":2,"explain":"Chhatrapati Shivaji Terminus — Maharashtra, inscribed 2004","cat":"Identify"},{"q":"\"Rock Shelters of Bhimbetka\" is located in which state/UT?","options":["Madhya Pradesh","Sikkim","Maharashtra & TN","Uttar Pradesh"],"correct":0,"explain":"Inscribed 2003 — Mesolithic paintings, 30,000 yrs","cat":"State"},{"q":"\"Hill Forts of Rajasthan\" is located in which state/UT?","options":["Bihar","Delhi","Uttar Pradesh","Rajasthan"],"correct":3,"explain":"Inscribed 2013 — 6 forts: Chittorgarh, Kumbhalgarh etc","cat":"State"},{"q":"\"Qutub Minar Complex\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Delhi, 1993 — Tallest minaret 73m, Indo-Islamic","cat":"Type"},{"q":"In which year was \"Nalanda Mahavihara\" inscribed as a UNESCO World Heritage Site?","options":["1983","2016","1986","2003"],"correct":1,"explain":"Nalanda Mahavihara (Bihar) — Oldest university, 5th century","cat":"Year"},{"q":"Which state has maximum World Heritage Sites in India?","options":["UP","Maharashtra","Karnataka","Rajasthan"],"correct":1,"explain":"Maharashtra – 6 Sites","cat":"General"},{"q":"\"Kaziranga National Park\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":1,"explain":"Assam, 1985 — Two-thirds of world's one-horn rhino","cat":"Type"},{"q":"In which year was \"Great Living Chola Temples\" inscribed as a UNESCO World Heritage Site?","options":["1988","1987","1984","1999"],"correct":1,"explain":"Great Living Chola Temples (Tamil Nadu) — Brihadisvara, Gangaikonda, Airavatesvara","cat":"Year"},{"q":"\"Great Living Chola Temples\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Tamil Nadu, 1987 — Brihadisvara, Gangaikonda, Airavatesvara","cat":"Type"},{"q":"\"Maratha Military Landscapes\" is located in which state/UT?","options":["Maharashtra & TN","Karnataka","Telangana","Uttar Pradesh"],"correct":0,"explain":"Inscribed 2025 — 12 forts incl Raigad, Shivneri, Gingee","cat":"State"},{"q":"As of July 2026, how many UNESCO World Heritage Sites does India have?","options":["42","43","44","45"],"correct":3,"explain":"45 Sites (37 Cultural, 7 Natural, 1 Mixed)","cat":"General"},{"q":"In which year was \"Rani-ki-Vav\" inscribed as a UNESCO World Heritage Site?","options":["1986","2013","2023","2014"],"correct":3,"explain":"Rani-ki-Vav (Gujarat) — Queen's stepwell, Maru-Gurjara style","cat":"Year"},{"q":"Which UNESCO site matches this clue: \"India's only Mixed site, sacred mountain\"?","options":["Ramappa Temple","Santiniketan","Chhatrapati Shivaji Terminus","Khangchendzonga National Park"],"correct":3,"explain":"Khangchendzonga National Park — Sikkim, inscribed 2016","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"Belur-Halebid-Somanathapura\"?","options":["Khangchendzonga National Park","Chhatrapati Shivaji Terminus","Fatehpur Sikri","Sacred Ensembles of Hoysalas"],"correct":3,"explain":"Sacred Ensembles of Hoysalas — Karnataka, inscribed 2023","cat":"Identify"},{"q":"In which year was \"Buddhist Monuments at Sanchi\" inscribed as a UNESCO World Heritage Site?","options":["1985","1989","2021","2004"],"correct":1,"explain":"Buddhist Monuments at Sanchi (Madhya Pradesh) — Great Stupa, Ashoka","cat":"Year"},{"q":"\"Khajuraho Group\" is located in which state/UT?","options":["Maharashtra & TN","Sikkim","Karnataka","Madhya Pradesh"],"correct":3,"explain":"Inscribed 1986 — 85 temples, erotic sculptures","cat":"State"},{"q":"\"Elephanta Caves\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Maharashtra, 1987 — Trimurti of Shiva","cat":"Type"},{"q":"\"Jantar Mantar, Jaipur\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Rajasthan, 2010 — World's largest stone sundial","cat":"Type"},{"q":"\"Humayun's Tomb\" is located in which state/UT?","options":["Delhi","Maharashtra & TN","Uttarakhand","Maharashtra"],"correct":0,"explain":"Inscribed 1993 — Inspiration for Taj, Mughal Garden","cat":"State"},{"q":"\"Group of Monuments, Pattadakal\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Karnataka, 1987 — Chalukya Vesara style","cat":"Type"},{"q":"Which natural site is famous for one-horned rhinoceros?","options":["Manas","Kaziranga","Keoladeo","Sundarbans"],"correct":1,"explain":"Kaziranga National Park, Assam (1985)","cat":"General"},{"q":"\"Moidams - Ahom Burial Mounds\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Assam, 2024 — Pyramids of Assam, Charaideo","cat":"Type"},{"q":"In which year was \"Kaziranga National Park\" inscribed as a UNESCO World Heritage Site?","options":["2018","2024","1999","1985"],"correct":3,"explain":"Kaziranga National Park (Assam) — Two-thirds of world's one-horn rhino","cat":"Year"},{"q":"\"Nanda Devi & Valley of Flowers\" is located in which state/UT?","options":["Uttarakhand","Maharashtra","Rajasthan","Delhi"],"correct":0,"explain":"Inscribed 1988 — Extended 2005, Himalayan biodiversity","cat":"State"},{"q":"\"Sun Temple, Konark\" is located in which state/UT?","options":["Gujarat","Chandigarh","Odisha","Maharashtra & TN"],"correct":2,"explain":"Inscribed 1984 — Chariot of Sun God, Kalinga architecture","cat":"State"},{"q":"Which UNESCO site matches this clue: \"Buddha's first sermon, Dhamek Stupa, 48th session Busan\"?","options":["Red Fort Complex","Jaipur City","Nalanda Mahavihara","Sarnath - Ancient Buddhist Site"],"correct":3,"explain":"Sarnath - Ancient Buddhist Site — Uttar Pradesh, inscribed 2026","cat":"Identify"},{"q":"Which UNESCO site matches this clue: \"85 temples, erotic sculptures\"?","options":["Hill Forts of Rajasthan","Khajuraho Group","Churches and Convents of Goa","Kaziranga National Park"],"correct":1,"explain":"Khajuraho Group — Madhya Pradesh, inscribed 1986","cat":"Identify"},{"q":"\"Buddhist Monuments at Sanchi\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Madhya Pradesh, 1989 — Great Stupa, Ashoka","cat":"Type"},{"q":"Which UNESCO site matches this clue: \"12 forts incl Raigad, Shivneri, Gingee\"?","options":["Group of Monuments, Hampi","Fatehpur Sikri","Maratha Military Landscapes","Santiniketan"],"correct":2,"explain":"Maratha Military Landscapes — Maharashtra & TN, inscribed 2025","cat":"Identify"},{"q":"In which year was \"Churches and Convents of Goa\" inscribed as a UNESCO World Heritage Site?","options":["2024","2012","1986","1983"],"correct":2,"explain":"Churches and Convents of Goa (Goa) — Portuguese Manueline architecture","cat":"Year"},{"q":"\"Red Fort Complex\" is classified under which category?","options":["Cultural","Natural","Mixed"],"correct":0,"explain":"Delhi, 2007 — Shah Jahan's palace fort","cat":"Type"}];
+const SET_SIZE = 200;
+let questions = [];
+let idx = 0;
+let score = 0;
+let answered = false;
+let wrongLog = [];
+let catStats = {};
+
+function shuffle(a){
+  const arr = [...a];
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function rollNumber(){
+  const n = Math.floor(1000 + Math.random()*9000);
+  return 'HRT-' + n + '-' + new Date().getFullYear();
+}
+
+function startQuiz(){
+  questions = shuffle(BANK).slice(0, SET_SIZE);
+  idx = 0; score = 0; answered = false; wrongLog = [];
+  catStats = {};
+  document.getElementById('rollNo').textContent = 'ROLL ' + rollNumber();
+  document.getElementById('resultArea').innerHTML = '';
+  document.getElementById('sealNum').textContent = SET_SIZE;
+  renderQuestion();
+}
+
+function updateProgress(){
+  const pct = (idx / questions.length) * 100;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progLabel').textContent = idx + ' / ' + questions.length;
+}
+
+function renderQuestion(){
+  answered = false;
+  updateProgress();
+  const q = questions[idx];
+  const area = document.getElementById('quizArea');
+  area.innerHTML = `
+    <div class="qcard" id="qcard">
+      <div class="qmeta">Question ${idx+1} of ${questions.length} &nbsp;·&nbsp; ${q.cat}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="options" id="optsWrap">
+        ${q.options.map((o,i)=>`
+          <button class="opt" data-i="${i}">
+            <span class="bubble">
+              <svg viewBox="0 0 30 30"><path d="M6 15 Q 15 26, 24 6"/></svg>
+              <span>${String.fromCharCode(65+i)}</span>
+            </span>
+            <span>${o}</span>
+          </button>`).join('')}
+      </div>
+    </div>
+  `;
+  document.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', () => selectOption(btn, q));
+  });
+}
+
+function selectOption(btn, q){
+  if(answered) return;
+  answered = true;
+  const chosen = parseInt(btn.dataset.i, 10);
+  const isCorrect = chosen === q.correct;
+  catStats[q.cat] = catStats[q.cat] || {correct:0,total:0};
+  catStats[q.cat].total++;
+  if(isCorrect){ score++; catStats[q.cat].correct++; }
+  else { wrongLog.push({q:q.q, chosen:q.options[chosen], correct:q.options[q.correct]}); }
+
+  document.querySelectorAll('.opt').forEach((b)=>{
+    const i = parseInt(b.dataset.i,10);
+    b.disabled = true;
+    if(i === q.correct) b.classList.add('correct');
+    if(i === chosen){
+      b.classList.add('selected');
+      if(!isCorrect) b.classList.add('incorrect');
+    }
+  });
+
+  const qcard = document.getElementById('qcard');
+  const stamp = document.createElement('div');
+  stamp.className = 'stamp ' + (isCorrect ? 'pass':'fail');
+  stamp.textContent = isCorrect ? '✓ CORRECT' : '✕ INCORRECT';
+  qcard.appendChild(stamp);
+
+  const explain = document.createElement('div');
+  explain.className = 'explain';
+  explain.innerHTML = `<b>Note:</b> ${q.explain}`;
+  qcard.appendChild(explain);
+
+  const nextbar = document.createElement('div');
+  nextbar.className = 'nextbar';
+  const btnNext = document.createElement('button');
+  btnNext.className = 'btn';
+  btnNext.textContent = (idx === questions.length-1) ? 'See Result' : 'Next Question';
+  btnNext.addEventListener('click', () => {
+    idx++;
+    if(idx >= questions.length){ showResult(); }
+    else { renderQuestion(); }
+  });
+  nextbar.appendChild(btnNext);
+  qcard.appendChild(nextbar);
+}
+
+function gradeFor(pct){
+  if(pct >= 90) return {label:'Outstanding', cls:'pass'};
+  if(pct >= 70) return {label:'Very Good', cls:'pass'};
+  if(pct >= 50) return {label:'Fair — Revise Key Facts', cls:'fail'};
+  return {label:'Needs Revision', cls:'fail'};
+}
+
+function showResult(){
+  updateProgress();
+  document.getElementById('quizArea').innerHTML = '';
+  const pct = Math.round((score/questions.length)*100);
+  const grade = gradeFor(pct);
+  const catHtml = Object.entries(catStats).map(([cat,s])=>`
+    <div class="catbox">
+      <div class="n">${cat}</div>
+      <div class="v">${s.correct}/${s.total}</div>
+    </div>`).join('');
+  const reviewHtml = wrongLog.length ? `
+    <div class="review">
+      <h3>Review — ${wrongLog.length} to revisit</h3>
+      ${wrongLog.map(w=>`
+        <div class="review-item">
+          <div class="rq">${w.q}</div>
+          <div class="ra">Your answer: <span class="wrong">${w.chosen}</span> &nbsp;·&nbsp; Correct: <b>${w.correct}</b></div>
+        </div>`).join('')}
+    </div>` : `<div class="review"><h3>Perfect score — no corrections needed.</h3></div>`;
+
+  document.getElementById('resultArea').innerHTML = `
+    <div class="marksheet">
+      <div class="ms-head">
+        <div class="ms-eyebrow">Result · Marksheet</div>
+        <div class="ms-title">Test Complete</div>
+      </div>
+      <div class="score-ring-row">
+        <div class="score-big">${score}<span>/${questions.length}</span></div>
+      </div>
+      <div class="grade-wrap">
+        <span class="grade" style="color:var(--${grade.cls==='pass'?'pass-green':'pen-red'}); border:1.5px solid var(--${grade.cls==='pass'?'pass-green':'pen-red'});">
+          ${grade.label} · ${pct}%
+        </span>
+      </div>
+      <div class="catgrid">${catHtml}</div>
+      ${reviewHtml}
+      <div class="actions">
+        <button class="btn" id="retakeBtn">Retake Test (${BANK.length} Qs, reshuffled)</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('retakeBtn').addEventListener('click', startQuiz);
+}
+
+startQuiz();
+</script>
+</body>
+</html>

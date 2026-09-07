@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rigvedic & Later Vedic + Vedic Literature - Vipulendra Tripathi Sir</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+.playfair{font-family:'Playfair Display',serif}
+.watermark-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.05;overflow:hidden}
+.watermark-text{position:absolute;font-size:40px;font-weight:900;color:#000;transform:rotate(-30deg);white-space:nowrap}
+.lang-en .hi,.lang-hi .en{display:none}
+.lang-both .en,.lang-both .hi{display:block}
+.en{color:#1a237e}
+.hi{color:#4a148c}
+</style>
+</head>
+<body class="bg-[#FFFBEB] lang-both">
+<div class="watermark-container" id="wm"></div>
+<script>
+const wm=document.getElementById('wm');
+for(let i=-3;i<25;i++){for(let j=-2;j<12;j++){let d=document.createElement('div');d.className='watermark-text';d.style.top=(i*170)+'px';d.style.left=(j*400-150)+'px';d.innerText='Vipulendra Tripathi Sir';wm.appendChild(d);}}
+function setLang(l){document.body.className=document.body.className.replace(/lang-\w+/,'')+' lang-'+l;document.querySelectorAll('.lang-btn').forEach(b=>b.className='lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200');document.getElementById('btn-'+l).className='lang-btn px-4 py-1.5 rounded-full text-sm bg-[#7C2D12] text-white font-bold';}
+</script>
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b-4 border-[#B45309] shadow-lg">
+ <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+  <div class="flex items-center gap-3">
+   <div class="w-12 h-12 bg-gradient-to-br from-[#7C2D12] to-[#D97706] rounded-xl flex items-center justify-center text-white font-bold text-xl">वेद</div>
+   <div><h1 class="font-bold text-[#7C2D12] leading-tight">Rigvedic & Vedic Literature</h1><p class="text-[11px] text-[#B45309] font-bold">ऋग्वैदिक काल एवं वैदिक साहित्य | UPSC/SSC/PSC</p></div>
+  </div>
+  <div class="flex gap-2">
+   <button id="btn-en" onclick="setLang('en')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200">EN</button>
+   <button id="btn-hi" onclick="setLang('hi')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200">हिंदी</button>
+   <button id="btn-both" onclick="setLang('both')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-[#7C2D12] text-white font-bold">Both</button>
+  </div>
+ </div>
+</header>
+
+<section class="relative min-h-[80vh] flex items-center overflow-hidden">
+ <img src="container:///mnt/data/resource/image_1.webp" class="absolute inset-0 w-full h-full object-cover">
+ <div class="absolute inset-0 bg-gradient-to-r from-[#7C2D12]/95 via-[#7C2D12]/85 to-[#B45309]/70"></div>
+ <div class="relative max-w-7xl mx-auto px-6 py-14 text-white w-full">
+  <div class="inline-block bg-[#FBBF24] text-[#7C2D12] px-5 py-1.5 rounded-full text-sm font-extrabold mb-4">UPDATED JULY 2026 | UPSC PRELIMS + MAINS + SSC</div>
+  <h1 class="playfair text-4xl md:text-5xl font-bold leading-tight">ऋग्वैदिक एवं उत्तर वैदिक काल<br><span class="text-[#FBBF24]">+ सम्पूर्ण वैदिक साहित्य</span></h1>
+  <h2 class="text-lg md:text-xl mt-3 font-light">Rigvedic & Later Vedic Period + Vedas, Upavedas, Vedangas, Brahmanas, Aranyakas, Upanishads</h2>
+  <div class="mt-6 grid md:grid-cols-4 gap-3 max-w-5xl text-sm">
+   <div class="bg-white/10 backdrop-blur p-3 rounded-xl border border-white/20"><b>1500-600 BCE</b><br>Early 1500-1000, Later 1000-600 BCE</div>
+   <div class="bg-[#FBBF24] text-[#7C2D12] p-3 rounded-xl font-bold"><b>4 Vedas + 4 Upavedas + 6 Vedangas</b><br>Complete Literature</div>
+   <div class="bg-white/10 backdrop-blur p-3 rounded-xl border border-white/20"><b>Sapta Sindhu</b><br>7 Rivers - Core Region</div>
+   <div class="bg-[#B45309] p-3 rounded-xl"><b>By Vipulendra Tripathi Sir</b><br>UPSC/SSC Special</div>
+  </div>
+ </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 py-8 grid lg:grid-cols-4 gap-6">
+<nav class="lg:col-span-1">
+<div class="sticky top-24 bg-white rounded-2xl shadow-xl p-5 border-t-4 border-[#7C2D12]">
+<h3 class="font-bold text-[#7C2D12] mb-4">📑 Index</h3>
+<ul class="space-y-2 text-[12.5px]">
+<li>1. <a href="#intro" class="font-bold text-[#7C2D12]">Introduction / परिचय</a></li>
+<li>2. <a href="#map">Sapta Sindhu Map / मानचित्र</a></li>
+<li>3. <a href="#compare">Rigvedic vs Later Vedic / तुलना</a></li>
+<li>4. <a href="#vedas">4 Vedas / चार वेद</a></li>
+<li>5. <a href="#upveda">Upavedas / उपवेद</a></li>
+<li>6. <a href="#vedang">6 Vedangas / वेदांग</a></li>
+<li>7. <a href="#brahman">Brahmana Aranyaka Upanishad</a></li>
+<li>8. <a href="#society">Society Polity Economy / समाज</a></li>
+<li>9. <a href="#facts">40 Key Facts</a></li>
+<li>10. <a href="#pyq">45 PYQs</a></li>
+</ul>
+</div>
+</nav>
+
+<main class="lg:col-span-3 space-y-8">
+
+<section id="intro" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border-l-8 border-[#7C2D12]">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">1. परिचय / Introduction to Vedic Period</h2>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="bg-[#FEF3C7] p-5 rounded-xl"><h4 class="font-bold">ENGLISH</h4><p class="text-[13px] mt-2"><b>Vedic Period 1500-600 BCE</b> - Named after Vedas (source of knowledge). After decline of Indus Valley ~1900 BCE, Indo-Aryans migrated from Central Asia (Steppe) - but now Rakhigarhi DNA 2019 shows continuity, debate ongoing. Max Muller said Aryans came 1500 BCE, but new ASI findings push to 2000 BCE.<br><br><b>Early Vedic / Rigvedic: 1500-1000 BCE</b> - Sapta Sindhu region (7 rivers), Pastoral economy, tribe called Jana, chief Rajan.<br><b>Later Vedic: 1000-600 BCE</b> - Shift to Gangetic plain (Kurukshetra, Videha), agriculture dominant, Janapadas formed, caste rigid.</p></div>
+<div class="bg-[#F3E8FF] p-5 rounded-xl"><h4 class="font-bold">हिंदी</h4><p class="text-[13px] mt-2"><b>वैदिक काल 1500-600 ईसा पूर्व</b> - वेदों के नाम पर। सिंधु सभ्यता के पतन के बाद आर्यों का आगमन। मैक्स मूलर ने 1500 ईसा पूर्व कहा, पर नए शोध 2000 ईसा पूर्व बताते हैं। राखीगढ़ी DNA 2019 में निरंतरता मिली।<br><br><b>ऋग्वैदिक: 1500-1000</b> - सप्त सिंधु क्षेत्र, पशुपालन प्रधान, जनजाति - जन, मुखिया - राजन।<br><b>उत्तर वैदिक: 1000-600</b> - गंगा-यमुना दोआब में विस्तार, कृषि प्रधान, जनपद बने, वर्ण कठोर।</p></div>
+</div>
+<div class="mt-4 p-4 bg-[#7C2D12] text-white rounded-xl text-[13px]"><b>Latest Debate July 2026:</b> <span class="en">UPSC now asks Vedic period as 1500-600 BCE but also mentions indigenous origin theory due to Sinauli chariot 2000 BCE, Rakhigarhi DNA, Bhirrana 7500 BCE continuity - question framed as 'Aryan migration vs continuity'.</span><br><span class="hi">UPSC अब वैदिक काल को 1500-600 मानता है पर साथ ही सिनौली रथ 2000 ईसा पूर्व, राखीगढ़ी DNA से स्वदेशी निरंतरता सिद्धांत भी पूछता है।</span></div>
+</section>
+
+<section id="map" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">2. सप्त सिंधु क्षेत्र मानचित्र / Sapta Sindhu Map</h2>
+<img src="container:///mnt/data/resource/map_of_vedic_period_india.webp" class="w-full rounded-2xl shadow-xl border-4 border-[#FEF3C7]">
+<div class="mt-4 grid md:grid-cols-3 gap-3 text-[12px]">
+<div class="bg-[#FEF3C7] p-3 rounded-xl"><b>7 Rivers / सप्त सिंधु:</b><br>1. Sindhu (Indus) - सिंधु<br>2. Vitasta (Jhelum) - वितस्ता<br>3. Asikni (Chenab) - अस्किनी<br>4. Parushni (Ravi) - परुष्णी<br>5. Vipasa (Beas) - विपासा<br>6. Shutudri (Sutlej) - शुतुद्री<br>7. Saraswati (Ghaggar-Hakra) - सरस्वती (most sacred, Naditama)</div>
+<div class="bg-[#F3E8FF] p-3 rounded-xl"><b>Key Terms:</b><br><b>Bharata Tribe:</b> King Sudas, won Battle of Ten Kings (Dasarajna Yudha) on Parushni Ravi<br><b>Tritsu vs Bharata</b> etc.<br><b>Brahmavarta:</b> Between Saraswati & Drishadvati<br><b>Aryavarta:</b> Between Himalaya & Vindhya, East to West sea</div>
+<div class="bg-[#E0F2F1] p-3 rounded-xl"><b>Battle of Ten Kings / दशराज्ञ युद्ध:</b><br>Rigveda Book 7, Sudas (Bharata) vs 10 tribes coalition (5 Aryans + 5 non-Aryans) - Purus, Yadus, Turvasas, Anus, Druhyus + Alinas, Pakthas, Bhalanas, Sivas, Vishanins. Won by Bharata - Bharat name from this.</div>
+</div>
+</section>
+
+<section id="compare" class="bg-white rounded-2xl shadow-xl p-6 overflow-x-auto">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">3. ऋग्वैदिक vs उत्तर वैदिक / Rigvedic vs Later Vedic - UPSC Most Imp Comparison</h2>
+<table class="w-full text-[12.5px] border-collapse">
+<thead class="bg-[#7C2D12] text-white"><tr><th class="p-2 text-left">Aspect / पहलू</th><th class="p-2">Rigvedic 1500-1000 BCE</th><th class="p-2">Later Vedic 1000-600 BCE</th></tr></thead>
+<tbody>
+<tr class="bg-[#FFFBEB]"><td class="p-2 font-bold">Geography / भूगोल</td><td class="p-2"><div class="en">Sapta Sindhu (Punjab, Haryana)</div><div class="hi">सप्त सिंधु (पंजाब, हरियाणा)</div></td><td class="p-2"><div class="en">Ganga-Yamuna doab, Kurukshetra, Videha, Magadha</div><div class="hi">गंगा-यमुना दोआब, कुरुक्षेत्र, विदेह, मगध</div></td></tr>
+<tr><td class="p-2 font-bold">Economy / अर्थव्यवस्था</td><td class="p-2"><div class="en">Pastoral, cattle main wealth (Gavishthi, Gomat), barley (Yava)</div><div class="hi">पशुपालन, गाय मुख्य धन, जौ</div></td><td class="p-2"><div class="en">Agriculture dominant, wheat, rice (Vrihi), iron plough (Krishna-ayas)</div><div class="hi">कृषि प्रधान, गेहूं, चावल, लोहे का हल</div></td></tr>
+<tr class="bg-[#FFFBEB]"><td class="p-2 font-bold">Polity / राजनीति</td><td class="p-2">Tribal, Jana, Rajan, Sabha Samiti Vidatha, no Janapada</td><td class="p-2">Janapada, King more powerful, Sabha Samiti decline, Vidatha disappeared, Mahajanapadas seed</td></tr>
+<tr><td class="p-2 font-bold">Society / समाज</td><td class="p-2"><div class="en">Flexible Varna based on work, no child marriage, Sati no, women like Lopamudra, Ghosha, Apala, Vishwavara rishikas, monogamy mostly</div><div class="hi">लचीला वर्ण कर्म आधारित, बाल विवाह नहीं, सती नहीं, विदुषी महिलाएं</div></td><td class="p-2"><div class="en">Varna rigid birth based, 4 ashramas, Gotra system, child marriage started, women status declined, Sati traces</div><div class="hi">वर्ण जन्म आधारित कठोर, 4 आश्रम, गोत्र प्रणाली, बाल विवाह शुरू, स्त्री स्थिति गिरी</div></td></tr>
+<tr class="bg-[#FFFBEB]"><td class="p-2 font-bold">Pottery / मृदभांड</td><td class="p-2">Ochre Coloured Pottery OCP</td><td class="p-2">Painted Grey Ware PGW + Black & Red ware - associated with iron</td></tr>
+<tr><td class="p-2 font-bold">Metal / धातु</td><td class="p-2">Ayas = Copper/Bronze (Shyama-ayas?)</td><td class="p-2">Krishna-ayas = Iron, first use 1000 BCE at Atranjikhera UP</td></tr>
+<tr class="bg-[#FFFBEB]"><td class="p-2 font-bold">Religion / धर्म</td><td class="p-2">Nature worship, Indra 250 hymns main god, Agni 200, Varuna, Soma - Yajna simple</td><td class="p-2">Prajapati supreme, Vishnu Rudra important, yajna complex, 16 priests, dominance of Brahmanas</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="vedas" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">4. चार वेद / Four Vedas - Detail (UPSC Heart)</h2>
+<img src="container:///mnt/data/resource/image_1.webp" class="w-full rounded-xl shadow mb-6">
+<div class="grid md:grid-cols-2 gap-4">
+<div class="bg-gradient-to-br from-[#FEF3C7] to-white p-5 rounded-xl border-l-4 border-[#D97706]">
+<h3 class="font-bold text-[#7C2D12]">1. Rigveda / ऋग्वेद - Oldest</h3>
+<div class="en text-[12.5px] mt-2"><b>Oldest Veda, 1500-1000 BCE. 1028 hymns (Suktas) + 11 Valakhilya = 1028-1042, 10 Mandalas, 10,552 mantras. Mandala 2-7 oldest (family mandalas), Mandala 1 & 10 newest. Mandala 3 has Gayatri Mantra (by Vishwamitra), Mandala 10 has Purusha Sukta (4 Varnas), Nasadiya Sukta (creation). Rishikas: Lopamudra, Ghosha, Apala, Vishwavara. Upaveda: Ayurveda. Brahmanas: Aitareya & Kaushitaki. Recited by Hotri priest.</b><br><b>PYQ:</b> How many mandalas? 10 - SSC 2023</div>
+<div class="hi text-[12.5px] mt-2"><b>सबसे प्राचीन वेद, 1028 सूक्त + 11 वालखिल्य, 10 मंडल, 10,552 मंत्र। मंडल 2-7 प्राचीन (परिवार मंडल), 1 व 10 नवीन। मंडल 3 में गायत्री मंत्र (विश्वामित्र), मंडल 10 में पुरुष सूक्त (4 वर्ण), नासदीय सूक्त। उपवेद आयुर्वेद। ब्राह्मण ऐतरेय, कौषीतकी। होता द्वारा पाठ।</b></div>
+</div>
+<div class="bg-gradient-to-br from-[#E0F2F1] to-white p-5 rounded-xl border-l-4 border-green-600">
+<h3 class="font-bold text-green-800">2. Samaveda / सामवेद - Music</h3>
+<div class="en text-[12.5px] mt-2"><b>Book of Melodies. 1549 mantras (except 75 rest from Rigveda 8th & 9th mandala). Called 'Book of Chants'. Origin of Indian Music. 2 parts: Purvarchika & Uttararchika. Upaveda: Gandharvaveda (music). Priest: Udgatri. Samaveda has 7 swaras - origin of Sargam Sa Re Ga Ma.</b><br><b>PYQ:</b> Which Veda is source of music? Samaveda - SSC 2022</div>
+<div class="hi text-[12.5px] mt-2"><b>गान का वेद। 1549 मंत्र (75 को छोड़कर सभी ऋग्वेद से)। भारतीय संगीत का जनक। 7 स्वर - सा रे गा मा की उत्पत्ति। उपवेद गंधर्ववेद। उद्गाता द्वारा गायन।</b></div>
+</div>
+<div class="bg-gradient-to-br from-[#FCE4EC] to-white p-5 rounded-xl border-l-4 border-[#B45309]">
+<h3 class="font-bold text-[#7C2D12]">3. Yajurveda / यजुर्वेद - Rituals</h3>
+<div class="en text-[12.5px] mt-2"><b>Book of Sacrificial Formulas. Prose + Verse. 2 types: Shukla (White) Yajurveda - Vajasaneyi Samhita by Yajnavalkya (40 chapters, includes Isha Upanishad) & Krishna (Black) Yajurveda - mixed prose verse - Taittiriya, Maitrayani, Kathaka, Kapishthala Samhitas. Upaveda: Dhanurveda (archery). Priest: Adhvaryu. Describes Yajnas.</b></div>
+<div class="hi text-[12.5px] mt-2"><b>यज्ञ सूत्रों का वेद। गद्य + पद्य। 2 प्रकार: शुक्ल यजुर्वेद - वाजसनेयी संहिता (याज्ञवल्क्य, 40 अध्याय, ईशोपनिषद शामिल) और कृष्ण यजुर्वेद - तैत्तिरीय, मैत्रायणी आदि। उपवेद धनुर्वेद। अध्वर्यु द्वारा प्रयोग।</b></div>
+</div>
+<div class="bg-gradient-to-br from-[#E8EAF6] to-white p-5 rounded-xl border-l-4 border-[#1A237E]">
+<h3 class="font-bold text-[#1A237E]">4. Atharvaveda / अथर्ववेद - Magic & Daily Life</h3>
+<div class="en text-[12.5px] mt-2"><b>Book of Magic & Spells. 20 Kandas, 731 Suktas, 5987 Mantras. Composed by Atharva & Angiras rishis. Deals with daily life, diseases, cure, black magic, white magic, Ayurveda origin. Not included in Trayi (Rig Sama Yajur). Upaveda: Shilpaveda/Sthapatyaveda (architecture). Considered Vratya Veda. Latest Veda.</b><br><b>PYQ:</b> Which Veda deals with magic? Atharvaveda - SSC CGL 2021</div>
+<div class="hi text-[12.5px] mt-2"><b>जादू-टोना व दैनिक जीवन का वेद। 20 कांड, 731 सूक्त, 5987 मंत्र। अथर्वा व अंगिरस ऋषि। आयुर्वेद, औषधि, तंत्र-मंत्र। त्रयी में नहीं गिना जाता। सबसे नवीन वेद। उपवेद शिल्पवेद।</b></div>
+</div>
+</div>
+</section>
+
+<section id="upveda" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">5. उपवेद / Upavedas - 4 Auxiliary Vedas</h2>
+<div class="grid md:grid-cols-4 gap-4 text-[12px]">
+<div class="bg-[#FEF3C7] p-4 rounded-xl text-center"><b>Ayurveda</b><br><span class="text-[11px]">Upaveda of Rigveda</span><br>Medicine / आयुर्वेद - Charaka Sushruta<br>चिकित्सा</div>
+<div class="bg-[#E0F2F1] p-4 rounded-xl text-center"><b>Gandharvaveda</b><br><span class="text-[11px]">Upaveda of Samaveda</span><br>Music & Dance / संगीत<br>भरत मुनि नाट्यशास्त्र</div>
+<div class="bg-[#FCE4EC] p-4 rounded-xl text-center"><b>Dhanurveda</b><br><span class="text-[11px]">Upaveda of Yajurveda</span><br>Archery & Warfare / धनुर्वेद<br>युद्ध कला</div>
+<div class="bg-[#E8EAF6] p-4 rounded-xl text-center"><b>Shilpaveda / Sthapatyaveda</b><br><span class="text-[11px]">Upaveda of Atharvaveda</span><br>Architecture / शिल्पवेद<br>वास्तुकला</div>
+</div>
+</section>
+
+<section id="vedang" class="bg-gradient-to-br from-[#7C2D12] to-[#B45309] text-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold mb-4">6. वेदांग / 6 Vedangas - Limbs of Vedas (To understand Vedas)</h2>
+<p class="text-sm mb-4 text-[#FBBF24]">वेदों को समझने के लिए 6 अंग - सूत्र शैली में</p>
+<div class="grid md:grid-cols-3 gap-4 text-[12.5px]">
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>1. Shiksha / शिक्षा</b> - Phonetics - उच्चारण - Panini - Ear of Vedas / वेदों के नाक</div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>2. Kalpa / कल्प</b> - Rituals - कर्मकांड - Sutras: Shrauta, Grihya, Dharma, Shulba - Hand of Vedas / हाथ</div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>3. Vyakarana / व्याकरण</b> - Grammar - Panini Ashtadhyayi - Mouth of Vedas / मुख</div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>4. Nirukta / निरुक्त</b> - Etymology - Yaska - Nighantu - Tongue / जीभ - शब्दों की व्युत्पत्ति</div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>5. Chhanda / छंद</b> - Metrics - Pingala - Feet / पैर - Gayatri 24, Anushtubh 32, Trishtubh 44</div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl"><b>6. Jyotisha / ज्योतिष</b> - Astronomy - Lagadha - Eye / आँख - वेदांग ज्योतिष</div>
+</div>
+<div class="mt-4 bg-[#FBBF24] text-[#7C2D12] p-3 rounded-xl text-[12px] font-bold">Trick: S K V N C J = Siksha Kalpa Vyakaran Nirukta Chhanda Jyotisha - UPSC PYQ 2020 asked number of Vedangas = 6</div>
+</section>
+
+<section id="brahman" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">7. ब्राह्मण, आरण्यक, उपनिषद / Brahmanas, Aranyakas, Upanishads</h2>
+<div class="grid md:grid-cols-3 gap-5">
+
+<div class="bg-[#FFFBEB] p-5 rounded-xl border-t-4 border-[#D97706]">
+<h3 class="font-bold text-[#7C2D12]">📖 Brahmanas / ब्राह्मण ग्रंथ</h3>
+<p class="text-[12px] mt-2 en">Prose explanation of Vedas, rituals, yajnas. Each Veda has Brahmanas:<br><b>Rigveda:</b> Aitareya (8 Panchikas, 40 Adhyayas - first mention of kingship origin), Kaushitaki<br><b>Samaveda:</b> Panchavimsha (Tandya), Shadvimsha, Jaiminiya<br><b>Yajurveda:</b> Shatapatha (Most important - 100 chapters, longest - describes 32 types of Shulba, origin of Kurus, story of Manu flood, Gandhara to Videha migration)<br><b>Atharvaveda:</b> Gopatha</p>
+<p class="text-[12px] mt-2 hi">वेदों की गद्य व्याख्या, यज्ञ कर्मकांड।<br><b>शतपथ ब्राह्मण सबसे महत्वपूर्ण - 100 अध्याय, सबसे बड़ा - मनु की बाढ़ कथा, कुरु वंश उत्पत्ति, गांधार से विदेह प्रवास।</b></p>
+</div>
+
+<div class="bg-[#F3E8FF] p-5 rounded-xl border-t-4 border-[#7C2D12]">
+<h3 class="font-bold text-[#7C2D12]">🌲 Aranyakas / आरण्यक</h3>
+<p class="text-[12px] mt-2 en">Forest texts - transition between Brahmana (ritual) & Upanishad (philosophy). For Vanaprastha (forest dwellers). Deal with mystic meaning of rituals, not Karma but Jnana. 7 Aranyakas: Aitareya, Kaushitaki, Taittiriya, Katha, Brihadaranyaka etc. Called 'Philosophy of Sacrifice'.</p>
+<p class="text-[12px] mt-2 hi">वन में पढ़े जाने वाले ग्रंथ - ब्राह्मण (कर्मकांड) और उपनिषद (ज्ञान) के बीच का सेतु। वानप्रस्थियों के लिए। यज्ञों का रहस्यमय अर्थ। 'यज्ञों का दर्शन'।</p>
+</div>
+
+<div class="bg-[#E0F2F1] p-5 rounded-xl border-t-4 border-green-700">
+<h3 class="font-bold text-green-800">💡 Upanishads / उपनिषद - Vedanta</h3>
+<p class="text-[12px] mt-2 en"><b>108 Upanishads but 13 Principal (Mukhya). End of Vedas - Vedanta.</b> Philosophy of Atman (soul), Brahman (ultimate reality), Moksha, Karma, Maya. Guru-Shishya dialogue.<br><b>Important:</b> Brihadaranyaka (largest, Yajnavalkya-Maitreyi dialogue), Chandogya (Tat Tvam Asi - That Thou Art), Kena, Katha (Nachiketa-Yama), Isha (in Shukla Yajurveda), Mundaka (Satyameva Jayate), Mandukya (Om), Shvetashvatara, Taittiriya etc.<br><b>Motto:</b> Satyameva Jayate from Mundaka Upanishad.<br><b>Schopenhauer:</b> Upanishads solace of my life.</p>
+<p class="text-[12px] mt-2 hi"><b>108 उपनिषद, 13 मुख्य। वेदांत - वेदों का अंत। आत्मा, ब्रह्म, मोक्ष, कर्म का दर्शन। बृहदारण्यक सबसे बड़ा, छांदोग्य में तत् त्वम् असि, मुंडक में सत्यमेव जयते।</b></p>
+</div>
+
+</div>
+</section>
+
+<section id="society" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">8. समाज, राजनीति, अर्थ, धर्म / Society, Polity, Economy, Religion</h2>
+<div class="grid md:grid-cols-2 gap-5 text-[12.5px]">
+<div class="bg-[#FFFBEB] p-4 rounded-xl"><h4 class="font-bold">Society / समाज</h4><p class="en mt-2">Rigvedic: Patriarchal, joint family, no child marriage, Swayamvara, women rishikas Lopamudra Ghosha Apala, no Sati Purdah. Later: Gotra exogamy, 4 ashramas (Brahmacharya Grihastha Vanaprastha Sanyasa), Varna rigid birth based, child marriage started, women status declined but still Gargi Maitreyi in Upanishads.</p></div>
+<div class="bg-[#E8F5E9] p-4 rounded-xl"><h4 class="font-bold">Polity / राजनीति</h4><p class="en mt-2">Rigvedic: Tribe Jana, chief Rajan, Sabha Samiti Vidatha, Gana, no standing army, Bali voluntary tax, no land ownership, battle for cattle (Gavishthi). Later: Janapada, king Samrat, Sabha Samiti still, king's power ↑, 12 Ratnins, bureaucracy, land ownership private, taxation Bhaga 1/6.</p></div>
+<div class="bg-[#E3F2FD] p-4 rounded-xl"><h4 class="font-bold">Economy / अर्थव्यवस्था</h4><p class="en mt-2">Rigvedic: Pastoral, cattle Gomat wealth, Yava barley, no coins barter (Nishka). Later: Agriculture wheat rice barley, iron plough at Atranjikhera 1000 BCE, 24 oxen plough (24 oxen team in Shatapatha), crafts, Nishka Shatamana coins, sea trade? Mention of Samudra.</p></div>
+<div class="bg-[#FCE4EC] p-4 rounded-xl"><h4 class="font-bold">Religion / धर्म + Gods</h4><p class="en mt-2">Rigvedic: 33 gods (Traya Trayastrimsha), Nature worship, Indra 250 hymns rain war god (Purandara), Agni 200 mediator, Varuna moral, Soma plant god, Gayatri to Savitri. Later: Prajapati supreme, Vishnu Rudra Shiv important, 16 priests, complex yajnas - Rajasuya (royal consecration), Ashvamedha (horse sacrifice for empire), Vajapeya (chariot race).</p></div>
+</div>
+</section>
+
+<section id="facts" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#7C2D12] mb-4">⭐ 40 Key Facts - UPSC/SSC/PSC Rattafication</h2>
+<div class="grid md:grid-cols-2 gap-2.5 text-[11.5px]">
+<div class="p-2.5 bg-[#FEF3C7] rounded-xl"><b>1.</b> Rigveda oldest, 10 Mandalas, 1028 Suktas, 10,552 Mantras</div>
+<div class="p-2.5 bg-[#E0F2F1] rounded-xl"><b>2.</b> Mandala 2-7 family mandalas oldest, 1 & 10 newest</div>
+<div class="p-2.5 bg-[#FCE4EC] rounded-xl"><b>3.</b> Gayatri Mantra in Mandala 3 by Vishwamitra to Savitri</div>
+<div class="p-2.5 bg-[#E8EAF6] rounded-xl"><b>4.</b> Purusha Sukta in Mandala 10 - 4 Varnas mention - UPSC asked</div>
+<div class="p-2.5 bg-[#FFFBEB] rounded-xl"><b>5.</b> Samaveda = Music - 1549 mantras, Udgatri priest</div>
+<div class="p-2.5 bg-[#E8F5E9] rounded-xl"><b>6.</b> Yajurveda = Rituals - Shukla White Vajasaneyi 40 chap, Krishna Black Taittiriya - Adhvaryu</div>
+<div class="p-2.5 bg-[#E3F2FD] rounded-xl"><b>7.</b> Atharvaveda = Magic daily life - 20 Kandas 731 Suktas - latest</div>
+<div class="p-2.5 bg-[#F3E8FF] rounded-xl"><b>8.</b> Upavedas: Ayurveda Rig, Gandharvaveda Sama, Dhanurveda Yajur, Shilpaveda Atharva</div>
+<div class="p-2.5 bg-[#FEF3C7] rounded-xl"><b>9.</b> 6 Vedangas: Shiksha Kalpa Vyakaran Nirukta Chhanda Jyotisha - 6 limbs</div>
+<div class="p-2.5 bg-[#E0F2F1] rounded-xl"><b>10.</b> Brahmanas prose ritual - Shatapatha largest 100 chapters - describes Gandhara to Videha migration</div>
+<div class="p-2.5 bg-[#FCE4EC] rounded-xl"><b>11.</b> Aranyakas = Forest texts, bridge between Brahmana & Upanishad</div>
+<div class="p-2.5 bg-[#E8EAF6] rounded-xl"><b>12.</b> 108 Upanishads, 13 Mukhya, Vedanta, Satyameva Jayate from Mundaka</div>
+<div class="p-2.5 bg-[#FFFBEB] rounded-xl"><b>13.</b> Tat Tvam Asi from Chandogya Upanishad - That Thou Art</div>
+<div class="p-2.5 bg-[#E8F5E9] rounded-xl"><b>14.</b> Battle of Ten Kings Dasarajna on Parushni Ravi - Sudas Bharata won - Bharat name</div>
+<div class="p-2.5 bg-[#E3F2FD] rounded-xl"><b>15.</b> Sapta Sindhu: Sindhu Vitasta Asikni Parushni Vipasa Shutudri Saraswati</div>
+<div class="p-2.5 bg-[#F3E8FF] rounded-xl"><b>16.</b> Early Vedic OCP, Later Vedic PGW + iron at Atranjikhera 1000 BCE</div>
+<div class="p-2.5 bg-[#FEF3C7] rounded-xl"><b>17.</b> Sabha Samiti Vidatha - Vidatha oldest, disappeared in Later Vedic</div>
+<div class="p-2.5 bg-[#E0F2F1] rounded-xl"><b>18.</b> Bali voluntary tax Rigvedic, Bhaga 1/6 Later Vedic</div>
+<div class="p-2.5 bg-[#FCE4EC] rounded-xl"><b>19.</b> 4 Ashramas system in Later Vedic - Brahmacharya Grihastha Vanaprastha Sanyasa</div>
+<div class="p-2.5 bg-[#E8EAF6] rounded-xl"><b>20.</b> Gotra system started Later Vedic - exogamy</div>
+<div class="p-2.5 bg-[#FFFBEB] rounded-xl"><b>21.</b> Women rishikas Lopamudra Ghosha Apala Vishwavara - Rigvedic, Gargi Maitreyi - Later</div>
+<div class="p-2.5 bg-[#E8F5E9] rounded-xl"><b>22.</b> Iron called Krishna-ayas, Copper Shyama-ayas</div>
+<div class="p-2.5 bg-[#E3F2FD] rounded-xl"><b>23.</b> Indra 250 hymns most, Agni 200 second</div>
+<div class="p-2.5 bg-[#F3E8FF] rounded-xl"><b>24.</b> Rajasuya Ashvamedha Vajapeya yajnas in Later Vedic - 16 priests</div>
+<div class="p-2.5 bg-[#FEF3C7] rounded-xl"><b>25.</b> Nishka gold ornament + coin Rigvedic, Shatamana Later</div>
+</div>
+</section>
+
+<section id="pyq" class="bg-[#7C2D12] text-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#FBBF24] mb-5">📝 45 PYQs - SSC/UPSC/PSC</h2>
+<div class="grid md:grid-cols-2 gap-3 text-[11.5px]">
+<div class="bg-white/10 p-3 rounded-xl"><b>Q1. Oldest Veda?</b> (SSC CGL 2022, UPSC) → <b class="text-[#FBBF24]">Rigveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q2. How many Mandalas in Rigveda?</b> (SSC CHSL 2023) → <b class="text-[#FBBF24]">10</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q3. Gayatri Mantra in which Mandala?</b> (UPSC 2019, SSC) → <b class="text-[#FBBF24]">3rd by Vishwamitra</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q4. Purusha Sukta Varna mention in?</b> (UPSC 2020) → <b class="text-[#FBBF24]">10th Mandala Rigveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q5. Music origin Veda?</b> (SSC 2022) → <b class="text-[#FBBF24]">Samaveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q6. Magic & daily life Veda?</b> (SSC CGL 2021) → <b class="text-[#FBBF24]">Atharvaveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q7. Upaveda of Rigveda?</b> (SSC) → <b class="text-[#FBBF24]">Ayurveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q8. Upaveda of Samaveda?</b> → <b class="text-[#FBBF24]">Gandharvaveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q9. Dhanurveda upaveda of?</b> → <b class="text-[#FBBF24]">Yajurveda</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q10. How many Vedangas?</b> (UPSC 2020) → <b class="text-[#FBBF24]">6</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q11. Vedangas are?</b> → <b class="text-[#FBBF24]">Shiksha Kalpa Vyakaran Nirukta Chhanda Jyotisha</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q12. Largest Brahmana?</b> (UPSC) → <b class="text-[#FBBF24]">Shatapatha 100 chapters</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q13. Vedanta called?</b> → <b class="text-[#FBBF24]">Upanishads</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q14. Satyameva Jayate from?</b> (SSC CGL 2020) → <b class="text-[#FBBF24]">Mundaka Upanishad</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q15. Tat Tvam Asi from?</b> (UPSC) → <b class="text-[#FBBF24]">Chandogya Upanishad</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q16. Battle of Ten Kings river?</b> → <b class="text-[#FBBF24]">Parushni (Ravi)</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q17. Early Vedic pottery?</b> → <b class="text-[#FBBF24]">OCP Ochre Coloured</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q18. Later Vedic pottery?</b> → <b class="text-[#FBBF24]">PGW Painted Grey Ware</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q19. Iron first at?</b> (SSC) → <b class="text-[#FBBF24]">Atranjikhera UP 1000 BCE</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q20. Most imp god Rigvedic?</b> → <b class="text-[#FBBF24]">Indra 250 hymns</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q21. Rishikas in Rigveda?</b> → <b class="text-[#FBBF24]">Lopamudra Ghosha Apala</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q22. Sabha Samiti Vidatha oldest?</b> → <b class="text-[#FBBF24]">Vidatha</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q23. 4 Ashramas in?</b> → <b class="text-[#FBBF24]">Later Vedic</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q24. Gotra system started?</b> → <b class="text-[#FBBF24]">Later Vedic</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q25. Gayatri is metre of how many letters?</b> → <b class="text-[#FBBF24]">24 letters</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q26. Upanishads number?</b> → <b class="text-[#FBBF24]">108, 13 Mukhya</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q27. Isha Upanishad part of?</b> → <b class="text-[#FBBF24]">Shukla Yajurveda 40th chapter</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q28. Largest Upanishad?</b> → <b class="text-[#FBBF24]">Brihadaranyaka</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q29. Samaveda priest?</b> → <b class="text-[#FBBF24]">Udgatri</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q30. Rigveda priest?</b> → <b class="text-[#FBBF24]">Hotri</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q31. Yajurveda priest?</b> → <b class="text-[#FBBF24]">Adhvaryu</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q32. Atharvaveda priest?</b> → <b class="text-[#FBBF24]">Brahma</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q33. Bali tax?</b> → <b class="text-[#FBBF24]">Voluntary Rigvedic</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q34. Bhaga tax?</b> → <b class="text-[#FBBF24]">1/6 Later Vedic</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q35. Nishka?</b> → <b class="text-[#FBBF24]">Gold ornament + coin</b></div>
+</div>
+</section>
+
+<div class="text-center py-10 bg-white rounded-2xl shadow-xl border-t-4 border-[#7C2D12]">
+<h2 class="text-3xl font-bold text-[#7C2D12] playfair">Thank You!</h2>
+<p class="text-[#B45309] font-bold mt-2 text-lg">Prepared by Vipulendra Tripathi Sir</p>
+<p class="text-xs mt-2">Rigvedic & Later Vedic + Complete Vedic Literature | Updated July 2026 | UPSC/SSC/PSC</p>
+</div>
+
+</main>
+</div>
+
+<footer class="bg-[#7C2D12] text-white text-center py-4 text-xs mt-10">© 2026 Vipulendra Tripathi Sir | Vedic Period Notes | Watermark Protected | All Rights Reserved</footer>
+</body>
+</html>

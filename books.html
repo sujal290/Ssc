@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SSC CGL Books & Authors — Ultimate Master</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#16213e,#294c7a);color:#fff;padding:28px 20px;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}
+h1{margin:0 0 8px;font-size:28px} header p{margin:0;opacity:.9}
+.wrap{max-width:1450px;margin:auto;padding:20px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+input,button{padding:11px 14px;border:1px solid #ccd5e3;border-radius:9px;font-size:14px}
+input{flex:1;min-width:240px}button{background:#fff;cursor:pointer}button:hover{background:#eef4fb}
+.section{margin:26px 0}
+.section h2{font-size:20px;background:#dceaf8;padding:12px 15px;border-radius:10px;margin:0 0 10px}
+.table-wrap{overflow:auto;background:#fff;border-radius:10px;box-shadow:0 2px 10px #0000000d}
+table{width:100%;border-collapse:collapse;min-width:1050px}
+th,td{border:1px solid #d7dee8;padding:9px 10px;text-align:left;vertical-align:top;font-size:13px;line-height:1.35}
+th{background:#eaf2fa;position:sticky;top:82px;z-index:2}
+tr:nth-child(even) td{background:#fafcff}
+td:first-child{font-weight:700;width:20%} td:nth-child(2){width:15%} td:nth-child(3){width:13%} td:nth-child(4){width:37%} td:nth-child(5){width:15%}
+.badge{display:inline-block;background:#17213e;color:#fff;padding:4px 8px;border-radius:999px;font-size:11px;margin:2px}
+.traps{background:#fff;padding:16px 20px;border-radius:10px;box-shadow:0 2px 10px #0001}
+.traps li{margin:8px 0}
+footer{text-align:center;padding:25px;color:#667085;font-size:13px}
+@media(max-width:700px){h1{font-size:22px}.wrap{padding:10px}th,td{font-size:12px}}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 BOOKS & AUTHORS — ULTIMATE SSC CGL MASTER</h1>
+<p>Book / Work → Author → Time Period → Why / Context → SSC Fact / Trap</p>
+</header>
+<div class="wrap">
+<div class="toolbar">
+<input id="search" placeholder="🔎 Search book, author, period, topic or trap..." oninput="filterRows()">
+<button onclick="clearSearch()">Clear</button>
+<button onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+<div id="content"></div>
+<footer>SSC CGL Books & Authors — Ultimate Revision Sheet</footer>
+</div>
+<script>
+const sections = [
+["🏛️ ANCIENT INDIA",[
+["Arthashastra","Kautilya (Chanakya)","Mauryan, c. 4th–3rd BCE","Treatise on statecraft, administration, taxation, economy, diplomacy and espionage. Closely associated with Chandragupta Maurya.","Chandragupta Maurya"],
+["Indica","Megasthenes","Mauryan, c. 4th–3rd BCE","Greek ambassador to Chandragupta Maurya's court. Describes Pataliputra, administration, society and India.","Megasthenes ≠ Fa-Hien"],
+["Ashtadhyayi","Panini","c. 5th–4th BCE","Sanskrit grammar in eight chapters; important linguistic and historical evidence.","8 chapters"],
+["Mahabhashya","Patanjali","c. 2nd BCE","Major commentary on Panini; also gives information about contemporary society.","Commentator on Panini"],
+["Buddhacharita","Ashvaghosha","Kushana, c. 1st–2nd CE","Sanskrit biography of Buddha; associated with Kanishka's period.","Ashvaghosha → Buddha"],
+["Milindapanho","Traditionally Nagasena","c. 1st BCE/CE","Dialogue between Indo-Greek king Menander (Milinda) and Nagasena.","Menander = Milinda"],
+["Gatha Saptashati","King Hala","Satavahana","Prakrit lyric anthology, especially love poetry; associated with Satavahana ruler Hala.","Hala → Prakrit"],
+["Charaka Samhita","Charaka","Early centuries CE","Foundational Ayurveda text, especially internal medicine.","Medicine"],
+["Sushruta Samhita","Sushruta","Early centuries CE","Major Ayurvedic text famous for surgery and surgical techniques.","Surgery"],
+["Aryabhatiya","Aryabhata","Gupta, 499 CE","Major mathematical and astronomical work; calculations of π and astronomy.","Aryabhata → Astronomy"],
+["Brihat Samhita","Varahamihira","6th CE","Encyclopedic Sanskrit work on astronomy, astrology, geography, architecture, weather and more.","Varahamihira"],
+["Pancha-Siddhantika","Varahamihira","6th CE","Summarises five astronomical systems.","Five siddhantas"],
+["Mrichchhakatika","Shudraka","Classical period","Sanskrit drama depicting urban/social life; The Little Clay Cart.","Shudraka"],
+["Abhijnanasakuntalam","Kalidasa","Gupta period","Famous Sanskrit drama on Shakuntala and Dushyanta.","Kalidasa"],
+["Meghaduta","Kalidasa","Gupta period","Lyric poem in which an exiled yaksha sends a message through a cloud.","Kalidasa"],
+["Raghuvamsha","Kalidasa","Gupta period","Epic describing the Raghu dynasty, including Rama.","Kalidasa"],
+["Kumarasambhava","Kalidasa","Gupta period","Epic concerning the birth of Kartikeya/Skanda.","Kalidasa"],
+["Malavikagnimitram","Kalidasa","Gupta period","Drama involving King Agnimitra and Malavika.","Kalidasa"],
+["Vikramorvashiyam","Kalidasa","Gupta period","Drama based on Pururavas and Urvashi.","Kalidasa"]
+]],
+["📜 HISTORICAL WORKS & INSCRIPTIONS",[
+["Allahabad Pillar Prashasti","Harisena","4th CE","Praises Samudragupta and records military campaigns and political achievements.","Samudragupta"],
+["Harshacharita","Banabhatta","7th CE","Biography of Harsha; key literary source for Harsha's reign.","Harsha → Banabhatta"],
+["Nagananda","Harsha (traditional)","7th CE","Sanskrit drama traditionally attributed to Harsha; Buddhist themes.","Harsha"],
+["Ratnavali","Harsha (traditional)","7th CE","Sanskrit drama traditionally attributed to Harsha.","Harsha"],
+["Priyadarshika","Harsha (traditional)","7th CE","Sanskrit drama traditionally attributed to Harsha.","Harsha"],
+["Aihole Prashasti","Ravikirti","7th CE","Praises Pulakeshin II and records achievements, including conflict with Harsha.","Pulakeshin II"],
+["Hathigumpha Inscription","Kharavela","1st BCE","Major source for Kalinga and Kharavela's reign.","Kharavela"],
+["Nasik Prashasti","Gautami Balashri","Satavahana","Records achievements of Gautamiputra Satakarni.","Gautamiputra Satakarni"],
+["Junagadh Inscription","Rudradaman I","2nd CE","Famous Sanskrit inscription; records repair of Sudarshana Lake.","Rudradaman"],
+["Vikramankadevacharita","Bilhana","11th CE","Court biography of Western Chalukya Vikramaditya VI.","Vikramaditya VI"],
+["Samarangana Sutradhara","Bhoja","11th CE","Treatise associated with architecture, town planning, engineering and mechanical devices.","Bhoja"],
+["Shringara Prakasha","Bhoja","11th CE","Work on aesthetics/poetics associated with King Bhoja.","Bhoja"],
+["Kavirajamarga","Amoghavarsha I / court tradition","9th CE","Major early Kannada literary/poetic work traditionally associated with Amoghavarsha I.","Kannada literature"]
+]],
+["🌍 FOREIGN TRAVELLERS & ACCOUNTS",[
+["Indica","Megasthenes","Mauryan","Account of India during Chandragupta Maurya.","Chandragupta Maurya"],
+["Periplus of the Erythraean Sea","Anonymous Greek author","c. 1st CE","Describes Indian Ocean trade, ports and commercial routes.","Trade & ports"],
+["Geographia","Ptolemy","c. 2nd CE","Geographical information about India and trade centres.","Ptolemy"],
+["Kitab-ul-Hind","Al-Biruni","11th CE","Detailed study of Indian society, religion, philosophy and science.","Al-Biruni"],
+["Rihla","Ibn Battuta","14th CE","Travel account of India during Muhammad bin Tughlaq.","Muhammad bin Tughlaq"],
+["Travels in India","Niccolò de' Conti","15th CE","Observations of Vijayanagara and South India.","Vijayanagara"],
+["Travels","Abdur Razzaq","15th CE","Persian envoy's account of Vijayanagara under Deva Raya II.","Deva Raya II"],
+["Chronica dos Reis de Bisnaga","Fernao Nuniz","16th CE","Important Portuguese account of Vijayanagara.","Vijayanagara"],
+["Account of Vijayanagara","Domingo Paes","16th CE","Detailed description of Krishnadevaraya's Vijayanagara, markets and army.","Krishnadevaraya"]
+]],
+["⚔️ DELHI SULTANATE",[
+["Taj-ul-Maasir","Hasan Nizami","13th CE","One of the earliest histories of the Delhi Sultanate, covering Aibak and early Turkish rule.","Aibak"],
+["Tabaqat-i-Nasiri","Minhaj-us-Siraj","13th CE","Major Persian chronicle of Ghurids and early Delhi Sultans.","Early Sultanate"],
+["Khazain-ul-Futuh","Amir Khusrau","Alauddin Khalji","Describes Alauddin Khalji's conquests and achievements.","Alauddin Khalji"],
+["Tughlaqnama","Amir Khusrau","14th CE","Describes transition from Khalji to Tughlaq rule, especially Ghiyasuddin Tughlaq.","Ghiyasuddin Tughlaq"],
+["Tarikh-i-Firoz Shahi","Ziauddin Barani","14th CE","Major history of Delhi Sultanate, especially later Tughlaq period.","Barani"],
+["Fatawa-i-Jahandari","Ziauddin Barani","14th CE","Political-ethical work on ideal Islamic kingship and governance.","Political theory"],
+["Tarikh-i-Mubarak Shahi","Yahya bin Ahmad Sirhindi","15th CE","Important source for Sayyid dynasty and Delhi Sultanate.","Sayyid dynasty"],
+["Futuhat-i-Firoz Shahi","Firoz Shah Tughlaq","14th CE","Autobiographical account of administration and public works.","Firoz Shah"],
+["Rajatarangini","Kalhana","12th CE","History/chronicle of Kashmir; major historical work.","Kashmir"],
+["Prithviraj Raso","Chand Bardai (traditional)","Medieval/compiled later","Semi-legendary account of Prithviraj Chauhan; not a straightforward contemporary source.","Traditional attribution"],
+["Prithvirajavijaya","Jayanaka","12th CE","Sanskrit eulogy of Prithviraja III; nearer to contemporary evidence.","Prithviraja III"]
+]],
+["🏰 VIJAYANAGARA & SOUTH INDIA",[
+["Madhuravijayam","Gangadevi","14th CE","Sanskrit poem on Kumara Kampana's conquest of Madurai under Vijayanagara.","Gangadevi"],
+["Amuktamalyada","Krishnadevaraya","16th CE","Famous Telugu work combining the story of Andal with ideas on kingship and administration.","Telugu"],
+["Jambavati Kalyanam","Krishnadevaraya","16th CE","Sanskrit drama traditionally attributed to Krishnadevaraya.","Krishnadevaraya"]
+]],
+["🕌 MUGHAL & SUR PERIOD",[
+["Tarikh-i-Sher Shahi","Abbas Khan Sarwani","16th CE","Major source on Sher Shah Suri's reign, administration, revenue and military achievements.","Sher Shah"],
+["Baburnama / Tuzuk-i-Baburi","Babur","16th CE","Memoirs describing Babur's life, campaigns and observations of India.","Babur"],
+["Humayun-nama","Gulbadan Begum","16th CE","Memoir of Humayun and Mughal family life, written by his half-sister.","Gulbadan Begum"],
+["Akbarnama","Abul Fazl","16th CE","Official-style history of Akbar's reign, administration and campaigns.","Akbar"],
+["Ain-i-Akbari","Abul Fazl","16th CE","Administrative survey of Akbar's empire: revenue, army, provinces, society and economy.","3rd volume of Akbarnama"],
+["Muntakhab-ut-Tawarikh","Abdul Qadir Badauni","16th CE","Critical contemporary history of Akbar's reign.","Badauni"],
+["Tuzuk-i-Jahangiri","Jahangir","17th CE","Autobiographical memoir of Jahangir's reign and observations.","Jahangir"],
+["Padshahnama","Abdul Hamid Lahori / Muhammad Amin Qazvini","17th CE","Chronicles of Shah Jahan's reign; multiple versions/authors exist.","Shah Jahan"],
+["Alamgirnama","Mirza Muhammad Kazim","17th CE","Account of the early years of Aurangzeb's reign.","Aurangzeb"],
+["Maasir-i-Alamgiri","Saqi Mustaid Khan","18th CE","Important Persian chronicle of Aurangzeb's reign.","Aurangzeb"]
+]],
+["🕉️ BHAKTI, SUFI & SIKH",[
+["Ramcharitmanas","Tulsidas","16th CE","Awadhi retelling of the Ramayana; major North Indian Bhakti text.","Tulsidas → Awadhi"],
+["Sur Sagar","Surdas","16th CE","Devotional poetry centred especially on Krishna.","Surdas → Krishna"],
+["Bijak","Kabir","15th CE","Verses expressing Nirguna Bhakti and criticism of ritualism and social divisions.","Kabir → Nirguna"],
+["Rasikapriya","Keshavdas","16th–17th CE","Important Brajbhasha work on poetics and rasa, especially shringara.","Keshavdas"],
+["Tirukkural","Thiruvalluvar","Ancient Tamil; date debated","Tamil ethical classic on virtue, wealth and love.","Tamil classic"],
+["Vachana literature","Basavanna, Akka Mahadevi, Allama Prabhu","12th CE","Kannada devotional literature associated with Virashaiva/Lingayat movement.","Lingayat"],
+["Guru Granth Sahib / Adi Granth","Compiled by Guru Arjan; later additions","17th CE","Central Sikh scripture. Guru Arjan compiled Adi Granth; Guru Gobind Singh later completed the scripture tradition.","Guru Arjan → compilation"],
+["Padmavat","Malik Muhammad Jayasi","16th CE","Sufi allegorical romance in Awadhi.","Jayasi → Sufi"]
+]],
+["🇮🇳 MODERN INDIA — REFORM & NATIONALISM",[
+["Neel Darpan","Dinabandhu Mitra","1860–61","Play exposing exploitation of peasants by indigo planters; associated with Indigo Revolt.","Indigo Revolt"],
+["Rajmohan's Wife","Bankim Chandra Chattopadhyay","1864","Considered the first English novel by an Indian.","First Indian English novel"],
+["Durgeshnandini","Bankim Chandra Chattopadhyay","1865","Early Bengali historical romance; important in Bankim's literary career.","Bankim"],
+["Anandamath","Bankim Chandra Chattopadhyay","1882","Novel set against the Sannyasi Rebellion; contains Vande Mataram.","Vande Mataram"],
+["Mother India","Katherine Mayo","1927","Critical portrayal of Indian society; provoked strong nationalist rebuttals.","Katherine Mayo"],
+["Unhappy India","Lala Lajpat Rai","1928","Nationalist response to Katherine Mayo's Mother India.","Lajpat Rai"],
+["Gulamgiri","Jyotirao Phule","1873","Critique of caste oppression and social hierarchy.","Phule"],
+["Satyarth Prakash","Swami Dayanand Saraswati","1875","Major Arya Samaj text advocating return to the Vedas and reform.","Arya Samaj"],
+["The High-Caste Hindu Woman","Pandita Ramabai","1887","Critique of women's status, child marriage and widowhood.","Women reform"],
+["Stri Purush Tulana","Tarabai Shinde","1882","Early critique of gender inequality and patriarchy.","Gender reform"],
+["Poverty and Un-British Rule in India","Dadabhai Naoroji","1901","Systematised the Drain of Wealth theory and economic critique of colonialism.","Drain Theory"],
+["The Economic History of India","R.C. Dutt","1901–03","Analysed colonial impact on agriculture, industry and poverty.","Economic nationalism"],
+["The Indian War of Independence of 1857","V.D. Savarkar","1909","Nationalist interpretation of the Revolt of 1857 as a war for independence.","1857"],
+["Hind Swaraj","Mahatma Gandhi","1909","Critique of modern civilisation and statement of ideas on Swaraj and non-violence.","Gandhi"],
+["The Story of My Experiments with Truth","Mahatma Gandhi","1920s–29","Autobiography describing Gandhi's personal, ethical and political development.","Gandhi autobiography"],
+["Gita Rahasya","Bal Gangadhar Tilak","1915","Interpretation of the Gita emphasising Karma Yoga and active duty.","Karma Yoga"],
+["The Arctic Home in the Vedas","Bal Gangadhar Tilak","1903","Controversial theory placing Aryan ancestral home in the Arctic region.","Theory, not accepted fact"],
+["The Indian Struggle","Subhas Chandra Bose","1935","Covers the nationalist movement, particularly 1920–34, from Bose's perspective.","Bose"],
+["India Wins Freedom","Maulana Abul Kalam Azad","Published 1959","Memoir/reflections on the freedom struggle and Partition.","Azad"],
+["A Nation in Making","Surendranath Banerjea","1925","Political autobiography and account of early Indian nationalism.","Banerjea"],
+["Bandi Jeevan","Sachindranath Sanyal","1922","Revolutionary memoir describing prison life and revolutionary activities.","Revolutionary movement"],
+["Pather Dabi","Sarat Chandra Chattopadhyay","1926","Revolutionary novel banned by British authorities.","Banned book"]
+]],
+["🧑‍⚖️ AMBEDKAR, NEHRU & BHAGAT SINGH",[
+["The Discovery of India","Jawaharlal Nehru","Written 1944–46","Broad interpretation of Indian civilisation, history and freedom movement, written during imprisonment.","Nehru"],
+["Glimpses of World History","Jawaharlal Nehru","1934","Letters to Indira giving a sweeping overview of world history.","Nehru"],
+["Why I Am an Atheist","Bhagat Singh","1930","Essay on rationalism, atheism and intellectual development.","Bhagat Singh"],
+["Waiting for a Visa","B.R. Ambedkar","1930s","Autobiographical account describing experiences of caste discrimination.","Ambedkar"],
+["Annihilation of Caste","B.R. Ambedkar","1936","Major critique of caste and its social foundations.","Ambedkar"],
+["The Problem of the Rupee","B.R. Ambedkar","1923","Economic work on currency and monetary policy in colonial India.","Economics"],
+["Who Were the Shudras?","B.R. Ambedkar","1946","Historical/social analysis of the origins and status of Shudras.","Ambedkar"],
+["The Untouchables","B.R. Ambedkar","1948","Study of the origins and condition of untouchability.","Ambedkar"],
+["India Divided","Rajendra Prasad","1946","Discussion of the Pakistan/Partition question and its implications.","Rajendra Prasad"],
+["Pakistan or the Partition of India","B.R. Ambedkar","1940/45","Detailed analysis of the political and social question of Partition.","Ambedkar"]
+]],
+["📚 MODERN INDIAN ENGLISH LITERATURE",[
+["Gitanjali","Rabindranath Tagore","1910; English version 1912","Poetry collection; Tagore won the 1913 Nobel Prize in Literature.","Nobel 1913"],
+["Swami and Friends","R.K. Narayan","1935","Early novel set in fictional Malgudi.","Malgudi"],
+["Untouchable","Mulk Raj Anand","1935","Novel highlighting caste discrimination through Bakha.","Caste"],
+["Kanthapura","Raja Rao","1938","Novel showing Gandhian nationalism in a South Indian village.","Gandhian nationalism"],
+["The Guide","R.K. Narayan","1958","Famous novel about Raju and transformation/identity.","R.K. Narayan"],
+["Train to Pakistan","Khushwant Singh","1956","Novel portraying human consequences of Partition.","Partition"],
+["The Room on the Roof","Ruskin Bond","1956","Bond's first published novel; won John Llewellyn Rhys Prize.","Ruskin Bond"],
+["The Shadow Lines","Amitav Ghosh","1988","Explores borders, Partition, memory and identity.","Amitav Ghosh"],
+["A Suitable Boy","Vikram Seth","1993","Large-scale post-independence Indian novel around family, marriage and politics.","Vikram Seth"],
+["Clear Light of Day","Anita Desai","1980","Novel about family, memory and relationships.","Anita Desai"],
+["The God of Small Things","Arundhati Roy","1997","Caste, family and social structures in Kerala; won 1997 Booker Prize.","Booker 1997"],
+["Midnight's Children","Salman Rushdie","1981","Magical-realist novel linked to independence and post-independence India; Booker winner.","Booker 1981"],
+["The Inheritance of Loss","Kiran Desai","2006","Migration, identity and postcolonial tensions; Booker winner.","Booker 2006"],
+["The White Tiger","Aravind Adiga","2008","Class, poverty, entrepreneurship and inequality; Booker winner.","Booker 2008"],
+["An Era of Darkness","Shashi Tharoor","2016","Critique of the economic and political impact of British colonial rule.","Correct title"],
+["The Ministry of Utmost Happiness","Arundhati Roy","2017","Contemporary Indian society, conflict and marginalised communities.","Arundhati Roy"],
+["Azadi","Arundhati Roy","2020","Essays on freedom, dissent and contemporary politics.","Arundhati Roy"],
+["The Cost of Living","Arundhati Roy","1999","Essays on development, displacement and social issues.","Arundhati Roy"],
+["Godan","Munshi Premchand","1936","Hindi classic depicting peasant life and rural society.","Premchand"],
+["Ghare-Baire","Rabindranath Tagore","1916","Novel set against the Swadeshi era; explores nationalism and identity.","Tagore"],
+["Gora","Rabindranath Tagore","1910","Novel exploring identity, nationalism, caste and social reform.","Tagore"],
+["Indulekha","O. Chandu Menon","1889","Early major Malayalam novel and landmark of Malayalam literature.","Malayalam"]
+]]
+];
+
+const traps=[
+["Arthashastra","Kautilya","Not Ashoka"],
+["Indica","Megasthenes","Not Fa-Hien"],
+["Ashtadhyayi","Panini","8 chapters; Sanskrit grammar"],
+["Mahabhashya","Patanjali","Commentary on Panini"],
+["Harshacharita","Banabhatta","Biography of Harsha"],
+["Aihole Prashasti","Ravikirti","Pulakeshin II"],
+["Kitab-ul-Hind","Al-Biruni","11th-century India"],
+["Rihla","Ibn Battuta","Muhammad bin Tughlaq"],
+["Madhuravijayam","Gangadevi","Kumara Kampana / Madurai"],
+["Akbarnama","Abul Fazl","Akbar"],
+["Ain-i-Akbari","Abul Fazl","Administrative survey; 3rd volume of Akbarnama"],
+["Humayun-nama","Gulbadan Begum","Humayun"],
+["Tuzuk-i-Jahangiri","Jahangir","Jahangir's memoir"],
+["Ramcharitmanas","Tulsidas","Awadhi"],
+["Bijak","Kabir","Nirguna Bhakti"],
+["Poverty and Un-British Rule in India","Dadabhai Naoroji","Drain Theory"],
+["Mother India","Katherine Mayo","1927"],
+["Unhappy India","Lala Lajpat Rai","Response to Mother India"],
+["Hind Swaraj","Mahatma Gandhi","1909"],
+["Gita Rahasya","B.G. Tilak","Karma Yoga"],
+["The Indian Struggle","Subhas Chandra Bose","1920–34 focus"],
+["Why I Am an Atheist","Bhagat Singh","1930"],
+["Annihilation of Caste","B.R. Ambedkar","1936"],
+["Gitanjali","Rabindranath Tagore","Nobel Literature, 1913"],
+["Midnight's Children","Salman Rushdie","Booker, 1981"],
+["The God of Small Things","Arundhati Roy","Booker, 1997"],
+["The Inheritance of Loss","Kiran Desai","Booker, 2006"],
+["The White Tiger","Aravind Adiga","Booker, 2008"],
+["An Era of Darkness","Shashi Tharoor","Correct standard title"]
+];
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function render(){
+ let out="";
+ sections.forEach((sec,si)=>{
+   out+=`<section class="section"><h2>${sec[0]} <span class="badge">${sec[1].length} entries</span></h2><div class="table-wrap"><table><thead><tr><th>📖 Book / Work</th><th>✍️ Author</th><th>🕐 Time Period</th><th>🧠 Why / Context</th><th>🎯 SSC Fact / Trap</th></tr></thead><tbody>`;
+   sec[1].forEach((r,i)=>out+=`<tr class="bookrow"><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td></tr>`);
+   out+=`</tbody></table></div></section>`;
+ });
+ out+=`<section class="section"><h2>🔥 SSC CGL — HIGH-YIELD TRAPS & MUST-MEMORISE PAIRS</h2><div class="table-wrap"><table><thead><tr><th>#</th><th>📖 Work</th><th>✍️ Author</th><th>🎯 Key hook / trap</th></tr></thead><tbody>`;
+ traps.forEach((r,i)=>out+=`<tr><td>${i+1}</td><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`);
+ out+=`</tbody></table></div></section>`;
+ out+=`<section class="section"><h2>⚠️ Accuracy Notes</h2><div class="traps"><ul><li>Prithviraj Raso is traditionally attributed to Chand Bardai and is semi-legendary; it is not an uncomplicated contemporary source.</li><li>Kavirajamarga is traditionally associated with Amoghavarsha I; court-poet attribution is also discussed.</li><li>Guru Arjan compiled the Adi Granth; the later scripture tradition was completed under Guru Gobind Singh.</li><li>Padshahnama exists in versions associated with Abdul Hamid Lahori and Muhammad Amin Qazvini.</li><li><b>An Era of Darkness</b> is the standard title of Shashi Tharoor's 2016 book.</li></ul></div></section>`;
+ document.getElementById("content").innerHTML=out;
+}
+function filterRows(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ document.querySelectorAll(".bookrow").forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?"":"none");
+}
+function clearSearch(){document.getElementById("search").value="";filterRows()}
+render();
+</script>
+</body>
+</html>

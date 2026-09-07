@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nidhi — Program Management &amp; Strategic Planning</title>
+<meta name="description" content="Nidhi — Program Management, Strategic Planning, Business Operations &amp; International Leadership Programs. 11+ years across Life Insurance and Banking." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1526; --ink2:#101F38; --ink3:#0D1A30;
+    --brass:#C6A15B; --brass-soft:#E3C888; --ice:#6FA3C7;
+    --paper:#F3EFE4; --muted:#8FA0BE; --line:rgba(198,161,91,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--ink); color:var(--paper);
+    font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .font-display{font-family:'Fraunces',serif;}
+  .font-mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:1152px; margin:0 auto; padding:0 24px;}
+  @media(min-width:768px){ .wrap{padding:0 40px;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:14px;
+  }
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal-in{opacity:1; transform:translateY(0);}
+
+  /* nav */
+  .nav-wrap{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,21,38,0.82); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:64px; display:flex; align-items:center; justify-content:space-between;}
+  .nav-logo{font-family:'Fraunces',serif; font-size:1.15rem; letter-spacing:.03em; color:var(--brass-soft); background:none; border:none; cursor:pointer;}
+  .nav-links{display:none; align-items:center; gap:32px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;}
+  @media(min-width:768px){ .nav-links{display:flex;} }
+  .nav-links button, .nav-mobile button{
+    background:none; border:none; color:var(--muted); cursor:pointer; font-family:inherit; font-size:inherit; letter-spacing:inherit; text-transform:inherit; padding:0;
+  }
+  .nav-links button:hover, .nav-mobile button:hover{ color:var(--brass-soft); }
+  .nav-toggle{ display:flex; background:none; border:none; color:var(--brass-soft); cursor:pointer; }
+  @media(min-width:768px){ .nav-toggle{display:none;} }
+  .nav-mobile{ display:none; flex-direction:column; gap:16px; padding:0 24px 20px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; }
+  .nav-mobile.open{ display:flex; }
+
+  /* hero */
+  .hero-section{
+    position:relative; min-height:92vh; display:flex; align-items:center; overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 15% 10%, rgba(198,161,91,0.10) 0%, rgba(10,21,38,0) 55%),
+      radial-gradient(90% 70% at 90% 90%, rgba(111,163,199,0.10) 0%, rgba(10,21,38,0) 55%),
+      linear-gradient(180deg, #0A1526 0%, #0B1830 55%, #0A1526 100%);
+  }
+  .hero-network{ position:absolute; inset:0; width:100%; height:100%; opacity:.9; }
+  .hero-arc{ fill:none; stroke-width:1.4; stroke-dasharray:5 9; }
+  .hero-arc-a{ stroke:rgba(198,161,91,0.55); animation:dashflow 7s linear infinite; }
+  .hero-arc-b{ stroke:rgba(111,163,199,0.45); animation:dashflow 9s linear infinite reverse; }
+  @keyframes dashflow{ to{ stroke-dashoffset:-240; } }
+  .hero-node-dot{ fill:var(--brass-soft); }
+  .hero-node-pulse{ fill:none; stroke:var(--brass); stroke-width:1.2; opacity:.7; transform-origin:center; transform-box:fill-box; animation:nodepulse 3.2s ease-out infinite; }
+  @keyframes nodepulse{ 0%{transform:scale(1); opacity:.7;} 100%{transform:scale(2.6); opacity:0;} }
+
+  .hero-inner{ position:relative; padding:96px 0; width:100%; }
+  .tagline-slot{ height:1.6em; overflow:hidden; position:relative; display:inline-block; }
+  .tagline-word{ display:inline-block; animation:taglineIn .6s ease; font-weight:600; color:var(--paper); }
+  @keyframes taglineIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .hero-name{ animation:heroFade 1s ease .1s both; font-weight:600; line-height:.95; font-size:clamp(3.2rem,9vw,6.5rem); margin:0; }
+  .hero-sub{ animation:heroFade 1s ease .35s both; }
+  .hero-cta{ animation:heroFade 1s ease .6s both; }
+  @keyframes heroFade{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+  .btn{ padding:13px 28px; border-radius:2px; font-size:14px; display:inline-flex; align-items:center; gap:8px; cursor:pointer; text-decoration:none; font-family:inherit; }
+  .btn-primary{ background:var(--brass); color:var(--ink); font-weight:600; border:1px solid var(--brass); }
+  .btn-primary:hover{ background:var(--brass-soft); border-color:var(--brass-soft); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); background:none; }
+  .btn-ghost:hover{ border-color:var(--brass); color:var(--brass-soft); }
+
+  .lead-para{ margin-top:32px; max-width:36rem; font-size:1.05rem; line-height:1.6; color:var(--muted); }
+  .focus-row{ margin-top:20px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .cta-row{ margin-top:40px; display:flex; flex-wrap:wrap; gap:16px; }
+
+  section{ padding:96px 0; }
+  @media(min-width:768px){ section{ padding:130px 0; } }
+
+  h2.section-title{ font-family:'Fraunces',serif; font-size:clamp(2rem,4vw,2.8rem); margin:0; font-weight:600; }
+  .lead-quote{ font-family:'Fraunces',serif; font-size:clamp(1.4rem,2.6vw,2rem); line-height:1.5; color:var(--paper); font-weight:400; max-width:56rem; margin:0; }
+
+  /* stat cards */
+  .stats-grid{ margin-top:64px; display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media(min-width:768px){ .stats-grid{ grid-template-columns:repeat(3,1fr); gap:24px; } }
+  .stat-card{
+    border:1px solid var(--line); background:linear-gradient(180deg, rgba(198,161,91,0.05), rgba(198,161,91,0));
+    border-radius:4px; padding:28px 20px; transition:border-color .3s ease, transform .3s ease;
+  }
+  .stat-card:hover{ border-color:var(--brass); transform:translateY(-4px); }
+  .stat-value{ font-family:'Fraunces',serif; font-weight:600; font-size:2.4rem; color:var(--brass-soft); line-height:1; }
+  .stat-label{ margin-top:10px; font-size:.82rem; color:var(--muted); }
+
+  /* timeline */
+  .timeline-rail{ position:relative; border-left:1px solid var(--line); padding-left:40px; margin-top:64px; }
+  @media(min-width:768px){ .timeline-rail{ padding-left:56px; } }
+  .timeline-item{ position:relative; padding-bottom:56px; }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-dot{ position:absolute; left:-46px; top:6px; width:11px; height:11px; border-radius:50%; background:var(--ink); border:2px solid var(--brass); }
+  @media(min-width:768px){ .timeline-dot{ left:-62px; } }
+  .timeline-period{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); margin-bottom:8px; }
+  .timeline-role{ font-family:'Fraunces',serif; font-size:1.4rem; color:var(--paper); margin:0; font-weight:600; }
+  .timeline-company{ font-size:.9rem; color:var(--muted); margin-top:4px; margin-bottom:16px; }
+  .timeline-points{ list-style:none; margin:0; padding:0; max-width:42rem; display:flex; flex-direction:column; gap:8px; }
+  .timeline-points li{ display:flex; gap:12px; font-size:.95rem; line-height:1.6; color:#C9D2E0; }
+  .timeline-points li span.dash{ color:var(--brass); flex-shrink:0; }
+
+  /* flap board */
+  .flap-board{ border:1px solid var(--line); border-radius:4px; background:var(--ink3); overflow:hidden; margin-top:48px; }
+  .flap-board-head{ display:flex; justify-content:space-between; padding:10px 16px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; border-bottom:1px solid var(--line); }
+  .flap-row{ display:flex; align-items:center; gap:14px; padding:9px 16px; border-bottom:1px solid rgba(198,161,91,0.10); }
+  .flap-row:last-child{ border-bottom:none; }
+  .flap-row-index{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); width:18px; flex-shrink:0; }
+  .flap-row-chars{ display:flex; gap:3px; perspective:240px; flex:1; flex-wrap:wrap; }
+  .flap-char{
+    display:flex; align-items:center; justify-content:center; width:15px; height:20px;
+    background:#0F1D33; border:1px solid rgba(198,161,91,0.14); border-radius:2px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper);
+    transform:rotateX(-90deg); opacity:0;
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+  }
+  .flap-char.active{ transform:rotateX(0deg); opacity:1; }
+  .flap-status{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:var(--brass); display:flex; align-items:center; white-space:nowrap; gap:5px; }
+
+  /* pills */
+  .pill-row{ margin-top:40px; display:flex; flex-wrap:wrap; gap:12px; }
+  .pill{ border:1px solid var(--line); color:var(--paper); font-size:.86rem; padding:9px 18px; border-radius:999px; transition:border-color .25s ease, color .25s ease, background .25s ease; }
+  .pill:hover{ border-color:var(--brass); color:var(--brass-soft); background:rgba(198,161,91,0.06); }
+
+  .two-col{ margin-top:80px; display:grid; grid-template-columns:1fr; gap:64px; }
+  @media(min-width:768px){ .two-col{ grid-template-columns:1fr 1fr; } }
+  .awards-grid{ margin-top:56px; display:grid; grid-template-columns:1fr; gap:20px; }
+  @media(min-width:768px){ .awards-grid{ grid-template-columns:1fr 1fr; gap:24px; } }
+  .award-card{ border:1px solid var(--line); border-radius:4px; padding:24px; transition:border-color .3s ease, transform .3s ease; }
+  .award-card:hover{ border-color:var(--brass); transform:translateY(-3px); }
+  .award-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:10px; }
+  .award-name{ font-family:'Fraunces',serif; font-size:1.15rem; color:var(--paper); font-weight:600; margin:0; }
+  .award-year{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brass); white-space:nowrap; flex-shrink:0; }
+  .award-desc{ font-size:.88rem; line-height:1.6; color:var(--muted); margin:0; }
+  .list-row{ display:flex; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:16px; }
+  .list-row-title{ font-size:.95rem; color:var(--paper); }
+  .list-row-sub{ font-size:.78rem; color:var(--muted); margin-top:4px; }
+  .list-row-year{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brass); white-space:nowrap; padding-top:2px; }
+
+  .contact-title{ font-family:'Fraunces',serif; font-size:clamp(2.2rem,5vw,3.4rem); max-width:18ch; margin:0; font-weight:600; }
+  .contact-meta{ margin-top:64px; display:flex; align-items:center; gap:8px; font-size:12px; font-family:'IBM Plex Mono',monospace; color:var(--muted); }
+
+  footer{ padding:24px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.hero-name,.hero-sub,.hero-cta,.tagline-word{ animation:none!important; transition:none!important; opacity:1!important; transform:none!important; }
+    .hero-arc,.hero-node-pulse{ animation:none!important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="nav-wrap">
+    <div class="wrap nav-inner">
+      <button class="nav-logo" onclick="scrollToId('top')">NIDHI</button>
+      <nav class="nav-links">
+        <button onclick="scrollToId('summary')">Summary</button>
+        <button onclick="scrollToId('experience')">Experience</button>
+        <button onclick="scrollToId('footprint')">Global Footprint</button>
+        <button onclick="scrollToId('skills')">Skills</button>
+        <button onclick="scrollToId('awards')">Awards</button>
+        <button onclick="scrollToId('contact')">Contact</button>
+      </nav>
+      <button class="nav-toggle" id="navToggleBtn" aria-label="Menu" onclick="toggleMobileNav()">
+        <svg id="iconMenu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="iconClose" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <button onclick="scrollToId('summary')">Summary</button>
+      <button onclick="scrollToId('experience')">Experience</button>
+      <button onclick="scrollToId('footprint')">Global Footprint</button>
+      <button onclick="scrollToId('skills')">Skills</button>
+      <button onclick="scrollToId('awards')">Awards</button>
+      <button onclick="scrollToId('contact')">Contact</button>
+    </div>
+  </div>
+
+  <section class="hero-section" id="top">
+    <svg class="hero-network" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="dotgrid" width="34" height="34" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="rgba(198,161,91,0.16)"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="620" fill="url(#dotgrid)"/>
+      <path d="M150,220 Q260,60 340,120" class="hero-arc hero-arc-a"/>
+      <path d="M340,120 Q430,40 520,190" class="hero-arc hero-arc-b"/>
+      <path d="M520,190 Q610,60 700,90" class="hero-arc hero-arc-a"/>
+      <path d="M700,90 Q790,180 860,230" class="hero-arc hero-arc-b"/>
+      <path d="M860,230 Q950,120 1030,150" class="hero-arc hero-arc-a"/>
+      <path d="M150,220 Q210,340 250,430" class="hero-arc hero-arc-b"/>
+      <path d="M250,430 Q360,380 480,500" class="hero-arc hero-arc-a"/>
+      <path d="M480,500 Q600,420 760,460" class="hero-arc hero-arc-b"/>
+      <path d="M760,460 Q870,380 980,520" class="hero-arc hero-arc-a"/>
+      <path d="M520,190 Q600,330 480,500" class="hero-arc hero-arc-b"/>
+      <g><circle cx="150" cy="220" r="9" class="hero-node-pulse" style="animation-delay:0s"/><circle cx="150" cy="220" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="340" cy="120" r="9" class="hero-node-pulse" style="animation-delay:.4s"/><circle cx="340" cy="120" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="520" cy="190" r="9" class="hero-node-pulse" style="animation-delay:.8s"/><circle cx="520" cy="190" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="700" cy="90" r="9" class="hero-node-pulse" style="animation-delay:1.2s"/><circle cx="700" cy="90" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="860" cy="230" r="9" class="hero-node-pulse" style="animation-delay:1.6s"/><circle cx="860" cy="230" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="1030" cy="150" r="9" class="hero-node-pulse" style="animation-delay:2s"/><circle cx="1030" cy="150" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="250" cy="430" r="9" class="hero-node-pulse" style="animation-delay:2.4s"/><circle cx="250" cy="430" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="480" cy="500" r="9" class="hero-node-pulse" style="animation-delay:2.8s"/><circle cx="480" cy="500" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="760" cy="460" r="9" class="hero-node-pulse" style="animation-delay:3.2s"/><circle cx="760" cy="460" r="3" class="hero-node-dot"/></g>
+      <g><circle cx="980" cy="520" r="9" class="hero-node-pulse" style="animation-delay:3.6s"/><circle cx="980" cy="520" r="3" class="hero-node-dot"/></g>
+    </svg>
+
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Program Management &middot; Life Insurance &amp; Banking</div>
+      <h1 class="hero-name font-display">Nidhi</h1>
+      <div class="hero-sub focus-row">
+        <span class="font-mono" style="font-size:14px; color:var(--muted);">Focused on</span>
+        <span class="tagline-slot"><span class="tagline-word" id="taglineWord">Program Management</span></span>
+      </div>
+      <p class="hero-sub lead-para">
+        11+ years leading Analytics, Finance, Governance and Audit before taking
+        end-to-end ownership of strategic planning and execution for international
+        leadership programs, R&amp;R events and Shikhar Contests.
+      </p>
+      <div class="hero-cta cta-row">
+        <button class="btn btn-primary" onclick="scrollToId('contact')">
+          Get in touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </button>
+        <button class="btn btn-ghost" onclick="scrollToId('experience')">View experience</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="summary">
+    <div class="wrap">
+      <div class="reveal" data-reveal>
+        <div class="eyebrow">Profile</div>
+        <p class="lead-quote font-display">
+          A results-driven Program Management and Business Operations leader across
+          the Life Insurance and Banking sectors &mdash; skilled in vendor negotiation,
+          cost optimization and cross-functional governance, with a record of
+          managing delivery for 6,500+ employees across 25+ locations and 14+ global
+          destinations while partnering directly with CEOs and CXOs.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card reveal" data-reveal style="transition-delay:0ms">
+          <div class="stat-value"><span data-countup data-prefix="₹" data-target="9" data-suffix=" Cr">0</span></div>
+          <div class="stat-label">Annual budgets managed</div>
+        </div>
+        <div class="stat-card reveal" data-reveal style="transition-delay:90ms">
+          <div class="stat-value"><span data-countup data-prefix="" data-target="6500" data-suffix="+">0</span></div>
+          <div class="stat-label">Employees managed</div>
+        </div>
+        <div class="stat-card reveal" data-reveal style="transition-delay:180ms">
+          <div class="stat-value"><span data-countup data-prefix="" data-target="25" data-suffix="+">0</span></div>
+          <div class="stat-label">Locations executed</div>
+        </div>
+        <div class="stat-card reveal" data-reveal style="transition-delay:270ms">
+          <div class="stat-value"><span data-countup data-prefix="₹" data-target="2.4" data-suffix=" Cr">0</span></div>
+          <div class="stat-label">Cumulative cost savings</div>
+        </div>
+        <div class="stat-card reveal" data-reveal style="transition-delay:360ms">
+          <div class="stat-value"><span data-countup data-prefix="" data-target="14" data-suffix="+">0</span></div>
+          <div class="stat-label">Global destinations</div>
+        </div>
+        <div class="stat-card reveal" data-reveal style="transition-delay:450ms">
+          <div class="stat-value"><span data-countup data-prefix="" data-target="5" data-suffix="">0</span></div>
+          <div class="stat-label">Leadership awards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="reveal" data-reveal>
+        <div class="eyebrow">Career Progression</div>
+        <h2 class="section-title font-display">Experience</h2>
+      </div>
+
+      <div class="timeline-rail" id="timelineRail"></div>
+    </div>
+  </section>
+
+  <section id="footprint">
+    <div class="wrap">
+      <div class="reveal" data-reveal>
+        <div class="eyebrow">Global Footprint</div>
+        <h2 class="section-title font-display">Programs delivered worldwide</h2>
+        <p style="margin-top:16px; max-width:36rem; font-size:1rem; color:var(--muted);">
+          End-to-end execution &mdash; from destination feasibility and RFPs to
+          embassy coordination and on-ground delivery &mdash; across 14+ international
+          destinations.
+        </p>
+      </div>
+      <div class="flap-board" id="flapBoard">
+        <div class="flap-board-head"><span>PROGRAM</span><span>DESTINATION</span><span>STATUS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="reveal" data-reveal>
+        <div class="eyebrow">Core Skills</div>
+        <h2 class="section-title font-display">What I bring to the table</h2>
+      </div>
+      <div class="pill-row reveal" data-reveal style="transition-delay:100ms" id="skillsPillRow"></div>
+
+      <div style="margin-top:80px; max-width:42rem;">
+        <div class="reveal" data-reveal>
+          <div class="eyebrow">Education</div>
+          <div id="educationList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="wrap">
+      <div class="reveal" data-reveal>
+        <div class="eyebrow">Awards &amp; Recognition</div>
+        <h2 class="section-title font-display">One award, every year since 2022</h2>
+      </div>
+      <div class="awards-grid" id="awardsList"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="reveal" data-reveal style="border-top:1px solid var(--line); padding-top:64px;">
+        <div class="eyebrow">Get in touch</div>
+        <h2 class="contact-title font-display">Open to Program Management &amp; Strategic Planning opportunities.</h2>
+        <div class="cta-row">
+          <a href="mailto:hello@nidhi-profile.example" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg>
+            Email me
+          </a>
+          <a href="#" class="btn btn-ghost" onclick="return false;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download résumé
+          </a>
+        </div>
+        <div class="contact-meta">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Based in India &middot; Available for domestic &amp; international roles
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; Nidhi</span>
+    <span>Program Management &middot; Strategic Planning &middot; Business Operations</span>
+  </footer>
+
+<script>
+  // ---------------- DATA ----------------
+  var TAGLINES = ["Program Management","Strategic Planning","Business Operations","International Leadership Programs"];
+
+  var EXPERIENCE = [
+    { role:"Senior Manager", company:"Life Insurance Company", period:"Apr 2026 \u2014 Present", points:[
+      "Promoted to Senior Manager after 4 years as Regional Manager.",
+      "Own end-to-end strategic planning with expanded scope and budget ownership beyond \u20B99 Cr.",
+      "Primary stakeholder for cross-functional approvals across Finance, Taxation, Procurement and Business."
+    ]},
+    { role:"Regional Manager", company:"Life Insurance Company", period:"Apr 2022 \u2014 Mar 2026", points:[
+      "Led end-to-end planning and execution of international & domestic leadership programs, R&R events and Shikhar Contests, managing delivery for 6,500+ employees across 25+ locations.",
+      "Owned the complete RFP lifecycle \u2014 vendor sourcing, negotiation, procurement \u2014 across 14+ international destinations.",
+      "Executed 4 CEO Forums across Seoul, Paris, London and Adelaide; delivered \u20B92.4 Cr in cumulative cost savings."
+    ]},
+    { role:"Associate Regional Manager", company:"Life Insurance Company", period:"Apr 2020 \u2014 Mar 2022", points:[
+      "Owned Grievance Management for a 2-year tenure \u2014 led the end-to-end complaint lifecycle.",
+      "Prepared governance dashboards and MIS reports, driving process improvements.",
+      "Supported operational execution of leadership programs and R&R initiatives."
+    ]},
+    { role:"Assistant Manager \u2013 Administration & Persistency", company:"Life Insurance Company", period:"Aug 2018 \u2014 Mar 2020", points:[
+      "Ran administration operations and tracked persistency performance.",
+      "Delivered MIS reports and dashboards for real-time operational visibility.",
+      "Supported leadership program and event execution through logistical coordination."
+    ]},
+    { role:"Assistant Manager \u2013 Audit, Governance & Fraud Prevention", company:"YES BANK", period:"Sep 2016 \u2014 Mar 2018", points:[
+      "Administered governance MIS, fraud reporting and audit coordination.",
+      "Prepared executive dashboards and monitored audit observations through to closure."
+    ]},
+    { role:"Administration", company:"YES BANK", period:"Apr 2014 \u2014 Aug 2016", points:[
+      "Directed branch administration and service complaints.",
+      "Coordinated vendors, facilities, procurement and operational support."
+    ]}
+  ];
+
+  var DESTINATIONS = ["Dubai","Greece","Amsterdam","Sydney","Gold Coast","Kuala Lumpur","Baku","Almaty","Beijing","Prague","Langkawi","Phuket","Bangkok","Pattaya"];
+
+  var SKILLS = ["Strategic Planning","Program Management","Business Operations","Budget Management","Procurement","Vendor Management","Contract Negotiation","Stakeholder Management","Governance & Compliance","Audit Management","Risk Management","Cross-functional Leadership","International Event Execution","MIS & Analytics"];
+
+  var EDUCATION = [
+    { degree:"MBA", school:"GGSIPU", period:"2012\u20132014" },
+    { degree:"Diploma in International Business", school:"", period:"2011\u20132012" },
+    { degree:"BBA", school:"GGSIPU", period:"2008\u20132011" },
+    { degree:"Class XII, CBSE", school:"St. Xavier's School \u2014 Distinction", period:"2008" },
+    { degree:"Class X, CBSE", school:"St. Xavier's School \u2014 Distinction", period:"2006" }
+  ];
+
+  var AWARDS = [
+    { name:"Excellence in Strategic Program Award", year:"2022", desc:"Recognized for successfully leading strategic initiatives, contest execution and driving operational excellence." },
+    { name:"Service Excellence Award", year:"2023", desc:"Awarded for delivering exceptional service quality, stakeholder management and seamless execution of business initiatives." },
+    { name:"Cross-Functional Collaboration Award", year:"2024", desc:"Recognized for effectively collaborating across multiple departments to deliver complex strategic programs and events." },
+    { name:"Outstanding Performance Award", year:"2025", desc:"Honored for consistently exceeding business expectations and delivering high-impact results." },
+    { name:"Star Performer Award", year:"2026", desc:"Awarded for outstanding performance, leadership and excellence in strategic program management, event execution and operational delivery." }
+  ];
+
+  // ---------------- NAV ----------------
+  function scrollToId(id){
+    closeMobileNav();
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+  function toggleMobileNav(){
+    var m = document.getElementById("navMobile");
+    var isOpen = m.classList.toggle("open");
+    document.getElementById("iconMenu").style.display = isOpen ? "none" : "block";
+    document.getElementById("iconClose").style.display = isOpen ? "block" : "none";
+  }
+  function closeMobileNav(){
+    document.getElementById("navMobile").classList.remove("open");
+    document.getElementById("iconMenu").style.display = "block";
+    document.getElementById("iconClose").style.display = "none";
+  }
+
+  // ---------------- TAGLINE ROTATE ----------------
+  var taglineIdx = 0;
+  setInterval(function(){
+    taglineIdx = (taglineIdx + 1) % TAGLINES.length;
+    var el = document.getElementById("taglineWord");
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.textContent = TAGLINES[taglineIdx];
+    el.style.animation = "taglineIn .6s ease";
+  }, 2600);
+
+  // ---------------- BUILD TIMELINE ----------------
+  var railEl = document.getElementById("timelineRail");
+  EXPERIENCE.forEach(function(job, i){
+    var item = document.createElement("div");
+    item.className = "timeline-item reveal";
+    item.setAttribute("data-reveal","");
+    item.style.transitionDelay = (i*60) + "ms";
+
+    var pointsHtml = job.points.map(function(p){
+      return '<li><span class="dash">&mdash;</span><span>'+p+'</span></li>';
+    }).join("");
+
+    item.innerHTML =
+      '<span class="timeline-dot"></span>' +
+      '<div class="timeline-period font-mono">'+job.period+'</div>' +
+      '<h3 class="timeline-role font-display">'+job.role+'</h3>' +
+      '<div class="timeline-company">'+job.company+'</div>' +
+      '<ul class="timeline-points">'+pointsHtml+'</ul>';
+    railEl.appendChild(item);
+  });
+
+  // ---------------- BUILD FLAP BOARD ----------------
+  var boardEl = document.getElementById("flapBoard");
+  function padCity(city){
+    var s = city.toUpperCase();
+    while(s.length < 13) s += "\u00A0";
+    return s.slice(0,13);
+  }
+  DESTINATIONS.forEach(function(city, i){
+    var row = document.createElement("div");
+    row.className = "flap-row";
+
+    var idxSpan = document.createElement("span");
+    idxSpan.className = "flap-row-index font-mono";
+    idxSpan.textContent = String(i+1).padStart(2,"0");
+    row.appendChild(idxSpan);
+
+    var charsWrap = document.createElement("div");
+    charsWrap.className = "flap-row-chars";
+    var chars = padCity(city).split("");
+    chars.forEach(function(ch, j){
+      var cell = document.createElement("span");
+      cell.className = "flap-char";
+      cell.textContent = ch;
+      cell.style.transitionDelay = (i*70 + j*16) + "ms";
+      cell.setAttribute("data-flap","");
+      charsWrap.appendChild(cell);
+    });
+    row.appendChild(charsWrap);
+
+    var status = document.createElement("div");
+    status.className = "flap-status font-mono";
+    status.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>DELIVERED';
+    row.appendChild(status);
+
+    boardEl.appendChild(row);
+  });
+
+  // ---------------- BUILD SKILLS / EDUCATION / AWARDS ----------------
+  var skillsRow = document.getElementById("skillsPillRow");
+  SKILLS.forEach(function(s){
+    var span = document.createElement("span");
+    span.className = "pill";
+    span.textContent = s;
+    skillsRow.appendChild(span);
+  });
+
+  var eduList = document.getElementById("educationList");
+  EDUCATION.forEach(function(e){
+    var row = document.createElement("div");
+    row.className = "list-row";
+    row.innerHTML =
+      '<div><div class="list-row-title">'+e.degree+'</div>' +
+      (e.school ? '<div class="list-row-sub">'+e.school+'</div>' : '') + '</div>' +
+      '<div class="list-row-year font-mono">'+e.period+'</div>';
+    eduList.appendChild(row);
+  });
+
+  var awardsList = document.getElementById("awardsList");
+  AWARDS.forEach(function(a, i){
+    var card = document.createElement("div");
+    card.className = "award-card reveal";
+    card.setAttribute("data-reveal","");
+    card.style.transitionDelay = (i*70) + "ms";
+    card.innerHTML =
+      '<div class="award-head">' +
+        '<h3 class="award-name">'+a.name+'</h3>' +
+        '<span class="award-year font-mono">'+a.year+'</span>' +
+      '</div>' +
+      '<p class="award-desc">'+a.desc+'</p>';
+    awardsList.appendChild(card);
+  });
+
+  // ---------------- SCROLL REVEAL ----------------
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("reveal-in");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll("[data-reveal]").forEach(function(el){ revealObserver.observe(el); });
+
+  // ---------------- COUNT UP ----------------
+  function easeOutCubic(t){ return 1 - Math.pow(1-t, 3); }
+  function runCountUp(el){
+    var target = parseFloat(el.getAttribute("data-target"));
+    var isDecimal = target % 1 !== 0;
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if(start === null) start = ts;
+      var p = Math.min((ts-start)/duration, 1);
+      var eased = easeOutCubic(p);
+      var raw = target*eased;
+      var display = isDecimal ? raw.toFixed(1) : Math.round(raw).toLocaleString("en-IN");
+      el.textContent = prefix + display + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        runCountUp(entry.target);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll("[data-countup]").forEach(function(el){ countObserver.observe(el); });
+
+  // ---------------- FLAP BOARD TRIGGER ----------------
+  var flapObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll("[data-flap]").forEach(function(cell){
+          cell.classList.add("active");
+        });
+        flapObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  flapObserver.observe(boardEl);
+</script>
+</body>
+</html>

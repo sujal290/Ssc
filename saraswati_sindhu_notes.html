@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saraswati Sindhu Civilization - Vipulendra Tripathi Sir</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+.playfair{font-family:'Playfair Display',serif}
+.watermark-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.05;overflow:hidden}
+.watermark-text{position:absolute;font-size:42px;font-weight:900;color:#000;transform:rotate(-30deg);white-space:nowrap;letter-spacing:4px}
+.timeline-line{position:absolute;left:20px;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,#1A237E,#BF4D28,#D4AF37)}
+.lang-en .hi,.lang-hi .en{display:none}
+.lang-both .en,.lang-both .hi{display:block}
+.en{color:#1A237E}
+.hi{color:#4A148C}
+</style>
+</head>
+<body class="bg-[#FFF8E7] lang-both">
+<div class="watermark-container" id="wm"></div>
+<script>
+const wm=document.getElementById('wm');
+for(let i=-3;i<25;i++){
+ for(let j=-2;j<12;j++){
+  let d=document.createElement('div');
+  d.className='watermark-text';
+  d.style.top=(i*170)+'px';
+  d.style.left=(j*400-150)+'px';
+  d.innerText='Vipulendra Tripathi Sir';
+  wm.appendChild(d);
+ }
+}
+function setLang(l){
+ document.body.className=document.body.className.replace(/lang-\w+/,'')+' lang-'+l;
+ document.querySelectorAll('.lang-btn').forEach(b=>{b.className='lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200';});
+ document.getElementById('btn-'+l).className='lang-btn px-4 py-1.5 rounded-full text-sm bg-[#1A237E] text-white font-bold';
+}
+</script>
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b-4 border-[#BF4D28] shadow-lg">
+ <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+  <div class="flex items-center gap-3">
+   <div class="w-12 h-12 bg-gradient-to-br from-[#1A237E] to-[#BF4D28] rounded-xl flex items-center justify-center text-white font-bold text-xl">SS</div>
+   <div><h1 class="font-bold text-[#1A237E]">Saraswati Sindhu Sabhyata</h1><p class="text-xs text-[#BF4D28] font-bold">Indus Valley Civilization | UPSC/SSC/PSC</p></div>
+  </div>
+  <div class="flex gap-2">
+   <button id="btn-en" onclick="setLang('en')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200">EN</button>
+   <button id="btn-hi" onclick="setLang('hi')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-gray-200">हिंदी</button>
+   <button id="btn-both" onclick="setLang('both')" class="lang-btn px-4 py-1.5 rounded-full text-sm bg-[#1A237E] text-white font-bold">Both</button>
+  </div>
+ </div>
+</header>
+
+<section class="relative min-h-[85vh] flex items-center overflow-hidden">
+ <img src="container:///mnt/data/resource/great_bath_mohenjo_daro.webp" class="absolute inset-0 w-full h-full object-cover">
+ <div class="absolute inset-0 bg-gradient-to-r from-[#1A237E]/95 via-[#1A237E]/85 to-[#BF4D28]/70"></div>
+ <div class="relative max-w-7xl mx-auto px-6 py-16 text-white w-full">
+  <div class="inline-block bg-[#D4AF37] text-[#1A237E] px-5 py-1.5 rounded-full text-sm font-extrabold mb-4">UPDATED JULY 2026 | UNESCO & ASI LATEST DATA</div>
+  <h1 class="playfair text-4xl md:text-6xl font-bold leading-tight">Saraswati-Sindhu<br><span class="text-[#D4AF37]">Sabhyata</span></h1>
+  <h2 class="text-xl md:text-2xl mt-3 font-light">Indus Valley Civilization | 3300-1300 BCE</h2>
+  <div class="mt-8 grid md:grid-cols-3 gap-4 max-w-5xl">
+   <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20"><b>12,99,600 sq km</b><br><span class="text-sm">Egypt+Mesopotamia se bada</span></div>
+   <div class="bg-[#BF4D28] p-4 rounded-xl"><b>1400+ Sites</b><br><span class="text-sm">80% Saraswati basin me</span></div>
+   <div class="bg-[#D4AF37] text-[#1A237E] p-4 rounded-xl"><b>By Vipulendra Tripathi Sir</b><br><span class="text-sm">UPSC/SSC/PSC Special</span></div>
+  </div>
+ </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 py-8 grid lg:grid-cols-4 gap-6">
+<nav class="lg:col-span-1">
+<div class="sticky top-24 bg-white rounded-2xl shadow-xl p-5 border-t-4 border-[#1A237E]">
+<h3 class="font-bold text-[#1A237E] mb-4">📑 Index</h3>
+<ul class="space-y-2 text-[13px] leading-tight">
+<li>1. <a href="#intro" class="text-[#1A237E] hover:text-[#BF4D28] font-semibold">Nomenclature / नामकरण</a></li>
+<li>2. <a href="#discovery" class="hover:text-[#BF4D28]">Discovery / खोज</a></li>
+<li>3. <a href="#chrono" class="hover:text-[#BF4D28]">Chronology / कालक्रम</a></li>
+<li>4. <a href="#extent" class="hover:text-[#BF4D28]">Extent + Map / विस्तार</a></li>
+<li>5. <a href="#town" class="hover:text-[#BF4D28]">Town Planning / नगर नियोजन</a></li>
+<li>6. <a href="#sites" class="hover:text-[#BF4D28]">Major Sites / प्रमुख स्थल</a></li>
+<li>7. <a href="#culture" class="hover:text-[#BF4D28]">Life & Culture / जीवन</a></li>
+<li>8. <a href="#latest" class="hover:text-[#BF4D28]">Latest 2026 / नवीनतम</a></li>
+<li>9. <a href="#facts" class="hover:text-[#BF4D28]">35 Key Facts</a></li>
+<li>10. <a href="#pyq" class="hover:text-[#BF4D28]">40 PYQs</a></li>
+</ul>
+<div class="mt-6 p-3 bg-[#FFF8E7] rounded-xl text-xs"><b>Watermark:</b> Vipulendra Tripathi Sir on each page - Protected</div>
+</div>
+</nav>
+
+<main class="lg:col-span-3 space-y-8">
+
+<section id="intro" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border-l-8 border-[#1A237E]">
+<h2 class="text-2xl md:text-3xl font-bold text-[#1A237E] mb-4">1. नामकरण / Nomenclature - Why Saraswati-Sindhu?</h2>
+<div class="grid md:grid-cols-2 gap-5">
+<div class="bg-[#E8EAF6] p-5 rounded-xl"><h4 class="font-bold mb-2">ENGLISH</h4><p class="text-sm"><b>Old Name: Indus Valley Civilization</b> by John Marshall 1924 as sites near Indus.<br><br><b>New Name: Saraswati-Sindhu / Indus-Saraswati Civilization</b> - Because >80% sites (1100+ out of 1400) are on Ghaggar-Hakra basin identified as Vedic Saraswati via ISRO satellite, Rigveda mentions Saraswati as mighty river.<br><br>NCERT Class 12 and UPSC now use <b>Indus-Saraswati</b> or <b>Saraswati-Sindhu Sabhyata</b>.</p></div>
+<div class="bg-[#F3E5F5] p-5 rounded-xl"><h4 class="font-bold mb-2">हिंदी</h4><p class="text-sm"><b>पुराना नाम: सिंधु घाटी सभ्यता</b> - जॉन मार्शल ने 1924 में दिया क्योंकि शुरुआती स्थल सिंधु के पास थे।<br><br><b>नया नाम: सरस्वती-सिंधु सभ्यता</b> - क्योंकि 80% से अधिक स्थल घग्गर-हाकरा (वैदिक सरस्वती) बेसिन में हैं। ISRO उपग्रह से प्राचीन वाहिकाओं की पुष्टि। ऋग्वेद में सरस्वती को महानदी कहा गया है।<br><br>अब NCERT और UPSC <b>सरस्वती-सिंधु</b> शब्द का उपयोग करते हैं।</p></div>
+</div>
+</section>
+
+<section id="discovery" class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+<h2 class="text-2xl font-bold text-[#1A237E] mb-6">2. खोज का इतिहास / Discovery Timeline</h2>
+<div class="relative pl-12 border-l-0">
+<div class="timeline-line"></div>
+<div class="space-y-4">
+<div class="relative bg-gradient-to-r from-[#E8EAF6] to-white p-4 rounded-xl border-l-4 border-[#1A237E]"><span class="absolute -left-11 top-4 w-6 h-6 bg-[#1A237E] rounded-full border-4 border-white"></span><b>1826 - Charles Masson</b> - British soldier, first visited Harappa, noted brick ruins, mentioned in his book.<br><span class="text-xs bg-white px-2 py-1 rounded">First reference</span></div>
+<div class="relative bg-gradient-to-r from-[#FBE9E7] to-white p-4 rounded-xl border-l-4 border-[#BF4D28]"><span class="absolute -left-11 top-4 w-6 h-6 bg-[#BF4D28] rounded-full border-4 border-white"></span><b>1856 - Alexander Cunningham</b> - Father of Indian Archaeology, published Harappan seal (unicorn + 6 letters), thought not Indian, failed to understand antiquity.<br><span class="text-xs">SSC PYQ: Cunningham ne seal publish kiya</span></div>
+<div class="relative bg-gradient-to-r from-[#FFF8E7] to-white p-4 rounded-xl border-l-4 border-[#D4AF37]"><span class="absolute -left-11 top-4 w-6 h-6 bg-[#D4AF37] rounded-full border-4 border-white"></span><b>1921 - Daya Ram Sahni</b> - Excavated Harappa (Ravi, Punjab Pak), found 6 granaries, Mother Goddess, R-37 cemetery. <br><b class="text-[#BF4D28]">हड़प्पा - रावी नदी - दयाराम साहनी - 1921 - SSC me sabse zyada pucha</b></div>
+<div class="relative bg-gradient-to-r from-[#E8EAF6] to-white p-4 rounded-xl border-l-4 border-[#1A237E]"><span class="absolute -left-11 top-4 w-6 h-6 bg-[#1A237E] rounded-full border-4 border-white"></span><b>1922 - R.D. Banerji / राखालदास बनर्जी</b> - Excavated Mohenjo-daro (Indus, Sindh Pak), found Great Bath, Great Granary, Dancing Girl. <br><b>मोहनजोदड़ो - सिंधु नदी - राखालदास बनर्जी - 1922</b></div>
+<div class="relative bg-white p-4 rounded-xl border-2 border-[#1A237E] shadow-lg"><span class="absolute -left-11 top-4 w-6 h-6 bg-green-600 rounded-full border-4 border-white"></span><b>20 Sep 1924 - Sir John Marshall</b> - DG ASI, Announced discovery of new civilization in Illustrated London News - Called it <b>Indus Valley Civilization</b>. Nobel-like announcement.<br><span class="text-xs bg-[#1A237E] text-white px-2 py-1 rounded">UPSC Favorite</span></div>
+<div class="relative bg-[#FFF8E7] p-4 rounded-xl border-l-4 border-[#BF4D28]"><span class="absolute -left-11 top-4 w-6 h-6 bg-[#BF4D28] rounded-full border-4 border-white"></span><b>1931 - N.G. Majumdar - Chanhudaro</b> | <b>1953 - A. Ghosh - Kalibangan</b> | <b>1954-58 - S.R. Rao - Lothal</b> | <b>1968 - J.P. Joshi discovered Dholavira, R.S. Bisht excavated 1990-2005</b> | <b>1969 - Suraj Bhan & Amarendra Nath - Rakhigarhi</b></div>
+</div>
+</div>
+</section>
+
+<section id="chrono" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#1A237E] mb-4">3. कालक्रम / Chronology - Updated July 2026</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-sm border-collapse">
+<thead><tr class="bg-[#1A237E] text-white"><th class="p-3 text-left">Phase / चरण</th><th class="p-3">Period / काल</th><th class="p-3">Features / विशेषता</th><th class="p-3">Key Sites</th></tr></thead>
+<tbody>
+<tr class="bg-[#FFF8E7]"><td class="p-3 font-bold">Early Harappan<br>प्रारंभिक</td><td class="p-3">3300-2600 BCE<br><b>Bhirrana 7500 BCE (Oldest per ASI 2024 carbon dating)</b></td><td class="p-3"><div class="en">Rural, Hakra ware, fortification starts, agriculture beginning</div><div class="hi">ग्रामीण, हाकरा मृदभांड, किलेबंदी शुरू</div></td><td class="p-3">Bhirrana, Kunal, Mehrgarh 7000 BCE</td></tr>
+<tr><td class="p-3 font-bold">Mature Harappan<br>परिपक्व / Urban</td><td class="p-3">2600-1900 BCE<br>Peak Urbanization</td><td class="p-3"><div class="en">Grid town planning, seals, script, trade with Mesopotamia, Great Bath, dockyard</div><div class="hi">नगर नियोजन चरम, मुहरें, लिपि, मेसोपोटामिया से व्यापार</div></td><td class="p-3">Harappa, Mohenjo-daro, Dholavira, Rakhigarhi</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-3 font-bold">Late Harappan<br>उत्तर</td><td class="p-3">1900-1300 BCE</td><td class="p-3"><div class="en">Decline, de-urbanization, shift to east (Ghaggar), Late Harappan cemetery H</div><div class="hi">पतन, विखंडन, पूर्व की ओर पलायन</div></td><td class="p-3">Cemetery H, Jhukar, Rangpur</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="extent" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#1A237E] mb-4">4. भौगोलिक विस्तार / Geographical Extent - Triangular Shape</h2>
+<img src="container:///mnt/data/resource/image.webp" class="w-full rounded-2xl shadow-xl mb-6 border-4 border-[#F5E6CC]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-[#E3F2FD] p-4 rounded-xl text-center"><b>North / उत्तर</b><br>Manda<br><span class="text-xs">Jammu, Chenab River</span></div>
+<div class="bg-[#FBE9E7] p-4 rounded-xl text-center"><b>South / दक्षिण</b><br>Daimabad<br><span class="text-xs">Maharashtra, Pravara</span></div>
+<div class="bg-[#E8F5E9] p-4 rounded-xl text-center"><b>East / पूर्व</b><br>Alamgirpur<br><span class="text-xs">UP, Hindon</span></div>
+<div class="bg-[#FFF3E0] p-4 rounded-xl text-center"><b>West / पश्चिम</b><br>Sutkagendor<br><span class="text-xs">Balochistan, Dasht</span></div>
+</div>
+<div class="bg-[#1A237E] text-white p-5 rounded-xl">
+<div class="en text-sm"><b>Saraswati River Mystery Solved:</b> ISRO & ASI confirm Ghaggar-Hakra is Vedic Saraswati. Dried around 2000 BCE due to tectonic shift capturing Sutlej & Yamuna. This drying is main reason for decline - now most accepted theory for UPSC. Satellite imagery shows paleo-channels from Himalayas to Rann of Kutch.</div>
+<div class="hi text-sm mt-2"><b>सरस्वती नदी रहस्य:</b> ISRO और ASI ने पुष्टि की घग्गर-हाकरा ही वैदिक सरस्वती है। 2000 ईसा पूर्व के आसपास विवर्तनिक कारणों से सतलुज व यमुना ने मार्ग बदला, सरस्वती सूखी - यही पतन का मुख्य कारण, UPSC में सबसे मान्य सिद्धांत।</div>
+</div>
+</section>
+
+<section id="town" class="bg-gradient-to-br from-[#1A237E] to-[#283593] text-white rounded-2xl shadow-xl p-6 md:p-8">
+<h2 class="text-2xl md:text-3xl font-bold mb-6">5. नगर नियोजन / Town Planning - World's First Urban Planning!</h2>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10"><h4 class="font-bold text-[#D4AF37]">♟️ Grid System / जाल पद्धति</h4><p class="text-sm mt-2 en">Streets cut at 90°, chessboard pattern. Main streets 9-10m wide, lanes 3-4m. Called 'Oxford of ancient world' for planning.</p><p class="text-sm mt-1 hi">सड़कें 90° पर, शतरंज जैसी। मुख्य सड़कें 9-10मी चौड़ी।</p></div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10"><h4 class="font-bold text-[#D4AF37]">🚿 Drainage / जल निकासी</h4><p class="text-sm mt-2 en">Covered drains, 1 brick deep, made of baked bricks, manhole at intervals, slope maintained, connected to soak pits. Best in ancient world - no other civilization had.</p><p class="text-sm hi">ढकी नालियां, 1 ईंट गहरी, मैनहोल, ढलान, सोख्ता गड्ढे से जुड़ी - प्राचीन विश्व में सर्वश्रेष्ठ।</p></div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10"><h4 class="font-bold text-[#D4AF37]">🧱 Bricks / ईंटें</h4><p class="text-sm mt-2">Ratio 1:2:4 (Thickness:Width:Length) = 7:15:30 cm. Uniform across 12 lakh sq km - shows standardization & central authority. <br>अनुपात 1:2:4 - पूरे क्षेत्र में एकसमान - मानकीकरण का प्रमाण।</p></div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10"><h4 class="font-bold text-[#D4AF37]">🛁 Great Bath / महान स्नानागार</h4><p class="text-sm mt-2">Mohenjo-daro: 14.5m x 7m x 2.44m deep, 2 staircases N & S, changing rooms, bitumen waterproof, fed by well, world's first public pool. Ritual bathing.<br>मोहनजोदड़ो: 14.5x7x2.44मी, बिटुमेन से वाटरप्रूफ, 2 सीढ़ियां, विश्व का प्रथम सार्वजनिक स्नानागार।</p></div>
+<div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/10"><h4 class="font-bold text-[#D4AF37]">🌾 Granary / अन्नागार</h4><p class="text-sm mt-2">Harappa: 6 granaries in row, 15x6m each. Mohenjo-daro: Largest 45.7x22.8m, air ducts for ventilation. Tax in kind storage.<br>हड़प्पा में 6 अन्नागार कतार में, मोहनजोदड़ो में सबसे बड़ा 45.7x22.8मी।</p></div>
+<div class="bg-[#BF4D28] p-4 rounded-xl border-2 border-[#D4AF37]"><h4 class="font-bold text-white">⭐ Dholavira Special / धोलावीरा विशेष - UNESCO 2021</h4><p class="text-sm mt-2">3 divisions (Citadel + Middle Town + Lower Town) not 2. 16 reservoirs, capacity 10 lakh litres, rock-cut, stadium 283m long, signboard with 10 Indus letters (largest inscription). Best water management in ancient world.<br>3 भागों में, 16 जलाशय, स्टेडियम, 10 अक्षरों वाला साइनबोर्ड - UNESCO 27 July 2021</p></div>
+</div>
+</section>
+
+<section id="sites" class="bg-white rounded-2xl shadow-xl p-4 md:p-6">
+<h2 class="text-2xl font-bold text-[#1A237E] mb-4">6. प्रमुख स्थल - खोजकर्ता और खोजें / Major Sites Detailed (UPSC + SSC Most Imp)</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-[12px] md:text-[13px] border-collapse">
+<thead class="bg-[#1A237E] text-white"><tr><th class="p-2 text-left">Site / स्थल</th><th class="p-2">Location / राज्य</th><th class="p-2">River / नदी</th><th class="p-2">Excavator & Year</th><th class="p-2">Key Findings / मुख्य खोज</th><th class="p-2">Significance</th></tr></thead>
+<tbody>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Harappa / हड़प्पा</td><td class="p-2">Punjab, Pakistan</td><td class="p-2">Ravi / रावी</td><td class="p-2">Daya Ram Sahni 1921</td><td class="p-2">6 granaries, R-37 cemetery, Mother Goddess figurine, workers quarters 2 rows</td><td class="p-2">First discovered</td></tr>
+<tr><td class="p-2 font-bold">Mohenjo-daro / मोहनजोदड़ो</td><td class="p-2">Sindh, Pak</td><td class="p-2">Indus / सिंधु</td><td class="p-2">R.D. Banerji 1922</td><td class="p-2">Great Bath, Great Granary, Dancing Girl (bronze 10.8cm lost wax), Priest King (steatite 17.5cm trefoil), Pashupati seal, 700 wells, unicorn seals</td><td class="p-2">Mound of Dead, Largest earlier</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Chanhudaro / चन्हूदड़ो</td><td class="p-2">Sindh</td><td class="p-2">Indus</td><td class="p-2">N.G. Majumdar 1931, Mackay 1935</td><td class="p-2">No citadel, bead factory, inkpot, lipstick, only city without fortification</td><td class="p-2">Industrial town / औद्योगिक नगर</td></tr>
+<tr><td class="p-2 font-bold">Lothal / लोथल</td><td class="p-2">Gujarat</td><td class="p-2">Bhogava</td><td class="p-2">S.R. Rao 1954-58</td><td class="p-2">Dockyard 218x37m artificial, rice husk, double burial (male female together), fire altar, bead factory, chess board, terracotta ship</td><td class="p-2">Manchester of IVC</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Kalibangan / कालीबंगा</td><td class="p-2">Rajasthan</td><td class="p-2">Ghaggar / घग्गर</td><td class="p-2">A. Ghosh 1953, B.B. Lal & Thapar 1961</td><td class="p-2">Ploughed field (earliest), 7 fire altars, camel bones, black & red ware, no drainage, bangle factory</td><td class="p-2">Black bangles / काली चूड़ियां</td></tr>
+<tr><td class="p-2 font-bold">Dholavira / धोलावीरा ⭐</td><td class="p-2">Gujarat, Kutch</td><td class="p-2">Luni</td><td class="p-2">J.P. Joshi 1968, R.S. Bisht 1990-2005</td><td class="p-2">3 towns, 16 reservoirs, stadium, signboard 10 letters, water management best, no. 1 in water conservation</td><td class="p-2">UNESCO 27 July 2021</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Rakhigarhi / राखीगढ़ी ⭐</td><td class="p-2">Haryana</td><td class="p-2">Ghaggar-Hakra</td><td class="p-2">Suraj Bhan 1969, Amarendra Nath 1997</td><td class="p-2">550 ha largest in India, granary, cemetery, DNA study 2019 (no Steppe ancestry), jewellery workshop, museum 2024</td><td class="p-2">Largest in India / भारत में सबसे बड़ा</td></tr>
+<tr><td class="p-2 font-bold">Banawali / बनावली</td><td class="p-2">Haryana</td><td class="p-2">Ghaggar</td><td class="p-2">R.S. Bisht 1974</td><td class="p-2">Toy plough, barley, oval seals, no grid, fire altars</td><td class="p-2">Toy plough</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Surkotada / सुरकोटडा</td><td class="p-2">Gujarat</td><td class="p-2">—</td><td class="p-2">J.P. Joshi 1964</td><td class="p-2">Horse bones (controversial), 2 citadels, oval grave</td><td class="p-2">Horse evidence</td></tr>
+<tr><td class="p-2 font-bold">Daimabad / दाइमाबाद</td><td class="p-2">Maharashtra</td><td class="p-2">Pravara</td><td class="p-2">B.P. Bopardikar 1958</td><td class="p-2">Bronze chariot with 4 bulls, rhino, elephant, southernmost site</td><td class="p-2">Southernmost / दक्षिणतम</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Bhirrana / भिरड़ाना</td><td class="p-2">Haryana</td><td class="p-2">Ghaggar</td><td class="p-2">L.S. Rao 2003-06</td><td class="p-2">7500 BCE oldest, Hakra ware, 3 cultural phases</td><td class="p-2">Oldest / सबसे प्राचीन</td></tr>
+<tr><td class="p-2 font-bold">Manda / मांडा</td><td class="p-2">Jammu</td><td class="p-2">Chenab</td><td class="p-2">J.P. Joshi 1976</td><td class="p-2">Northernmost site</td><td class="p-2">Northernmost / उत्तरतम</td></tr>
+<tr class="bg-[#FFF8E7]"><td class="p-2 font-bold">Sutkagendor / सुत्कागेंडोर</td><td class="p-2">Balochistan, Pak</td><td class="p-2">Dasht</td><td class="p-2">Aurel Stein 1929</td><td class="p-2">Westernmost site, trade point</td><td class="p-2">Westernmost / पश्चिमतम</td></tr>
+<tr><td class="p-2 font-bold">Alamgirpur / आलमगीरपुर</td><td class="p-2">UP</td><td class="p-2">Hindon</td><td class="p-2">Y.D. Sharma 1958</td><td class="p-2">Easternmost site, cotton cloth</td><td class="p-2">Easternmost / पूर्वतम</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="culture" class="grid md:grid-cols-2 gap-5">
+<div class="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-green-600"><h3 class="font-bold text-green-700 mb-2">🌾 Economic Life / आर्थिक जीवन</h3><div class="en text-xs">Crops: Wheat, Barley, Sesame, Mustard, Peas, Cotton first in world (Greek called Sindon). Animals: Humped bull, buffalo, sheep, goat, elephant, camel at Kalibangan, horse at Surkotada controversial. Trade: Mesopotamia (Meluhha), Dilmun (Bahrain), Magan (Oman), shortughai (Afghanistan lapis). Weights: Binary 1:2:4:8:16:32:64 then 160:200:320:640. Bead making Lothal, Chanhudaro.</div><div class="hi text-xs mt-2">फसलें: गेहूं, जौ, तिल, सरसों, मटर, कपास विश्व में प्रथम। पशु: कूबड़ वाला बैल, भैंस, भेड़, बकरी, हाथी। व्यापार: मेसोपोटामिया (मेलुहा), दिलमुन (बहरीन)। बाट: द्विआधारी प्रणाली।</div></div>
+<div class="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-[#BF4D28]"><h3 class="font-bold text-[#BF4D28] mb-2">🕉️ Religious Life / धार्मिक जीवन</h3><div class="en text-xs">Mother Goddess (fertility cult), Pashupati seal - proto Shiva seated in yogic posture surrounded by elephant tiger rhino buffalo deer, Unicorn 60% seals, Peepal worship, Swastika, Linga/Yoni worship, no temples found - open worship, fire altars at Kalibangan & Lothal.</div><div class="hi text-xs mt-2">मातृदेवी (उर्वरता), पशुपति मुहर - योग मुद्रा में बैठे शिव, हाथी बाघ गैंडा भैंसा हिरण से घिरे, एकश्रृंगी 60% मुहरों पर, पीपल पूजा, स्वास्तिक, मंदिर नहीं मिले।</div></div>
+<div class="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-[#1A237E]"><h3 class="font-bold text-[#1A237E] mb-2">🔤 Script / लिपि + Art</h3><div class="en text-xs">400+ signs pictographic, Boustrophedon (right to left then left to right) as on signboard Dholavira, not deciphered, written on steatite seals, shortest 5 longest 26 signs. Art: Dancing Girl bronze 10.8cm lost wax technique - world famous, Priest King steatite 17.5cm trefoil shawl, Pashupati seal, Steatite seals, bronze bull, terracotta toys.</div><div class="hi text-xs mt-2">400+ चिह्न चित्रात्मक, बोस्ट्रोफेडन, अपठित, स्टीटाइट मुहरों पर। कला: नर्तकी कांस्य 10.8सेमी मोम क्षय तकनीक, पुजारी राजा स्टीटाइट 17.5सेमी।</div></div>
+<div class="bg-white rounded-2xl p-5 shadow-lg border-t-4 border-[#D4AF37]"><h3 class="font-bold text-[#8D2B0B] mb-2">💀 Decline / पतन के कारण</h3><div class="en text-xs"><b>Theories:</b> 1. Flood (Marshall, Raikes) 2. Climate change (Stein, Dales) 3. Tectonic (Ghaggar drying) - MOST ACCEPTED NOW 4. Aryan Invasion (Wheeler - rejected) - no evidence of war, skeletons show no invasion marks 5. Ecological imbalance (Fairservis). <b>Latest UPSC answer: Saraswati drying + Climate + Floods composite.</b></div><div class="hi text-xs mt-2"><b>सिद्धांत:</b> बाढ़, जलवायु परिवर्तन, विवर्तनिक सरस्वती सूखना - सबसे मान्य, आर्य आक्रमण (व्हीलर - अमान्य), पारिस्थितिकी असंतुलन।</div></div>
+</section>
+
+<section id="latest" class="bg-gradient-to-r from-[#FFF8E7] to-[#FFECB3] rounded-2xl p-6 border-2 border-[#D4AF37]">
+<h2 class="text-xl font-bold text-[#8D2B0B] mb-4">🚀 Latest Updates till July 2026 / नवीनतम खोजें</h2>
+<div class="grid md:grid-cols-2 gap-3 text-[13px]">
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>27 July 2021:</b> Dholavira declared UNESCO World Heritage Site - India's 40th, first IVC site after Mohenjo-daro (1980) to get UNESCO</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>Feb 2024:</b> Rakhigarhi Archaeological Museum & Interpretation Centre inaugurated by CM Haryana - 5 galleries, DNA lab display, 550 ha site</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>2019 Rakhigarhi DNA Study (Cell Journal):</b> Rakhigarhi woman DNA - no Steppe ancestry, continuity with modern South Asians, Iranian farmer + South Asian hunter-gatherer mix, rejects Aryan invasion</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>2023-25 ASI:</b> 5000-yr old jewellery workshop at Kutch (Juna Khatiya), shell bangles, steatite beads, copper artifacts</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>Bhirrana:</b> ASI carbon dating 2024 confirms 7500 BCE - oldest IVC site, earlier than Mehrgarh 7000 BCE</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>2024-26:</b> Lothal Maritime Heritage Complex (LMHC) construction fast - World's largest maritime museum planned, PM Modi's dream project</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>Sinauli Connection:</b> UP Sinauli chariots 2000 BCE - 3 chariots, shields, shows continuity, some link to Late Harappan</div>
+<div class="bg-white p-3 rounded-xl shadow">✅ <b>2025:</b> New sites in Haryana - Mitathal, Kunal excavations show pre-Harappan to Mature continuity</div>
+</div>
+</section>
+
+<section id="facts" class="bg-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#1A237E] mb-4">⭐ 35 Key Facts - Rattafication for UPSC/SSC/PSC</h2>
+<div class="grid md:grid-cols-2 gap-2.5 text-[12.5px]">
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>1.</b> First urban civilization in India - 3300-1300 BCE, Mature 2600-1900 BCE</div>
+<div class="p-3 bg-[#FFF3E0] rounded-xl"><b>2.</b> Called Saraswati-Sindhu because 80% sites on Ghaggar-Hakra (Saraswati) basin</div>
+<div class="p-3 bg-[#E8F5E9] rounded-xl"><b>3.</b> Extent 12,99,600 sq km - Triangular, bigger than Egypt+Mesopotamia</div>
+<div class="p-3 bg-[#FCE4EC] rounded-xl"><b>4.</b> First discovered by Daya Ram Sahni 1921 Harappa (Ravi)</div>
+<div class="p-3 bg-[#E0F2F1] rounded-xl"><b>5.</b> Mohenjo-daro by R.D. Banerji 1922 Indus - Mound of Dead - 300 ha</div>
+<div class="p-3 bg-[#FFF8E7] rounded-xl"><b>6.</b> John Marshall announced 1924 - DG ASI</div>
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>7.</b> Largest site in India Rakhigarhi 550 ha Haryana, overall earlier Mohenjo-daro 300 ha but now Rakhigarhi bigger</div>
+<div class="p-3 bg-[#F3E5F5] rounded-xl"><b>8.</b> Oldest site Bhirrana 7500 BCE Haryana</div>
+<div class="p-3 bg-[#FFF3E0] rounded-xl"><b>9.</b> Great Bath at Mohenjo-daro 14.5x7x2.44m - bitumen waterproof</div>
+<div class="p-3 bg-[#E8F5E9] rounded-xl"><b>10.</b> Granary largest Mohenjo-daro 45.7x22.8m</div>
+<div class="p-3 bg-[#FCE4EC] rounded-xl"><b>11.</b> Dockyard at Lothal 218x37m artificial - Manchester of IVC</div>
+<div class="p-3 bg-[#E0F2F1] rounded-xl"><b>12.</b> Ploughed field earliest at Kalibangan Rajasthan</div>
+<div class="p-3 bg-[#FFF8E7] rounded-xl"><b>13.</b> Only city without citadel Chanhudaro - industrial town, bead factory</div>
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>14.</b> Dholavira 3 divisions + 16 reservoirs + signboard 10 letters - UNESCO 2021</div>
+<div class="p-3 bg-[#F3E5F5] rounded-xl"><b>15.</b> Dancing Girl bronze 10.8cm lost wax Mohenjo-daro - world famous art</div>
+<div class="p-3 bg-[#FFF3E0] rounded-xl"><b>16.</b> Priest King steatite 17.5cm trefoil shawl Mohenjo-daro</div>
+<div class="p-3 bg-[#E8F5E9] rounded-xl"><b>17.</b> Pashupati seal proto Shiva surrounded by elephant tiger rhino buffalo deer</div>
+<div class="p-3 bg-[#FCE4EC] rounded-xl"><b>18.</b> Unicorn on 60% seals - most common animal</div>
+<div class="p-3 bg-[#E0F2F1] rounded-xl"><b>19.</b> Script pictographic 400+ signs boustrophedon undeciphered</div>
+<div class="p-3 bg-[#FFF8E7] rounded-xl"><b>20.</b> Cotton first cultivated world - Greeks called Sindon</div>
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>21.</b> No temple found, no iron, no horse generally</div>
+<div class="p-3 bg-[#F3E5F5] rounded-xl"><b>22.</b> Weights binary 1:2:4:8:16:32:64 then 160:200:320:640</div>
+<div class="p-3 bg-[#FFF3E0] rounded-xl"><b>23.</b> Bricks ratio 1:2:4 standardization</div>
+<div class="p-3 bg-[#E8F5E9] rounded-xl"><b>24.</b> Drainage best in ancient world - covered drains manhole</div>
+<div class="p-3 bg-[#FCE4EC] rounded-xl"><b>25.</b> Fire altars at Kalibangan (7) & Lothal</div>
+<div class="p-3 bg-[#E0F2F1] rounded-xl"><b>26.</b> Double burial at Lothal (male female together)</div>
+<div class="p-3 bg-[#FFF8E7] rounded-xl"><b>27.</b> Horse bones at Surkotada controversial - UPSC asked</div>
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>28.</b> Bronze chariot with 4 bulls at Daimabad southernmost</div>
+<div class="p-3 bg-[#F3E5F5] rounded-xl"><b>29.</b> Trade with Mesopotamia (Meluhha), Dilmun Bahrain, Magan Oman</div>
+<div class="p-3 bg-[#FFF3E0] rounded-xl"><b>30.</b> Decline main reason Saraswati drying + climate change - most accepted now, Aryan invasion rejected</div>
+<div class="p-3 bg-[#E8F5E9] rounded-xl"><b>31.</b> Manda northernmost Chenab Jammu, Daimabad southernmost Pravara Maharashtra</div>
+<div class="p-3 bg-[#FCE4EC] rounded-xl"><b>32.</b> Alamgirpur easternmost Hindon UP, Sutkagendor westernmost Dasht Balochistan</div>
+<div class="p-3 bg-[#E0F2F1] rounded-xl"><b>33.</b> Rakhigarhi DNA 2019 no Steppe ancestry continuity</div>
+<div class="p-3 bg-[#FFF8E7] rounded-xl"><b>34.</b> Inkpot found at Chanhudaro shows literacy</div>
+<div class="p-3 bg-[#E8EAF6] rounded-xl"><b>35.</b> Swastika symbol first found in IVC - auspicious symbol</div>
+</div>
+</section>
+
+<section id="pyq" class="bg-[#1A237E] text-white rounded-2xl shadow-xl p-6">
+<h2 class="text-2xl font-bold text-[#D4AF37] mb-5">📝 40 PYQs - SSC / UPSC / PSC Trend Analysis</h2>
+<div class="grid md:grid-cols-2 gap-3 text-[12.5px]">
+<div class="bg-white/10 p-3 rounded-xl"><b>Q1. Harappa was excavated by?</b> (SSC CGL 2022, CHSL 2021) → <b class="text-[#D4AF37]">Daya Ram Sahni 1921</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q2. Mohenjo-daro was excavated by?</b> (SSC CHSL 2023, MTS 2022) → <b class="text-[#D4AF37]">R.D. Banerji 1922</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q3. Indus Valley Civilization was announced by?</b> (UPSC 2019) → <b class="text-[#D4AF37]">John Marshall 1924</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q4. Great Bath found at?</b> (UPSC 2018, SSC CGL 2021, CHSL 2023) → <b class="text-[#D4AF37]">Mohenjo-daro</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q5. Dockyard found at?</b> (SSC CGL 2021, CPO 2022, UPSC 2017) → <b class="text-[#D4AF37]">Lothal</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q6. Ploughed field evidence at?</b> (SSC CPO 2022, CGL 2020) → <b class="text-[#D4AF37]">Kalibangan</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q7. Largest IVC site in India?</b> (SSC GD 2024, UPSC 2023) → <b class="text-[#D4AF37]">Rakhigarhi 550 ha</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q8. Oldest IVC site?</b> (SSC MTS 2024, PSC 2023) → <b class="text-[#D4AF37]">Bhirrana 7500 BCE</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q9. Fire altars 7 found at?</b> (SSC CGL 2020) → <b class="text-[#D4AF37]">Kalibangan</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q10. City without citadel?</b> (SSC CHSL 2022) → <b class="text-[#D4AF37]">Chanhudaro</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q11. Dholavira UNESCO year?</b> (PSC 2023, SSC 2022) → <b class="text-[#D4AF37]">27 July 2021</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q12. Indus script nature?</b> (UPSC 2019, 2020) → <b class="text-[#D4AF37]">Pictographic, Boustrophedon, Undeciphered</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q13. Dancing Girl material?</b> (SSC 2023, UPSC) → <b class="text-[#D4AF37]">Bronze, lost wax, 10.8cm</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q14. Cotton first cultivated, Greeks called?</b> (UPSC) → <b class="text-[#D4AF37]">Sindon</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q15. Southernmost site?</b> (SSC CGL 2021) → <b class="text-[#D4AF37]">Daimabad (Pravara)</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q16. Northernmost site?</b> (SSC) → <b class="text-[#D4AF37]">Manda (Chenab)</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q17. Easternmost?</b> (SSC) → <b class="text-[#D4AF37]">Alamgirpur (Hindon)</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q18. Westernmost?</b> (SSC) → <b class="text-[#D4AF37]">Sutkagendor (Dasht)</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q19. Horse bones at?</b> (UPSC 2017) → <b class="text-[#D4AF37]">Surkotada</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q20. Bronze chariot 4 bulls at?</b> (PSC) → <b class="text-[#D4AF37]">Daimabad</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q21. Inkpot found at?</b> (SSC) → <b class="text-[#D4AF37]">Chanhudaro</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q22. Double burial at?</b> (SSC) → <b class="text-[#D4AF37]">Lothal</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q23. Most common animal on seals?</b> (SSC) → <b class="text-[#D4AF37]">Unicorn 60%</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q24. Only industrial town?</b> → <b class="text-[#D4AF37]">Chanhudaro</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q25. Bricks ratio?</b> (SSC) → <b class="text-[#D4AF37]">1:2:4</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q26. Great Granary largest at?</b> → <b class="text-[#D4AF37]">Mohenjo-daro 45.7x22.8m</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q27. Manchester of IVC?</b> → <b class="text-[#D4AF37]">Lothal</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q28. Black bangles city?</b> → <b class="text-[#D4AF37]">Kalibangan</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q29. Signboard 10 letters at?</b> → <b class="text-[#D4AF37]">Dholavira</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q30. DNA study no Steppe at?</b> (UPSC 2022) → <b class="text-[#D4AF37]">Rakhigarhi 2019</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q31. Pashupati seal animals?</b> → <b class="text-[#D4AF37]">Elephant Tiger Rhino Buffalo Deer</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q32. No temple found - true?</b> → <b class="text-[#D4AF37]">Yes, no temple found in IVC</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q33. Weights system?</b> → <b class="text-[#D4AF37]">Binary 1:2:4:8:16</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q34. Cotton cloth found at?</b> → <b class="text-[#D4AF37]">Alamgirpur</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q35. Toy plough at?</b> → <b class="text-[#D4AF37]">Banawali</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q36. 16 reservoirs at?</b> → <b class="text-[#D4AF37]">Dholavira</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q37. Mound of Dead means?</b> → <b class="text-[#D4AF37]">Mohenjo-daro</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q38. Decline main reason now?</b> (UPSC) → <b class="text-[#D4AF37]">Saraswati drying + Climate</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q39. Mesopotamia called IVC?</b> → <b class="text-[#D4AF37]">Meluhha</b></div>
+<div class="bg-white/10 p-3 rounded-xl"><b>Q40. Swastika first found?</b> → <b class="text-[#D4AF37]">Indus Valley</b></div>
+</div>
+</section>
+
+<div class="text-center py-10 bg-white rounded-2xl shadow-xl border-t-4 border-[#1A237E]">
+<h2 class="text-3xl font-bold text-[#1A237E] playfair">Thank You!</h2>
+<p class="text-[#BF4D28] font-bold mt-2 text-lg">Prepared by Vipulendra Tripathi Sir</p>
+<p class="text-sm mt-1">SSC / PSC / UPSC History Series | Updated July 2026 | Watermark Protected</p>
+<p class="text-xs mt-3 bg-[#FFF8E7] inline-block px-4 py-2 rounded-full">Dholavira UNESCO 2021 | Rakhigarhi Museum 2024 | Bhirrana 7500 BCE | Latest ASI Data Included</p>
+</div>
+
+</main>
+</div>
+
+<footer class="bg-[#1A237E] text-white text-center py-4 text-xs mt-10">© 2026 Vipulendra Tripathi Sir | Saraswati Sindhu Civilization Notes | All Rights Reserved | Watermark Protected</footer>
+</body>
+</html>

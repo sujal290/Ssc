@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Me</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=Poppins:wght@200;300;400&display=swap');
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  :root{
+    --night:#0c1118;
+    --night-deep:#070a0f;
+    --ember:#d99a5b;
+    --moon:#e9e6df;
+    --dim:#9a9488;
+  }
+
+  body{
+    background: radial-gradient(ellipse at 50% 0%, var(--night) 0%, var(--night-deep) 80%);
+    color:var(--moon);
+    font-family:'EB Garamond', serif;
+    font-size:18px;
+    line-height:2;
+    overflow-x:hidden;
+  }
+
+  .stars{ position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .star{
+    position:absolute; width:2px; height:2px;
+    background:var(--moon); border-radius:50%; opacity:0.4;
+    animation:twinkle 5s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:0.08;} 50%{opacity:0.6;} }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:90px 26px 140px;
+  }
+
+  .tag{
+    text-align:center;
+    font-family:'Poppins', sans-serif;
+    font-weight:300;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--dim);
+    margin-bottom:10px;
+  }
+
+  h1{
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(30px,6vw,42px);
+    color:var(--moon);
+    margin-bottom:8px;
+  }
+
+  .note{
+    text-align:center;
+    font-family:'Poppins', sans-serif;
+    font-weight:300;
+    font-size:13px;
+    color:var(--dim);
+    max-width:420px;
+    margin:0 auto 70px;
+    line-height:1.7;
+  }
+
+  .candle{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:60px;
+    filter:drop-shadow(0 0 14px rgba(217,154,91,0.5));
+    animation:flicker 2.6s ease-in-out infinite;
+  }
+  @keyframes flicker{ 0%,100%{opacity:1;} 50%{opacity:0.82;} }
+
+  p{ margin-bottom:26px; color:var(--moon); }
+  p.soft{ color:var(--dim); }
+  strong{ color:var(--ember); font-weight:600; }
+
+  .rule{
+    width:60px; height:1px;
+    background:rgba(233,230,223,0.2);
+    margin:50px auto;
+  }
+
+  .closing{
+    margin-top:60px;
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(20px,4vw,26px);
+    color:var(--ember);
+    line-height:1.8;
+  }
+
+  footer{
+    text-align:center;
+    padding:60px 20px 20px;
+    font-family:'Poppins', sans-serif;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(154,148,136,0.4);
+  }
+
+  body.locked > *:not(#lockScreen){ display:none !important; }
+  .lock-screen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(ellipse at 50% 0%, var(--night) 0%, var(--night-deep) 80%);
+    padding:24px;
+  }
+  .lock-card{
+    text-align:center;
+    max-width:300px;
+    width:100%;
+  }
+  .lock-title{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:22px;
+    color:var(--moon);
+    margin-bottom:22px;
+  }
+  .lock-input{
+    display:block;
+    width:100%;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(233,230,223,0.2);
+    color:var(--moon);
+    font-family:'Poppins', sans-serif;
+    font-size:14px;
+    padding:12px 16px;
+    border-radius:999px;
+    text-align:center;
+    outline:none;
+    margin-bottom:16px;
+    letter-spacing:2px;
+  }
+  .lock-input:focus{ border-color:var(--ember); }
+  .lock-btn{
+    background:none;
+    border:1px solid rgba(217,154,91,0.4);
+    color:var(--ember);
+    font-family:'Poppins', sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:12px 26px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all 0.35s ease;
+  }
+  .lock-btn:hover{ background:rgba(217,154,91,0.1); }
+  .lock-error{
+    font-size:12px;
+    color:#e08f8f;
+    margin-top:14px;
+    opacity:0;
+    transition:opacity 0.3s ease;
+  }
+  .lock-error.show{ opacity:1; }
+</style>
+</head>
+<body class="locked">
+
+<div id="lockScreen" class="lock-screen">
+  <div class="lock-card">
+    <div class="lock-title">This one's just for me.</div>
+    <input type="password" id="lockInput" class="lock-input" placeholder="password" autocomplete="off">
+    <button class="lock-btn" id="lockBtn" onclick="checkPassword()">Unlock</button>
+    <p class="lock-error" id="lockError">Not quite — try again.</p>
+  </div>
+</div>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+  <div class="tag">not sent · not for her · just for me</div>
+  <h1>The Version I Kept for Myself</h1>
+  <p class="note">Everything I couldn't put on her page, because it was never really about her reading it. It was about me finally putting it down somewhere.</p>
+
+  <div class="candle">🕯️</div>
+
+  <p>People ask me why I put you above everyone. Why I cried so much that afternoon. Why I whisper your name so often. Why I kept knocking on your door, just hoping there would still be a little space for me.</p>
+
+  <p>And honestly, I don't have a simple answer.</p>
+
+  <p>Not because you were "the one." Not because I know whether what I felt was love, attachment, or ishq. You weren't my friend, at least not in the way I could call you that. From your side, you weren't my di either. You never promised me anything. You never owed me love, attention, or a place in your life.</p>
+
+  <p>And maybe that's what makes it so difficult to explain.</p>
+
+  <p>Because somewhere along the way, <strong>I got used to your presence.</strong></p>
+
+  <p>You were the person who somehow became part of my darkest phases. The person I could share things with when I didn't know where else to put them.</p>
+
+  <p>That's why letting you go never felt like something I could simply decide to do.</p>
+
+  <p>I know these things are mutual. A place in someone's life cannot be demanded. And maybe I should have understood that much earlier.</p>
+
+  <p>I'm an overthinker. A deep thinker. And perhaps I have always been someone who gives more than he asks for.</p>
+
+  <p>I kept giving pieces of myself to people, hoping that someday someone would simply stay.</p>
+
+  <p>I never really asked anyone for much. I just kept showing up.</p>
+
+  <p>People came, took what they needed, and moved on.</p>
+
+  <p class="soft">Maybe somewhere inside me, there was always a quiet wish: <strong>"Koi toh ho jo mere liye ruk jaaye."</strong></p>
+
+  <div class="rule"></div>
+
+  <p>I have never had a conventional heartbreak. But that doesn't mean my heart was never broken.</p>
+
+  <p>A long time ago, I told someone, "Tum achhi lagti ho." She replied, "You're not my type."</p>
+
+  <p>I only meant that I liked her presence. I never meant that liking someone automatically meant wanting a relationship. But I took those words into a loop I struggled to get out of.</p>
+
+  <p>I eventually did. And then, much later, I met you.</p>
+
+  <p>It was completely random. I wasn't looking for another attachment. I wasn't looking for a relationship. I wasn't even thinking about asking you for anything.</p>
+
+  <p>I simply found someone I genuinely liked talking to.</p>
+
+  <p>I told you that you were special to me. And when I made efforts for you, I never really considered them "efforts." Maybe because nobody had ever done those little things for me without being asked.</p>
+
+  <p>I never wanted to replace anyone in your life. I never wanted to become something I wasn't.</p>
+
+  <p>Somewhere in my mind, I always saw you as someone older, wiser, someone I could look up to. And perhaps, without realising it, I started expecting from you the same emotional safety I had always been searching for.</p>
+
+  <div class="rule"></div>
+
+  <p class="soft">Then came words like — "psycho." "stalker." "obsessive." "attention seeker."</p>
+
+  <p>Maybe I made mistakes. Maybe I crossed boundaries I should have understood. And I accept that.</p>
+
+  <p>But sometimes I still wonder — <strong>did anyone ever stop and ask why I was doing so much?</strong></p>
+
+  <p>Not to justify it. Just to understand it.</p>
+
+  <p>Because you were one of the very few people I actually shared myself with. That's why I tagged you. That's why I wanted to tell you things. That's why your reaction mattered to me.</p>
+
+  <p>For me, it wasn't a game.</p>
+
+  <p>But I understand now that something can be genuine from one person's side and still feel overwhelming from the other.</p>
+
+  <p>And that is something I have to accept.</p>
+
+  <div class="rule"></div>
+
+  <p>I don't want to call it one-sided love anymore. I don't want to call it obsession either.</p>
+
+  <p>Maybe it was simply <strong>a person becoming important to another person in a way neither of them had planned.</strong></p>
+
+  <p>You once asked why I made so much effort. Maybe the simplest answer is: <strong>because I was giving you something I had spent most of my life wishing someone would give me.</strong></p>
+
+  <p>Care. Presence. Consistency. A little space. A little conversation. Nothing more.</p>
+
+  <p>I don't think I'm a person who needs constant attention. I think I'm simply a person who needs to feel that he matters somewhere. Someone who can give everything — just for five honest minutes of conversation and a genuine smile.</p>
+
+  <p>I'm not crazy. I'm just someone who sometimes gives people the things he himself never received.</p>
+
+  <p>And maybe that's why you became so important. You were there in a part of my life where I was trying to find myself again.</p>
+
+  <div class="rule"></div>
+
+  <p>So, if I have to let you go now, I will. Not because what I felt was fake. But because I finally understand that <strong>someone can be precious to you without belonging to you.</strong></p>
+
+  <p>You may never call me your friend. I may never be able to call you my di. Maybe there won't even be a proper word for what you meant to me.</p>
+
+  <p>And that's okay. Some relationships don't need a label to have mattered.</p>
+
+  <p>You will always be one of those rare chapters where I met a version of myself I had almost forgotten.</p>
+
+  <p>Thank you for being one of my safest places for a while.</p>
+
+  <p>And someday, when all of this is far behind me, I hope I remember you not with pain, not with regret, but simply with gratitude.</p>
+
+  <p class="soft">You are older than me, and life will take you wherever it is meant to. Whether you are married, about to be married, or simply living your own beautiful life — stay healthy. Stay happy. Stay exactly as you are.</p>
+
+  <p>And if I ever said "devotion," and you thought it was immature, maybe today I understand what I was trying to say. Devotion doesn't mean possession. It means being grateful that someone existed in your life at all.</p>
+
+  <div class="closing">
+    I loved the place you held in my life.<br>
+    I respect the place I hold in yours.<br>
+    And now, I will learn to carry the memory<br>
+    without trying to carry you.
+  </div>
+
+  <p style="text-align:center; margin-top:50px;">Thank you.<br>For the conversations. For the moments. For the memories.</p>
+
+  <p style="text-align:center; font-style:italic;">And most importantly — thank you for helping me meet myself one last time.</p>
+</div>
+
+<footer>written for myself, not for sending</footer>
+
+<script>
+  function checkPassword(){
+    const input = document.getElementById('lockInput');
+    const error = document.getElementById('lockError');
+    const val = input.value.trim().toLowerCase();
+    if(val === 'krishu'){
+      document.getElementById('lockScreen').style.display = 'none';
+      document.body.classList.remove('locked');
+    } else {
+      error.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+  }
+  document.getElementById('lockInput').addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ checkPassword(); }
+  });
+
+  const starsEl = document.getElementById('stars');
+  for(let i=0;i<60;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*5)+'s';
+    s.style.animationDuration = (3+Math.random()*4)+'s';
+    starsEl.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
