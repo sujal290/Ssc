@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock-Cut Architecture — SSC CGL Master Notes</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;
+  --line:#dfe4ec;--accent:#315efb;--gold:#f5b700;--danger:#d92d20;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.5}
+header{background:linear-gradient(135deg,#111827,#263b80);color:white;padding:34px 20px}
+.wrap{max-width:1250px;margin:auto}
+h1{margin:0 0 8px;font-size:34px}
+.subtitle{opacity:.88}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+input,button{border:1px solid #cfd6e2;border-radius:10px;padding:11px 14px;font-size:14px}
+input{min-width:280px;flex:1}
+button{background:white;cursor:pointer}
+main{padding:24px 16px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{font-size:23px;display:block}
+.section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:18px 0}
+.section h2{margin-top:0}
+.badge{display:inline-block;background:#eef2ff;color:#243ea8;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:1050px}
+th,td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#eef2f7;position:sticky;top:0;z-index:1;font-size:13px}
+tr:last-child td{border-bottom:0}
+tr.hidden{display:none}
+.key{font-weight:800}
+.gold{color:#9a6700;font-weight:800}
+.trap{background:#fff7ed;border-left:5px solid #f79009;padding:14px;border-radius:10px}
+.fast{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.fast div{background:#f8faff;border:1px solid #dce5ff;padding:12px;border-radius:10px}
+.memorize{background:#101828;color:white;border-radius:14px;padding:18px}
+.memorize span{display:block;margin:7px 0}
+footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.fast{grid-template-columns:1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}h1{font-size:27px}input{min-width:100%}}
+@media print{
+ body{background:white}.controls,footer{display:none}.section{break-inside:avoid;border:0}
+ header{background:white;color:black;padding:15px 0}.table-wrap{overflow:visible}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<h1>🪨 Rock-Cut Architecture</h1>
+<div class="subtitle">SSC CGL / CHSL — Ultimate One-Page Master Notes • Site + Location + Dynasty + Builder/Patron + Religion + Period + Features + Tricks</div>
+<div class="controls">
+<input id="search" placeholder="🔎 Search site, ruler, dynasty, religion, feature...">
+<button onclick="window.print()">🖨️ Print / Save PDF</button>
+<button onclick="document.getElementById('search').value='';filterRows()">↻ Reset</button>
+</div>
+</div>
+</header>
+
+<main class="wrap">
+<div class="grid">
+<div class="stat"><b>16</b>High-yield sites</div>
+<div class="stat"><b>7</b>Major dynastic links</div>
+<div class="stat"><b>34</b>Ellora caves</div>
+<div class="stat"><b>3</b>Religions at Ellora</div>
+</div>
+
+<section class="section">
+<h2>📚 Final SSC Master Table</h2>
+<div class="table-wrap">
+<table id="master">
+<thead><tr>
+<th>#</th><th>Site</th><th>Location</th><th>Period / Dynasty</th><th>Built / Patronised by</th><th>Religion</th><th>⭐ Key Feature</th><th>🧠 Short Trick</th>
+</tr></thead>
+<tbody>
+<tr><td>1</td><td class="key">Barabar Caves</td><td>Bihar</td><td><b>Mauryan</b>, 3rd C. BCE</td><td><b>Ashoka & Dasharatha</b></td><td>Ajivika</td><td><b>Oldest surviving rock-cut caves; Mauryan polish</b></td><td><b>A-D-A</b> = Ashoka–Dasharatha–Ajivika</td></tr>
+<tr><td>2</td><td class="key">Nagarjuni Caves</td><td>Bihar</td><td>Mauryan</td><td><b>Dasharatha Maurya</b></td><td>Ajivika</td><td>Inscriptions + polished interiors</td><td><b>Nagarjuni = Dasharatha</b></td></tr>
+<tr><td>3</td><td class="key">Ajanta Caves</td><td>Maharashtra</td><td><b>Satavahana + Vakataka</b></td><td>Later phase: <b>Vakataka king Harishena</b></td><td>Buddhism</td><td><b>Paintings, Jataka stories, sculptures</b></td><td><b>A = Ajanta = Art/Paintings</b></td></tr>
+<tr><td>4</td><td class="key">Ellora Caves</td><td>Maharashtra</td><td>c. 6th–10th C.; <b>Rashtrakuta</b> major patronage</td><td>Multiple dynasties; Rashtrakutas important</td><td><b>Buddhist + Hindu + Jain</b></td><td><b>34 caves; 3 religions</b></td><td><b>E = Everything</b></td></tr>
+<tr><td>5</td><td class="key">Kailasa Temple, Ellora (Cave 16)</td><td>Maharashtra</td><td><b>Rashtrakuta</b></td><td><b>Krishna I</b></td><td>Hindu / Shaivism</td><td><b>Monolithic temple</b> carved from one rock</td><td><b>K = Krishna → Kailasa</b></td></tr>
+<tr><td>6</td><td class="key">Elephanta Caves</td><td>Maharashtra</td><td>c. 5th–8th C.</td><td><b>Patronage debated; often linked to Kalachuris</b></td><td>Shaivism</td><td><b>Trimurti / Maheshmurti of Shiva</b></td><td><b>Elephanta = 3-faced Shiva</b></td></tr>
+<tr><td>7</td><td class="key">Karla Caves</td><td>Maharashtra</td><td>c. 1st C. BCE–1st C. CE</td><td>Buddhist patrons / merchants</td><td>Buddhism</td><td><b>Grand Chaitya hall</b></td><td><b>Karla = Chaitya</b></td></tr>
+<tr><td>8</td><td class="key">Bhaja Caves</td><td>Maharashtra</td><td>c. 2nd C. BCE</td><td>Early Buddhist patrons</td><td>Buddhism</td><td>Early <b>Chaitya + Vihara</b></td><td><b>Bhaja = Basic Buddhist caves</b></td></tr>
+<tr><td>9</td><td class="key">Bedse Caves</td><td>Maharashtra</td><td>Satavahana period</td><td>Buddhist patrons</td><td>Buddhism</td><td><b>Chaitya + Viharas</b></td><td><b>Bedse = Buddhist</b></td></tr>
+<tr><td>10</td><td class="key">Nasik / Pandavleni Caves</td><td>Maharashtra</td><td><b>Satavahana</b> + later</td><td>Satavahana rulers & merchants</td><td>Buddhism</td><td>Buddhist caves + <b>inscriptions</b></td><td><b>Nasik = Satavahana inscriptions</b></td></tr>
+<tr><td>11</td><td class="key">Kanheri Caves</td><td>Maharashtra</td><td>c. 1st C. BCE onward</td><td>Buddhist monastic community & patrons</td><td>Buddhism</td><td><b>Huge Buddhist cave complex</b></td><td><b>Kanheri = Mumbai Buddhist complex</b></td></tr>
+<tr><td>12</td><td class="key">Udayagiri Caves</td><td>Madhya Pradesh</td><td><b>Gupta, 5th C. CE</b></td><td><b>Chandragupta II period</b></td><td>Hindu + Jain</td><td>Giant <b>Varaha relief</b></td><td><b>Gupta = Udayagiri = Varaha</b></td></tr>
+<tr><td>13</td><td class="key">Badami Caves</td><td>Karnataka</td><td><b>Early Chalukya, 6th C.</b></td><td><b>Chalukyas of Badami</b></td><td>Hindu + Jain</td><td><b>4 cave temples</b></td><td><b>Badami = Chalukya 4</b></td></tr>
+<tr><td>14</td><td class="key">Mamallapuram Caves / Mandapas</td><td>Tamil Nadu</td><td><b>Pallava</b></td><td><b>Mahendravarman I; Narasimhavarman I</b></td><td>Hindu</td><td>Rock-cut <b>Mandapas + Rathas</b></td><td><b>Pallava = Mandapa / Mahamalla</b></td></tr>
+<tr><td>15</td><td class="key">Mandagapattu Cave</td><td>Tamil Nadu</td><td>Pallava</td><td><b>Mahendravarman I</b></td><td>Hindu</td><td>Early Pallava rock-cut temple</td><td><b>Mahendra = Mandagapattu</b></td></tr>
+<tr><td>16</td><td class="key">Undavalli Caves</td><td>Andhra Pradesh</td><td>c. 4th–5th C. onward</td><td>Early patronage uncertain; later associations</td><td>Hindu / Buddhist influences</td><td><b>4-storeyed rock-cut cave</b></td><td><b>Undavalli = 4 floors</b></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="section">
+<h2>🏛️ Dynasty → Site → Instant Trick</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Dynasty</th><th>Important Sites</th><th>Instant Memory Trick</th></tr></thead>
+<tbody>
+<tr><td><b>Maurya</b></td><td>Barabar, Nagarjuni</td><td>🧠 <b>Maurya = Polish Rock</b></td></tr>
+<tr><td><b>Satavahana</b></td><td>Karla, Bhaja, Bedse, Nasik; early Ajanta</td><td>🧠 <b>Satavahana = Maharashtra Caves</b></td></tr>
+<tr><td><b>Vakataka</b></td><td>Ajanta</td><td>🧠 <b>Vakataka = Ajanta Paintings</b></td></tr>
+<tr><td><b>Gupta</b></td><td>Udayagiri</td><td>🧠 <b>Gupta = Varaha</b></td></tr>
+<tr><td><b>Chalukya</b></td><td>Badami</td><td>🧠 <b>Chalukya = 4 Caves</b></td></tr>
+<tr><td><b>Pallava</b></td><td>Mamallapuram, Mandagapattu</td><td>🧠 <b>Pallava = Mandapa / Ratha</b></td></tr>
+<tr><td><b>Rashtrakuta</b></td><td>Ellora — Kailasa</td><td>🧠 <b>Krishna I = Kailasa</b></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="section">
+<h2>🛕 Ellora — SSC Favourite</h2>
+<div class="fast">
+<div><span class="badge">Caves 1–12</span><br><b>Buddhist</b></div>
+<div><span class="badge">Caves 13–29</span><br><b>Hindu</b></div>
+<div><span class="badge">Caves 30–34</span><br><b>Jain</b></div>
+<div><span class="badge">Cave 16</span><br><b>Kailasa Temple → Krishna I → Rashtrakuta</b></div>
+</div>
+<p><b>Master trick:</b> <span class="gold">Ellora = 34 caves + 3 religions + Kailasa.</span></p>
+</section>
+
+<section class="section">
+<h2>📖 Important Architecture Terms</h2>
+<div class="fast">
+<div><b>Chaitya</b> → Buddhist <b>prayer / worship hall</b>, commonly containing a stupa.</div>
+<div><b>Vihara</b> → Buddhist <b>monastery / residence</b> for monks.</div>
+<div><b>Monolithic</b> → Carved from <b>a single piece / mass of rock</b>.</div>
+<div><b>Rock-cut</b> → Structure is <b>excavated/carved out of natural rock</b>, not assembled block-by-block.</div>
+</div>
+</section>
+
+<section class="section">
+<h2>⚡ Super-Fast 7-Line Revision</h2>
+<div class="memorize">
+<span><b>1.</b> Barabar → Ashoka → Ajivika → Maurya</span>
+<span><b>2.</b> Ajanta → Buddhism → Paintings → Harishena / Vakataka</span>
+<span><b>3.</b> Ellora → 3 religions → 34 caves</span>
+<span><b>4.</b> Kailasa → Cave 16 → Krishna I → Rashtrakuta</span>
+<span><b>5.</b> Elephanta → Shiva → Trimurti</span>
+<span><b>6.</b> Badami → Chalukya → 4 caves</span>
+<span><b>7.</b> Udayagiri → Gupta → Varaha</span>
+</div>
+</section>
+
+<section class="section">
+<h2>🚨 SSC Traps</h2>
+<div class="trap">
+<b>Trap 1:</b> <b>Mamallapuram Shore Temple is NOT rock-cut.</b> It is a <b>structural temple</b>.<br><br>
+<b>Trap 2:</b> Elephanta's exact patronage is <b>debated</b>; avoid assigning it with certainty to one ruler.<br><br>
+<b>Trap 3:</b> Ajanta is famous especially for <b>Buddhist paintings</b>; its development spans Satavahana and Vakataka phases.<br><br>
+<b>Trap 4:</b> Kailasa at Ellora is <b>Cave 16</b> and is <b>monolithic</b>.
+</div>
+</section>
+
+<section class="section">
+<h2>🎯 One-Look Matching</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Question clue</th><th>Answer</th></tr></thead>
+<tbody>
+<tr><td>Oldest surviving rock-cut caves</td><td><b>Barabar</b></td></tr>
+<tr><td>Mauryan polish</td><td><b>Barabar / Nagarjuni</b></td></tr>
+<tr><td>Ajivika caves</td><td><b>Barabar / Nagarjuni</b></td></tr>
+<tr><td>Famous Buddhist paintings</td><td><b>Ajanta</b></td></tr>
+<tr><td>Jataka paintings</td><td><b>Ajanta</b></td></tr>
+<tr><td>Three religions in one cave complex</td><td><b>Ellora</b></td></tr>
+<tr><td>Monolithic Kailasa</td><td><b>Ellora Cave 16</b></td></tr>
+<tr><td>Krishna I</td><td><b>Kailasa, Ellora</b></td></tr>
+<tr><td>Trimurti / Maheshmurti of Shiva</td><td><b>Elephanta</b></td></tr>
+<tr><td>Grand Chaitya hall</td><td><b>Karla</b></td></tr>
+<tr><td>Varaha relief</td><td><b>Udayagiri</b></td></tr>
+<tr><td>Four cave temples</td><td><b>Badami</b></td></tr>
+<tr><td>Pallava rock-cut architecture</td><td><b>Mamallapuram / Mandagapattu</b></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<footer>SSC CGL • Ancient Indian Art & Culture • Rock-Cut Architecture Master Revision</footer>
+
+<script>
+const input=document.getElementById('search');
+const rows=[...document.querySelectorAll('#master tbody tr')];
+function filterRows(){
+ const q=input.value.toLowerCase().trim();
+ rows.forEach(r=>r.classList.toggle('hidden',q && !r.innerText.toLowerCase().includes(q)));
+}
+input.addEventListener('input',filterRows);
+</script>
+</body>
+</html>
