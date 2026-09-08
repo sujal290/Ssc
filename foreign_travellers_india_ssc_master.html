@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foreign Travellers to India — SSC CGL Master Notes</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#fff; --ink:#172033; --muted:#667085;
+  --primary:#243b80; --accent:#f59e0b; --green:#16845b; --red:#c93636;
+  --blue:#1769aa; --border:#e5e7eb; --shadow:0 10px 30px rgba(18,30,60,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{
+  background:linear-gradient(135deg,#101d4a,#243b80 55%,#3858a6);
+  color:#fff;padding:34px 20px 28px;position:sticky;top:0;z-index:10;
+  box-shadow:0 8px 25px rgba(0,0,0,.15)
+}
+.hero{max-width:1250px;margin:auto}
+.badge{display:inline-block;background:#ffd166;color:#111827;font-weight:800;padding:6px 12px;border-radius:999px;font-size:12px;letter-spacing:.5px}
+h1{font-size:clamp(28px,4vw,48px);margin:10px 0 4px}
+.subtitle{color:#dbe5ff;margin:0 0 18px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+input,button,select{font:inherit}
+#search{flex:1;min-width:230px;padding:12px 15px;border:0;border-radius:12px;outline:0}
+button{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;padding:11px 14px;border-radius:10px;cursor:pointer;font-weight:700}
+button:hover{background:rgba(255,255,255,.2)}
+nav{max-width:1250px;margin:18px auto 0;display:flex;gap:8px;overflow:auto;padding-bottom:3px}
+nav button{white-space:nowrap}
+main{max-width:1250px;margin:28px auto;padding:0 18px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.span12{grid-column:span 12}.span8{grid-column:span 8}.span6{grid-column:span 6}.span4{grid-column:span 4}
+@media(max-width:850px){.span8,.span6,.span4{grid-column:span 12}}
+h2{margin:0 0 14px;color:var(--primary);font-size:23px}
+h3{color:#25345f;margin-top:20px}
+.note{background:#eef4ff;border-left:4px solid var(--blue);padding:12px 14px;border-radius:10px}
+.warning{background:#fff7e6;border-left:4px solid var(--accent);padding:12px 14px;border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:760px}
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}
+th{background:#17275a;color:#fff;text-align:left;padding:11px 10px;position:sticky;top:0}
+td{padding:10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:nth-child(even) td{background:#fafbff}
+.star{color:#d97706;font-weight:900}
+.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#eef2ff;color:#32478a}
+ul{padding-left:20px}
+.memory{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.memory div{background:#f8fafc;border:1px solid var(--border);border-radius:13px;padding:13px}
+.big{font-size:18px;font-weight:900;color:#18285e}
+.timeline{display:grid;gap:10px}
+.timeline .item{display:grid;grid-template-columns:150px 1fr;gap:15px;padding:12px;border-left:4px solid var(--primary);background:#fafbff;border-radius:0 12px 12px 0}
+@media(max-width:600px){.timeline .item{grid-template-columns:1fr}}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:700px){.kpi{grid-template-columns:repeat(2,1fr)}}
+.kpi div{padding:15px;border-radius:14px;background:#f8fafc;border:1px solid var(--border);text-align:center}
+.kpi b{display:block;font-size:26px;color:var(--primary)}
+.footer{text-align:center;color:var(--muted);padding:30px}
+.hide{display:none!important}
+.highlight{background:#fff1a8;padding:0 2px;border-radius:3px}
+.quiz{display:grid;gap:14px}
+.q{border:1px solid var(--border);border-radius:14px;padding:15px}
+.options label{display:block;padding:8px;border-radius:8px;cursor:pointer}
+.options label:hover{background:#f2f5ff}
+.answer{display:none;margin-top:9px;color:var(--green);font-weight:800}
+.reveal .answer{display:block}
+.print{background:#fff;color:#243b80;border-color:#fff}
+@media print{
+ header{position:static;background:#fff;color:#111;border-bottom:2px solid #222;box-shadow:none}
+ .subtitle{color:#444} nav,.toolbar,button{display:none!important}
+ body{background:#fff}.card{box-shadow:none;break-inside:avoid}
+ .table-wrap{overflow:visible}.footer{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <span class="badge">SSC CGL • CHSL • CPO • MTS</span>
+    <h1>🌍 Foreign Travellers to India</h1>
+    <p class="subtitle">Complete chronological master notes — Traveller → Country → Mughal/Indian Ruler → Book → Key Observation</p>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search traveller, ruler, book, country, topic…">
+      <button onclick="clearSearch()">Clear</button>
+      <button class="print" onclick="window.print()">🖨 Print / Save PDF</button>
+    </div>
+    <nav>
+      <button onclick="go('timeline')">Timeline</button>
+      <button onclick="go('ancient')">Ancient</button>
+      <button onclick="go('chinese')">Chinese</button>
+      <button onclick="go('arab')">Arab/Persian</button>
+      <button onclick="go('vijayanagara')">Vijayanagara</button>
+      <button onclick="go('mughal')">Mughal</button>
+      <button onclick="go('books')">Books</button>
+      <button onclick="go('memory')">Memory Tricks</button>
+      <button onclick="go('quiz')">Quick Quiz</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="grid">
+    <div class="card span12" id="timeline">
+      <h2>🕰️ Master Chronological Flow</h2>
+      <div class="timeline">
+        <div class="item"><b>c. 515 BCE</b><span><strong>Scylax of Caryanda</strong> — voyage associated with the Indus under Darius I.</span></div>
+        <div class="item"><b>327–325 BCE</b><span><strong>Alexander</strong> — invasion of north-west India; Battle of Hydaspes with Porus.</span></div>
+        <div class="item"><b>c. 302–298 BCE</b><span><strong>Megasthenes</strong> — Chandragupta Maurya — <em>Indica</em>.</span></div>
+        <div class="item"><b>3rd c. BCE</b><span><strong>Deimachus</strong> — Bindusara — Greek ambassador.</span></div>
+        <div class="item"><b>399–414 CE</b><span><strong>Fa-Hien</strong> — Chandragupta II — Buddhist monasteries and society.</span></div>
+        <div class="item"><b>629–645 CE</b><span><strong>Xuanzang</strong> — Harshavardhana — Nalanda, education, administration and religion.</span></div>
+        <div class="item"><b>671–695 CE</b><span><strong>Yijing / I-Tsing</strong> — post-Harsha — Buddhist monastic life and Nalanda.</span></div>
+        <div class="item"><b>11th c. CE</b><span><strong>Al-Biruni</strong> — Mahmud of Ghazni — <em>Kitab-ul-Hind</em>.</span></div>
+        <div class="item"><b>1292–1294</b><span><strong>Marco Polo</strong> — South India — trade, customs and society.</span></div>
+        <div class="item"><b>1420s–1440s</b><span><strong>Nicolo Conti</strong> — Vijayanagara.</span></div>
+        <div class="item"><b>1442–1445</b><span><strong>Abdur Razzaq</strong> — Devaraya II — Vijayanagara.</span></div>
+        <div class="item"><b>1469–1472</b><span><strong>Afanasy Nikitin</strong> — Bahmani kingdom — <em>Journey Beyond Three Seas</em>.</span></div>
+        <div class="item"><b>1583–91</b><span><strong>Ralph Fitch</strong> — Akbar — early English traveller.</span></div>
+        <div class="item"><b>1608–11</b><span><strong>William Hawkins</strong> — Jahangir — English representative.</span></div>
+        <div class="item"><b>1615–19</b><span><strong>Sir Thomas Roe</strong> — Jahangir — official ambassador of James I.</span></div>
+        <div class="item"><b>1620s</b><span><strong>Francisco Pelsaert</strong> — Jahangir — <em>Remonstrantie</em>.</span></div>
+        <div class="item"><b>1628–34</b><span><strong>Peter Mundy</strong> — Shah Jahan — prices, famine, trade and cities.</span></div>
+        <div class="item"><b>1640–68</b><span><strong>Tavernier</strong> — Shah Jahan → Aurangzeb — gems, diamonds and trade.</span></div>
+        <div class="item"><b>1656–68</b><span><strong>François Bernier</strong> — Shah Jahan → Aurangzeb — economy, society and land ownership.</span></div>
+        <div class="item"><b>17th c.</b><span><strong>Niccolao Manucci</strong> — Mughal India — <em>Storia do Mogor</em>.</span></div>
+      </div>
+    </div>
+
+    <div class="card span12" id="ancient">
+      <h2>🏺 I. Ancient India</h2>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Period</th><th>Traveller / Writer</th><th>From</th><th>Indian Period / Ruler</th><th>Work</th><th>SSC Key Point</th></tr></thead>
+        <tbody>
+          <tr><td>c. 515 BCE</td><td><strong>Scylax</strong></td><td>Greek/Persian world</td><td>Darius I</td><td>Voyage down the Indus</td><td>One of the earliest known foreign visitors associated with India.</td></tr>
+          <tr><td>5th c. BCE</td><td><strong>Herodotus</strong></td><td>Greece</td><td>Achaemenid period</td><td><em>Histories</em></td><td>Wrote about India; did not personally visit India.</td></tr>
+          <tr><td>327–325 BCE</td><td><strong>Alexander</strong></td><td>Macedonia</td><td>North-west India</td><td>Campaign records</td><td>Battle of Hydaspes with Porus.</td></tr>
+          <tr><td>c. 302–298 BCE</td><td><strong>Megasthenes ⭐⭐⭐</strong></td><td>Greece</td><td><strong>Chandragupta Maurya</strong></td><td><strong>Indica</strong></td><td>Most important ancient foreign account for SSC.</td></tr>
+          <tr><td>3rd c. BCE</td><td><strong>Deimachus</strong></td><td>Greece</td><td><strong>Bindusara</strong></td><td>—</td><td>Greek ambassador to Bindusara.</td></tr>
+          <tr><td>1st c. CE</td><td><strong>Pliny the Elder</strong></td><td>Rome</td><td>—</td><td><em>Natural History</em></td><td>Information on India, trade and products.</td></tr>
+          <tr><td>2nd c. CE</td><td><strong>Ptolemy</strong></td><td>Greek/Egypt</td><td>—</td><td><em>Geographia</em></td><td>Important geographical information about India.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card span12" id="chinese">
+      <h2>☸️ II. Chinese Buddhist Travellers</h2>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Period</th><th>Traveller</th><th>Ruler / Period</th><th>Work / Record</th><th>What to Remember</th></tr></thead>
+        <tbody>
+          <tr><td>399–414 CE</td><td><strong>Fa-Hien (Faxian) ⭐⭐⭐</strong></td><td><strong>Chandragupta II</strong></td><td><em>Record of Buddhist Kingdoms</em></td><td>Buddhism, monasteries, society and economy.</td></tr>
+          <tr><td>629–645 CE</td><td><strong>Xuanzang / Hiuen Tsang ⭐⭐⭐</strong></td><td><strong>Harshavardhana</strong></td><td><em>Great Tang Records on the Western Regions</em></td><td>Nalanda, education, administration, society and religion.</td></tr>
+          <tr><td>671–695 CE</td><td><strong>Yijing / I-Tsing ⭐⭐</strong></td><td>Post-Harsha</td><td>Buddhist records</td><td>Nalanda and Buddhist monastic practices.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card span12" id="arab">
+      <h2>☪️ III. Arab / Persian Travellers</h2>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Period</th><th>Traveller</th><th>From</th><th>Indian Period / Ruler</th><th>Work</th><th>SSC Key Point</th></tr></thead>
+        <tbody>
+          <tr><td>9th c.</td><td><strong>Sulaiman</strong></td><td>Arab</td><td>Pratihara period</td><td>Travel account</td><td>Trade and society.</td></tr>
+          <tr><td>10th c.</td><td><strong>Al-Masudi ⭐</strong></td><td>Arab</td><td>North India</td><td><em>Muruj-ul-Dhahab</em></td><td>Kingdoms, society and economy.</td></tr>
+          <tr><td>11th c.</td><td><strong>Al-Biruni ⭐⭐⭐</strong></td><td>Khwarazm / Persia</td><td><strong>Mahmud of Ghazni</strong></td><td><strong>Kitab-ul-Hind</strong></td><td>Religion, philosophy, science, society and culture.</td></tr>
+          <tr><td>14th c.</td><td><strong>Ibn Battuta ⭐⭐⭐</strong></td><td>Morocco</td><td><strong>Muhammad bin Tughlaq</strong></td><td><strong>Rihla</strong></td><td>Administration, justice and society of Delhi Sultanate.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card span12" id="vijayanagara">
+      <h2>🏛️ IV. Vijayanagara — High-Yield SSC Table</h2>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Traveller</th><th>Country</th><th>Ruler / Period</th><th>Key Contribution</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nicolo Conti ⭐</strong></td><td>Italy</td><td>Devaraya I period</td><td>Described Vijayanagara and South India.</td></tr>
+          <tr><td><strong>Abdur Razzaq ⭐⭐⭐</strong></td><td>Persia</td><td><strong>Devaraya II</strong></td><td>Detailed description of Vijayanagara Empire.</td></tr>
+          <tr><td><strong>Domingo Paes ⭐⭐⭐</strong></td><td>Portugal</td><td><strong>Krishnadevaraya</strong></td><td>Detailed account of Vijayanagara at its height.</td></tr>
+          <tr><td><strong>Fernao Nuniz ⭐⭐⭐</strong></td><td>Portugal</td><td><strong>Achyuta Deva Raya</strong></td><td>History and society of Vijayanagara.</td></tr>
+          <tr><td><strong>Afanasy Nikitin ⭐⭐</strong></td><td>Russia</td><td>Bahmani kingdom</td><td><em>Journey Beyond Three Seas</em>.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card span12" id="mughal">
+      <h2>🕌 V. Mughal India — European Travellers</h2>
+      <p class="note"><strong>SSC Focus:</strong> Learn the full chain — <strong>Mughal ruler → traveller → country → profession → book/account → observation</strong>.</p>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Mughal Ruler / Period</th><th>Traveller</th><th>Country</th><th>Visit / Identity</th><th>Book / Account</th><th>What SSC Can Ask</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Akbar</strong></td><td><strong>Ralph Fitch ⭐⭐</strong></td><td>England</td><td>1583–91; merchant/traveller</td><td>Travel account</td><td>Early English traveller; trade, cities and commerce.</td></tr>
+          <tr><td><strong>Akbar</strong></td><td><strong>Antonio Monserrate ⭐⭐</strong></td><td>Portugal</td><td>1580–82; Jesuit missionary</td><td>Memoir / <em>Commentarius</em></td><td>Jesuit mission and Akbar's court.</td></tr>
+          <tr><td><strong>Jahangir</strong></td><td><strong>William Hawkins ⭐⭐⭐</strong></td><td>England</td><td>1608–11; captain / English representative</td><td>Voyage account</td><td>Reached Jahangir's court; associated with title <strong>English Khan</strong>.</td></tr>
+          <tr><td><strong>Jahangir</strong></td><td><strong>Sir Thomas Roe ⭐⭐⭐</strong></td><td>England</td><td>1615–19; <strong>official ambassador of James I</strong></td><td>Journal / Embassy account</td><td>⭐ Official English ambassador; sought trading privileges.</td></tr>
+          <tr><td><strong>Jahangir</strong></td><td><strong>Francisco Pelsaert ⭐⭐</strong></td><td>Dutch</td><td>1620s; merchant/factor</td><td><strong>Remonstrantie</strong></td><td>Agra, economy, society and administration.</td></tr>
+          <tr><td><strong>Shah Jahan</strong></td><td><strong>Peter Mundy ⭐⭐</strong></td><td>England</td><td>1628–34; merchant/traveller</td><td>Travel account</td><td>Prices, famine, trade and cities.</td></tr>
+          <tr><td><strong>Shah Jahan → Aurangzeb</strong></td><td><strong>Jean-Baptiste Tavernier ⭐⭐⭐</strong></td><td>France</td><td>1640–68; <strong>jeweller/gem merchant</strong></td><td><strong>Six Voyages</strong></td><td>💎 Gems, diamonds, trade, wealth and cities.</td></tr>
+          <tr><td><strong>Shah Jahan → Aurangzeb</strong></td><td><strong>François Bernier ⭐⭐⭐</strong></td><td>France</td><td>1656–68; <strong>physician</strong></td><td><strong>Travels in the Mogul Empire</strong></td><td>⭐ Economy, society, court, succession and land ownership.</td></tr>
+          <tr><td><strong>Shah Jahan → Aurangzeb</strong></td><td><strong>Niccolao Manucci ⭐⭐⭐</strong></td><td>Venice/Italy</td><td>17th c.; traveller/physician</td><td><strong>Storia do Mogor</strong></td><td>Mughal court and succession struggle.</td></tr>
+          <tr><td><strong>Aurangzeb</strong></td><td><strong>John Fryer ⭐⭐</strong></td><td>England</td><td>1670s; physician/traveller</td><td><em>A New Account of East-India and Persia</em></td><td>Western India, trade and society.</td></tr>
+          <tr><td><strong>Aurangzeb</strong></td><td><strong>Gemelli Careri</strong></td><td>Italy</td><td>1690s; traveller</td><td><em>Giro del Mondo</em></td><td>India and Mughal society.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>👑 Ruler-wise Mughal Shortcut</h3>
+      <div class="memory">
+        <div><span class="tag">AKBAR</span><div class="big">Fitch + Monserrate</div><small>Early English traveller + Jesuit mission</small></div>
+        <div><span class="tag">JAHANGIR</span><div class="big">Hawkins + Roe + Pelsaert</div><small>English representatives + Dutch account</small></div>
+        <div><span class="tag">SHAH JAHAN</span><div class="big">Mundy + Tavernier + Bernier</div><small>Trade/famine + gems + society/economy</small></div>
+        <div><span class="tag">AURANGZEB</span><div class="big">Bernier + Tavernier + Manucci + Fryer</div><small>Economy + gems + court + western India</small></div>
+      </div>
+    </div>
+
+    <div class="card span12" id="books">
+      <h2>📚 VI. Book → Author / Traveller — Gold List</h2>
+      <div class="table-wrap"><table data-searchable>
+        <thead><tr><th>Book / Work</th><th>Author / Traveller</th><th>⭐ Association</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Indica</strong></td><td><strong>Megasthenes</strong></td><td>Chandragupta Maurya</td></tr>
+          <tr><td><strong>Record of Buddhist Kingdoms</strong></td><td><strong>Fa-Hien</strong></td><td>Chandragupta II</td></tr>
+          <tr><td><strong>Great Tang Records on the Western Regions</strong></td><td><strong>Xuanzang</strong></td><td>Harsha</td></tr>
+          <tr><td><strong>Kitab-ul-Hind</strong></td><td><strong>Al-Biruni</strong></td><td>Mahmud of Ghazni</td></tr>
+          <tr><td><strong>Rihla</strong></td><td><strong>Ibn Battuta</strong></td><td>Muhammad bin Tughlaq</td></tr>
+          <tr><td><strong>Journey Beyond Three Seas</strong></td><td><strong>Afanasy Nikitin</strong></td><td>Bahmani kingdom</td></tr>
+          <tr><td><strong>Remonstrantie</strong></td><td><strong>Francisco Pelsaert</strong></td><td>Jahangir / Agra</td></tr>
+          <tr><td><strong>Six Voyages</strong></td><td><strong>Jean-Baptiste Tavernier</strong></td><td>Shah Jahan → Aurangzeb</td></tr>
+          <tr><td><strong>Travels in the Mogul Empire</strong></td><td><strong>François Bernier</strong></td><td>Shah Jahan → Aurangzeb</td></tr>
+          <tr><td><strong>Storia do Mogor</strong></td><td><strong>Niccolao Manucci</strong></td><td>Mughal court</td></tr>
+          <tr><td><strong>A New Account of East-India and Persia</strong></td><td><strong>John Fryer</strong></td><td>Aurangzeb period</td></tr>
+          <tr><td><strong>Annals and Antiquities of Rajasthan</strong></td><td><strong>James Tod</strong></td><td>19th-century Rajasthan</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="card span8" id="memory">
+      <h2>🧠 VII. Memory Tricks</h2>
+      <div class="memory">
+        <div><span class="tag">ANCIENT</span><div class="big">Scylax → Megasthenes → Deimachus</div></div>
+        <div><span class="tag">CHINESE</span><div class="big">Fa-Hien → Xuanzang → I-Tsing</div></div>
+        <div><span class="tag">ARAB</span><div class="big">Al-Biruni → Mahmud</div><div class="big">Ibn Battuta → Tughlaq</div></div>
+        <div><span class="tag">VIJAYANAGARA</span><div class="big">Razzaq → Paes → Nuniz</div></div>
+        <div><span class="tag">MUGHAL</span><div class="big">Hawkins → Roe → Bernier → Tavernier → Manucci</div></div>
+      </div>
+      <h3>🔥 Killer Associations</h3>
+      <ul>
+        <li><strong>Megasthenes</strong> → Chandragupta Maurya → <strong>Indica</strong></li>
+        <li><strong>Fa-Hien</strong> → Chandragupta II</li>
+        <li><strong>Xuanzang</strong> → Harsha → Nalanda</li>
+        <li><strong>Al-Biruni</strong> → Mahmud Ghazni → <strong>Kitab-ul-Hind</strong></li>
+        <li><strong>Ibn Battuta</strong> → Muhammad bin Tughlaq → <strong>Rihla</strong></li>
+        <li><strong>Thomas Roe</strong> → Jahangir → <strong>official ambassador</strong></li>
+        <li><strong>Tavernier</strong> → <strong>gems/diamonds</strong></li>
+        <li><strong>Bernier</strong> → <strong>physician + land ownership/economy</strong></li>
+        <li><strong>Manucci</strong> → <strong>Storia do Mogor</strong></li>
+      </ul>
+    </div>
+
+    <div class="card span4">
+      <h2>🎯 SSC Priority</h2>
+      <div class="kpi">
+        <div><b>⭐⭐⭐</b>Must Know</div>
+        <div><b>15+</b>Core Names</div>
+        <div><b>10+</b>Book Pairs</div>
+        <div><b>4</b>Mughal Rulers</div>
+      </div>
+      <div class="warning" style="margin-top:15px"><strong>Important:</strong> Do not blindly memorise every internet nickname or disputed detail. Prioritise standard traveller–ruler–book associations.</div>
+    </div>
+
+    <div class="card span12" id="quiz">
+      <h2>📝 VIII. Quick SSC Quiz</h2>
+      <div class="quiz">
+        <div class="q"><strong>1. Who wrote <em>Indica</em>?</strong>
+          <div class="options"><label><input type="radio" name="q1"> Al-Biruni</label><label><input type="radio" name="q1"> Megasthenes</label><label><input type="radio" name="q1"> Ibn Battuta</label></div>
+          <div class="answer">✓ Megasthenes</div></div>
+        <div class="q"><strong>2. Sir Thomas Roe visited the court of which Mughal ruler?</strong>
+          <div class="options"><label><input type="radio" name="q2"> Akbar</label><label><input type="radio" name="q2"> Jahangir</label><label><input type="radio" name="q2"> Aurangzeb</label></div>
+          <div class="answer">✓ Jahangir</div></div>
+        <div class="q"><strong>3. <em>Kitab-ul-Hind</em> is associated with whom?</strong>
+          <div class="options"><label><input type="radio" name="q3"> Al-Biruni</label><label><input type="radio" name="q3"> Bernier</label><label><input type="radio" name="q3"> Tavernier</label></div>
+          <div class="answer">✓ Al-Biruni</div></div>
+        <div class="q"><strong>4. Which traveller is especially associated with diamonds and gems?</strong>
+          <div class="options"><label><input type="radio" name="q4"> Tavernier</label><label><input type="radio" name="q4"> Roe</label><label><input type="radio" name="q4"> Hawkins</label></div>
+          <div class="answer">✓ Jean-Baptiste Tavernier</div></div>
+        <div class="q"><strong>5. Who wrote <em>Rihla</em>?</strong>
+          <div class="options"><label><input type="radio" name="q5"> Xuanzang</label><label><input type="radio" name="q5"> Ibn Battuta</label><label><input type="radio" name="q5"> Fa-Hien</label></div>
+          <div class="answer">✓ Ibn Battuta</div></div>
+        <button onclick="document.querySelectorAll('.q').forEach(q=>q.classList.add('reveal'))" style="background:#16845b;border:0">Reveal Answers</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <strong>SSC CGL Foreign Travellers — Master Revision Page</strong><br>
+    Remember: Traveller → Ruler → Book → Contribution. Revise repeatedly rather than adding endless low-yield names.
+  </div>
+</main>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
+const search=document.getElementById('search');
+search.addEventListener('input',()=>{
+  const term=search.value.trim().toLowerCase();
+  document.querySelectorAll('[data-searchable] tbody tr').forEach(row=>{
+    row.style.display = row.innerText.toLowerCase().includes(term)?'':'none';
+  });
+  document.querySelectorAll('.timeline .item').forEach(item=>{
+    item.style.display = !term || item.innerText.toLowerCase().includes(term)?'grid':'none';
+  });
+});
+function clearSearch(){search.value='';search.dispatchEvent(new Event('input'));search.focus()}
+</script>
+</body>
+</html>
