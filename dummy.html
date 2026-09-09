@@ -15,7 +15,6 @@ button.active,button:hover{background:#4da3ff;color:#06101c}
 .card h3{font-size:16px;margin:10px 0 6px}.card p{font-size:11px;margin:0;word-break:break-all}
 #status{color:#91a4bb;font-size:12px;margin:15px 0}#empty{display:none;text-align:center;padding:60px;color:#91a4bb}
 </style>
-<!-- Password Lock Styles -->
 <style id="password-lock-style">
 #passwordGate{
   position:fixed;inset:0;z-index:999999;
@@ -45,8 +44,7 @@ button.active,button:hover{background:#4da3ff;color:#06101c}
 body.passwordLocked > *:not(#passwordGate){visibility:hidden}
 </style>
 </head><body>
-    <!-- Password Gate -->
-    <div id="passwordGate">
+<div id="passwordGate">
   <div class="lockbox">
     <div class="lockicon">🔐</div>
     <h2>Private Study Vault</h2>
@@ -56,6 +54,7 @@ body.passwordLocked > *:not(#passwordGate){visibility:hidden}
     <div id="passwordError">Incorrect password. Try again.</div>
   </div>
 </div>
+
 <header><div class="wrap"><h1>📚 SSC CGL — MASTER INDEX</h1>
 <div class="sub">Every HTML page in your current folder • Click any card</div>
 <input id="search" class="search" placeholder="🔎 Search topic or file..."></div></header>
@@ -130,25 +129,13 @@ function render(){
  document.getElementById('status').textContent=n+' pages available';
  document.getElementById('empty').style.display=n?'none':'block';
 }
-document.querySelectorAll('button[data-filter]').forEach(b => {
-    b.onclick = () => {
-        document
-            .querySelectorAll('button[data-filter]')
-            .forEach(x => x.classList.remove('active'));
-
-        b.classList.add('active');
-
-        filter = b.dataset.filter;
-
-        render();
-    };
-});
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');filter=b.dataset.filter;render();});
 search.oninput=render;render();
 </script>
-<!-- Password Lock Script -->
 <script id="password-lock-script">
 (function(){
-  const PASSWORDS = ["MOTO", "MOTOindo3883@","9958614380"];
+  const PASSWORD = "MOTO";
   const gate = document.getElementById("passwordGate");
   const input = document.getElementById("vaultPassword");
   const btn = document.getElementById("unlockVault");
@@ -157,7 +144,7 @@ search.oninput=render;render();
   document.body.classList.add("passwordLocked");
 
   function unlock(){
-    if(PASSWORDS.includes(input.value)){
+    if(input.value === PASSWORD){
       gate.remove();
       document.body.classList.remove("passwordLocked");
       sessionStorage.setItem("sscCglUnlocked","1");
@@ -179,5 +166,4 @@ search.oninput=render;render();
   }
 })();
 </script>
-</body>
-</html>
+</body></html>
