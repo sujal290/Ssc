@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medieval India — Ultimate Revision Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  --bg:#070d1a; --panel:#0d1629; --panel2:#111d34; --panel3:#17243d;
+  --line:#263654; --text:#edf3ff; --muted:#8d9ab2;
+  --accent:#f0b84b; --accent2:#d88a2b; --maroon:#b64b59;
+  --good:#5bd49a; --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  overflow:hidden;background:
+  radial-gradient(circle at 60% -10%,rgba(60,91,160,.24),transparent 35%),
+  radial-gradient(circle at 100% 100%,rgba(180,70,90,.10),transparent 35%),
+  var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;
+}
+button,input{font:inherit}
+button{color:inherit}
+.app{height:100vh;display:grid;grid-template-rows:68px 1fr}
+
+.topbar{
+  display:flex;align-items:center;gap:18px;padding:0 18px;
+  background:rgba(9,17,32,.96);border-bottom:1px solid var(--line);
+  box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:20
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:320px}
+.bookmark{font-size:22px}
+.brand h1{font:700 18px Cinzel,serif;margin:0;letter-spacing:.02em}
+.brand small{font:600 10px IBM Plex Mono,monospace;color:var(--muted);margin-left:8px}
+.search{
+  flex:1;max-width:430px;margin-left:auto;position:relative
+}
+.search input{
+  width:100%;background:#0b1426;border:1px solid #30415f;color:var(--text);
+  border-radius:10px;padding:11px 14px 11px 38px;outline:none;font-size:13px
+}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(240,184,75,.10)}
+.search span{position:absolute;left:13px;top:10px;color:var(--muted)}
+.top-actions{display:flex;gap:7px;align-items:center}
+.tool{
+  min-width:36px;height:36px;border:1px solid #2b3b58;background:#111d32;
+  border-radius:9px;cursor:pointer;font-size:13px;transition:.18s
+}
+.tool:hover{border-color:var(--accent);transform:translateY(-1px)}
+.zoom-label{min-width:55px;padding:0 8px}
+.counter{font:600 11px IBM Plex Mono,monospace;color:var(--muted);white-space:nowrap}
+
+.workspace{min-height:0;display:grid;grid-template-columns:300px 1fr}
+.sidebar{
+  min-height:0;background:linear-gradient(180deg,#0d172b,#0a1324);
+  border-right:1px solid var(--line);display:flex;flex-direction:column
+}
+.side-head{padding:15px 14px 11px;border-bottom:1px solid var(--line)}
+.side-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.side-title strong{font:600 12px IBM Plex Mono,monospace;letter-spacing:.06em;text-transform:uppercase}
+.side-title span{font:10px IBM Plex Mono,monospace;color:var(--muted)}
+.filters{display:flex;gap:6px;overflow:auto;padding-bottom:2px}
+.filter{
+  flex:0 0 auto;border:1px solid #30415f;background:#101b30;color:#9ba9c2;
+  border-radius:999px;padding:7px 10px;font:600 9px IBM Plex Mono,monospace;cursor:pointer
+}
+.filter.active,.filter:hover{background:var(--accent);border-color:var(--accent);color:#15100a}
+.poster-list{overflow:auto;padding:10px 9px 30px}
+.poster{
+  display:grid;grid-template-columns:62px 1fr;gap:11px;align-items:center;
+  padding:8px;margin-bottom:7px;border:1px solid transparent;border-radius:11px;
+  cursor:pointer;background:rgba(255,255,255,.025);transition:.18s
+}
+.poster:hover{background:#14213a;border-color:#2d405f}
+.poster.active{background:linear-gradient(90deg,#192946,#12213a);border-color:#3a4f73;box-shadow:inset 3px 0 var(--accent)}
+.poster img{width:62px;height:78px;object-fit:cover;border-radius:5px;background:#1a2539;border:1px solid #31405b}
+.poster-info{min-width:0}
+.poster-num{font:700 12px IBM Plex Mono,monospace;color:#e9effb}
+.poster-title{font-size:11px;color:#a8b5c9;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.poster-chap{font:9px IBM Plex Mono,monospace;color:var(--accent);text-transform:uppercase;margin-top:7px}
+
+.viewer{min-width:0;min-height:0;display:flex;flex-direction:column;position:relative}
+.viewerbar{
+  height:52px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;border-bottom:1px solid var(--line);background:rgba(10,18,33,.72)
+}
+.viewer-title{font:600 12px IBM Plex Mono,monospace;color:#b7c2d4}
+.viewer-title b{color:var(--accent)}
+.viewer-tools{display:flex;gap:7px}
+.stage{
+  flex:1;min-height:0;display:flex;align-items:center;justify-content:center;
+  overflow:auto;padding:24px;background:
+  radial-gradient(circle at center,rgba(43,63,103,.16),transparent 48%),
+  #050a13;
+}
+.image-wrap{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  transform-origin:center center;transition:transform .16s ease
+}
+#mainImg{
+  display:block;max-width:none;width:auto;height:auto;object-fit:contain;
+  border-radius:3px;box-shadow:0 25px 70px rgba(0,0,0,.55);
+  background:#111;user-select:none
+}
+.stage-badge{
+  position:fixed;left:318px;bottom:18px;background:rgba(9,16,29,.9);
+  border:1px solid #30415f;color:#e4eaf4;padding:8px 12px;border-radius:9px;
+  font:600 10px IBM Plex Mono,monospace;box-shadow:var(--shadow);pointer-events:none
+}
+.empty{color:var(--muted);text-align:center}
+.empty strong{display:block;color:var(--text);font-size:18px;margin-bottom:5px}
+.progress{height:3px;background:#18243a}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .2s}
+.help{
+  position:absolute;right:18px;bottom:18px;background:#101b2f;border:1px solid #30415f;
+  border-radius:12px;padding:10px 12px;font-size:10px;color:var(--muted);opacity:.9
+}
+.help b{color:#d9e2f2}
+
+@media(max-width:900px){
+  .workspace{grid-template-columns:225px 1fr}
+  .brand{min-width:220px}
+  .stage-badge{left:240px}
+}
+@media(max-width:650px){
+  .workspace{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .brand{min-width:0} .brand h1{font-size:14px}
+  .brand small,.counter{display:none}
+  .search{max-width:none}
+  .top-actions .tool:nth-child(-n+3){display:none}
+  .stage{padding:12px}
+  .stage-badge{left:12px;bottom:12px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="bookmark">📚</span>
+      <h1>Medieval India — Ultimate Revision Hub</h1>
+      <small>127 POSTERS</small>
+    </div>
+    <div class="search">
+      <span>⌕</span>
+      <input id="search" placeholder="Search poster #, chapter or topic..." autocomplete="off">
+    </div>
+    <div class="top-actions">
+      <span class="counter" id="topCounter">1 / 127</span>
+      <button class="tool" onclick="zoom(-10)" title="Zoom out">−</button>
+      <button class="tool" onclick="fitImage()" title="Fit image">Fit</button>
+      <button class="tool" onclick="zoom(10)" title="Zoom in">+</button>
+      <button class="tool zoom-label" id="zoomLabel">100%</button>
+      <button class="tool" onclick="previous()" title="Previous">‹</button>
+      <button class="tool" onclick="next()" title="Next">›</button>
+      <button class="tool" onclick="fullscreen()" title="Fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <section class="workspace">
+    <aside class="sidebar">
+      <div class="side-head">
+        <div class="side-title">
+          <strong>Revision Posters</strong>
+          <span id="sideCount">127</span>
+        </div>
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="all">ALL</button>
+          <button class="filter" data-filter="sur">SUR</button>
+          <button class="filter" data-filter="mughal">MUGHAL</button>
+          <button class="filter" data-filter="maratha">MARATHA</button>
+        </div>
+      </div>
+      <div class="poster-list" id="posterList"></div>
+    </aside>
+
+    <main class="viewer">
+      <div class="viewerbar">
+        <div class="viewer-title" id="viewerTitle">POSTER <b>01</b> · THE SUR EMPIRE</div>
+        <div class="viewer-tools">
+          <button class="tool" onclick="previous()">← Prev</button>
+          <button class="tool" onclick="next()">Next →</button>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <div class="image-wrap" id="imageWrap">
+          <img id="mainImg" src="" alt="Revision poster">
+        </div>
+        <div class="empty" id="empty" style="display:none">
+          <strong>No posters found</strong>
+          Try another search or chapter filter.
+        </div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="stage-badge" id="stageBadge">Poster 1 / 127 · 100%</div>
+      <div class="help">Keyboard: <b>← →</b> navigate · <b>F</b> fullscreen · <b>0</b> fit</div>
+    </main>
+  </section>
+</div>
+
+<script>
+const CHAPTERS = [
+    { id:'sur', num:'I', title:'The Sur Empire', years:'1540 – 1555', desc:'Sher Shah Suri\'s rise, administrative reforms, and the short-lived interruption of Mughal rule.', start:1, end:4 },
+    { id:'mughal', num:'II', title:'The Mughal Empire', years:'1526 – 1707', desc:'From Babur\'s conquest through Akbar\'s consolidation to Aurangzeb\'s expansion and the empire\'s decline.', start:5, end:54 },
+    { id:'maratha', num:'III', title:'The Maratha Empire', years:'1600 – 1818', desc:'Shivaji\'s early life and rise, the Maratha administrative system, and the empire\'s eventual fall.', start:55, end:127 },
+  ];
+
+const totalPages = 127;
+const allPages = [];
+CHAPTERS.forEach(ch => {
+  for(let p=ch.start;p<=ch.end;p++) {
+    allPages.push({page:p,chap:ch.id,title:ch.title,years:ch.years});
+  }
+});
+
+const list = document.getElementById('posterList');
+const img = document.getElementById('mainImg');
+const wrap = document.getElementById('imageWrap');
+const stage = document.getElementById('stage');
+const search = document.getElementById('search');
+let activeFilter='all';
+let current=0;
+let zoomLevel=100;
+let filtered=allPages.slice();
+
+function pad(n){return String(n).padStart(3,'0')}
+function imagePath(page){return 'hismedimmg/poster-'+pad(page)+'.jpg'}
+
+function renderList(){
+  const q=search.value.trim().toLowerCase();
+  filtered=allPages.filter(p=>{
+    const chapOk=activeFilter==='all'||p.chap===activeFilter;
+    const qOk=!q || String(p.page).includes(q) || p.title.toLowerCase().includes(q) || p.chap.includes(q);
+    return chapOk&&qOk;
+  });
+  list.innerHTML='';
+  document.getElementById('sideCount').textContent=filtered.length;
+  document.getElementById('empty').style.display=filtered.length?'none':'block';
+  filtered.forEach((p)=>{
+    const el=document.createElement('div');
+    el.className='poster'+(p.page===allPages[current]?.page?' active':'');
+    el.dataset.page=p.page;
+    el.innerHTML=`<img src="${imagePath(p.page)}" loading="lazy" alt="Poster ${p.page}" onerror="this.style.opacity=.25">
+      <div class="poster-info">
+        <div class="poster-num">${pad(p.page)} — Poster ${pad(p.page)}</div>
+        <div class="poster-title">${p.title}</div>
+        <div class="poster-chap">${p.chap}</div>
+      </div>`;
+    el.onclick=()=>selectPage(p.page);
+    list.appendChild(el);
+  });
+}
+
+function selectPage(page){
+  const idx=allPages.findIndex(p=>p.page===page);
+  if(idx<0)return;
+  current=idx;
+  renderViewer();
+  document.querySelectorAll('.poster').forEach(x=>x.classList.toggle('active',Number(x.dataset.page)===page));
+  const active=document.querySelector('.poster.active');
+  if(active) active.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+
+function renderViewer(){
+  const p=allPages[current];
+  img.src=imagePath(p.page);
+  img.alt='Poster '+p.page;
+  document.getElementById('viewerTitle').innerHTML=`POSTER <b>${pad(p.page)}</b> · ${p.title.toUpperCase()}`;
+  document.getElementById('topCounter').textContent=`${current+1} / ${totalPages}`;
+  document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+  document.getElementById('progressBar').style.width=((current+1)/totalPages*100)+'%';
+  document.querySelectorAll('.poster').forEach(x=>x.classList.toggle('active',Number(x.dataset.page)===p.page));
+}
+
+function previous(){
+  current=(current-1+totalPages)%totalPages;
+  renderList();
+  renderViewer();
+}
+function next(){
+  current=(current+1)%totalPages;
+  renderList();
+  renderViewer();
+}
+function zoom(delta){
+  zoomLevel=Math.max(25,Math.min(250,zoomLevel+delta));
+  wrap.style.transform=`scale(${zoomLevel/100})`;
+  document.getElementById('zoomLabel').textContent=zoomLevel+'%';
+  document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+}
+function fitImage(){
+  const p=allPages[current];
+  const probe=new Image();
+  probe.onload=()=>{
+    const maxW=stage.clientWidth-50, maxH=stage.clientHeight-45;
+    const scale=Math.min(maxW/probe.naturalWidth,maxH/probe.naturalHeight,1);
+    zoomLevel=Math.max(25,Math.round(scale*100));
+    wrap.style.transform=`scale(${zoomLevel/100})`;
+    document.getElementById('zoomLabel').textContent=zoomLevel+'%';
+    document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+  };
+  probe.src=imagePath(p.page);
+}
+function fullscreen(){
+  const target=document.querySelector('.viewer');
+  if(!document.fullscreenElement) target.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.filter'); if(!b)return;
+  activeFilter=b.dataset.filter;
+  document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));
+  renderList();
+});
+search.addEventListener('input',renderList);
+
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  if(e.key==='ArrowRight')next();
+  if(e.key==='ArrowLeft')previous();
+  if(e.key.toLowerCase()==='f')fullscreen();
+  if(e.key==='0')fitImage();
+  if(e.key==='+'||e.key==='=')zoom(10);
+  if(e.key==='-')zoom(-10);
+});
+window.addEventListener('resize',()=>{if(zoomLevel===100)fitImage()});
+img.addEventListener('dblclick',()=>zoomLevel===100?zoom(25):fitImage());
+
+renderList();
+renderViewer();
+setTimeout(fitImage,250);
+</script>
+</body>
+</html>
