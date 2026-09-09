@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vipul's Material — PDF Library</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07111f;color:#edf4ff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:38px 5%;background:radial-gradient(circle at 85% 10%,#274a7a55,transparent 38%),#091626;border-bottom:1px solid #263a56}
+h1{margin:0;font-size:clamp(30px,5vw,54px)}header p{color:#9fb0c8;margin:10px 0 0;font-size:16px}
+.wrap{width:min(1250px,92%);margin:auto}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0}
+.stat{padding:17px;border:1px solid #263a56;border-radius:15px;background:#0e1b2e}.stat b{display:block;font-size:28px;color:#63d8ff}.stat span{color:#9fb0c8;font-size:13px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}input{flex:1;min-width:280px;padding:14px 16px;border-radius:12px;border:1px solid #294361;background:#0a1728;color:white;font-size:16px}
+button{padding:11px 15px;border-radius:999px;border:1px solid #294361;background:#10233a;color:#dbeafe;cursor:pointer}button.active,button:hover{background:#24466d}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#0e1c2f;border:1px solid #29415e;border-radius:17px;padding:19px;transition:.18s;min-height:185px;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);border-color:#4c739d}.badge{font-size:11px;letter-spacing:.08em;color:#70cfff;font-weight:800;text-transform:uppercase}
+.card h3{font-size:18px;margin:10px 0 9px;line-height:1.3}.path{font-size:12px;color:#8295ad;word-break:break-word;flex:1}
+.open{display:inline-block;margin-top:16px;padding:11px 13px;border-radius:10px;text-decoration:none;background:#173654;color:#eaf7ff;font-weight:700;text-align:center}
+.open:hover{background:#23577d}.section{margin:32px 0}.section h2{font-size:25px}
+.note{padding:16px 18px;background:#101f34;border:1px solid #29415e;border-radius:14px;color:#aebdd0;line-height:1.6;margin-bottom:20px}
+footer{padding:40px;text-align:center;color:#70839c}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.grid,.stats{grid-template-columns:1fr}input{min-width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div style="color:#65d8ff;font-weight:800;letter-spacing:.08em">VIPUL SIR • SSC CGL</div>
+<h1>📚 Material PDF Library</h1>
+<p>Click any card to open the original PDF directly from your <b>vipul's Material</b> folder.</p>
+</div></header>
+
+<main class="wrap">
+<div class="stats">
+<div class="stat"><b>26</b><span>PDF files found</span></div>
+<div class="stat"><b>16</b><span>Geography</span></div>
+<div class="stat"><b>7</b><span>History</span></div>
+<div class="stat"><b>1</b><span>Art & Culture</span></div>
+<div class="stat"><b>2</b><span>English / Others</span></div>
+</div>
+
+<div class="note">
+💡 <b>Important:</b> Save this HTML file directly inside the <b>vipul's Material</b> folder.
+The PDF buttons use relative paths, so they will open your actual local PDFs.
+If you move the HTML elsewhere, the links may stop working.
+</div>
+
+<div class="toolbar">
+<input id="search" placeholder="🔎 Search PDF or topic...">
+<button class="active" onclick="filterCat('ALL',this)">ALL</button>
+<button onclick="filterCat('Geography',this)">🌍 Geography</button>
+<button onclick="filterCat('History',this)">🏺 History</button>
+<button onclick="filterCat('Art',this)">🎨 Art & Culture</button>
+<button onclick="filterCat('Others',this)">📝 Others</button>
+</div>
+
+<section class="section">
+<h2>📂 Your PDFs</h2>
+<div class="grid" id="grid">
+
+        <article class="card" data-cat="🎨 Art &amp; Culture" data-text="indian art and culture....vermi...gsg">
+          <div class="badge">Art &amp; Culture</div>
+          <h3>Indian art and culture....vermi...gsg</h3>
+          <div class="path">art&amp;culture/Indian art and culture....vermi...gsg.pdf</div>
+          <a class="open" href="art&amp;culture/Indian%20art%20and%20culture....vermi...gsg.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="plain2">
+          <div class="badge">Geography</div>
+          <h3>plain2</h3>
+          <div class="path">Geo/plain2.pdf</div>
+          <a class="open" href="Geo/plain2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="plains">
+          <div class="badge">Geography</div>
+          <h3>plains</h3>
+          <div class="path">Geo/plains.pdf</div>
+          <a class="open" href="Geo/plains.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="himalayas">
+          <div class="badge">Geography</div>
+          <h3>himalayas</h3>
+          <div class="path">Geo/himalayas.pdf</div>
+          <a class="open" href="Geo/himalayas.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="drainage2">
+          <div class="badge">Geography</div>
+          <h3>Drainage2</h3>
+          <div class="path">Geo/Drainage2.pdf</div>
+          <a class="open" href="Geo/Drainage2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="climatewindmcqs">
+          <div class="badge">Geography</div>
+          <h3>climatewindmcqs</h3>
+          <div class="path">Geo/climatewindmcqs.pdf</div>
+          <a class="open" href="Geo/climatewindmcqs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="universe">
+          <div class="badge">Geography</div>
+          <h3>universe</h3>
+          <div class="path">Geo/universe.pdf</div>
+          <a class="open" href="Geo/universe.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="transport">
+          <div class="badge">Geography</div>
+          <h3>transport</h3>
+          <div class="path">Geo/transport.pdf</div>
+          <a class="open" href="Geo/transport.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="himalayas2">
+          <div class="badge">Geography</div>
+          <h3>himalayas2</h3>
+          <div class="path">Geo/himalayas2.pdf</div>
+          <a class="open" href="Geo/himalayas2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="drainagesystem">
+          <div class="badge">Geography</div>
+          <h3>drainagesystem</h3>
+          <div class="path">Geo/drainagesystem.pdf</div>
+          <a class="open" href="Geo/drainagesystem.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="atmo pressuemcq">
+          <div class="badge">Geography</div>
+          <h3>Atmo PressueMCQ</h3>
+          <div class="path">Geo/Atmo_PressueMCQ.pdf</div>
+          <a class="open" href="Geo/Atmo_PressueMCQ.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="clouds rainfall">
+          <div class="badge">Geography</div>
+          <h3>clouds rainfall</h3>
+          <div class="path">Geo/clouds_rainfall.pdf</div>
+          <a class="open" href="Geo/clouds_rainfall.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch ssc cgl test (1)">
+          <div class="badge">Geography</div>
+          <h3>Sambhav Batch SSC CGL Test (1)</h3>
+          <div class="path">Geo/Sambhav_Batch_SSC_CGL_Test (1).pdf</div>
+          <a class="open" href="Geo/Sambhav_Batch_SSC_CGL_Test%20(1).pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch geography latlon easymod mcqs">
+          <div class="badge">Geography</div>
+          <h3>Sambhav Batch Geography LatLon EasyMod MCQs</h3>
+          <div class="path">Geo/Sambhav_Batch_Geography_LatLon_EasyMod_MCQs.pdf</div>
+          <a class="open" href="Geo/Sambhav_Batch_Geography_LatLon_EasyMod_MCQs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="istlong">
+          <div class="badge">Geography</div>
+          <h3>istlong</h3>
+          <div class="path">Geo/istlong.pdf</div>
+          <a class="open" href="Geo/istlong.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav geography clouds rainfall">
+          <div class="badge">Geography</div>
+          <h3>sambhav geography clouds rainfall</h3>
+          <div class="path">Geo/sambhav_geography_clouds_rainfall.pdf</div>
+          <a class="open" href="Geo/sambhav_geography_clouds_rainfall.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="soilvegagric">
+          <div class="badge">Geography</div>
+          <h3>soilvegagric</h3>
+          <div class="path">Geo/soilvegagric.pdf</div>
+          <a class="open" href="Geo/soilvegagric.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="vedic period notes">
+          <div class="badge">History</div>
+          <h3>vedic period notes</h3>
+          <div class="path">history/vedic_period_notes.pdf</div>
+          <a class="open" href="history/vedic_period_notes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="stone age">
+          <div class="badge">History</div>
+          <h3>Stone Age</h3>
+          <div class="path">history/Stone_Age_.pdf</div>
+          <a class="open" href="history/Stone_Age_.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="vedic period   later vedic period">
+          <div class="badge">History</div>
+          <h3>Vedic Period   Later vedic Period</h3>
+          <div class="path">history/Vedic_Period___Later_vedic_Period.pdf</div>
+          <a class="open" href="history/Vedic_Period___Later_vedic_Period.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="swachhand ias sambhav batch 50 mcqs">
+          <div class="badge">History</div>
+          <h3>Swachhand IAS Sambhav Batch 50 MCQs</h3>
+          <div class="path">history/Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf</div>
+          <a class="open" href="history/Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="paraancient">
+          <div class="badge">History</div>
+          <h3>paraancient</h3>
+          <div class="path">history/paraancient.pdf</div>
+          <a class="open" href="history/paraancient.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="sindhu saraswati civilization">
+          <div class="badge">History</div>
+          <h3>Sindhu Saraswati Civilization</h3>
+          <div class="path">history/Sindhu_Saraswati_Civilization.pdf</div>
+          <a class="open" href="history/Sindhu_Saraswati_Civilization.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="saraswati sindhu notes">
+          <div class="badge">History</div>
+          <h3>saraswati sindhu notes</h3>
+          <div class="path">history/saraswati_sindhu_notes.pdf</div>
+          <a class="open" href="history/saraswati_sindhu_notes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 English / Others" data-text="basics of english (hand-written notes new-1 (1)">
+          <div class="badge">English / Others</div>
+          <h3>Basics of English (Hand-written Notes New-1 (1)</h3>
+          <div class="path">others/Basics of English (Hand-written Notes_New-1 (1).pdf</div>
+          <a class="open" href="others/Basics%20of%20English%20(Hand-written%20Notes_New-1%20(1).pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 English / Others" data-text="100 imp. rules of grammar">
+          <div class="badge">English / Others</div>
+          <h3>100 imp. rules of grammar</h3>
+          <div class="path">others/100 imp. rules of grammar.pdf</div>
+          <a class="open" href="others/100%20imp.%20rules%20of%20grammar.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+</div>
+</section>
+
+<footer>Vipul's Material • Local PDF Revision Library</footer>
+</main>
+
+<script>
+const search=document.getElementById('search');
+const cards=[...document.querySelectorAll('.card')];
+function show(){
+  const q=search.value.toLowerCase().trim();
+  const cat=document.body.dataset.cat||'ALL';
+  cards.forEach(c=>{
+    const okCat=cat==='ALL'||c.dataset.cat.includes(cat);
+    const okText=!q||c.dataset.text.includes(q)||c.querySelector('.path').textContent.toLowerCase().includes(q);
+    c.style.display=(okCat&&okText)?'flex':'none';
+  });
+}
+function filterCat(cat,btn){
+  document.body.dataset.cat=cat;
+  document.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); show();
+}
+search.addEventListener('input',show);
+</script>
+</body>
+</html>
