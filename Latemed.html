@@ -19,7 +19,7 @@ body{
   overflow:hidden;background:
   radial-gradient(circle at 60% -10%,rgba(60,91,160,.24),transparent 35%),
   radial-gradient(circle at 100% 100%,rgba(180,70,90,.10),transparent 35%),
-  var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;
+  var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;font-size:13px;
 }
 button,input{font:inherit}
 button{color:inherit}
@@ -32,14 +32,14 @@ button{color:inherit}
 }
 .brand{display:flex;align-items:center;gap:10px;min-width:320px}
 .bookmark{font-size:22px}
-.brand h1{font:700 18px Cinzel,serif;margin:0;letter-spacing:.02em}
+.brand h1{font:700 16px Cinzel,serif;margin:0;letter-spacing:.02em}
 .brand small{font:600 10px IBM Plex Mono,monospace;color:var(--muted);margin-left:8px}
 .search{
   flex:1;max-width:430px;margin-left:auto;position:relative
 }
 .search input{
   width:100%;background:#0b1426;border:1px solid #30415f;color:var(--text);
-  border-radius:10px;padding:11px 14px 11px 38px;outline:none;font-size:13px
+  border-radius:10px;padding:11px 14px 11px 38px;outline:none;font-size:12px
 }
 .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(240,184,75,.10)}
 .search span{position:absolute;left:13px;top:10px;color:var(--muted)}
@@ -50,6 +50,10 @@ button{color:inherit}
 }
 .tool:hover{border-color:var(--accent);transform:translateY(-1px)}
 .zoom-label{min-width:55px;padding:0 8px}
+.zoom-btn{font-size:18px;font-weight:700}
+.zoom-reset{font-size:16px}
+.zoom-fit{font-size:11px}
+
 .counter{font:600 11px IBM Plex Mono,monospace;color:var(--muted);white-space:nowrap}
 
 .workspace{min-height:0;display:grid;grid-template-columns:300px 1fr}
@@ -86,24 +90,30 @@ button{color:inherit}
   height:52px;display:flex;align-items:center;justify-content:space-between;
   padding:0 16px;border-bottom:1px solid var(--line);background:rgba(10,18,33,.72)
 }
-.viewer-title{font:600 12px IBM Plex Mono,monospace;color:#b7c2d4}
+.viewer-title{font:600 11px IBM Plex Mono,monospace;color:#b7c2d4}
 .viewer-title b{color:var(--accent)}
 .viewer-tools{display:flex;gap:7px}
 .stage{
-  flex:1;min-height:0;display:flex;align-items:center;justify-content:center;
-  overflow:auto;padding:24px;background:
+  flex:1;min-height:0;display:block;
+  overflow:auto;padding:30px;
+  background:
   radial-gradient(circle at center,rgba(43,63,103,.16),transparent 48%),
   #050a13;
 }
 .image-wrap{
-  position:relative;display:flex;align-items:center;justify-content:center;
-  transform-origin:center center;transition:transform .16s ease
+  position:relative;display:block;flex:0 0 auto;
+  pointer-events:auto;
+  margin:auto;
 }
 #mainImg{
   display:block;max-width:none;width:auto;height:auto;object-fit:contain;
   border-radius:3px;box-shadow:0 25px 70px rgba(0,0,0,.55);
-  background:#111;user-select:none
+  background:#111;user-select:none;cursor:grab
 }
+.stage{touch-action:none;overscroll-behavior:contain;cursor:grab}
+.stage.dragging{cursor:grabbing}
+.stage.dragging #mainImg{cursor:grabbing}
+
 .stage-badge{
   position:fixed;left:318px;bottom:18px;background:rgba(9,16,29,.9);
   border:1px solid #30415f;color:#e4eaf4;padding:8px 12px;border-radius:9px;
@@ -122,7 +132,11 @@ button{color:inherit}
 @media(max-width:900px){
   .workspace{grid-template-columns:225px 1fr}
   .brand{min-width:220px}
-  .stage-badge{left:240px}
+  .stage{touch-action:none;overscroll-behavior:contain;cursor:grab}
+.stage.dragging{cursor:grabbing}
+.stage.dragging #mainImg{cursor:grabbing}
+
+.stage-badge{left:240px}
 }
 @media(max-width:650px){
   .workspace{grid-template-columns:1fr}
@@ -132,7 +146,11 @@ button{color:inherit}
   .search{max-width:none}
   .top-actions .tool:nth-child(-n+3){display:none}
   .stage{padding:12px}
-  .stage-badge{left:12px;bottom:12px}
+  .stage{touch-action:none;overscroll-behavior:contain;cursor:grab}
+.stage.dragging{cursor:grabbing}
+.stage.dragging #mainImg{cursor:grabbing}
+
+.stage-badge{left:12px;bottom:12px}
 }
 </style>
 </head>
@@ -150,10 +168,11 @@ button{color:inherit}
     </div>
     <div class="top-actions">
       <span class="counter" id="topCounter">1 / 127</span>
-      <button class="tool" onclick="zoom(-10)" title="Zoom out">−</button>
-      <button class="tool" onclick="fitImage()" title="Fit image">Fit</button>
-      <button class="tool" onclick="zoom(10)" title="Zoom in">+</button>
-      <button class="tool zoom-label" id="zoomLabel">100%</button>
+      <button class="tool zoom-btn" onclick="zoom(-5, zoomAnchorX, zoomAnchorY)" title="Zoom out" aria-label="Zoom out">−</button>
+      <button class="tool zoom-fit" onclick="fitImage()" title="Fit image">Fit</button>
+      <button class="tool zoom-btn" onclick="zoom(5, zoomAnchorX, zoomAnchorY)" title="Zoom in" aria-label="Zoom in">+</button>
+      <button class="tool zoom-label" id="zoomLabel" title="Current zoom">100%</button>
+      <button class="tool zoom-reset" onclick="resetZoom()" title="Reset zoom to 100%">↺</button>
       <button class="tool" onclick="previous()" title="Previous">‹</button>
       <button class="tool" onclick="next()" title="Next">›</button>
       <button class="tool" onclick="fullscreen()" title="Fullscreen">⛶</button>
@@ -196,7 +215,7 @@ button{color:inherit}
       </div>
       <div class="progress"><div id="progressBar"></div></div>
       <div class="stage-badge" id="stageBadge">Poster 1 / 127 · 100%</div>
-      <div class="help">Keyboard: <b>← →</b> navigate · <b>F</b> fullscreen · <b>0</b> fit</div>
+      <div class="help">Keyboard: <b>← →</b> navigate · <b>+</b>/<b>−</b> zoom · <b>0</b> fit · <b>F</b> fullscreen · <b>Click + Drag</b> when zoomed</div>
     </main>
   </section>
 </div>
@@ -268,6 +287,8 @@ function renderViewer(){
   const p=allPages[current];
   img.src=imagePath(p.page);
   img.alt='Poster '+p.page;
+  img.style.width='auto'; img.style.height='auto';
+  wrap.style.width='auto'; wrap.style.height='auto';
   document.getElementById('viewerTitle').innerHTML=`POSTER <b>${pad(p.page)}</b> · ${p.title.toUpperCase()}`;
   document.getElementById('topCounter').textContent=`${current+1} / ${totalPages}`;
   document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
@@ -285,22 +306,76 @@ function next(){
   renderList();
   renderViewer();
 }
-function zoom(delta){
-  zoomLevel=Math.max(25,Math.min(250,zoomLevel+delta));
-  wrap.style.transform=`scale(${zoomLevel/100})`;
-  document.getElementById('zoomLabel').textContent=zoomLevel+'%';
-  document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+function applyZoom(){
+  const p=allPages[current];
+  const probe=new Image();
+  probe.onload=()=>{
+    const w=Math.max(1,Math.round(probe.naturalWidth*zoomLevel/100));
+    const h=Math.max(1,Math.round(probe.naturalHeight*zoomLevel/100));
+    img.style.width=w+'px';
+    img.style.height=h+'px';
+    wrap.style.width=w+'px';
+    wrap.style.height=h+'px';
+    document.getElementById('zoomLabel').textContent=zoomLevel+'%';
+    document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+  };
+  probe.src=imagePath(p.page);
 }
+
+let zoomAnchorX=null, zoomAnchorY=null;
+
+function zoom(delta, anchorX=null, anchorY=null){
+  const oldZoom=zoomLevel;
+  const newZoom=Math.max(25,Math.min(300,zoomLevel+delta));
+  if(newZoom===oldZoom) return;
+
+  const rect=stage.getBoundingClientRect();
+  const sx=stage.scrollLeft;
+  const sy=stage.scrollTop;
+
+  // Use the cursor position as the zoom anchor.
+  // If no cursor is available (keyboard/button), use the center of the panel.
+  const clientX=anchorX ?? (rect.left + rect.width/2);
+  const clientY=anchorY ?? (rect.top + rect.height/2);
+
+  const localX=clientX-rect.left;
+  const localY=clientY-rect.top;
+
+  // Position in the unzoomed poster/canvas.
+  const contentX=sx+localX;
+  const contentY=sy+localY;
+
+  zoomLevel=newZoom;
+  applyZoom();
+
+  requestAnimationFrame(()=>{
+    const ratio=newZoom/oldZoom;
+    stage.scrollLeft=Math.max(0,contentX*ratio-localX);
+    stage.scrollTop=Math.max(0,contentY*ratio-localY);
+  });
+}
+function resetZoom(){
+  zoomLevel=100;
+  applyZoom();
+  requestAnimationFrame(()=>{
+    stage.scrollLeft=0;
+    stage.scrollTop=0;
+  });
+}
+
 function fitImage(){
   const p=allPages[current];
   const probe=new Image();
   probe.onload=()=>{
-    const maxW=stage.clientWidth-50, maxH=stage.clientHeight-45;
+    const maxW=Math.max(100,stage.clientWidth-60);
+    const maxH=Math.max(100,stage.clientHeight-60);
     const scale=Math.min(maxW/probe.naturalWidth,maxH/probe.naturalHeight,1);
     zoomLevel=Math.max(25,Math.round(scale*100));
-    wrap.style.transform=`scale(${zoomLevel/100})`;
-    document.getElementById('zoomLabel').textContent=zoomLevel+'%';
-    document.getElementById('stageBadge').textContent=`Poster ${current+1} / ${totalPages} · ${zoomLevel}%`;
+    applyZoom();
+    requestAnimationFrame(()=>{
+      stage.scrollLeft=0;
+      stage.scrollTop=0;
+    });
   };
   probe.src=imagePath(p.page);
 }
@@ -324,11 +399,67 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')previous();
   if(e.key.toLowerCase()==='f')fullscreen();
   if(e.key==='0')fitImage();
-  if(e.key==='+'||e.key==='=')zoom(10);
-  if(e.key==='-')zoom(-10);
+  if(e.key==='+'||e.key==='=')zoom(5);
+  if(e.key==='-')zoom(-5);
 });
 window.addEventListener('resize',()=>{if(zoomLevel===100)fitImage()});
-img.addEventListener('dblclick',()=>zoomLevel===100?zoom(25):fitImage());
+img.addEventListener('dragstart',e=>e.preventDefault());
+img.addEventListener('dblclick',e=>{
+  if(zoomLevel===100) zoom(15,e.clientX,e.clientY);
+  else fitImage();
+});
+img.addEventListener('load',()=>applyZoom());
+
+
+/* Ctrl/Cmd + mouse wheel = smooth poster zoom */
+stage.addEventListener('pointermove', e=>{
+  if(!isPanning){
+    zoomAnchorX=e.clientX;
+    zoomAnchorY=e.clientY;
+  }
+});
+
+stage.addEventListener('wheel',e=>{
+  if(e.ctrlKey || e.metaKey){
+    e.preventDefault();
+    zoom(e.deltaY < 0 ? 5 : -5, e.clientX, e.clientY);
+  }
+},{passive:false});
+
+/* Robust click-and-drag panning */
+let isPanning=false;
+let panStartX=0, panStartY=0, panScrollLeft=0, panScrollTop=0;
+
+stage.addEventListener('pointerdown', e=>{
+  if(e.button!==0 || zoomLevel<=100) return;
+  isPanning=true;
+  panStartX=e.clientX;
+  panStartY=e.clientY;
+  panScrollLeft=stage.scrollLeft;
+  panScrollTop=stage.scrollTop;
+  stage.setPointerCapture(e.pointerId);
+  stage.classList.add('dragging');
+  e.preventDefault();
+});
+
+stage.addEventListener('pointermove', e=>{
+  if(!isPanning) return;
+  stage.scrollLeft=panScrollLeft-(e.clientX-panStartX);
+  stage.scrollTop=panScrollTop-(e.clientY-panStartY);
+  e.preventDefault();
+});
+
+stage.addEventListener('pointerup', e=>{
+  if(!isPanning) return;
+  isPanning=false;
+  stage.classList.remove('dragging');
+  try{stage.releasePointerCapture(e.pointerId);}catch(_){}
+});
+
+stage.addEventListener('pointercancel', ()=>{
+  isPanning=false;
+  stage.classList.remove('dragging');
+});
 
 renderList();
 renderViewer();
