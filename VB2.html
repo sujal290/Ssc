@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administration & Related Systems — Ultimate Comparative Study</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#172033;--muted:#5f6b7a;--line:#dfe4ec;--accent:#7c3aed;--soft:#f0eaff;--gold:#b7791f;--green:#177245;--blue:#155e9e;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}
+header{background:#151b2b;color:#fff;padding:28px 20px;position:sticky;top:0;z-index:5}
+.wrap{max-width:1400px;margin:auto;padding:0 18px}.hero{display:flex;gap:18px;justify-content:space-between;align-items:end}.hero h1{margin:0;font-size:30px}.hero p{margin:5px 0 0;color:#cbd3e1}
+.search{margin-top:18px;display:flex;gap:10px}.search input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid #384157;background:#20283b;color:white;font-size:16px}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:10px 0;position:sticky;top:123px;z-index:4;overflow:auto;white-space:nowrap}
+nav a{display:inline-block;padding:8px 12px;margin-right:5px;border-radius:8px;color:#344054;text-decoration:none;font-weight:700;font-size:13px}nav a:hover{background:var(--soft);color:var(--accent)}
+main{padding:24px 0 60px}.section{margin:34px 0;scroll-margin-top:150px}.section>h2{font-size:25px;margin:0 0 12px}.section>h2 span{color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 2px 7px #1018280a}.card h3{margin:0 0 8px;font-size:17px}.tag{display:inline-block;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:11px;font-weight:800;margin:2px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}.node{background:#fff;border:2px solid #cfd5df;border-radius:11px;padding:10px 12px;min-width:130px;text-align:center;font-weight:800}.arrow{font-size:20px;color:var(--accent);font-weight:900}
+.flowcol{display:flex;flex-direction:column;align-items:center;gap:5px}.down{color:var(--accent);font-weight:900}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}th,td{padding:10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}th{background:#f1f3f7;text-align:left;font-size:12px}tr:last-child td{border-bottom:0}td:last-child,th:last-child{border-right:0}
+.stickytable{overflow:auto}.stickytable table{min-width:1000px}.stickytable th:first-child,.stickytable td:first-child{position:sticky;left:0;background:#fff;z-index:2;font-weight:800}.stickytable th:first-child{background:#f1f3f7}
+.call{border-left:5px solid var(--accent);background:#faf9ff;padding:12px 14px;border-radius:8px;margin:12px 0}.warn{border-left-color:var(--red);background:#fff8f7}.good{border-left-color:var(--green);background:#f5fcf8}.gold{border-left-color:var(--gold);background:#fffaf2}
+.mini{font-size:12px;color:var(--muted)}.big{font-size:20px;font-weight:900}.formula{font-size:18px;font-weight:900;background:#111827;color:white;border-radius:10px;padding:12px 15px;display:inline-block;margin:5px 0}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.era{padding:13px;border-radius:12px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent)}.era b{display:block}.trap{background:#fff4f2;border:1px solid #f5c2bc;padding:10px;border-radius:9px;margin-top:9px}.hide{display:none!important}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 13px;margin:9px 0}summary{cursor:pointer;font-weight:800}
+footer{padding:30px 0;color:var(--muted);text-align:center}
+@media(max-width:950px){.grid{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr 1fr}nav{top:123px}}
+@media(max-width:650px){.hero{display:block}.hero h1{font-size:23px}.grid,.grid2{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.search{display:block}.search input{width:100%}nav{top:142px}}
+</style>
+
+<style id="ultimate-compact-v10">
+/* V10 COMPACT STUDY UI — all previous V7/V8/V9 content retained */
+html { scroll-behavior:smooth; }
+body { margin:0 !important; font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif !important; font-size:14px !important; line-height:1.42 !important; background:#f4f6f8 !important; color:#172033 !important; }
+body * { font-family:inherit; }
+.container, .wrap, main, .content, .page, .study-container { max-width:1180px !important; margin-left:auto !important; margin-right:auto !important; }
+section { margin-top:18px !important; margin-bottom:18px !important; }
+h1 { font-size:27px !important; line-height:1.15 !important; margin:8px 0 !important; }
+h2 { font-size:21px !important; line-height:1.2 !important; margin:18px 0 8px !important; }
+h3 { font-size:16px !important; line-height:1.25 !important; margin:14px 0 7px !important; }
+p { margin:5px 0 8px !important; }
+table { font-size:12px !important; line-height:1.28 !important; }
+th,td { padding:6px 7px !important; }
+.v8-hero { padding:18px !important; border-radius:14px !important; margin:10px 0 16px !important; }
+.v8-hero h1 { font-size:25px !important; }
+.v8-nav { position:static !important; gap:5px !important; padding:6px !important; margin:7px 0 14px !important; }
+.v8-nav a { padding:5px 8px !important; font-size:11px !important; }
+.poster-grid { grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important; gap:10px !important; }
+.poster-card { border-radius:10px !important; box-shadow:none !important; }
+.poster-head { padding:7px 9px !important; font-size:12px !important; }
+.poster-foot { padding:5px 8px !important; font-size:10px !important; }
+.flow-master { padding:12px !important; border-radius:12px !important; gap:4px !important; }
+.fbox { padding:7px 9px !important; font-size:12px !important; border-width:1px !important; }
+.arrow { font-size:15px !important; padding:1px !important; }
+.flow-grid,.system-grid,.v9grid { grid-template-columns:repeat(auto-fit,minmax(210px,1fr)) !important; gap:9px !important; }
+.flow-card,.system-card,.v9card { padding:10px !important; border-radius:10px !important; box-shadow:none !important; }
+.mini-title,.v9title { font-size:15px !important; margin-bottom:6px !important; }
+.flow-card .fbox { font-size:11px !important; padding:6px !important; }
+.chain { padding:9px !important; gap:5px !important; }
+.chain span { padding:5px 7px !important; font-size:11px !important; }
+.v9flow { padding:11px !important; margin:8px 0 !important; border-radius:11px !important; }
+.v9node { padding:7px !important; font-size:12px !important; }
+.v9arrow { font-size:15px !important; padding:1px !important; }
+.exam,.call { padding:9px 11px !important; }
+.grid,.grid2,.study { gap:9px !important; }
+.card { padding:10px !important; }
+.stickytable { overflow-x:auto !important; }
+.stickytable table { min-width:720px !important; }
+.v9 table { font-size:11px !important; }
+.v9 th,.v9 td { padding:6px !important; }
+.v9 h2 { font-size:20px !important; margin:17px 0 7px !important; }
+.v9 h3 { font-size:15px !important; }
+.final-v8 { max-width:1180px !important; margin:0 auto !important; padding:0 12px !important; }
+.v9 { max-width:1180px !important; margin:0 auto !important; padding:0 12px !important; }
+#posters .poster-card img { max-height:520px !important; object-fit:contain !important; }
+@media(max-width:700px){
+ body { font-size:13px !important; }
+ .final-v8,.v9 { padding:0 7px !important; }
+ .flow-grid,.system-grid,.v9grid { grid-template-columns:1fr !important; }
+ table { font-size:11px !important; }
+}
+</style>
+
+<style id="v13-clean-ui">
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif!important;padding-left:62px!important}
+.v13-sidebar{position:fixed;left:0;top:0;bottom:0;width:62px;background:#101828;z-index:9999;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:3px 0 18px rgba(0,0,0,.16)}
+.v13-sidebar .sb-logo{font-size:22px;margin:2px 0 9px}
+.v13-sidebar a{width:48px;height:36px;border:1px solid #344054;border-radius:9px;color:#f2f4f7;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;background:#1d2939}
+.v13-sidebar a:hover{background:#175cd3;border-color:#84adff}
+.v13-sidebar .sb-label{position:fixed;left:70px;background:#101828;color:#fff;padding:6px 9px;border-radius:6px;font-size:11px;display:none;white-space:nowrap}
+.v13-sidebar a:hover .sb-label{display:block}
+.clean-posters .poster-intro{background:#ecfdf3;border-left:4px solid #12b76a;border-radius:8px;padding:9px 11px;font-size:12px;margin:7px 0 12px}
+.cp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cp-card{background:#fff;border:1px solid #d0d5dd;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.07)}
+.cp-top{display:flex;align-items:center;gap:7px;padding:8px 10px;background:linear-gradient(90deg,#172554,#2563eb);color:#fff}
+.cp-top span{font-size:16px}.cp-top b{font-size:14px}.cp-top small{margin-left:auto;font-size:8px;opacity:.75}
+.cp-nature{padding:7px 10px 5px;font-size:11px;font-weight:800;color:#344054}
+.cp-row{display:grid;grid-template-columns:145px 1fr;gap:7px;padding:5px 10px;border-top:1px solid #eaecf0;font-size:10.5px;line-height:1.35}
+.cp-row strong{color:#175cd3;font-size:9px}.cp-row span{color:#344054}
+.cp-formula{margin:7px 10px 10px;padding:7px 9px;border-radius:8px;background:#101828;color:#fff;font-size:10px;font-weight:900;text-align:center}
+.cp-card.chola .cp-top{background:linear-gradient(90deg,#065f46,#059669)}
+.cp-card.gupta .cp-top{background:linear-gradient(90deg,#4c1d95,#7c3aed)}
+.cp-card.delhi-sultanate .cp-top{background:linear-gradient(90deg,#0c4a6e,#0369a1)}
+.cp-card.mughal .cp-top{background:linear-gradient(90deg,#92400e,#d97706)}
+.cp-card.british .cp-top{background:linear-gradient(90deg,#111827,#475467)}
+#rulers .ruler-list{display:flex!important;flex-direction:column!important;gap:8px!important}
+#rulers .card{width:100%!important;margin:0!important;padding:11px 14px!important}
+#rulers .card h3{font-size:15px!important;margin:0 0 5px!important}
+#rulers .r-line{font-size:12px;line-height:1.42;margin:2px 0}
+#rulers .r-line b{color:#175cd3}
+@media(max-width:760px){body{padding-left:50px!important}.v13-sidebar{width:50px}.v13-sidebar a{width:38px}.cp-grid{grid-template-columns:1fr}.cp-row{grid-template-columns:118px 1fr}}
+</style></head>
+<body><nav class="v13-sidebar" aria-label="Study navigation">
+<div class="sb-logo">🏛️</div>
+<a href="#map">M<span class="sb-label">Master Map</span></a>
+<a href="#systems">C<span class="sb-label">Comparison</span></a>
+<a href="#revenue">₹<span class="sb-label">Revenue</span></a>
+<a href="#admin">A<span class="sb-label">Administration</span></a>
+<a href="#local">L<span class="sb-label">Local Government</span></a>
+<a href="#dynasties">D<span class="sb-label">Dynasty Matrix</span></a>
+<a href="#rulers">👑<span class="sb-label">Rulers</span></a>
+<a href="#posters">🖼️<span class="sb-label">Posters</span></a>
+<a href="#dynflows">↘<span class="sb-label">Flowcharts</span></a>
+<a href="#addon7">🌳<span class="sb-label">Complete Hierarchy</span></a>
+<a href="#traps">⚠️<span class="sb-label">SSC Traps</span></a>
+<a href="#studyplan">🎯<span class="sb-label">Revision</span></a>
+</nav>
+<div style="max-width:1180px;margin:8px auto;padding:7px 10px;border:1px solid #d0d5dd;border-radius:10px;background:#fff;font:700 12px Arial,sans-serif;color:#344054;">
+🔥 <b>ULTIMATE ADMINISTRATION V10</b> &nbsp;|&nbsp; Central → Provincial → District → Local → Village &nbsp;|&nbsp;
+Maurya • Gupta • South India • Sultanate • Vijayanagara • Mughal • Maratha • British
+</div>
+
+<header>
+<div class="wrap">
+<div class="hero"><div><h1>🏛️ Administration & Related Systems — Ultimate Comparative Study</h1><p>SSC CGL / UPSC • “System → Dynasty → Officer → Purpose → Change”</p></div><div class="tag" style="background:#31245f;color:#e9ddff">DEEP REVISION</div></div>
+<div class="search"><input id="search" placeholder="Search: Iqta, Zabt, Sabha, Chauth, Collector, etc."></div>
+</div>
+</header>
+<nav><div class="wrap">
+<a href="#map">Master Map</a><a href="#systems">System-wise Comparison</a><a href="#revenue">Revenue</a><a href="#admin">Administration</a><a href="#local">Local Govt</a><a href="#military">Military</a><a href="#market">Market</a><a href="#land">Land Grants</a><a href="#currency">Currency</a><a href="#justice">Justice</a><a href="#irrigation">Irrigation</a><a href="#dynasties">Dynasty Matrix</a><a href="#rulers">Ruler Deep-Dive</a><a href="#v4systems">One System→All</a><a href="#v5deep">V5 Ruler×System</a><a href="#examframework">Study Framework</a><a href="#traps">SSC Traps</a></div></nav>
+
+<main class="wrap">
+
+<section class="section" id="map">
+<h2>1. <span>MASTER FLOW — India’s Administrative Evolution</span></h2>
+<div class="call good"><b>Exam lens:</b> Don’t memorise isolated terms. Track the same function across time: <b>who controls land → who collects revenue → who commands soldiers → how local units work → how markets are regulated → where money goes.</b></div>
+<div class="flow">
+<div class="node">Vedic<br><small>Rajan + Sabha/Samiti</small></div><div class="arrow">→</div>
+<div class="node">Mahajanapada<br><small>Monarchy / Gana</small></div><div class="arrow">→</div>
+<div class="node">Maurya<br><small>Centralised state</small></div><div class="arrow">→</div>
+<div class="node">Gupta<br><small>Decentralising tendencies</small></div><div class="arrow">→</div>
+<div class="node">South<br><small>Chola local bodies</small></div><div class="arrow">→</div>
+<div class="node">Sultanate<br><small>Iqta + Sultan</small></div><div class="arrow">→</div>
+<div class="node">Mughal<br><small>Subah + Mansab/Jagir</small></div><div class="arrow">→</div>
+<div class="node">Maratha<br><small>Ashtapradhan + Chauth</small></div><div class="arrow">→</div>
+<div class="node">British<br><small>District + land settlements</small></div>
+</div>
+<div class="grid">
+<div class="card"><h3>🔵 Maurya = State Control</h3><p>Central bureaucracy • Bhaga • Samaharta/Sannidhata • specialised departments • spies • large standing army.</p><div class="formula">CENTRALISE → MEASURE → COLLECT → CONTROL</div></div>
+<div class="card"><h3>🟣 Gupta = Land & Local Power</h3><p>Bhukti → Vishaya → village • Uparika/Vishayapati • land grants increase • more decentralising tendencies.</p><div class="formula">GRANTS → LOCAL POWER</div></div>
+<div class="card"><h3>🟢 Chola = Local Self-Government</h3><p>Ur + Sabha + Nagaram + Variyam • Kudavolai • irrigation • merchant guilds • maritime trade.</p><div class="formula">VILLAGE → COMMITTEE → WATER</div></div>
+<div class="card"><h3>🟠 Sultanate = Iqta + Military State</h3><p>Iqta revenue assignment • Muqti/Iqtadar • Wazir • Ariz-i-Mamalik • Qazi • Alauddin’s market/army package.</p><div class="formula">IQTA → REVENUE → ARMY</div></div>
+<div class="card"><h3>🟡 Mughal = Integrated Imperial System</h3><p>Subah → Sarkar → Pargana → village • Diwan/Bakshi • Zabt/Dahsala • Mansab + Jagir + Khalisa.</p><div class="formula">RANK → SERVICE → REVENUE ASSIGNMENT</div></div>
+<div class="card"><h3>🔴 British = District + Settlement</h3><p>Collector • Permanent/Ryotwari/Mahalwari • commercialization • Drain of Wealth • colonial market integration.</p><div class="formula">SETTLEMENT → REVENUE → COLONIAL ECONOMY</div></div>
+</div>
+</section>
+
+<section class="section" id="systems">
+<h2>2. <span>SYSTEM-WISE COMPARATIVE MASTER TABLE</span></h2>
+<div class="stickytable"><table><thead><tr><th>System / Function</th><th>Vedic / Mahajanapada</th><th>Maurya</th><th>Gupta</th><th>Chola / South</th><th>Sultanate</th><th>Mughal</th><th>Maratha</th><th>British</th></tr></thead>
+<tbody>
+<tr><td>Political core</td><td>Rajan; Sabha/Samiti; gana-sangha also</td><td>Highly centralised monarchy</td><td>Monarchy + feudatory/local tendencies</td><td>Strong king + local institutions</td><td>Sultan + central departments</td><td>Emperor + provincial bureaucracy</td><td>Chhatrapati + Ashtapradhan</td><td>Crown/Company + district bureaucracy</td></tr>
+<tr><td>Administrative unit</td><td>Tribe/territorial units</td><td>Province → district/local officials</td><td>Bhukti → Vishaya → village</td><td>Mandalam → Valanadu → Nadu → village</td><td>Iqta; Shiq/Pargana/local units</td><td>Subah → Sarkar → Pargana → village</td><td>Territorial administration + forts</td><td>Presidency/Province → District → local units</td></tr>
+<tr><td>Revenue core</td><td>Bali</td><td>Bhaga; state-managed economy</td><td>Bhaga/Bhoga/Kara; land grants</td><td>Land revenue + local levies</td><td>Kharaj + other taxes; Iqta</td><td>Zabt/Dahsala + other methods</td><td>Land revenue + Chauth/Sardeshmukhi</td><td>Permanent/Ryotwari/Mahalwari</td></tr>
+<tr><td>Revenue official</td><td>—</td><td>Samaharta; Sannidhata</td><td>Uparika; Vishayapati</td><td>Local assemblies/officials</td><td>Wazir; Amil; Muqti</td><td>Diwan; Amil; Qanungo</td><td>Amatya</td><td>Collector; settlement officers</td></tr>
+<tr><td>Military</td><td>Rajan/Senani</td><td>Large standing army</td><td>Cavalry + feudatory forces</td><td>Army + strong navy</td><td>Cavalry; Iqta-linked obligations</td><td>Mansab + Zat/Sawar; Jagir-linked service</td><td>Mobile cavalry + forts + Ganimi Kava</td><td>Professional/regimental army + sepoys</td></tr>
+<tr><td>Local self-government</td><td>Sabha/Samiti</td><td>Officials dominate</td><td>Local elements increase</td><td>Ur/Sabha/Nagaram/Variyam</td><td>Village intermediaries</td><td>Pargana/village officials</td><td>Local chiefs + fort networks</td><td>Limited/structured colonial local administration</td></tr>
+<tr><td>Market control</td><td>Exchange/guild activity</td><td>State supervision</td><td>Guilds/trade</td><td>Guilds + ports</td><td>Alauddin’s exceptional regulation</td><td>Large internal/overseas trade</td><td>Trade/customs</td><td>Colonial market integration</td></tr>
+<tr><td>Land assignment</td><td>—</td><td>State control</td><td>Land grants</td><td>Brahmadeya/Devadana etc.</td><td>Iqta = revenue assignment</td><td>Jagir/Khalisa/Zamindar</td><td>Chauth etc.</td><td>Settlement rights varied</td></tr>
+<tr><td>Currency highlight</td><td>Early exchange</td><td>Punch-marked/pana</td><td>Gold coins</td><td>Coins + trade</td><td>Tanka/Jital</td><td>Rupiya; later Mughal rupee</td><td>Coinage + revenue collections</td><td>British currency</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="revenue">
+<h2>3. <span>REVENUE SYSTEM — SAME QUESTION, DIFFERENT DYNASTY</span></h2>
+<div class="flow"><div class="node">Produce / Land</div><div class="arrow">→</div><div class="node">Assessment</div><div class="arrow">→</div><div class="node">Collector</div><div class="arrow">→</div><div class="node">Treasury</div><div class="arrow">→</div><div class="node">Army / State</div></div>
+<div class="stickytable"><table><thead><tr><th>Period</th><th>Assessment / tax</th><th>Who?</th><th>Core idea</th><th>Exam hook</th></tr></thead><tbody>
+<tr><td>Vedic</td><td>Bali</td><td>Rajan/early polity</td><td>Tribute/contribution</td><td>Early fiscal term</td></tr>
+<tr><td>Maurya</td><td>Bhaga</td><td>Samaharta</td><td>State revenue from agriculture; Bhaga commonly 1/6</td><td>Samaharta ≠ Sannidhata</td></tr>
+<tr><td>Gupta</td><td>Bhaga + Bhoga + Kara</td><td>Uparika/Vishayapati etc.</td><td>Land grants grow; local/decentralising tendencies</td><td>Land grants → local power</td></tr>
+<tr><td>Chola</td><td>Land revenue + local levies</td><td>Local bodies + officials</td><td>Assessment linked to productive Kaveri delta/irrigation economy</td><td>Revenue + water management</td></tr>
+<tr><td>Sultanate</td><td>Kharaj</td><td>Amil / Muqti / central finance</td><td>Land tax within Islamic fiscal framework</td><td>Iqta = assignment, not private ownership</td></tr>
+<tr><td>Alauddin</td><td>Core demand ≈ 1/2 produce</td><td>Central revenue apparatus</td><td>Measurement + stronger collection</td><td>Army + market + revenue = one package</td></tr>
+<tr><td>Sher Shah</td><td>Measured assessment</td><td>Revenue officials</td><td>Patta + Qabuliyat</td><td>Rupiya + roads + sarais</td></tr>
+<tr><td>Akbar</td><td>Zabt/Dahsala; demand commonly ≈ 1/3 in textbook notes</td><td>Diwan / Amil</td><td>Measurement, classification, 10-year averages</td><td>Todar Mal → Zabt/Dahsala</td></tr>
+<tr><td>Maratha</td><td>Chauth 25%; Sardeshmukhi 10%</td><td>Amatya etc.</td><td>Revenue + external levy claims</td><td>1/4 + 1/10</td></tr>
+<tr><td>British</td><td>Permanent / Ryotwari / Mahalwari</td><td>Zamindar / Ryot / Mahal</td><td>Different settlement relationships</td><td>WHO is settlement partner?</td></tr>
+</tbody></table></div>
+<div class="call gold"><b>Memory ladder:</b> <span class="formula">Maurya 1/6 → Alauddin ≈ 1/2 → Akbar ≈ 1/3 → Maratha 1/4 + 10%</span></div>
+</section>
+
+<section class="section" id="admin">
+<h2>4. <span>ADMINISTRATIVE HIERARCHY — COMPARE THE “STACK”</span></h2>
+<div class="grid2">
+<div class="card"><h3>🏛️ Maurya</h3><div class="flowcol"><div class="node">King</div><div class="down">↓</div><div class="node">Central Ministers / Amatyas</div><div class="down">↓</div><div class="node">Provinces</div><div class="down">↓</div><div class="node">Local officials</div></div><p class="mini">Specialised departments + economic officers + spies.</p></div>
+<div class="card"><h3>🕌 Gupta</h3><div class="flowcol"><div class="node">King</div><div class="down">↓</div><div class="node">Bhukti — Uparika</div><div class="down">↓</div><div class="node">Vishaya — Vishayapati</div><div class="down">↓</div><div class="node">Village — Gramika</div></div></div>
+<div class="card"><h3>🌾 Chola</h3><div class="flowcol"><div class="node">King</div><div class="down">↓</div><div class="node">Mandalam</div><div class="down">↓</div><div class="node">Valanadu</div><div class="down">↓</div><div class="node">Nadu</div><div class="down">↓</div><div class="node">Village: Ur / Sabha / Nagaram</div></div></div>
+<div class="card"><h3>☪️ Sultanate</h3><div class="flowcol"><div class="node">Sultan</div><div class="down">↓</div><div class="node">Central Diwans</div><div class="down">↓</div><div class="node">Iqta / Muqti</div><div class="down">↓</div><div class="node">Amil / Shiqdar / local officials</div></div></div>
+<div class="card"><h3>👑 Mughal</h3><div class="flowcol"><div class="node">Emperor</div><div class="down">↓</div><div class="node">Subah — Subahdar + Diwan</div><div class="down">↓</div><div class="node">Sarkar</div><div class="down">↓</div><div class="node">Pargana</div><div class="down">↓</div><div class="node">Village — Patwari</div></div></div>
+<div class="card"><h3>🇬🇧 British</h3><div class="flowcol"><div class="node">Governor-General / Crown</div><div class="down">↓</div><div class="node">Province / Presidency</div><div class="down">↓</div><div class="node">District — Collector</div><div class="down">↓</div><div class="node">Local administration</div></div></div>
+</div>
+</section>
+
+<section class="section" id="local">
+<h2>5. <span>LOCAL GOVERNMENT — BIGGEST DIFFERENCE</span></h2>
+<div class="stickytable"><table><thead><tr><th>Polity</th><th>Local structure</th><th>Who/what stands out?</th><th>Why important?</th></tr></thead><tbody>
+<tr><td>Vedic</td><td>Sabha / Samiti</td><td>Collective bodies in early polity</td><td>Early consultative element</td></tr>
+<tr><td>Maurya</td><td>Officials + supervised local administration</td><td>Nagaraka, Rajuka, Pradeshika, Yukta</td><td>Central state penetration</td></tr>
+<tr><td>Gupta</td><td>Village / Vishaya elements</td><td>Gramika, Vishayapati</td><td>Local and land-grant tendencies</td></tr>
+<tr><td>Chola</td><td>Ur / Sabha / Nagaram</td><td>Variyams + Kudavolai</td><td>Classic local self-government example</td></tr>
+<tr><td>Sultanate</td><td>Local intermediaries</td><td>Chaudhuri, Muqaddam, Patwari</td><td>Revenue + village interface</td></tr>
+<tr><td>Mughal</td><td>Pargana / village</td><td>Shiqdar, Amil, Qanungo, Patwari</td><td>Revenue + records + order</td></tr>
+<tr><td>Vijayanagara</td><td>Ayagar village system</td><td>Karanam, Talari, Reddi</td><td>Village office structure</td></tr>
+<tr><td>British</td><td>District-centred</td><td>Collector</td><td>District became major administrative unit</td></tr>
+</tbody></table></div>
+<div class="call"><b>Chola flow:</b> <span class="formula">UR → SABHA → NAGARAM → VARIYAM → KUDAVOLAI → IRRIGATION</span></div>
+</section>
+
+<section class="section" id="military">
+<h2>6. <span>MILITARY SYSTEM — REVENUE ↔ ARMY CONNECTION</span></h2>
+<div class="flow"><div class="node">Revenue</div><div class="arrow">→</div><div class="node">Treasury / Assignment</div><div class="arrow">→</div><div class="node">Soldiers</div><div class="arrow">→</div><div class="node">Inspection / Control</div></div>
+<div class="grid">
+<div class="card"><h3>Maurya</h3><p>Large state-controlled standing army; infantry, cavalry, elephants, chariots and naval elements in the source framework.</p></div>
+<div class="card"><h3>Alauddin Khalji</h3><p><b>Dagh</b> horse branding + <b>Chehra</b> descriptive roll; standing army; market control helped lower army-maintenance costs.</p></div>
+<div class="card"><h3>Mughal</h3><p><b>Mansab → Zat + Sawar</b>. Mansab determined rank; jagir was a revenue assignment, not the same thing as mansab.</p></div>
+<div class="card"><h3>Maratha</h3><p>Mobile/light cavalry, forts, Ganimi Kava, navy; Chauth/Sardeshmukhi formed important revenue claims.</p></div>
+<div class="card"><h3>Vijayanagara</h3><p>Nayaka/Nayankara linked territorial/revenue assignment with military service.</p></div>
+<div class="card"><h3>British</h3><p>Professional/regimental army; sepoys; post-1857 reorganisation; artillery and recruitment policy important.</p></div>
+</div>
+<div class="call warn"><b>Trap:</b> <b>Dagh + Chehra</b> is a classic Alauddin Khalji association. Mughal administration also used inspection practices, but SSC identification commonly points to Alauddin.</div>
+</section>
+
+<section class="section" id="market">
+<h2>7. <span>MARKET SYSTEM — WHO CONTROLLED WHAT?</span></h2>
+<div class="flow"><div class="node">Alauddin's problem</div><div class="arrow">→</div><div class="node">Large army</div><div class="arrow">→</div><div class="node">Need lower soldier cost</div><div class="arrow">→</div><div class="node">Low regulated prices</div><div class="arrow">→</div><div class="node">Monitoring</div></div>
+<div class="grid2">
+<div class="card"><h3>🔴 Alauddin Khalji — Exceptional State Regulation</h3>
+<ul><li>Diwan-i-Riyasat → market-control department</li><li>Shahna-i-Mandi → market superintendent</li><li>Mandi → grain/food market</li><li>Sarai-i-Adl → cloth/other commodities</li><li>Barid + Munhiyan → intelligence/monitoring</li><li>Anti-hoarding / supervision / weights and market discipline</li></ul>
+</div>
+<div class="card"><h3>🟢 Chola / South — Guild & Maritime Model</h3>
+<ul><li>Nagaram → urban/merchant organisation</li><li>Ayyavole-500</li><li>Manigramam</li><li>Anjuvannam</li><li>Ports + inland and overseas trade</li><li>South-East Asian maritime connections</li></ul>
+</div>
+</div>
+<div class="call"><b>Contrast:</b> <span class="formula">Alauddin = CONTROL PRICES</span> vs <span class="formula">Chola = FACILITATE TRADE/GUILDS</span></div>
+</section>
+
+<section class="section" id="land">
+<h2>8. <span>LAND GRANTS + ASSIGNMENTS — DON’T MIX THEM</span></h2>
+<div class="stickytable"><table><thead><tr><th>Term</th><th>Period/context</th><th>What is it?</th><th>Do NOT confuse with</th></tr></thead><tbody>
+<tr><td>Brahmadeya</td><td>South/early-medieval contexts</td><td>Land grant to Brahmins</td><td>Devadana</td></tr>
+<tr><td>Agrahara</td><td>Indian land-grant tradition</td><td>Grant/settlement associated with Brahmins</td><td>Iqta/Jagir</td></tr>
+<tr><td>Devadana</td><td>South Indian context</td><td>Land/revenue assigned to temple/deity</td><td>Brahmadeya</td></tr>
+<tr><td>Iqta</td><td>Delhi Sultanate</td><td>Revenue/administrative assignment</td><td>Private land ownership</td></tr>
+<tr><td>Jagir</td><td>Mughal</td><td>Revenue assignment, often to mansabdars</td><td>Mansab itself</td></tr>
+<tr><td>Khalisa</td><td>Mughal</td><td>Revenue went directly to imperial treasury</td><td>Jagir</td></tr>
+<tr><td>Zamindar</td><td>Various; major Mughal/British context</td><td>Local landed/revenue intermediary with local rights/influence</td><td>Jagirdar</td></tr>
+</tbody></table></div>
+<div class="flow"><div class="node">Land / Revenue</div><div class="arrow">→</div><div class="node">Assignment</div><div class="arrow">→</div><div class="node">Service / Institution</div><div class="arrow">→</div><div class="node">NOT necessarily ownership</div></div>
+</section>
+
+<section class="section" id="currency">
+<h2>9. <span>CURRENCY EVOLUTION FLOW</span></h2>
+<div class="flow"><div class="node">Punch-marked coins</div><div class="arrow">→</div><div class="node">Mauryan pana</div><div class="arrow">→</div><div class="node">Kushana gold</div><div class="arrow">→</div><div class="node">Gupta gold</div><div class="arrow">→</div><div class="node">Tanka + Jital</div><div class="arrow">→</div><div class="node">Sher Shah Rupiya</div><div class="arrow">→</div><div class="node">Mughal Rupee</div><div class="arrow">→</div><div class="node">British currency</div></div>
+<div class="grid">
+<div class="card"><h3>Iltutmish</h3><p><b>Silver Tanka + Copper Jital</b> — key Sultanate currency association.</p></div>
+<div class="card"><h3>Sher Shah</h3><p><b>Rupiya</b> — important standardisation legacy and later rupee tradition.</p></div>
+<div class="card"><h3>Muhammad bin Tughlaq</h3><p><b>Token currency</b> — copper/brass token experiment; counterfeiting/control problems contributed to failure.</p></div>
+</div>
+</section>
+
+<section class="section" id="justice">
+<h2>10. <span>JUSTICE + LAW + POLICE</span></h2>
+<div class="stickytable"><table><thead><tr><th>Polity</th><th>Justice architecture</th><th>Signature terms</th></tr></thead><tbody>
+<tr><td>Maurya</td><td>King as ultimate authority; courts, punishment, evidence, contracts etc.; local/judicial officials</td><td>Danda, Rajuka</td></tr>
+<tr><td>Gupta</td><td>Dharmashastra + king + local/customary practices</td><td>Mahadandanayaka</td></tr>
+<tr><td>Chola</td><td>Village assemblies handled local administrative/dispute functions</td><td>Ur/Sabha</td></tr>
+<tr><td>Sultanate</td><td>Islamic legal traditions + Sultan’s regulations + local customs</td><td>Qazi, Qazi-ul-Quzat, Mufti</td></tr>
+<tr><td>Mughal</td><td>Islamic jurisprudence + imperial regulations + local customs</td><td>Qazi, Mufti, Sadr; Fatawa-i-Alamgiri under Aurangzeb</td></tr>
+<tr><td>Maratha</td><td>Formal ministerial justice office</td><td>Nyayadhish</td></tr>
+<tr><td>British</td><td>Formal court hierarchy + codified/regulated legal system</td><td>Regulating Act 1773; Supreme Court 1774; High Courts 1862; Police Act 1861</td></tr>
+</tbody></table></div>
+<div class="call warn"><b>Qazi vs Mufti:</b> Qazi = judge; Mufti = legal scholar who gives legal opinion. <b>Qazi-ul-Quzat</b> = chief Qazi.</div>
+</section>
+
+<section class="section" id="irrigation">
+<h2>11. <span>IRRIGATION — STATE ↔ AGRICULTURE ↔ REVENUE</span></h2>
+<div class="flow"><div class="node">Water</div><div class="arrow">→</div><div class="node">Higher cultivation</div><div class="arrow">→</div><div class="node">Higher production</div><div class="arrow">→</div><div class="node">Revenue</div><div class="arrow">→</div><div class="node">State capacity</div></div>
+<div class="grid">
+<div class="card"><h3>Maurya</h3><p>Irrigation and agricultural supervision form part of state economic management.</p></div>
+<div class="card"><h3>Chola</h3><p><b>Kaveri delta + tanks + canals + wells + water committees</b>. Eri Variyam is the must-remember committee.</p></div>
+<div class="card"><h3>Firoz Shah Tughlaq</h3><p><b>Canals + irrigation + agricultural infrastructure</b> — signature public-works association.</p></div>
+<div class="card"><h3>Vijayanagara</h3><p>Irrigation supported agriculture, temple economy and urban/imperial prosperity.</p></div>
+<div class="card"><h3>British</h3><p>Irrigation projects expanded in colonial period, alongside commercial agriculture and revenue demands.</p></div>
+</div>
+</section>
+
+<section class="section" id="dynasties">
+<h2>12. <span>DYNASTY / RULER MATRIX — “THIS SYSTEM WAS WHERE?”</span></h2>
+<div class="stickytable"><table><thead><tr><th>Dynasty / ruler</th><th>Administration</th><th>Revenue</th><th>Military</th><th>Local / economy</th><th>One-line identity</th></tr></thead><tbody>
+<tr><td>Vedic</td><td>Rajan + Sabha/Samiti</td><td>Bali</td><td>Senani</td><td>Tribal/territorial organisation</td><td>Early political institutions</td></tr>
+<tr><td>Mahajanapadas</td><td>Monarchy / gana-sangha</td><td>Taxes/tribute</td><td>State/oligarchic forces</td><td>Urbanisation/trade</td><td>Large territorial states</td></tr>
+<tr><td>Chandragupta Maurya</td><td>Centralised bureaucracy</td><td>Bhaga; Samaharta</td><td>Large standing army</td><td>State economic control</td><td>Imperial centralisation</td></tr>
+<tr><td>Ashoka</td><td>Mauryan apparatus + Dhamma officers</td><td>Continued revenue structure</td><td>Post-Kalinga policy shift</td><td>Dhamma + edicts</td><td>Empire + Dhamma</td></tr>
+<tr><td>Gupta</td><td>Bhukti/Vishaya</td><td>Bhaga/Bhoga/Kara; grants</td><td>Cavalry + feudatories</td><td>Land grants</td><td>Decentralising tendency</td></tr>
+<tr><td>Chola</td><td>Mandalam→Valanadu→Nadu→village</td><td>Land revenue</td><td>Army + navy</td><td>Ur/Sabha/Nagaram + irrigation</td><td>Local self-government</td></tr>
+<tr><td>Pallava</td><td>South Indian territorial administration</td><td>Land revenue / grants</td><td>Regional military power</td><td>Temple-centred economy</td><td>Early medieval South link</td></tr>
+<tr><td>Chalukya</td><td>Regional administration</td><td>Land revenue</td><td>Army/cavalry</td><td>Temple/trade networks</td><td>Deccan regional power</td></tr>
+<tr><td>Rashtrakuta</td><td>Regional + feudatory elements</td><td>Land revenue</td><td>Army</td><td>Trade/temples</td><td>Deccan imperial power</td></tr>
+<tr><td>Pandya</td><td>South Indian territorial structure</td><td>Land revenue</td><td>Army</td><td>Ports/trade/temples</td><td>Deep South power</td></tr>
+<tr><td>Kakatiya</td><td>Regional chiefs</td><td>Land revenue</td><td>Military chiefs</td><td>Irrigation/tanks</td><td>Telangana regional power</td></tr>
+<tr><td>Hoysala</td><td>Regional administration</td><td>Land revenue</td><td>Army</td><td>Irrigation/temples</td><td>Karnataka regional power</td></tr>
+<tr><td>Vijayanagara</td><td>Nayaka/Nayankara + Ayagar</td><td>Land revenue/taxes</td><td>Nayaka military system</td><td>Irrigation + temple + trade</td><td>Military-territorial network</td></tr>
+<tr><td>Iltutmish</td><td>Sultanate consolidation</td><td>Iqta</td><td>Cavalry state</td><td>Tanka/Jital</td><td>Iqta consolidation</td></tr>
+<tr><td>Balban</td><td>Strong monarchy</td><td>Central control</td><td>“Blood and Iron”</td><td>Royal authority</td><td>Strengthen crown</td></tr>
+<tr><td>Alauddin Khalji</td><td>Centralisation + surveillance</td><td>Doab/measurement; ≈1/2 core produce</td><td>Dagh/Chehra; standing army</td><td>Market regulation</td><td>Army + market + revenue</td></tr>
+<tr><td>Muhammad bin Tughlaq</td><td>Ambitious experiments</td><td>Doab experiment; Diwan-i-Kohi</td><td>Khurasan/Qarachil plans</td><td>Token currency</td><td>Experiment-heavy reign</td></tr>
+<tr><td>Firoz Shah</td><td>More concessions/hereditary tendencies</td><td>Revenue regularisation</td><td>Feudatory/hereditary trends</td><td>Canals/public works</td><td>Irrigation + public works</td></tr>
+<tr><td>Sher Shah</td><td>Efficient territorial administration</td><td>Measurement + Patta/Qabuliyat</td><td>Strong army</td><td>Rupiya + roads/sarais/post</td><td>Bridge to Mughal system</td></tr>
+<tr><td>Akbar</td><td>Subah/Sarkar/Pargana</td><td>Zabt/Dahsala</td><td>Mansab/Zat/Sawar</td><td>Rajput integration; trade</td><td>Systematisation</td></tr>
+<tr><td>Jahangir</td><td>Mughal system continues</td><td>Revenue administration</td><td>Mansab system</td><td>Chain of Justice; painting</td><td>Justice symbolism</td></tr>
+<tr><td>Shah Jahan</td><td>Highly organised empire</td><td>Revenue system continues</td><td>Mansab/jagir</td><td>Architecture/urban projects</td><td>Imperial grandeur</td></tr>
+<tr><td>Aurangzeb</td><td>Mughal structure + long Deccan war</td><td>Jagirdari pressure</td><td>Maximum territorial extent</td><td>Jizya 1679; Deccan</td><td>Expansion + fiscal strain</td></tr>
+<tr><td>Shivaji</td><td>Ashtapradhan</td><td>Chauth/Sardeshmukhi + land revenue</td><td>Forts + Ganimi Kava + navy</td><td>Efficient regional state</td><td>Maratha state-building</td></tr>
+<tr><td>British</td><td>District + Collector</td><td>Permanent/Ryotwari/Mahalwari</td><td>Professional/regimental army</td><td>Commercialisation + Drain</td><td>Colonial administrative state</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="rulers">
+<h2>13. <span>RULER-BY-RULER DEEP DIVE — WHO DID WHAT?</span></h2>
+<div class="ruler-list">
+<div class="card"><h3>Chandragupta Maurya</h3><div class="r-line"><b>Admin:</b> centralised imperial structure.</div><div class="r-line"><b>Revenue:</b> Bhaga; Samaharta.</div><div class="r-line"><b>Military:</b> large army.</div><div class="r-line"><b>Economy:</b> state supervision.</div><span class="tag">FOUNDATION</span><span class="tag">CENTRALISATION</span></div>
+<div class="card"><h3>Ashoka</h3><div class="r-line"><b>Admin:</b> Mauryan structure + Dhamma Mahamatras.</div><div class="r-line"><b>Policy:</b> Kalinga followed by Dhamma emphasis.</div><div class="r-line"><b>Communication:</b> edicts.</div><span class="tag">DHAMMA</span><span class="tag">EDICTS</span></div>
+<div class="card"><h3>Samudragupta</h3><div class="r-line"><b>Power:</b> extensive conquests.</div><div class="r-line"><b>Evidence:</b> Prayaga Prashasti by Harisena.</div><div class="r-line"><b>Economy:</b> gold coins; musician coin.</div><span class="tag">CONQUEST</span><span class="tag">GOLD COINS</span></div>
+<div class="card"><h3>Chandragupta II</h3><div class="r-line"><b>Identity:</b> Vikramaditya.</div><div class="r-line"><b>Expansion:</b> Western Kshatrapas/Sakas.</div><div class="r-line"><b>Foreign account:</b> Fa-Hien.</div><span class="tag">SAKA DEFEAT</span><span class="tag">FA-HIEN</span></div>
+<div class="card"><h3>Harsha</h3><div class="r-line"><b>Centre:</b> Kannauj.</div><div class="r-line"><b>Sources:</b> Xuanzang.</div><div class="r-line"><b>Patronage:</b> Nalanda/Prayaga.</div><div class="r-line"><b>Works associated:</b> Nagananda, Ratnavali, Priyadarshika.</div><span class="tag">KANNauj</span><span class="tag">XUANZANG</span></div>
+<div class="card"><h3>Iltutmish</h3><div class="r-line"><b>Admin:</b> Iqta consolidation.</div><div class="r-line"><b>Currency:</b> Tanka/Jital.</div><div class="r-line"><b>Delhi:</b> major completion phase of Qutub Minar.</div><div class="r-line"><b>Recognition:</b> Abbasid caliphate.</div><span class="tag">IQTA</span><span class="tag">TANKA</span></div>
+<div class="card"><h3>Balban</h3><div class="r-line"><b>State:</b> strong monarchy.</div><div class="r-line"><b>Royal theory:</b> Zil-i-Ilahi.</div><div class="r-line"><b>Court:</b> Sijda/Paibos.</div><div class="r-line"><b>Style:</b> Blood and Iron.</div><span class="tag">STRONG MONARCHY</span></div>
+<div class="card"><h3>Alauddin Khalji</h3><div class="r-line"><b>Market:</b> Diwan-i-Riyasat, Shahna-i-Mandi.</div><div class="r-line"><b>Army:</b> Dagh/Chehra.</div><div class="r-line"><b>Revenue:</b> measurement; ≈1/2 core produce.</div><div class="r-line"><b>Intelligence:</b> Barid/Munhiyan.</div><span class="tag">MARKET</span><span class="tag">ARMY</span></div>
+<div class="card"><h3>Muhammad bin Tughlaq</h3><div class="r-line"><b>Agriculture:</b> Diwan-i-Kohi.</div><div class="r-line"><b>Experiments:</b> Doab tax, token currency, capital transfer, Khurasan/Qarachil plans.</div><span class="tag">EXPERIMENTS</span></div>
+<div class="card"><h3>Firoz Shah Tughlaq</h3><div class="r-line"><b>Signature:</b> canals, irrigation, public works.</div><div class="r-line"><b>Administration:</b> hereditary tendencies in offices.</div><div class="r-line"><b>Fiscal/religious:</b> Jizya stricter.</div><span class="tag">CANALS</span></div>
+<div class="card"><h3>Sher Shah Suri</h3><div class="r-line"><b>Revenue:</b> measurement, Patta, Qabuliyat.</div><div class="r-line"><b>Currency:</b> Rupiya.</div><div class="r-line"><b>Infrastructure:</b> GT Road, sarais, postal system.</div><span class="tag">PATTA</span><span class="tag">RUPIYA</span></div>
+<div class="card"><h3>Akbar</h3><div class="r-line"><b>Admin:</b> Subah system.</div><div class="r-line"><b>Revenue:</b> Todar Mal, Zabt/Dahsala.</div><div class="r-line"><b>Military:</b> Mansab/Zat/Sawar.</div><div class="r-line"><b>Religion:</b> Sulh-i-Kul; pilgrimage tax 1563; Jizya 1564.</div><span class="tag">SYSTEMATISATION</span></div>
+<div class="card"><h3>Aurangzeb</h3><div class="r-line"><b>Religion:</b> Jizya reimposed 1679.</div><div class="r-line"><b>Law:</b> Fatawa-i-Alamgiri patronage.</div><div class="r-line"><b>Military:</b> Deccan expansion.</div><div class="r-line"><b>Finance:</b> jagirdari pressure.</div><span class="tag">DECCAN</span><span class="tag">JIZYA</span></div>
+<div class="card"><h3>Shivaji</h3><div class="r-line"><b>Admin:</b> Ashtapradhan.</div><div class="r-line"><b>Military:</b> forts, Ganimi Kava, navy.</div><div class="r-line"><b>Revenue:</b> Chauth 25%, Sardeshmukhi 10%.</div><span class="tag">ASHTAPRADHAN</span><span class="tag">FORTS</span></div>
+<div class="card"><h3>Cornwallis</h3><div class="r-line"><b>Revenue:</b> Permanent Settlement 1793.</div><div class="r-line"><b>Administration:</b> civil service and judicial/administrative reforms.</div><span class="tag">PERMANENT</span></div>
+<div class="card"><h3>Thomas Munro</h3><div class="r-line"><b>Revenue:</b> Ryotwari association, especially Madras; direct government–cultivator relationship.</div><span class="tag">RYOTWARI</span></div>
+<div class="card"><h3>Holt Mackenzie</h3><p><b>Revenue:</b> Mahalwari association; settlement with village/mahal; periodic revision.</p><span class="tag">MAHALWARI</span></div>
+<div class="card"><h3>William Bentinck</h3><p><b>Social policy:</b> Sati abolition 1829. <b>Administration:</b> financial/education reforms.</p><span class="tag">1829</span></div>
+<div class="card"><h3>Dalhousie</h3><p><b>Expansion:</b> Doctrine of Lapse. <b>Infrastructure:</b> railways, telegraph, postal/public works. <b>Rail:</b> first passenger railway 1853.</p><span class="tag">LAPSE</span><span class="tag">RAIL</span></div>
+</div>
+</section>
+
+
+<section class="section" id="v4systems">
+<h2>16. <span>🔥 ONE SYSTEM → ALL DYNASTIES — MASTER COMPARISON</span></h2>
+<div class="call good"><b>How to study:</b> Pick one system and travel horizontally through history. This prevents “A system = only one dynasty” confusion.</div>
+
+<details open><summary>🌾 A. LAND REVENUE — EVOLUTION FLOW</summary>
+<div class="flow"><div class="node">Vedic<br>Bali</div><div class="arrow">→</div><div class="node">Maurya<br>Bhaga</div><div class="arrow">→</div><div class="node">Gupta<br>Bhaga/Bhoga/Kara<br>+ grants</div><div class="arrow">→</div><div class="node">Chola<br>land revenue<br>+ irrigation</div><div class="arrow">→</div><div class="node">Sultanate<br>Kharaj + Iqta</div><div class="arrow">→</div><div class="node">Akbar<br>Zabt/Dahsala</div><div class="arrow">→</div><div class="node">Maratha<br>land revenue + Chauth</div><div class="arrow">→</div><div class="node">British<br>settlements</div></div>
+<div class="stickytable"><table><tr><th>Polity</th><th>System</th><th>Assessment idea</th><th>Key person/office</th><th>Memory hook</th></tr>
+<tr><td>Vedic</td><td>Bali</td><td>Contribution/tribute</td><td>Rajan</td><td>Early fiscal term</td></tr>
+<tr><td>Maurya</td><td>Bhaga</td><td>Commonly 1/6 agricultural share</td><td>Samaharta</td><td>Central collection</td></tr>
+<tr><td>Gupta</td><td>Bhaga, Bhoga, Kara</td><td>Land revenue + increasing grants</td><td>Uparika/Vishayapati</td><td>Grants → local power</td></tr>
+<tr><td>Chola</td><td>Land revenue + levies</td><td>Productive irrigated agriculture</td><td>Local bodies</td><td>Kaveri + water management</td></tr>
+<tr><td>Sultanate</td><td>Kharaj</td><td>Land tax</td><td>Amil / Muqti</td><td>Iqta = assignment</td></tr>
+<tr><td>Alauddin</td><td>Strengthened assessment</td><td>Core demand ≈ 1/2 produce</td><td>Revenue apparatus</td><td>Army finance</td></tr>
+<tr><td>Sher Shah</td><td>Measured assessment</td><td>Assessment + Patta/Qabuliyat</td><td>Revenue officials</td><td>Farmer knows demand</td></tr>
+<tr><td>Akbar</td><td>Zabt/Dahsala</td><td>Measurement + 10-year averages</td><td>Todar Mal / Diwan</td><td>Systematisation</td></tr>
+<tr><td>Maratha</td><td>Land revenue + Chauth/Sardeshmukhi</td><td>Internal + external claims</td><td>Amatya</td><td>25% + 10%</td></tr>
+<tr><td>British</td><td>Permanent/Ryotwari/Mahalwari</td><td>Different settlement partners</td><td>Cornwallis/Munro/Mackenzie</td><td>WHO pays government?</td></tr>
+</table></div></details>
+
+<details><summary>🏛️ B. ADMINISTRATION — CENTRALISATION → LOCALISATION</summary>
+<div class="flow"><div class="node">Maurya<br>Centralised</div><div class="arrow">→</div><div class="node">Gupta<br>More local/decentralised</div><div class="arrow">→</div><div class="node">Chola<br>Strong king + local bodies</div><div class="arrow">→</div><div class="node">Sultanate<br>Sultan + Iqta</div><div class="arrow">→</div><div class="node">Mughal<br>Imperial bureaucracy</div><div class="arrow">→</div><div class="node">Maratha<br>Ministerial + fort network</div><div class="arrow">→</div><div class="node">British<br>District bureaucracy</div></div>
+<div class="stickytable"><table><tr><th>Polity</th><th>Hierarchy</th><th>Key officials</th><th>What makes it different?</th></tr>
+<tr><td>Maurya</td><td>King → provinces → local</td><td>Amatya, Samaharta, Sannidhata, Rajuka</td><td>Deep central state control</td></tr>
+<tr><td>Gupta</td><td>Bhukti → Vishaya → village</td><td>Uparika, Vishayapati, Gramika</td><td>Local/feudatory tendencies</td></tr>
+<tr><td>Chola</td><td>Mandalam → Valanadu → Nadu → village</td><td>Ur/Sabha/Nagaram/Variyam</td><td>Institutional local self-government</td></tr>
+<tr><td>Sultanate</td><td>Sultan → Diwans → Iqta/local</td><td>Wazir, Ariz, Muqti, Qazi</td><td>Iqta-based fiscal administration</td></tr>
+<tr><td>Mughal</td><td>Subah → Sarkar → Pargana → village</td><td>Subahdar, Diwan, Bakshi, Amil</td><td>Parallel checks: military + finance</td></tr>
+<tr><td>Maratha</td><td>Chhatrapati → ministers + territorial officers</td><td>Peshwa, Amatya, Sachiv, Senapati</td><td>Ashtapradhan + forts</td></tr>
+<tr><td>British</td><td>Province/Presidency → District</td><td>Collector, SP</td><td>District-centred bureaucracy</td></tr>
+</table></div></details>
+
+<details><summary>🏘️ C. LOCAL SELF-GOVERNMENT — COMPARE DIRECTLY</summary>
+<div class="flow"><div class="node">Vedic<br>Sabha/Samiti</div><div class="arrow">→</div><div class="node">Maurya<br>Officials</div><div class="arrow">→</div><div class="node">Gupta<br>Village/local elements</div><div class="arrow">→</div><div class="node">Chola<br>Ur + Sabha + Nagaram</div><div class="arrow">→</div><div class="node">Vijayanagara<br>Ayagar</div><div class="arrow">→</div><div class="node">Sultanate/Mughal<br>local intermediaries</div><div class="arrow">→</div><div class="node">British<br>formal district/local institutions</div></div>
+<div class="grid">
+<div class="card"><h3>Chola — deepest local-body focus</h3><p><b>Ur</b> ordinary village • <b>Sabha</b> Brahmadeya village • <b>Nagaram</b> merchant/urban body • <b>Variyam</b> committees • <b>Kudavolai</b> selection by lot.</p></div>
+<div class="card"><h3>Vijayanagara — village office focus</h3><p><b>Ayagar</b> system • <b>Karanam</b> accountant • <b>Talari</b> watchman • <b>Reddi</b> village headman.</p></div>
+<div class="card"><h3>Sultanate/Mughal — revenue interface</h3><p><b>Chaudhuri, Muqaddam, Patwari</b> and later <b>Amil, Qanungo, Patwari, Shiqdar</b> connect state revenue/order with locality.</p></div>
+</div></details>
+
+<details><summary>⚔️ D. MILITARY SYSTEM — HOW DID THE STATE MAINTAIN ITS ARMY?</summary>
+<div class="stickytable"><table><tr><th>Polity</th><th>Military model</th><th>Finance/control link</th><th>Signature fact</th></tr>
+<tr><td>Maurya</td><td>Large standing army</td><td>Central revenue supports state army</td><td>Infantry/cavalry/elephants etc.</td></tr>
+<tr><td>Gupta</td><td>Cavalry + feudatories</td><td>Land grants/local powers increasingly relevant</td><td>Samudragupta conquests</td></tr>
+<tr><td>Chola</td><td>Army + navy</td><td>Agricultural surplus + trade</td><td>Maritime expeditions</td></tr>
+<tr><td>Sultanate</td><td>Cavalry-centred forces</td><td>Iqta/service obligations</td><td>Horse-based warfare</td></tr>
+<tr><td>Alauddin</td><td>Standing army</td><td>Low market prices reduce maintenance cost</td><td>Dagh + Chehra</td></tr>
+<tr><td>Mughal</td><td>Mansabdar forces</td><td>Jagir revenue assignment</td><td>Zat + Sawar</td></tr>
+<tr><td>Vijayanagara</td><td>Nayaka military network</td><td>Nayankara/revenue assignment</td><td>Nayaka</td></tr>
+<tr><td>Maratha</td><td>Mobile cavalry + forts + navy</td><td>Land revenue + Chauth etc.</td><td>Ganimi Kava</td></tr>
+<tr><td>British</td><td>Professional/regimental army</td><td>Colonial taxation and treasury</td><td>Sepoys; post-1857 reorganisation</td></tr>
+</table></div></details>
+
+<details><summary>🧾 E. REVENUE ASSIGNMENT — IQTA vs JAGIR vs KHALISA vs ZAMINDAR</summary>
+<div class="flow"><div class="node">Revenue from land</div><div class="arrow">→</div><div class="node">State assigns / retains revenue</div><div class="arrow">→</div><div class="node">Iqta — Sultanate</div><div class="arrow">→</div><div class="node">Jagir — Mughal</div><div class="arrow">→</div><div class="node">Khalisa — direct imperial revenue</div></div>
+<table><tr><th>Term</th><th>Means</th><th>Ownership?</th><th>Best exam association</th></tr>
+<tr><td>Iqta</td><td>Revenue/administrative assignment</td><td>Not simply private ownership</td><td>Muqti/Iqtadar; Sultanate</td></tr>
+<tr><td>Jagir</td><td>Revenue assignment</td><td>Not absolute land ownership</td><td>Mansabdars; Mughal</td></tr>
+<tr><td>Khalisa</td><td>Revenue goes directly to imperial treasury</td><td>Imperial fiscal domain</td><td>Opposite of jagir assignment</td></tr>
+<tr><td>Zamindar</td><td>Local landed/revenue intermediary</td><td>Local rights varied by period</td><td>Do not equate with jagirdar</td></tr></table>
+</details>
+
+<details><summary>🪙 F. CURRENCY — WHO IS THE EXAM ANSWER?</summary>
+<div class="flow"><div class="node">Punch-marked</div><div class="arrow">→</div><div class="node">Mauryan pana</div><div class="arrow">→</div><div class="node">Gupta gold</div><div class="arrow">→</div><div class="node">Iltutmish Tanka/Jital</div><div class="arrow">→</div><div class="node">Muhammad bin Tughlaq Token</div><div class="arrow">→</div><div class="node">Sher Shah Rupiya</div><div class="arrow">→</div><div class="node">Mughal Rupee</div><div class="arrow">→</div><div class="node">British currency</div></div>
+<div class="call"><b>Fast recall:</b> <span class="formula">Iltutmish = Tanka/Jital</span> • <span class="formula">Tughlaq = Token</span> • <span class="formula">Sher Shah = Rupiya</span></div>
+</details>
+
+<details><summary>💧 G. IRRIGATION — WHICH DYNASTY IS FAMOUS FOR WHAT?</summary>
+<div class="stickytable"><table><tr><th>Polity/ruler</th><th>Water system</th><th>Why it matters</th></tr>
+<tr><td>Maurya</td><td>State-supported irrigation/agriculture</td><td>Production + revenue</td></tr>
+<tr><td>Chola</td><td>Kaveri delta, tanks, canals, wells</td><td>High agricultural productivity</td></tr>
+<tr><td>Chola committees</td><td>Eri Variyam</td><td>Irrigation-tank management</td></tr>
+<tr><td>Firoz Shah Tughlaq</td><td>Canals</td><td>Signature public works</td></tr>
+<tr><td>Vijayanagara</td><td>Irrigation works</td><td>Agriculture + urban/temple economy</td></tr>
+<tr><td>British</td><td>Large irrigation projects</td><td>Revenue/commercial agriculture context</td></tr></table></div>
+</details>
+
+<details><summary>🏪 H. MARKET / TRADE — CONTROL vs GUILD vs COLONIAL</summary>
+<div class="flow"><div class="node">Maurya<br>State supervision</div><div class="arrow">→</div><div class="node">South<br>Guilds + ports</div><div class="arrow">→</div><div class="node">Alauddin<br>Strict price control</div><div class="arrow">→</div><div class="node">Mughal<br>Large internal/overseas trade</div><div class="arrow">→</div><div class="node">British<br>Colonial market integration</div></div>
+<div class="grid">
+<div class="card"><h3>Alauddin</h3><p>Diwan-i-Riyasat → Shahna-i-Mandi → regulated markets → low prices → cheaper army maintenance.</p></div>
+<div class="card"><h3>Chola / South</h3><p>Nagaram + Ayyavole-500 + Manigramam + Anjuvannam → merchant networks → inland + maritime trade.</p></div>
+<div class="card"><h3>British</h3><p>Commercialisation → export crops → market dependence; alongside deindustrialisation and Drain of Wealth.</p></div>
+</div></details>
+
+<details><summary>⚖️ I. JUSTICE / POLICE — OFFICE MAPPING</summary>
+<table><tr><th>Polity</th><th>Judge</th><th>Police/order</th><th>Special legal feature</th></tr>
+<tr><td>Maurya</td><td>King/local judicial officials</td><td>Officials + intelligence</td><td>Danda / Arthashastra framework</td></tr>
+<tr><td>Sultanate</td><td>Qazi</td><td>Kotwal</td><td>Qazi-ul-Quzat = chief Qazi</td></tr>
+<tr><td>Mughal</td><td>Qazi</td><td>Local officials/Kotwal</td><td>Mufti gives legal opinion; Sadr religious grants</td></tr>
+<tr><td>Maratha</td><td>Nyayadhish</td><td>Administrative officials</td><td>Ashtapradhan office</td></tr>
+<tr><td>British</td><td>Formal courts</td><td>Police system</td><td>Supreme Court 1774; High Courts 1862; Police Act 1861</td></tr></table>
+</details>
+
+<details><summary>🧑‍💼 J. OFFICIALS — “WHO DID WHAT?” MASTER MAP</summary>
+<div class="stickytable"><table><tr><th>Official</th><th>Polity</th><th>Function</th><th>Confusion to avoid</th></tr>
+<tr><td>Samaharta</td><td>Maurya</td><td>Revenue collection</td><td>Not treasury</td></tr>
+<tr><td>Sannidhata</td><td>Maurya</td><td>Treasury</td><td>Not chief collector</td></tr>
+<tr><td>Uparika</td><td>Gupta</td><td>Bhukti-level governor</td><td>Not Vishayapati</td></tr>
+<tr><td>Vishayapati</td><td>Gupta</td><td>Vishaya-level administration</td><td>Not Uparika</td></tr>
+<tr><td>Muqti/Iqtadar</td><td>Sultanate</td><td>Iqta administration</td><td>Not private landowner</td></tr>
+<tr><td>Wazir</td><td>Sultanate</td><td>Finance/chief minister</td><td>Not Muqti</td></tr>
+<tr><td>Ariz-i-Mamalik</td><td>Sultanate</td><td>Military administration</td><td>Not Wazir</td></tr>
+<tr><td>Qazi</td><td>Sultanate/Mughal</td><td>Judge</td><td>Not Mufti</td></tr>
+<tr><td>Diwan</td><td>Mughal</td><td>Finance/revenue</td><td>Not Mir Bakshi</td></tr>
+<tr><td>Mir Bakshi</td><td>Mughal</td><td>Military/mansab administration</td><td>Not Diwan</td></tr>
+<tr><td>Subahdar</td><td>Mughal</td><td>Provincial governor</td><td>Not provincial Diwan</td></tr>
+<tr><td>Amatya</td><td>Maratha</td><td>Finance</td><td>Not Peshwa</td></tr>
+<tr><td>Senapati</td><td>Maratha</td><td>Army</td><td>Not Peshwa</td></tr>
+<tr><td>Karanam</td><td>Vijayanagara</td><td>Village accountant</td><td>Not Talari</td></tr>
+<tr><td>Talari</td><td>Vijayanagara</td><td>Watchman</td><td>Not accountant</td></tr>
+<tr><td>Collector</td><td>British</td><td>District revenue + administration</td><td>Not simply a modern tax clerk</td></tr>
+</table></div>
+</details>
+</section>
+
+<section class="section" id="examframework">
+<h2>17. <span>🧠 THE EXAM FRAMEWORK — ANY NEW DYNASTY KO KAISE PADHNA HAI?</span></h2>
+<div class="flow"><div class="node">1. POLITICAL<br>King/Emperor?</div><div class="arrow">→</div><div class="node">2. ADMIN<br>Units?</div><div class="arrow">→</div><div class="node">3. REVENUE<br>Tax + official?</div><div class="arrow">→</div><div class="node">4. LAND<br>Grant/assignment?</div><div class="arrow">→</div><div class="node">5. MILITARY<br>Army + finance?</div><div class="arrow">→</div><div class="node">6. LOCAL<br>Village bodies?</div><div class="arrow">→</div><div class="node">7. ECONOMY<br>Trade/currency?</div><div class="arrow">→</div><div class="node">8. SPECIAL<br>Unique reform?</div></div>
+<div class="grid">
+<div class="card"><div class="big">Maurya</div><p>Centralisation + revenue machinery + departments + army.</p></div>
+<div class="card"><div class="big">Gupta</div><p>Bhukti/Vishaya + land grants + local/decentralising tendencies.</p></div>
+<div class="card"><div class="big">Chola</div><p>Local self-government + irrigation + guilds + navy.</p></div>
+<div class="card"><div class="big">Sultanate</div><p>Iqta + central Diwans + cavalry + Islamic fiscal vocabulary.</p></div>
+<div class="card"><div class="big">Mughal</div><p>Subah + Diwan/Bakshi + Zabt + Mansab/Jagir.</p></div>
+<div class="card"><div class="big">Maratha</div><p>Ashtapradhan + forts + mobile warfare + Chauth/Sardeshmukhi.</p></div>
+<div class="card"><div class="big">Vijayanagara</div><p>Nayaka/Nayankara + Ayagar + irrigation + temple/trade economy.</p></div>
+<div class="card"><div class="big">British</div><p>Collector + land settlements + commercialisation + colonial extraction.</p></div>
+</div>
+</section>
+
+
+<section class="section" id="v5deep">
+<h2>18. <span>👑 V5 — RULER × SYSTEM × OFFICIAL × PURPOSE MASTER</span></h2>
+<div class="call good"><b>New method:</b> Har ruler ko 8 boxes mein dekho — <b>Administration → Revenue → Land → Military → Justice → Local → Economy → Signature reform.</b> Isse “who did what?” questions direct solve honge.</div>
+
+<div class="stickytable"><table>
+<tr><th>Ruler / Power</th><th>Administration</th><th>Revenue / Land</th><th>Military</th><th>Justice / Religion</th><th>Economy / Special</th><th>PYQ identity</th></tr>
+<tr><td>Chandragupta Maurya</td><td>Centralised imperial bureaucracy</td><td>Bhaga; Samaharta; Sannidhata</td><td>Large standing army</td><td>King/state authority</td><td>State economic supervision</td><td>Foundation + centralisation</td></tr>
+<tr><td>Ashoka</td><td>Mauryan machinery + Dhamma officers</td><td>Revenue structure continued</td><td>After Kalinga, policy emphasis changed</td><td>Dhamma; tolerance; edicts</td><td>Rock/pillar edicts</td><td>Kalinga → Dhamma</td></tr>
+<tr><td>Samudragupta</td><td>Imperial expansion</td><td>Land revenue; gold coinage</td><td>Conquests</td><td>Prayaga Prashasti</td><td>Musician coin</td><td>Harisena + Prayaga</td></tr>
+<tr><td>Chandragupta II</td><td>Gupta imperial system</td><td>Revenue + grants</td><td>Defeat of Western Kshatrapas</td><td>Fa-Hien context</td><td>Gold coins</td><td>Vikramaditya + Sakas</td></tr>
+<tr><td>Harsha</td><td>Kannauj-centred kingdom</td><td>Land grants/revenue/tribute</td><td>Mixed + feudatory forces</td><td>Broad patronage; Buddhist support later</td><td>Nalanda + Prayaga assemblies</td><td>Xuanzang + Kannauj</td></tr>
+<tr><td>Rajaraja I / Rajendra I</td><td>Chola territorial system</td><td>Land assessment/revenue</td><td>Army + powerful navy</td><td>Temple-centred polity</td><td>Kaveri irrigation + overseas trade</td><td>Chola local govt + navy</td></tr>
+<tr><td>Iltutmish</td><td>Sultanate consolidation</td><td>Iqta</td><td>Cavalry-centred state</td><td>Central Islamic institutions</td><td>Tanka/Jital</td><td>Iqta + Tanka</td></tr>
+<tr><td>Balban</td><td>Strong monarchy</td><td>Central control</td><td>Military discipline</td><td>Zil-i-Ilahi; Sijda/Paibos</td><td>Court ceremonial</td><td>Blood & Iron</td></tr>
+<tr><td>Alauddin Khalji</td><td>Centralisation + surveillance</td><td>Measurement; ≈1/2 core produce</td><td>Standing army; Dagh/Chehra</td><td>Strong political control</td><td>Market regulation</td><td>Market + army + revenue</td></tr>
+<tr><td>Muhammad bin Tughlaq</td><td>Ambitious experimental state</td><td>Doab tax; Diwan-i-Kohi</td><td>Khurasan/Qarachil plans</td><td>Policy experiments</td><td>Token currency + capital transfer</td><td>Experiments</td></tr>
+<tr><td>Firoz Shah Tughlaq</td><td>More concessions; hereditary tendencies</td><td>Revenue regularisation</td><td>Hereditary trends</td><td>Stricter Jizya</td><td>Canals + public works</td><td>Canals</td></tr>
+<tr><td>Sher Shah Suri</td><td>Efficient territorial administration</td><td>Measurement; Patta/Qabuliyat</td><td>Strong army</td><td>Administrative pragmatism</td><td>Rupiya + GT Road + sarais + post</td><td>Bridge to Mughal system</td></tr>
+<tr><td>Akbar</td><td>Subah → Sarkar → Pargana → village</td><td>Zabt/Dahsala; Todar Mal</td><td>Mansab; Zat/Sawar</td><td>Sulh-i-Kul; Ibadat Khana</td><td>Trade + imperial integration</td><td>Systematisation</td></tr>
+<tr><td>Jahangir</td><td>Mughal system continued</td><td>Revenue administration</td><td>Mansab system</td><td>Chain of Justice</td><td>Mughal painting; Tuzuk</td><td>Chain of Justice</td></tr>
+<tr><td>Shah Jahan</td><td>Highly organised empire</td><td>Existing Mughal fiscal system</td><td>Mansab/Jagir</td><td>Imperial ideology</td><td>Taj Mahal, Red Fort, Shahjahanabad</td><td>Architecture</td></tr>
+<tr><td>Aurangzeb</td><td>Mughal system + Deccan expansion</td><td>Jagirdari pressure</td><td>Maximum territorial extent</td><td>Jizya 1679; Fatawa-i-Alamgiri</td><td>Long Deccan wars</td><td>Deccan + Jizya</td></tr>
+<tr><td>Shivaji</td><td>Ashtapradhan + forts</td><td>Land revenue; Chauth 25%; Sardeshmukhi 10%</td><td>Mobile cavalry; forts; Ganimi Kava; navy</td><td>Nyayadhish + Panditrao</td><td>Efficient regional state</td><td>Ashtapradhan + forts</td></tr>
+<tr><td>Cornwallis</td><td>Colonial administrative restructuring</td><td>Permanent Settlement 1793</td><td>Professional army framework</td><td>Judicial/civil reforms</td><td>Civil service</td><td>Permanent Settlement</td></tr>
+<tr><td>Thomas Munro</td><td>Madras administration</td><td>Ryotwari</td><td>—</td><td>—</td><td>Direct govt–cultivator settlement</td><td>Ryotwari</td></tr>
+<tr><td>Holt Mackenzie</td><td>Revenue administration</td><td>Mahalwari</td><td>—</td><td>—</td><td>Village/mahal settlement</td><td>Mahalwari</td></tr>
+<tr><td>William Bentinck</td><td>Administrative/financial reform</td><td>—</td><td>—</td><td>Sati abolition 1829</td><td>Education/finance reforms</td><td>Sati abolition</td></tr>
+<tr><td>Dalhousie</td><td>Centralised expansion</td><td>Colonial revenue</td><td>Imperial expansion</td><td>—</td><td>Railways + telegraph + postal/public works; Doctrine of Lapse</td><td>Lapse + infrastructure</td></tr>
+</table></div>
+
+<h3>19. 🔗 SAME OFFICIAL → DIFFERENT SYSTEM</h3>
+<div class="grid">
+<div class="card"><h3>Revenue chain</h3><p><b>Samaharta</b> (Maurya) → <b>Uparika/Vishayapati</b> (Gupta) → <b>Amil/Muqti</b> (Sultanate) → <b>Diwan/Amil</b> (Mughal) → <b>Amatya</b> (Maratha) → <b>Collector</b> (British).</p></div>
+<div class="card"><h3>Military chain</h3><p><b>Senani</b> (early/Vedic) → state army (Maurya) → cavalry/feudatories (Gupta) → <b>Ariz-i-Mamalik</b> (Sultanate) → <b>Mir Bakshi + Mansab</b> (Mughal) → <b>Senapati</b> (Maratha) → professional/regimental system (British).</p></div>
+<div class="card"><h3>Justice chain</h3><p>King/local judicial officials → <b>Qazi</b> (Sultanate) → <b>Qazi + Mufti</b> (Mughal) → <b>Nyayadhish</b> (Maratha) → formal colonial courts.</p></div>
+<div class="card"><h3>Village records chain</h3><p><b>Gramika</b> (Gupta) → <b>Patwari</b> (Sultanate/Mughal contexts) → <b>Karanam</b> (Vijayanagara) → colonial revenue records.</p></div>
+</div>
+
+<h3>20. 🧩 SYSTEM × SIGNATURE — ZERO-CONFUSION MATRIX</h3>
+<div class="stickytable"><table>
+<tr><th>If question says…</th><th>Think first</th><th>Then connect</th></tr>
+<tr><td>Bhaga + Samaharta + Sannidhata</td><td>Maurya</td><td>Centralised economy</td></tr>
+<tr><td>Bhukti + Vishaya + Uparika</td><td>Gupta</td><td>Local/decentralising tendencies</td></tr>
+<tr><td>Ur + Sabha + Nagaram + Variyam + Kudavolai</td><td>Chola</td><td>Local self-government</td></tr>
+<tr><td>Iqta + Muqti/Iqtadar</td><td>Delhi Sultanate</td><td>Revenue assignment</td></tr>
+<tr><td>Diwan-i-Riyasat + Shahna-i-Mandi</td><td>Alauddin Khalji</td><td>Market control</td></tr>
+<tr><td>Diwan-i-Kohi</td><td>Muhammad bin Tughlaq</td><td>Agricultural experiment</td></tr>
+<tr><td>Canals + irrigation</td><td>Firoz Shah Tughlaq</td><td>Public works</td></tr>
+<tr><td>Patta + Qabuliyat + Rupiya</td><td>Sher Shah</td><td>Revenue + currency</td></tr>
+<tr><td>Zabt + Dahsala + Todar Mal</td><td>Akbar</td><td>Systematic land revenue</td></tr>
+<tr><td>Subah + Sarkar + Pargana</td><td>Mughal</td><td>Provincial hierarchy</td></tr>
+<tr><td>Jagir + Khalisa + Mansab</td><td>Mughal</td><td>Rank vs revenue assignment</td></tr>
+<tr><td>Ashtapradhan + Chauth + forts</td><td>Shivaji</td><td>Maratha state-building</td></tr>
+<tr><td>Nayaka + Nayankara + Ayagar</td><td>Vijayanagara</td><td>Military-territorial + village system</td></tr>
+<tr><td>Permanent Settlement + 1793</td><td>Cornwallis</td><td>Zamindar</td></tr>
+<tr><td>Ryotwari</td><td>Thomas Munro</td><td>Direct cultivator settlement</td></tr>
+<tr><td>Mahalwari</td><td>Holt Mackenzie</td><td>Village/mahal</td></tr>
+</table></div>
+
+<h3>21. 🧠 COMPARATIVE “WHY?” CHAINS</h3>
+<div class="grid2">
+<div class="card"><h3>Alauddin</h3><div class="flowcol"><div class="node">Mongol threat</div><div class="down">↓</div><div class="node">Large standing army</div><div class="down">↓</div><div class="node">Need controlled military cost</div><div class="down">↓</div><div class="node">Market price regulation</div><div class="down">↓</div><div class="node">Revenue + intelligence + inspection</div></div></div>
+<div class="card"><h3>Akbar</h3><div class="flowcol"><div class="node">Large empire</div><div class="down">↓</div><div class="node">Need predictable revenue</div><div class="down">↓</div><div class="node">Measurement + classification</div><div class="down">↓</div><div class="node">Zabt / Dahsala</div><div class="down">↓</div><div class="node">Stable imperial finance</div></div></div>
+<div class="card"><h3>Chola</h3><div class="flowcol"><div class="node">Kaveri agriculture</div><div class="down">↓</div><div class="node">Irrigation</div><div class="down">↓</div><div class="node">Surplus</div><div class="down">↓</div><div class="node">Local committees</div><div class="down">↓</div><div class="node">Trade + temple economy</div></div></div>
+<div class="card"><h3>British</h3><div class="flowcol"><div class="node">Land revenue demand</div><div class="down">↓</div><div class="node">Settlement model</div><div class="down">↓</div><div class="node">Commercial crops</div><div class="down">↓</div><div class="node">Market/export integration</div><div class="down">↓</div><div class="node">Colonial extraction</div></div></div>
+</div>
+
+<h3>22. 📌 “DON'T CONFUSE” TRIPLETS</h3>
+<div class="grid">
+<div class="card"><b>Samaharta</b> = collect revenue<br><b>Sannidhata</b> = treasury<br><b>Diwan</b> = Mughal finance</div>
+<div class="card"><b>Iqta</b> = Sultanate assignment<br><b>Jagir</b> = Mughal assignment<br><b>Khalisa</b> = direct imperial revenue</div>
+<div class="card"><b>Mansab</b> = rank/service<br><b>Jagir</b> = revenue assignment<br><b>Zamindar</b> = local landed/revenue intermediary</div>
+<div class="card"><b>Patta</b> = assessment/demand document<br><b>Qabuliyat</b> = cultivator agreement<br><b>Rupiya</b> = currency</div>
+<div class="card"><b>Ur</b> = ordinary village<br><b>Sabha</b> = Brahmadeya village assembly<br><b>Nagaram</b> = merchant/urban organisation</div>
+<div class="card"><b>Chauth</b> = 25%<br><b>Sardeshmukhi</b> = 10%<br><b>Jizya</b> = tax in relevant Islamic fiscal contexts</div>
+</div>
+</section>
+
+<section class="section" id="traps">
+<h2>14. <span>🔥 SSC TRAPS — CONFUSION BUSTER</span></h2>
+<div class="grid2">
+<div class="card"><h3>Samaharta vs Sannidhata</h3><p><b>Samaharta = revenue collection.</b><br><b>Sannidhata = treasury.</b></p></div>
+<div class="card"><h3>Iqta vs Jagir</h3><p><b>Iqta = Sultanate revenue assignment.</b><br><b>Jagir = Mughal revenue assignment.</b></p></div>
+<div class="card"><h3>Mansab vs Jagir</h3><p><b>Mansab = rank/status/service obligation.</b><br><b>Jagir = revenue assignment.</b></p></div>
+<div class="card"><h3>Khalisa vs Jagir</h3><p><b>Khalisa = revenue directly to imperial treasury.</b><br><b>Jagir = assigned revenue.</b></p></div>
+<div class="card"><h3>Qazi vs Mufti</h3><p><b>Qazi = judge.</b><br><b>Mufti = legal opinion/scholar.</b></p></div>
+<div class="card"><h3>Permanent vs Ryotwari vs Mahalwari</h3><p><b>Zamindar → Permanent</b><br><b>Ryot → Ryotwari</b><br><b>Mahal/Village → Mahalwari</b></p></div>
+<div class="card"><h3>Ur vs Sabha vs Nagaram</h3><p><b>Ur = ordinary village</b><br><b>Sabha = Brahmadeya village</b><br><b>Nagaram = merchant/urban body</b></p></div>
+<div class="card"><h3>Chauth vs Sardeshmukhi</h3><p><b>Chauth = 25%</b><br><b>Sardeshmukhi = 10%</b></p></div>
+<div class="card"><h3>Patta vs Qabuliyat</h3><p><b>Patta = assessment/demand document.</b><br><b>Qabuliyat = cultivator’s agreement.</b></p></div>
+<div class="card"><h3>Dagh vs Chehra</h3><p><b>Dagh = horse branding.</b><br><b>Chehra = descriptive roll.</b></p></div>
+<div class="card"><h3>Diwan-i-Riyasat vs Shahna-i-Mandi</h3><p><b>Diwan-i-Riyasat = department.</b><br><b>Shahna-i-Mandi = market superintendent.</b></p></div>
+<div class="card"><h3>Diwan-i-Kohi</h3><p><b>Muhammad bin Tughlaq → agricultural development.</b> Don’t confuse with market department.</p></div>
+</div>
+<div class="call gold"><b>ULTIMATE WHO→WHAT→WHY FORMULA</b><br>
+Maurya → Samaharta → Bhaga → state control → fund empire<br>
+Chola → Sabha/Variyam → local management → irrigation/trade<br>
+Alauddin → Diwan-i-Riyasat → market control → support standing army<br>
+Sher Shah → Patta/Qabuliyat → measured revenue → stable collection<br>
+Akbar → Todar Mal → Zabt/Dahsala → systematic assessment<br>
+Shivaji → Ashtapradhan → Chauth/Sardeshmukhi → state finance<br>
+British → Collector → land settlements → colonial revenue extraction</div>
+</section>
+
+<section class="section">
+<h2>15. <span>10-SECOND FINAL REVISION MAP</span></h2>
+<div class="timeline">
+<div class="era"><b>Vedic</b>Raj + Sabha/Samiti<br>Bali</div>
+<div class="era"><b>Maurya</b>Centralisation<br>Bhaga<br>Samaharta</div>
+<div class="era"><b>Gupta</b>Bhukti/Vishaya<br>Land grants</div>
+<div class="era"><b>Chola</b>Ur/Sabha<br>Variyam<br>Irrigation</div>
+<div class="era"><b>Sultanate</b>Iqta<br>Kharaj<br>Alauddin market</div>
+<div class="era"><b>Sher Shah</b>Patta/Qabuliyat<br>Rupiya</div>
+<div class="era"><b>Mughal</b>Subah<br>Zabt/Dahsala<br>Mansab/Jagir</div>
+<div class="era"><b>Maratha</b>Ashtapradhan<br>Chauth/Sardeshmukhi</div>
+<div class="era"><b>Vijayanagara</b>Nayaka/Nayankara<br>Ayagar</div>
+<div class="era"><b>British</b>Collector<br>Permanent/Ryot/Mahal</div>
+</div>
+<div class="formula">CENTRALISATION → LAND REVENUE → LOCAL BODIES → IQTA → ZABT/JAGIR → SETTLEMENTS</div>
+</section>
+
+</main>
+<footer><div class="wrap">Built as a comparative revision tool • Source-grounded from the provided administration/revenue master notes • Use system-wise comparison, then ruler-wise recall.</div></footer>
+<script>
+const input=document.getElementById('search');
+const sections=[...document.querySelectorAll('.section')];
+input.addEventListener('input',()=>{
+ const q=input.value.trim().toLowerCase();
+ sections.forEach(s=>s.classList.toggle('hide',q && !s.innerText.toLowerCase().includes(q)));
+});
+</script>
+
+<section class="section" id="addon6">
+<h2>23. 🔥 ADD-ON — “ONE TERM → COMPLETE CONNECTION” ENGINE</h2>
+<div class="call warn"><b>Exam trick:</b> SSC अक्सर पूरा system नहीं पूछता—एक छोटा term देता है. Term को उसके <b>Dynasty + Ruler + Department + Purpose + Related Terms</b> से जोड़ो.</div>
+
+<div class="stickytable"><table>
+<tr><th>Term</th><th>Immediate ID</th><th>Department / Function</th><th>Connect it with</th><th>Trap</th></tr>
+<tr><td>Samaharta</td><td>Maurya</td><td>Revenue collection</td><td>Sannidhata, Bhaga, Amatya</td><td>Not treasury</td></tr>
+<tr><td>Sannidhata</td><td>Maurya</td><td>Treasury</td><td>Samaharta</td><td>Not chief tax collector</td></tr>
+<tr><td>Rajuka</td><td>Maurya</td><td>Administrative/judicial role</td><td>Ashoka</td><td>Don't confuse with Gupta Uparika</td></tr>
+<tr><td>Uparika</td><td>Gupta</td><td>Bhukti-level official</td><td>Bhukti → Vishaya</td><td>Not Mughal Subahdar</td></tr>
+<tr><td>Vishayapati</td><td>Gupta</td><td>Vishaya administration</td><td>Uparika</td><td>Not Sultanate Iqtadar</td></tr>
+<tr><td>Kudavolai</td><td>Chola</td><td>Committee selection</td><td>Sabha, Variyam, Uttaramerur</td><td>Not modern universal election</td></tr>
+<tr><td>Eri Variyam</td><td>Chola</td><td>Irrigation/tank management</td><td>Local self-government</td><td>Think water</td></tr>
+<tr><td>Iqta</td><td>Delhi Sultanate</td><td>Revenue assignment</td><td>Muqti/Iqtadar</td><td>Not private land ownership</td></tr>
+<tr><td>Diwan-i-Arz</td><td>Sultanate</td><td>Military department</td><td>Ariz-i-Mamalik</td><td>Not finance</td></tr>
+<tr><td>Diwan-i-Riyasat</td><td>Alauddin Khalji</td><td>Market control</td><td>Shahna-i-Mandi</td><td>Not general finance</td></tr>
+<tr><td>Dagh</td><td>Alauddin Khalji</td><td>Horse branding</td><td>Chehra, standing army</td><td>Classic Sultanate association</td></tr>
+<tr><td>Diwan-i-Mustakhraj</td><td>Alauddin Khalji</td><td>Revenue arrears recovery</td><td>Doab revenue</td><td>Not market department</td></tr>
+<tr><td>Diwan-i-Kohi</td><td>Muhammad bin Tughlaq</td><td>Agricultural experiment</td><td>Doab, state cultivation</td><td>Not Firoz's canals</td></tr>
+<tr><td>Patta</td><td>Sher Shah</td><td>Revenue assessment document</td><td>Qabuliyat, Jarib</td><td>Not currency</td></tr>
+<tr><td>Rupiya</td><td>Sher Shah</td><td>Silver currency</td><td>Roads, sarais, postal system</td><td>Not Akbar's land measure</td></tr>
+<tr><td>Zabt</td><td>Akbar</td><td>Land revenue assessment</td><td>Dahsala, Todar Mal</td><td>Not military rank</td></tr>
+<tr><td>Dahsala</td><td>Akbar</td><td>Ten-year average framework</td><td>Zabt</td><td>Not a 10% tax</td></tr>
+<tr><td>Zat</td><td>Mughal</td><td>Mansab rank/status</td><td>Sawar</td><td>Not land revenue assignment</td></tr>
+<tr><td>Jagir</td><td>Mughal</td><td>Revenue assignment</td><td>Mansabdar</td><td>Not identical to Mansab</td></tr>
+<tr><td>Khalisa</td><td>Mughal</td><td>Imperial/direct revenue area</td><td>Jagir contrast</td><td>Not a rank</td></tr>
+<tr><td>Ashtapradhan</td><td>Shivaji</td><td>Eight-minister council</td><td>Peshwa, Amatya, Senapati</td><td>Not Mughal mansabdari</td></tr>
+<tr><td>Chauth</td><td>Maratha</td><td>1/4 exaction/tribute</td><td>Sardeshmukhi</td><td>25%, not 10%</td></tr>
+<tr><td>Ayagar</td><td>Vijayanagara</td><td>Village administrative functionaries/system</td><td>Karanam, Talari</td><td>Not Chola Kudavolai</td></tr>
+<tr><td>Permanent Settlement</td><td>British, 1793</td><td>Revenue settlement with zamindars</td><td>Cornwallis</td><td>Not Ryotwari</td></tr>
+<tr><td>Ryotwari</td><td>British</td><td>Direct settlement with cultivator</td><td>Thomas Munro</td><td>Not zamindar-based</td></tr>
+<tr><td>Mahalwari</td><td>British</td><td>Settlement with mahal/village/estate</td><td>Holt Mackenzie</td><td>Not individual ryot model</td></tr>
+</table></div>
+
+<h3>24. 🧠 “IF YOU SEE X, THINK Y” RAPID RECALL</h3>
+<div class="grid">
+<div class="card"><b>Centralisation + spies + departments</b><br>→ Maurya</div>
+<div class="card"><b>Bhukti + Vishaya + land grants</b><br>→ Gupta</div>
+<div class="card"><b>Sabha + Variyam + Kudavolai + irrigation</b><br>→ Chola</div>
+<div class="card"><b>Iqta + Muqti</b><br>→ Delhi Sultanate</div>
+<div class="card"><b>Market + Dagh + Chehra + Mongol threat</b><br>→ Alauddin</div>
+<div class="card"><b>Token currency + capital transfer + Doab</b><br>→ Muhammad bin Tughlaq</div>
+<div class="card"><b>Canals + public works + Jizya</b><br>→ Firoz Shah Tughlaq</div>
+<div class="card"><b>Patta + Qabuliyat + Rupiya</b><br>→ Sher Shah</div>
+<div class="card"><b>Zabt + Dahsala + Mansab</b><br>→ Akbar</div>
+<div class="card"><b>Jizya 1679 + Deccan + Fatawa-i-Alamgiri</b><br>→ Aurangzeb</div>
+<div class="card"><b>Ashtapradhan + forts + Chauth</b><br>→ Shivaji</div>
+<div class="card"><b>Nayaka + Nayankara + Ayagar</b><br>→ Vijayanagara</div>
+<div class="card"><b>Permanent + 1793 + Zamindar</b><br>→ Cornwallis</div>
+<div class="card"><b>Ryotwari + Madras</b><br>→ Thomas Munro</div>
+</div>
+
+<h3>25. ⚔️ REFORM → PROBLEM → SOLUTION / RESULT</h3>
+<div class="stickytable"><table>
+<tr><th>Problem / Need</th><th>Policy/System</th><th>Associated ruler/power</th><th>Exam connection</th></tr>
+<tr><td>Large army + Mongol pressure</td><td>Market price control + standing army</td><td>Alauddin Khalji</td><td>Lower military maintenance burden</td></tr>
+<tr><td>Revenue predictability</td><td>Zabt/Dahsala</td><td>Akbar</td><td>Measurement + average</td></tr>
+<tr><td>Agricultural development</td><td>Diwan-i-Kohi</td><td>Muhammad bin Tughlaq</td><td>Experimental policy</td></tr>
+<tr><td>Irrigation/public works</td><td>Canals</td><td>Firoz Shah Tughlaq</td><td>Water infrastructure</td></tr>
+<tr><td>Efficient assessment</td><td>Patta/Qabuliyat + measurement</td><td>Sher Shah</td><td>Later Mughal relevance</td></tr>
+<tr><td>Administrative integration</td><td>Suba–Sarkar–Pargana</td><td>Mughal</td><td>Provincial hierarchy</td></tr>
+<tr><td>Military service + rank integration</td><td>Mansabdari</td><td>Akbar/systematised</td><td>Zat + Sawar</td></tr>
+<tr><td>Local irrigation + village management</td><td>Variyam/assemblies</td><td>Chola</td><td>Local self-government</td></tr>
+<tr><td>Colonial revenue certainty</td><td>Permanent Settlement</td><td>Cornwallis</td><td>Zamindar</td></tr>
+<tr><td>Direct peasant settlement</td><td>Ryotwari</td><td>Munro</td><td>Ryot</td></tr>
+</table></div>
+
+<h3>26. 🗺️ MASTER MEMORY MAP — 30 SECOND REVISION</h3>
+<div class="flowcol">
+<div class="node"><b>VEDIC</b> → Rajan + Sabha/Samiti + Bali</div><div class="down">↓</div>
+<div class="node"><b>MAURYA</b> → Centralisation + Bhaga + Samaharta/Sannidhata + spies</div><div class="down">↓</div>
+<div class="node"><b>GUPTA</b> → Bhukti/Vishaya + land grants + decentralising tendency</div><div class="down">↓</div>
+<div class="node"><b>CHOLA</b> → Sabha/Ur/Nagaram + Variyam + Kudavolai + irrigation + navy</div><div class="down">↓</div>
+<div class="node"><b>SULTANATE</b> → Iqta + Muqti + Diwan departments</div><div class="down">↓</div>
+<div class="node"><b>ALAUDDIN</b> → Market + Dagh/Chehra + revenue + intelligence</div><div class="down">↓</div>
+<div class="node"><b>TUGHLAQ</b> → Experiments → token currency/Doab/Kohi; Firoz → canals</div><div class="down">↓</div>
+<div class="node"><b>SHER SHAH</b> → Patta/Qabuliyat + Rupiya + roads/sarais/post</div><div class="down">↓</div>
+<div class="node"><b>AKBAR</b> → Suba system + Zabt/Dahsala + Mansab + Sulh-i-Kul</div><div class="down">↓</div>
+<div class="node"><b>MUGHAL</b> → Jagir/Khalisa + Diwan/Mir Bakshi + imperial hierarchy</div><div class="down">↓</div>
+<div class="node"><b>MARATHA</b> → Ashtapradhan + Chauth/Sardeshmukhi + forts + mobility</div><div class="down">↓</div>
+<div class="node"><b>VIJAYANAGARA</b> → Nayaka/Nayankara + Ayagar + irrigation/temple economy</div><div class="down">↓</div>
+<div class="node"><b>BRITISH</b> → Permanent/Ryotwari/Mahalwari + Collector + Acts → Crown rule</div>
+</div>
+
+<h3>27. 🚨 SSC TRAP ALERTS</h3>
+<div class="grid2">
+<div class="card trap"><b>Trap 1:</b> Iqta ≠ land ownership. It is primarily a revenue assignment.</div>
+<div class="card trap"><b>Trap 2:</b> Mansab ≠ Jagir. Mansab is rank/service status; Jagir is a revenue assignment.</div>
+<div class="card trap"><b>Trap 3:</b> Zat ≠ Sawar. Zat relates to personal rank/status; Sawar relates to cavalry obligation.</div>
+<div class="card trap"><b>Trap 4:</b> Patta ≠ Qabuliyat. One states assessment/demand; the other is cultivator acceptance/agreement.</div>
+<div class="card trap"><b>Trap 5:</b> Dagh = horse branding; Chehra = descriptive roll.</div>
+<div class="card trap"><b>Trap 6:</b> Chauth = 25%; Sardeshmukhi = 10%.</div>
+<div class="card trap"><b>Trap 7:</b> Eri Variyam = irrigation/tank association; don't confuse with general Sabha.</div>
+<div class="card trap"><b>Trap 8:</b> Diwan-i-Arz = military; Diwan-i-Wizarat = finance/general administration.</div>
+</div>
+</section>
+
+
+<section class="section" id="addon7">
+<h2>28. 🏛️ ADD-ON V7 — CENTRAL → PROVINCIAL → DISTRICT → LOCAL: COMPLETE ADMINISTRATION MAP</h2>
+<div class="call good"><b>This is the missing layer.</b> Ab sirf “important officials” nahi—har polity ko <b>Centre → Province → District/Sub-district → Village/City → Local institutions</b> ke ladder par padho. Where the terminology varied by period/region, the table marks it as a <b>common/typical reconstruction</b>, not a rigid one-size-fits-all hierarchy.</div>
+
+<h3>29. 🌳 GRAND COMPARATIVE HIERARCHY</h3>
+<div class="stickytable"><table>
+<tr><th>Polity / Period</th><th>Central</th><th>Provincial / Territorial</th><th>District / Intermediate</th><th>Village / Local</th><th>Urban / Special local body</th></tr>
+<tr><td><b>Vedic</b></td><td>Rajan + Sabha + Samiti</td><td>Tribal/jana territorial groupings</td><td>Not a uniform later-style district system</td><td>Village / Grama; Gramani</td><td>Not a developed municipal hierarchy</td></tr>
+<tr><td><b>Mahajanapadas</b></td><td>King or oligarchic/gana leadership</td><td>Territorial state units varied</td><td>Varied by state</td><td>Village officials/local elites</td><td>Urban centres under state control</td></tr>
+<tr><td><b>Maurya</b></td><td>King → Mantri/Amatya + departments</td><td>Major provinces; governors often royal princes/appointed officials</td><td>Pradeshika / Rajuka / Yukta-type officials</td><td>Gopa → Sthanika-level record/revenue supervision; village head/local functionaries</td><td>Nagaraka → city administration</td></tr>
+<tr><td><b>Gupta</b></td><td>King + central high officials</td><td><b>Bhukti</b> → Uparika</td><td><b>Vishaya</b> → Vishayapati; Vithi in some contexts</td><td>Gramika + local bodies/landholding elites</td><td>Municipal/urban bodies appear in inscriptions; terminology varies</td></tr>
+<tr><td><b>Chola</b></td><td>King + central officers</td><td><b>Mandalam</b></td><td><b>Valanadu → Nadu</b></td><td><b>Ur / Sabha</b></td><td><b>Nagaram</b> + merchant groups</td></tr>
+<tr><td><b>Pallava</b></td><td>King + central officers</td><td>Territorial divisions; <b>Mandalam/Kottam</b> terminology in inscriptions</td><td>Kottam/Nadu-type units depending on context</td><td>Ur / Sabha-type village institutions, especially Brahmadeya contexts</td><td>Merchant/urban centres</td></tr>
+<tr><td><b>Early/Western Chalukya</b></td><td>King + ministers</td><td>Large territorial provinces</td><td>Vishaya / Nadu-type units</td><td>Village communities + local officers</td><td>Urban centres/trade organisations</td></tr>
+<tr><td><b>Rashtrakuta</b></td><td>King + central officers</td><td>Rashtra / Mandala-type territorial units</td><td>Vishaya</td><td>Village-level officials/local assemblies</td><td>Town/trade centres</td></tr>
+<tr><td><b>Pandya</b></td><td>King + central administration</td><td>Territorial divisions</td><td>Nadu / Kurram-type regional terminology appears</td><td>Village assemblies/local elites</td><td>Temple and market centres</td></tr>
+<tr><td><b>Kakatiya</b></td><td>King + court/central officers</td><td>Territorial chiefs and provincial arrangements</td><td>Nadu/administrative territorial units</td><td>Village headmen/local revenue functionaries</td><td>Fortified towns + temple centres</td></tr>
+<tr><td><b>Hoysala</b></td><td>King + ministers</td><td>Provincial/territorial units</td><td>Nadu / Kampana-type regional units in varying contexts</td><td>Village assemblies/local officers</td><td>Temple-town economy</td></tr>
+<tr><td><b>Delhi Sultanate</b></td><td>Sultan + Wizarat + major diwans</td><td><b>Iqta</b> → Muqti/Iqtadar</td><td><b>Shiq</b> → Shiqdar; Pargana-type units</td><td>Muqaddam + Chaudhuri + Patwari; village community</td><td>Kotwal → city law & order; market officials under Alauddin</td></tr>
+<tr><td><b>Sur Empire</b></td><td>Sultan + central officers</td><td>Sarkar-level territorial administration</td><td>Pargana</td><td>Village; revenue records/officials</td><td>Sarais, roads, postal nodes</td></tr>
+<tr><td><b>Mughal</b></td><td>Emperor + Diwan + Mir Bakshi + other central departments</td><td><b>Subah</b> → Subahdar + provincial Diwan</td><td><b>Sarkar</b> → Pargana</td><td>Amil/Qanungo/Patwari + village headmen/local intermediaries</td><td>Qiladar/Kotwal; urban revenue & policing arrangements</td></tr>
+<tr><td><b>Maratha</b></td><td>Chhatrapati + Ashtapradhan</td><td>Provincial/subordinate territorial administration varied across swarajya and later confederacy</td><td>Prant/Pargana-type territorial units</td><td>Village headman + accountant traditions; local hereditary officials</td><td>Fort/town administration + customs posts</td></tr>
+<tr><td><b>Vijayanagara</b></td><td>Rayal court + Mahapradhani/central officers</td><td>Nayaka/Nayankara territorial structure</td><td>Nadu/Sthala-type regional units in varying contexts</td><td><b>Ayagar</b> → Karanam, Talari, Reddi etc.</td><td>Temple towns, ports, market centres</td></tr>
+<tr><td><b>British</b></td><td>Governor-General/Viceroy + central departments</td><td>Presidency/Province → Governor/Lt. Governor</td><td>District → Collector + magistracy</td><td>Tehsil/Taluk → revenue officers; village officials</td><td>Municipal corporations/municipalities; police commissionerates in some cities</td></tr>
+</table></div>
+
+<h3>30. 🦁 MAURYA — DEEP ADMINISTRATIVE LADDER</h3>
+<div class="flowcol">
+<div class="node"><b>EMPEROR</b><br>King → supreme political authority</div><div class="down">↓</div>
+<div class="node"><b>CENTRAL BUREAUCRACY</b><br>Mantri • Amatya • Senapati • Purohita • Samaharta • Sannidhata • specialised Adhyakshas</div><div class="down">↓</div>
+<div class="node"><b>PROVINCIAL</b><br>Major provinces such as Taxila, Ujjain, Tosali, Suvarnagiri; royal/appointed governors</div><div class="down">↓</div>
+<div class="node"><b>DISTRICT / FIELD</b><br>Pradeshika • Rajuka • Yukta-type administrative/revenue/judicial machinery</div><div class="down">↓</div>
+<div class="node"><b>LOCAL / RECORD</b><br>Gopa + Sthanika-type supervision; village functionaries</div><div class="down">↓</div>
+<div class="node"><b>CITY</b><br>Nagaraka → urban administration</div>
+</div>
+<div class="grid">
+<div class="card"><b>Revenue:</b> Samaharta = collection; Sannidhata = treasury/storehouse; Bhaga = agricultural share.</div>
+<div class="card"><b>Agriculture:</b> Sitadhyaksha → state agriculture; irrigation and agricultural production were revenue concerns.</div>
+<div class="card"><b>Commerce:</b> Panyadhyaksha → commerce; Shulkadhyaksha → customs/tolls; Akaradhyaksha → mines.</div>
+<div class="card"><b>City:</b> Nagaraka → city administration; connect with policing, markets and civic control.</div>
+</div>
+
+<h3>31. 🟡 GUPTA — PROVINCE → DISTRICT → VILLAGE</h3>
+<div class="flowcol">
+<div class="node"><b>EMPEROR / CENTRAL</b><br>King + Kumaramatyas and other high officers</div><div class="down">↓</div>
+<div class="node"><b>BHUKTI</b><br>Province → Uparika</div><div class="down">↓</div>
+<div class="node"><b>VISHAYA</b><br>District → Vishayapati</div><div class="down">↓</div>
+<div class="node"><b>VITHI</b><br>Smaller intermediate unit in relevant inscriptions/contexts</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE</b><br>Gramika + local landed/community elements</div>
+</div>
+<div class="call warn"><b>Big idea:</b> Gupta administration is generally presented as less centralized than Mauryan administration, while land grants and local/regional elements became more important. Your source explicitly gives <b>Bhukti → Vishaya → Vithi → Village</b> and Uparika/Vishayapati/Gramika. fileciteturn3file4L585-L612</div>
+
+<h3>32. 🛕 CHOLA — THE LOCAL GOVERNMENT MASTER MAP</h3>
+<div class="flowcol">
+<div class="node"><b>KING / CENTRAL</b><br>King + central officials</div><div class="down">↓</div>
+<div class="node"><b>MANDALAM</b><br>Large provincial division</div><div class="down">↓</div>
+<div class="node"><b>VALANADU</b><br>Intermediate territorial division</div><div class="down">↓</div>
+<div class="node"><b>NADU</b><br>Group of villages / important local territorial level</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE INSTITUTIONS</b><br>Ur = ordinary village • Sabha/Mahasabha = Brahmadeya village • Nagaram = urban/merchant organisation</div><div class="down">↓</div>
+<div class="node"><b>VARIYAMS</b><br>Eri = tanks/irrigation • Totta = gardens • Samvatsara = general/annual • Pon = financial/gold</div>
+</div>
+<div class="grid2">
+<div class="card"><h3>UR</h3>Ordinary village assembly.</div>
+<div class="card"><h3>SABHA</h3>Brahmadeya village assembly; strong committee-based functions.</div>
+<div class="card"><h3>NAGARAM</h3>Urban/merchant organisation.</div>
+<div class="card"><h3>KUDAVOLAI</h3>Selection by lot for eligible committee members in the famous Uttaramerur context.</div>
+</div>
+<div class="call good"><b>Source anchor:</b> Your notes specifically identify Ur, Sabha/Mahasabha, Nagaram, Variyam, Eri Variyam, Totta Variyam, Samvatsara Variyam, Pon Variyam and Kudavolai. fileciteturn3file2L221-L255</div>
+
+<h3>33. 🕌 DELHI SULTANATE — THE HIERARCHY IN YOUR SHARED DIAGRAM</h3>
+<div class="flowcol">
+<div class="node"><b>SULTAN / CENTRAL</b><br>Wazir • Ariz-i-Mamalik • Diwan departments</div><div class="down">↓</div>
+<div class="node"><b>IQTA / TERRITORIAL REVENUE ASSIGNMENT</b><br>Muqti / Iqtadar</div><div class="down">↓</div>
+<div class="node"><b>SHIQ</b><br>Shiqdar — local territorial/law-and-order role</div><div class="down">↓</div>
+<div class="node"><b>PARGANA</b><br>Amil + local revenue intermediaries</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE</b><br>Muqaddam / Chaudhuri / Patwari + village community</div>
+</div>
+<div class="call warn"><b>Important distinction:</b> Iqta is primarily a <b>revenue/administrative assignment</b>; Muqti/Iqtadar is the person administering it. Your source explicitly states this and lists Amil, Shiqdar, Chaudhuri, Muqaddam and Patwari in the local chain. fileciteturn3file5L640-L665</div>
+
+<h3>34. 🏹 ALAUDDIN KHALJI — CENTRAL CONTROL REACHING THE MARKET & VILLAGE</h3>
+<div class="grid">
+<div class="card"><b>Centre:</b> Sultan → Diwan-i-Riyasat / military & revenue machinery.</div>
+<div class="card"><b>Market:</b> Shahna-i-Mandi → regulated markets; Sarai-i-Adl for cloth/other commodities.</div>
+<div class="card"><b>Intelligence:</b> Barid + Munhiyan → monitoring officials, merchants and market activity.</div>
+<div class="card"><b>Revenue:</b> Land measurement + heavy demand in core territories; source associates it with about half of produce.</div>
+</div>
+<div class="flowcol">
+<div class="node">Mongol threat</div><div class="down">↓</div>
+<div class="node">Large standing army</div><div class="down">↓</div>
+<div class="node">Need controlled expenditure</div><div class="down">↓</div>
+<div class="node">Market regulation + revenue strengthening</div><div class="down">↓</div>
+<div class="node">Surveillance + inspection</div>
+</div>
+
+<h3>35. 🏰 MUGHAL — PROVINCIAL ADMINISTRATION WITH PARALLEL OFFICES</h3>
+<div class="flowcol">
+<div class="node"><b>EMPEROR / CENTRAL</b><br>Diwan • Mir Bakshi • Mir Saman • Sadr • Qazi • Mir Munshi etc.</div><div class="down">↓</div>
+<div class="node"><b>SUBAH</b><br>Subahdar = executive/military authority<br>Provincial Diwan = finance/revenue oversight</div><div class="down">↓</div>
+<div class="node"><b>SARKAR</b><br>Intermediate territorial level; Shiqdar-type military/police/revenue functions in the hierarchy</div><div class="down">↓</div>
+<div class="node"><b>PARGANA</b><br>Amil = revenue collection • Qanungo = records • Shiqdar = law/order/military-revenue role • Fotadar = treasury</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE</b><br>Patwari + village headmen/local intermediaries</div>
+</div>
+<div class="grid2">
+<div class="card"><b>Why parallel officials?</b><br>Mughal administration separated important executive, fiscal, military and judicial functions so that no single provincial official completely monopolised power.</div>
+<div class="card"><b>Revenue:</b><br>Amil/Qanungo/Patwari + imperial Diwan connect assessment, collection and records.</div>
+<div class="card"><b>Military:</b><br>Mir Bakshi ↔ Mansabdars ↔ Zat/Sawar; Jagir can finance service.</div>
+<div class="card"><b>Direct imperial revenue:</b><br>Khalisa areas → revenue to imperial treasury; Jagir → assigned revenue to jagirdar.</div>
+</div>
+
+<h3>36. ⚔️ MARATHA — CENTRE STRONG, LOCAL STRUCTURE MORE HEREDITARY/REGIONAL</h3>
+<div class="flowcol">
+<div class="node"><b>CHHATRAPATI</b><br>Supreme royal authority</div><div class="down">↓</div>
+<div class="node"><b>ASHTAPRADHAN</b><br>Peshwa • Amatya • Sachiv • Mantri • Sumant • Senapati • Nyayadhish • Panditrao</div><div class="down">↓</div>
+<div class="node"><b>PRANT / TERRITORIAL ADMINISTRATION</b><br>Regional officers and subordinate chiefs</div><div class="down">↓</div>
+<div class="node"><b>PARGANA / LOCAL</b><br>Revenue + hereditary local officers</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE</b><br>Headman/accountant traditions; local collection and records</div>
+</div>
+<div class="call good"><b>Remember:</b> Maratha administration is not just Ashtapradhan. Link the centre to <b>land revenue → Chauth/Sardeshmukhi → forts → mobile cavalry → local hereditary officers</b>. Your source identifies all eight Ashtapradhan offices and the 25%/10% revenue facts. fileciteturn3file3L346-L367</div>
+
+<h3>37. 🛕 VIJAYANAGARA — NAYAKA + AYAGAR TWO-LAYER MODEL</h3>
+<div class="flowcol">
+<div class="node"><b>RAYA / CENTRAL COURT</b><br>King + Mahapradhani + Dandanayaka</div><div class="down">↓</div>
+<div class="node"><b>NAYAKA / NAYANKARA</b><br>Military-territorial chiefs + revenue assignment/service</div><div class="down">↓</div>
+<div class="node"><b>REGIONAL / VILLAGE</b><br>Nadu/Sthala-type units appear in varying contexts</div><div class="down">↓</div>
+<div class="node"><b>AYAGAR</b><br>Karanam = accountant • Talari = watchman • Reddi = village headman</div>
+</div>
+<div class="call warn"><b>Core memory:</b> <b>Nayaka = military/territorial chief</b>; <b>Nayankara = territorial/revenue assignment linked with service</b>; <b>Ayagar = village-level official system</b>. Your source explicitly lists Mahapradhani, Dandanayaka, Nayaka, Nayankara and Karanam/Talari/Reddi. fileciteturn3file3L371-L401</div>
+
+<h3>38. 🇬🇧 BRITISH — DISTRICT BECOMES THE KEY ADMINISTRATIVE UNIT</h3>
+<div class="flowcol">
+<div class="node"><b>GOVERNOR-GENERAL / VICEROY + CENTRAL GOVERNMENT</b></div><div class="down">↓</div>
+<div class="node"><b>PROVINCE / PRESIDENCY</b><br>Governor / Lieutenant-Governor depending on province</div><div class="down">↓</div>
+<div class="node"><b>DISTRICT</b><br>Collector → revenue + broad district administration</div><div class="down">↓</div>
+<div class="node"><b>TEHSIL / TALUK</b><br>Subordinate revenue administration</div><div class="down">↓</div>
+<div class="node"><b>VILLAGE</b><br>Village officials + local records; settlement system determines revenue relationship</div><div class="down">↓</div>
+<div class="node"><b>URBAN</b><br>Municipal institutions developed under colonial legislation</div>
+</div>
+
+<h3>39. 🌾 REVENUE SYSTEM + ADMINISTRATIVE LEVEL — MASTER CROSSWALK</h3>
+<div class="stickytable"><table>
+<tr><th>System</th><th>Top administrative link</th><th>Intermediate</th><th>Local collection/records</th><th>Who ultimately receives revenue?</th></tr>
+<tr><td>Maurya</td><td>King / central revenue machinery</td><td>Provincial & field officials</td><td>Gopa/Sthanika-type local supervision</td><td>State</td></tr>
+<tr><td>Gupta</td><td>King / Uparika</td><td>Vishaya / Vishayapati</td><td>Gramika + local elements</td><td>State + grants/local beneficiaries depending on grant</td></tr>
+<tr><td>Chola</td><td>King / Mandalam</td><td>Valanadu / Nadu</td><td>Ur/Sabha committees</td><td>State + local institutional/temple-linked arrangements</td></tr>
+<tr><td>Iqta</td><td>Sultan</td><td>Iqta / Muqti</td><td>Amil + village intermediaries</td><td>Revenue assigned for administration/service</td></tr>
+<tr><td>Mughal Jagir</td><td>Emperor</td><td>Subah/Sarkar/Pargana</td><td>Amil/Qanungo/Patwari</td><td>Assigned jagirdar, subject to imperial control</td></tr>
+<tr><td>Mughal Khalisa</td><td>Emperor</td><td>Subah/Sarkar/Pargana</td><td>Revenue officials</td><td>Imperial treasury</td></tr>
+<tr><td>Permanent Settlement</td><td>Colonial state</td><td>District/revenue machinery</td><td>Zamindar/intermediary</td><td>State demand from zamindar; zamindar collected from tenants</td></tr>
+<tr><td>Ryotwari</td><td>Colonial state</td><td>District/Taluk</td><td>Revenue officials + ryot</td><td>Direct government assessment on cultivator</td></tr>
+<tr><td>Mahalwari</td><td>Colonial state</td><td>District/Taluk</td><td>Mahal/village body + revenue officials</td><td>Government demand assessed on mahal/village unit</td></tr>
+</table></div>
+
+<h3>40. 🧑‍💼 OFFICIALS BY LEVEL — SUPER REVISION TABLE</h3>
+<div class="stickytable"><table>
+<tr><th>Level</th><th>Maurya</th><th>Gupta</th><th>Sultanate</th><th>Mughal</th><th>Chola</th><th>Vijayanagara</th><th>British</th></tr>
+<tr><td>Central</td><td>Mantri, Amatya, Senapati, Samaharta, Sannidhata</td><td>Kumaramatya, Mahadandanayaka, Sandhivigrahika</td><td>Wazir, Ariz-i-Mamalik, major Diwans</td><td>Diwan, Mir Bakshi, Mir Saman, Sadr, Qazi</td><td>King + central officers</td><td>Raya + Mahapradhani, Dandanayaka</td><td>Governor-General/Viceroy + central departments</td></tr>
+<tr><td>Province</td><td>Governor / royal prince / appointed official</td><td>Uparika</td><td>Muqti/Iqtadar</td><td>Subahdar + provincial Diwan</td><td>Mandalam administration</td><td>Nayaka/Nayankara</td><td>Governor/Lt. Governor</td></tr>
+<tr><td>District</td><td>Pradeshika/Rajuka/Yukta-type field machinery</td><td>Vishayapati</td><td>Shiqdar</td><td>Sarkar-level officers</td><td>Nadu-level local leadership</td><td>Regional officers</td><td>Collector / district magistracy</td></tr>
+<tr><td>Revenue</td><td>Samaharta</td><td>Vishayapati + local machinery</td><td>Amil</td><td>Diwan/Amil</td><td>Local assemblies + royal revenue machinery</td><td>Local revenue officers</td><td>Collector / settlement officials</td></tr>
+<tr><td>Village</td><td>Gopa/Sthanika-type supervision</td><td>Gramika</td><td>Muqaddam, Chaudhuri, Patwari</td><td>Patwari + village headmen</td><td>Ur / Sabha</td><td>Ayagar: Karanam, Talari, Reddi</td><td>Village officials/records</td></tr>
+<tr><td>City</td><td>Nagaraka</td><td>Urban bodies varied</td><td>Kotwal</td><td>Kotwal + urban officials</td><td>Nagaram</td><td>Temple/market town administration</td><td>Municipality/municipal corporation; police administration</td></tr>
+</table></div>
+
+<h3>41. 🧠 SAME LEVEL, DIFFERENT NAME</h3>
+<div class="grid">
+<div class="card"><b>Province:</b> Maurya provincial governor → Gupta <b>Uparika</b> → Mughal <b>Subah/Subahdar</b> → British <b>Province/Governor</b>.</div>
+<div class="card"><b>District:</b> Gupta <b>Vishaya/Vishayapati</b> → Sultanate <b>Shiq</b> / local territorial units → Mughal <b>Sarkar</b> → British <b>District/Collector</b>.</div>
+<div class="card"><b>Village:</b> Gupta <b>Gramika</b> → Sultanate <b>Muqaddam</b> → Mughal <b>Patwari + headmen</b> → Vijayanagara <b>Ayagar</b> → British village revenue machinery.</div>
+<div class="card"><b>City:</b> Maurya <b>Nagaraka</b> → Sultanate/Mughal <b>Kotwal</b> → Chola <b>Nagaram</b> as urban/merchant institution.</div>
+<div class="card"><b>Revenue assignment:</b> Sultanate <b>Iqta</b> → Mughal <b>Jagir</b> → Vijayanagara <b>Nayankara</b> (not identical systems, but useful comparative pattern).</div>
+</div>
+
+<h3>42. 🚨 IMAGE-BASED SSC TRAPS FROM THE SHARED MATERIAL</h3>
+<div class="grid2">
+<div class="card trap"><b>Maurya:</b> Don't memorise “Pradeshika” twice with two different functions. Terminology and translations can vary across textbooks; use the broader source-backed idea: field/local administrative-revenue-judicial machinery.</div>
+<div class="card trap"><b>Maurya:</b> <b>Samaharta = revenue collection</b>; <b>Sannidhata = treasury/storehouse</b>. Never swap them. fileciteturn3file4L520-L535</div>
+<div class="card trap"><b>Chola:</b> Don't write “province = Mandalam” and stop. The exam can ask <b>Mandalam → Valanadu → Nadu → village institution</b>.</div>
+<div class="card trap"><b>Chola:</b> <b>Ur ≠ Sabha ≠ Nagaram</b>: ordinary village vs Brahmadeya assembly vs urban/merchant organisation. fileciteturn3file2L227-L245</div>
+<div class="card trap"><b>Sultanate:</b> Your shared diagram's “Iqta → Shiq → Pargana → Village” is a useful memory ladder, but don't assume every Sultanate period used one completely fixed hierarchy.</div>
+<div class="card trap"><b>Mughal:</b> <b>Subahdar and Diwan are not the same office</b>; provincial executive/military and fiscal oversight were deliberately differentiated.</div>
+<div class="card trap"><b>Vijayanagara:</b> <b>Nayaka ≠ Ayagar</b>. Nayaka is a territorial/military chief; Ayagar refers to village official organisation.</div>
+<div class="card trap"><b>British:</b> Permanent, Ryotwari and Mahalwari are <b>revenue settlement models</b>, not three levels of administration. fileciteturn3file3L405-L453</div>
+</div>
+
+<h3>43. 🏆 FINAL MASTER FORMULA</h3>
+<div class="call good">
+<b>EVERY ADMINISTRATION QUESTION = 7 STEPS</b><br><br>
+① <b>WHO?</b> — ruler/dynasty<br>
+② <b>WHERE?</b> — centre / province / district / village / city<br>
+③ <b>WHO OFFICIATED?</b> — officer name<br>
+④ <b>WHAT?</b> — tax / land / military / justice / market<br>
+⑤ <b>HOW?</b> — mechanism/system<br>
+⑥ <b>WHY?</b> — political, military or economic objective<br>
+⑦ <b>WHAT IS THE TRAP?</b> — similar term from another dynasty
+<br><br>
+<b>Example:</b> “Uparika” → Gupta → Province/Bhukti → administration → not Mughal Subahdar → connect downward to Vishayapati → Gramika.
+</div>
+
+<div class="call warn"><b>Source coverage note:</b> The shared master notes explicitly cover central/provincial/district/village administration as a study framework, plus Maurya, Gupta, Chola, Sultanate, Mughal, Maratha, Vijayanagara and British systems. fileciteturn3file0L27-L38 The additional Pallava/Chalukya/Rashtrakuta/Pandya/Kakatiya/Hoysala hierarchy entries above are an expansion layer; their terminology can vary by inscription, region and period, so they should be treated as comparative study aids rather than a rigid universal ladder.
+</div>
+</section>
+
+
+<style>
+:root {
+  --ink:#172033; --muted:#667085; --paper:#f7f9fc; --panel:#ffffff;
+  --red:#b42318; --blue:#175cd3; --green:#087443; --gold:#b54708; --purple:#6941c6;
+}
+.final-v8 {font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink);}
+.v8-hero {background:linear-gradient(135deg,#081a33,#123e68 55%,#1b5e5a); color:#fff; padding:28px; border-radius:20px; margin:18px 0 28px; box-shadow:0 12px 35px #0002;}
+.v8-hero h1 {margin:0 0 8px;font-size:32px} .v8-hero p {margin:6px 0;opacity:.92}
+.v8-nav {display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;position:sticky;top:0;z-index:5;background:#ffffffee;padding:10px;border-radius:14px;backdrop-filter:blur(8px);}
+.v8-nav a {padding:8px 12px;border:1px solid #d0d5dd;border-radius:999px;text-decoration:none;font-weight:700;font-size:13px;color:#175cd3;background:#fff;}
+.v8-section {margin:30px 0} .v8-section h2 {font-size:24px;margin-bottom:8px} .v8-section h3 {margin-top:22px}
+.poster-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.poster-card {background:#fff;border:1px solid #d9dee8;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px #10182812}
+.poster-card img {display:block;width:100%;height:auto;background:#111;cursor:zoom-in}
+.poster-head {padding:12px 14px;background:#f2f4f7;display:flex;gap:8px;align-items:center}
+.poster-foot {padding:9px 12px;color:#667085;font-size:12px;background:#fafafa}
+.flow-master {display:flex;flex-direction:column;align-items:center;gap:8px;background:#0f172a;color:#fff;border-radius:18px;padding:22px}
+.fbox {width:min(700px,90%);text-align:center;padding:12px 16px;border-radius:12px;background:#eaf2ff;color:#102a43;font-weight:800;border:2px solid #91b7ff}
+.fbox.final {background:#ecfdf3;border-color:#75d6a0} .arrow {font-size:22px;color:#b9c7d8}
+.flow-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.flow-card {background:#fff;border:1px solid #d9dee8;border-radius:16px;padding:14px;box-shadow:0 6px 18px #1018280c}
+.mini-title {font-size:18px;font-weight:900;margin-bottom:10px;color:#b42318}
+.flow-card .fbox {width:auto;font-size:13px;padding:8px;border-width:1px}
+.flow-card .arrow {font-size:15px;text-align:center;color:#667085}
+.system-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.system-card {padding:16px;border-radius:16px;background:linear-gradient(145deg,#fff,#f8fafc);border:1px solid #d9dee8}
+.system-card b {color:#175cd3}
+.chain {display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px;background:#f8fafc;border-radius:14px;border:1px dashed #98a2b3}
+.chain span {background:#fff;border:1px solid #bfc8d6;padding:8px 11px;border-radius:10px;font-weight:800;font-size:13px}
+.chain i {font-style:normal;font-weight:900;color:#b42318}
+.exam {background:#fff7ed;border-left:5px solid #f79009;padding:14px 16px;border-radius:10px}
+.study {display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.study div {padding:14px;background:#f0fdf4;border:1px solid #a6f4c5;border-radius:14px}
+@media(max-width:700px){.v8-hero h1{font-size:24px}}
+</style>
+
+<div class="final-v8">
+<div class="v8-hero">
+<h1>🔥 ADMINISTRATION MASTER — FINAL V8</h1>
+<p><b>Central → Provincial → District → Local → Village → City</b></p>
+<p>Maurya • Gupta • Pallava • Chalukya • Rashtrakuta • Pandya • Chola • Harsha • Delhi Sultanate • Vijayanagara • Mughal • Maratha • British</p>
+<p>📚 Theory + Poster Revision + Creative Flowcharts + Officials + Revenue + Military + Local Government + SSC Traps</p>
+</div>
+
+<div class="v8-nav">
+<a href="#posters">🖼️ Posters</a><a href="#masterflow">🔥 Master Flow</a><a href="#dynflows">🏛️ Dynasty Flows</a>
+<a href="#systemflows">🔗 System Flows</a><a href="#officialflows">🧑‍💼 Officials</a><a href="#revenueflows">🌾 Revenue</a>
+<a href="#localflows">🏘️ Local Govt</a><a href="#compareflows">⚖️ Compare</a><a href="#studyplan">🎯 Revision</a>
+</div>
+
+<section class="v8-section clean-posters" id="posters">
+<h2>🖼️ <span>DYNASTY ADMINISTRATION POSTERS — ALL IN ONE</span></h2>
+<div class="poster-intro">No screenshots. No duplicate notes. Each poster is a compact visual revision sheet: <b>Nature → Hierarchy → Officials → Revenue → Memory formula.</b></div>
+<div class="cp-grid"><article class="cp-card maurya">
+<div class="cp-top"><span>🔵</span><b>MAURYA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Centralised imperial bureaucracy</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Ministers/Amatyas → Provinces → field/local officers → village/city</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Samaharta = revenue • Sannidhata = treasury • Rajuka/Pradeshika • Nagaraka</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Bhaga • state supervision • departments • spies • large army</span></div>
+<div class="cp-formula">CENTRALISE → MEASURE → COLLECT → CONTROL</div>
+</article><article class="cp-card gupta">
+<div class="cp-top"><span>🟣</span><b>GUPTA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Monarchy with stronger local/decentralising tendencies</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Bhukti/Uparika → Vishaya/Vishayapati → Vithi → Grama/Gramika</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Kumaramatya • Sandhivigrahika • Uparika • Vishayapati • Gramika</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Bhaga/Bhoga/Kara • land grants • guilds/local elites</span></div>
+<div class="cp-formula">GRANTS → LOCAL POWER</div>
+</article><article class="cp-card pallava">
+<div class="cp-top"><span>🟠</span><b>PALLAVA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Strong monarchy + regional/local institutions</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Mandalam/Kottam → territorial units → village bodies</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Royal officers • local chiefs • village/temple institutions</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Land revenue • Brahmadeya grants • temple-centred economy</span></div>
+<div class="cp-formula">KING → REGION → VILLAGE → TEMPLE</div>
+</article><article class="cp-card chalukya">
+<div class="cp-top"><span>🟤</span><b>CHALUKYA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Regional monarchy with territorial administration</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Mandala/Vishaya-type divisions → Nadu/local units → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Royal ministers • military officials • local chiefs</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Agricultural revenue • land grants • trade/temple centres</span></div>
+<div class="cp-formula">REGION → LOCAL CHIEFS → VILLAGE</div>
+</article><article class="cp-card rashtrakuta">
+<div class="cp-top"><span>🟥</span><b>RASHTRAKUTA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Monarchy with provincial and local intermediaries</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Rashtra/Mandala → Vishaya → local units → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Central officers • regional chiefs • village officials</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Land revenue • grants • trade and temple networks</span></div>
+<div class="cp-formula">GRANT → LOCAL INTERMEDIARY → REVENUE</div>
+</article><article class="cp-card pandya">
+<div class="cp-top"><span>🟨</span><b>PANDYA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Monarchy supported by regional and local institutions</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → territorial divisions → Nadu/Kurram-type units → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Royal officers • local elites • village authorities</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Agriculture + land revenue • maritime trade • temple economy</span></div>
+<div class="cp-formula">LAND → TEMPLE → TRADE</div>
+</article><article class="cp-card harsha">
+<div class="cp-top"><span>🟦</span><b>HARSHA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Monarchy with feudatory/local elements</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King at Kannauj → regional territories → local chiefs → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Ministers • military chiefs • feudatories/local authorities</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Land revenue • tribute • grants • fines</span></div>
+<div class="cp-formula">KING → FEUDATORIES → LOCAL CONTROL</div>
+</article><article class="cp-card chola">
+<div class="cp-top"><span>🟢</span><b>CHOLA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Strong monarchy + highly developed local self-government</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>King → Mandalam → Valanadu → Nadu → Ur/Sabha; Nagaram alongside</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Dandanayaka • royal officers • Nattar • Sabha committees/Variyams</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Kadamai/land revenue • surveys • irrigation • temple/trade levies</span></div>
+<div class="cp-formula">VILLAGE → ASSEMBLY → COMMITTEE → WATER</div>
+</article><article class="cp-card delhi-sultanate">
+<div class="cp-top"><span>🔴</span><b>DELHI SULTANATE</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Centralised military-bureaucratic Sultanate</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>Sultan → Iqta/Muqti → Shiq/Pargana → Amil/Shiqdar → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Wazir • Ariz-i-Mamalik • Qazi • Muqti • Amil • Muqaddam • Patwari • Kotwal</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Kharaj + other taxes • Iqta revenue assignment • military link</span></div>
+<div class="cp-formula">IQTA → REVENUE → ARMY</div>
+</article><article class="cp-card vijayanagara">
+<div class="cp-top"><span>🟧</span><b>VIJAYANAGARA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Imperial centre + Nayaka/Nayankara territorial structure</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>Raya → provincial Nayakas → territorial units → village Ayagar system</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Mahapradhani • Dandanayaka • Nayaka • Ayagar • Karanam • Talari • Reddi</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Land revenue • Nayankara/Amara-Nayaka • irrigation • trade/temples</span></div>
+<div class="cp-formula">NAYAKA → SERVICE → REVENUE</div>
+</article><article class="cp-card mughal">
+<div class="cp-top"><span>🟡</span><b>MUGHAL</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Highly organised imperial-provincial bureaucracy</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>Emperor → Subah → Sarkar → Pargana → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Subahdar • Diwan • Mir Bakshi • Sadr • Qazi • Amil • Qanungo • Patwari • Kotwal</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Zabt/Dahsala • Jagir/Khalisa • Mansab service-revenue link</span></div>
+<div class="cp-formula">RANK → SERVICE → ASSIGNMENT</div>
+</article><article class="cp-card maratha">
+<div class="cp-top"><span>🟣</span><b>MARATHA</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Central monarchy with Ashtapradhan + mobile regional control</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>Chhatrapati → Ashtapradhan → Prant/Pargana → village/fort networks</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Peshwa • Amatya • Sachiv • Sumant • Senapati • Nyayadhish • Panditrao</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Land revenue • Chauth 25% • Sardeshmukhi 10%</span></div>
+<div class="cp-formula">FORTS → MOBILITY → REVENUE</div>
+</article><article class="cp-card british">
+<div class="cp-top"><span>⚫</span><b>BRITISH</b><small>ADMIN POSTER</small></div>
+<div class="cp-nature">Central colonial state + district-centred administration</div>
+<div class="cp-row"><strong>🏛️ HIERARCHY</strong><span>Crown/Company → Presidency/Province → District/Collector → Tehsil/Taluk → village</span></div>
+<div class="cp-row"><strong>🧑‍💼 OFFICIALS</strong><span>Governor-General/Viceroy • Collector • SP • settlement officers • local bodies</span></div>
+<div class="cp-row"><strong>🌾 REVENUE / ECONOMY</strong><span>Permanent Settlement • Ryotwari • Mahalwari • commercialisation</span></div>
+<div class="cp-formula">SETTLEMENT → COLLECTOR → COLONIAL ECONOMY</div>
+</article></div>
+</section>
+
+<section class="v8-section" id="masterflow">
+<h2>🔥 2. GRAND MASTER ADMINISTRATION FLOW</h2>
+<div class="flow-master">
+<div class="fbox">👑 RULER / SOVEREIGN</div><div class="arrow">↓</div>
+<div class="fbox">🏛️ CENTRAL ADMINISTRATION<br><small>Ministers • Finance • Military • Justice • Records • Special Departments</small></div><div class="arrow">↓</div>
+<div class="fbox">🗺️ PROVINCIAL ADMINISTRATION<br><small>Province / Bhukti / Mandalam / Iqta / Subah / Prant</small></div><div class="arrow">↓</div>
+<div class="fbox">📍 DISTRICT / INTERMEDIATE<br><small>Vishaya / Shiq / Sarkar / Nadu / Pargana / Regional units</small></div><div class="arrow">↓</div>
+<div class="fbox">🏘️ LOCAL / VILLAGE<br><small>Assembly • Headman • Accountant • Revenue • Irrigation • Justice</small></div><div class="arrow">↓</div>
+<div class="fbox final">🏙️ CITY / TRADE / TEMPLE / PUBLIC WORKS<br><small>Urban administration varies by polity</small></div>
+</div>
+
+<h3>Creative “WHY” flow</h3>
+<div class="chain"><span>Territory expands</span><i>→</i><span>Administration needed</span><i>→</i><span>Province created</span><i>→</i><span>Revenue collected</span><i>→</i><span>Military maintained</span><i>→</i><span>Local control</span><i>→</i><span>Records + Justice</span></div>
+</section>
+
+<section class="v8-section" id="dynflows">
+<h2>🏛️ 3. DYNASTY-BY-DYNASTY CREATIVE FLOWCHARTS</h2>
+<div class="flow-grid"><article class="flow-card"><div class="mini-title">Maurya</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Central Departments</div><div class="arrow">↓</div><div class="fbox">Province</div><div class="arrow">↓</div><div class="fbox">Rajuka / Pradeshika</div><div class="arrow">↓</div><div class="fbox">Sthanika / Gopa</div><div class="arrow">↓</div><div class="fbox">Grama → Gramika</div><div class="arrow">↓</div><div class="fbox">Nagaraka → City</div><div class="arrow">↓</div><div class="fbox final">Centralised bureaucracy + revenue control</div></article><article class="flow-card"><div class="mini-title">Gupta</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Kumaramatya / central officers</div><div class="arrow">↓</div><div class="fbox">Bhukti → Uparika</div><div class="arrow">↓</div><div class="fbox">Vishaya → Vishayapati</div><div class="arrow">↓</div><div class="fbox">Vithi</div><div class="arrow">↓</div><div class="fbox">Grama → Gramika</div><div class="arrow">↓</div><div class="fbox">Urban/local bodies</div><div class="arrow">↓</div><div class="fbox final">Land grants + local elites</div></article><article class="flow-card"><div class="mini-title">Pallava</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Ministers / royal officers</div><div class="arrow">↓</div><div class="fbox">Mandalam / Kottam</div><div class="arrow">↓</div><div class="fbox">Nadu-type divisions</div><div class="arrow">↓</div><div class="fbox">Ur / local bodies</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Town / temple centres</div><div class="arrow">↓</div><div class="fbox final">Brahmadeya + local institutions</div></article><article class="flow-card"><div class="mini-title">Chalukya</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Ministers + military</div><div class="arrow">↓</div><div class="fbox">Territorial divisions</div><div class="arrow">↓</div><div class="fbox">Vishaya / Nadu</div><div class="arrow">↓</div><div class="fbox">Local chiefs</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Towns / trade centres</div><div class="arrow">↓</div><div class="fbox final">Monarchy + regional administration</div></article><article class="flow-card"><div class="mini-title">Rashtrakuta</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Central officers</div><div class="arrow">↓</div><div class="fbox">Rashtra / Mandala</div><div class="arrow">↓</div><div class="fbox">Vishaya</div><div class="arrow">↓</div><div class="fbox">Local officers</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Trade centres</div><div class="arrow">↓</div><div class="fbox final">Land grants + local elites</div></article><article class="flow-card"><div class="mini-title">Pandya</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Central officers</div><div class="arrow">↓</div><div class="fbox">Territorial divisions</div><div class="arrow">↓</div><div class="fbox">Nadu / Kurram-type units</div><div class="arrow">↓</div><div class="fbox">Local elites</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Temple / market centres</div><div class="arrow">↓</div><div class="fbox final">Agriculture + temple + trade</div></article><article class="flow-card"><div class="mini-title">Harsha</div><div class="fbox">King</div><div class="arrow">↓</div><div class="fbox">Ministers / military</div><div class="arrow">↓</div><div class="fbox">Regional territories</div><div class="arrow">↓</div><div class="fbox">Local chiefs</div><div class="arrow">↓</div><div class="fbox">Village authorities</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Urban centres</div><div class="arrow">↓</div><div class="fbox final">Feudatory/local elements + land grants</div></article><article class="flow-card"><div class="mini-title">Delhi Sultanate</div><div class="fbox">Sultan</div><div class="arrow">↓</div><div class="fbox">Wazir + Diwan-i-Arz + other diwans</div><div class="arrow">↓</div><div class="fbox">Iqta → Muqti/Iqtadar</div><div class="arrow">↓</div><div class="fbox">Shiq → Shiqdar</div><div class="arrow">↓</div><div class="fbox">Pargana → Amil</div><div class="arrow">↓</div><div class="fbox">Village → Muqaddam / Patwari</div><div class="arrow">↓</div><div class="fbox">Kotwal → City</div><div class="arrow">↓</div><div class="fbox final">Military-bureaucratic + Iqta</div></article><article class="flow-card"><div class="mini-title">Vijayanagara</div><div class="fbox">Raya</div><div class="arrow">↓</div><div class="fbox">Mahapradhani / Dandanayaka</div><div class="arrow">↓</div><div class="fbox">Nayaka / Nayankara</div><div class="arrow">↓</div><div class="fbox">Regional units</div><div class="arrow">↓</div><div class="fbox">Ayagar</div><div class="arrow">↓</div><div class="fbox">Karanam / Talari / Reddi</div><div class="arrow">↓</div><div class="fbox">Temple towns / ports</div><div class="arrow">↓</div><div class="fbox final">Military-territorial + village officials</div></article><article class="flow-card"><div class="mini-title">Mughal</div><div class="fbox">Emperor</div><div class="arrow">↓</div><div class="fbox">Diwan + Mir Bakshi + Sadr + Qazi</div><div class="arrow">↓</div><div class="fbox">Subah → Subahdar + Diwan</div><div class="arrow">↓</div><div class="fbox">Sarkar</div><div class="arrow">↓</div><div class="fbox">Pargana → Amil/Qanungo</div><div class="arrow">↓</div><div class="fbox">Village → Patwari / headmen</div><div class="arrow">↓</div><div class="fbox">Kotwal → City</div><div class="arrow">↓</div><div class="fbox final">Parallel provincial offices + Mansab/Jagir</div></article><article class="flow-card"><div class="mini-title">Maratha</div><div class="fbox">Chhatrapati</div><div class="arrow">↓</div><div class="fbox">Ashtapradhan</div><div class="arrow">↓</div><div class="fbox">Prant</div><div class="arrow">↓</div><div class="fbox">Pargana</div><div class="arrow">↓</div><div class="fbox">Regional/local officers</div><div class="arrow">↓</div><div class="fbox">Village headman + accountant</div><div class="arrow">↓</div><div class="fbox">Fort / town</div><div class="arrow">↓</div><div class="fbox final">Ashtapradhan + Chauth/Sardeshmukhi</div></article><article class="flow-card"><div class="mini-title">British</div><div class="fbox">Governor-General / Viceroy</div><div class="arrow">↓</div><div class="fbox">Central departments</div><div class="arrow">↓</div><div class="fbox">Province / Presidency</div><div class="arrow">↓</div><div class="fbox">District → Collector</div><div class="arrow">↓</div><div class="fbox">Tehsil / Taluk</div><div class="arrow">↓</div><div class="fbox">Village revenue machinery</div><div class="arrow">↓</div><div class="fbox">Municipality / city police</div><div class="arrow">↓</div><div class="fbox final">District-centred colonial administration</div></article></div>
+</section>
+
+<section class="v8-section" id="systemflows">
+<h2>🔗 4. SAME SYSTEM → DIFFERENT DYNASTY</h2>
+<div class="system-grid">
+<div class="system-card"><b>PROVINCE</b><p>Maurya → appointed/royal governors<br>Gupta → <b>Bhukti / Uparika</b><br>Chola → <b>Mandalam</b><br>Sultanate → <b>Iqta / Muqti</b><br>Mughal → <b>Subah / Subahdar</b><br>British → <b>Province / Governor</b></p></div>
+<div class="system-card"><b>DISTRICT / INTERMEDIATE</b><p>Gupta → <b>Vishaya</b><br>Sultanate → <b>Shiq / Pargana</b><br>Chola → <b>Nadu</b><br>Mughal → <b>Sarkar / Pargana</b><br>British → <b>District / Tehsil</b></p></div>
+<div class="system-card"><b>VILLAGE</b><p>Gupta → <b>Gramika</b><br>Sultanate → <b>Muqaddam / Patwari</b><br>Chola → <b>Ur / Sabha</b><br>Vijayanagara → <b>Ayagar</b><br>Mughal → <b>Patwari + headmen</b></p></div>
+<div class="system-card"><b>CITY</b><p>Maurya → <b>Nagaraka</b><br>Sultanate/Mughal → <b>Kotwal</b><br>Chola → <b>Nagaram</b><br>British → <b>Municipality</b></p></div>
+</div>
+</section>
+
+<section class="v8-section" id="officialflows">
+<h2>🧑‍💼 5. OFFICIAL → FUNCTION FLOW</h2>
+<div class="chain">
+<span>Samaharta</span><i>→</i><span>Revenue collection</span><i>→</i><span>Maurya</span>
+</div><br>
+<div class="chain">
+<span>Uparika</span><i>→</i><span>Bhukti</span><i>→</i><span>Gupta</span>
+</div><br>
+<div class="chain">
+<span>Muqti</span><i>→</i><span>Iqta</span><i>→</i><span>Sultanate</span>
+</div><br>
+<div class="chain">
+<span>Subahdar</span><i>→</i><span>Province</span><i>→</i><span>Mughal</span>
+</div><br>
+<div class="chain">
+<span>Diwan</span><i>→</i><span>Finance</span><i>→</i><span>Mughal</span>
+</div><br>
+<div class="chain">
+<span>Mir Bakshi</span><i>→</i><span>Military / Mansabdars</span><i>→</i><span>Mughal</span>
+</div><br>
+<div class="chain">
+<span>Peshwa</span><i>→</i><span>Prime Minister</span><i>→</i><span>Maratha</span>
+</div><br>
+<div class="chain">
+<span>Karanam</span><i>→</i><span>Accountant</span><i>→</i><span>Vijayanagara</span>
+</div><br>
+<div class="chain">
+<span>Collector</span><i>→</i><span>District + Revenue</span><i>→</i><span>British</span>
+</div>
+</section>
+
+<section class="v8-section" id="revenueflows">
+<h2>🌾 6. REVENUE SYSTEM FLOWCHART</h2>
+<div class="flow-master">
+<div class="fbox">MAURYA → Bhaga → Samaharta → Sannidhata</div><div class="arrow">↓</div>
+<div class="fbox">GUPTA → Bhaga/Bhoga/Kara → Land Grants increase</div><div class="arrow">↓</div>
+<div class="fbox">CHOLA → Land survey + Kadamai → Local institutions + temples</div><div class="arrow">↓</div>
+<div class="fbox">SULTANATE → Kharaj etc. → Iqta → Muqti/Amil</div><div class="arrow">↓</div>
+<div class="fbox">SHER SHAH → Measurement → Patta + Qabuliyat</div><div class="arrow">↓</div>
+<div class="fbox">AKBAR → Zabt + Dahsala → Amil/Qanungo/Patwari</div><div class="arrow">↓</div>
+<div class="fbox">MUGHAL → Jagir / Khalisa → Imperial fiscal structure</div><div class="arrow">↓</div>
+<div class="fbox">MARATHA → Chauth 25% + Sardeshmukhi 10%</div><div class="arrow">↓</div>
+<div class="fbox final">BRITISH → Permanent / Ryotwari / Mahalwari</div>
+</div>
+</section>
+
+<section class="v8-section" id="localflows">
+<h2>🏘️ 7. LOCAL GOVERNMENT — BEST COMPARISON</h2>
+<div class="flow-grid">
+<article class="flow-card"><div class="mini-title">Chola ⭐</div><div class="fbox">Nadu</div><div class="arrow">↓</div><div class="fbox">Ur / Sabha / Nagaram</div><div class="arrow">↓</div><div class="fbox">Variyam</div><div class="arrow">↓</div><div class="fbox final">Revenue + Irrigation + Disputes + Public Works</div></article>
+<article class="flow-card"><div class="mini-title">Sultanate</div><div class="fbox">Pargana</div><div class="arrow">↓</div><div class="fbox">Amil / Shiqdar</div><div class="arrow">↓</div><div class="fbox">Muqaddam + Chaudhuri + Patwari</div><div class="arrow">↓</div><div class="fbox final">Revenue + Order + Records</div></article>
+<article class="flow-card"><div class="mini-title">Mughal</div><div class="fbox">Pargana</div><div class="arrow">↓</div><div class="fbox">Amil + Qanungo</div><div class="arrow">↓</div><div class="fbox">Patwari + Village headmen</div><div class="arrow">↓</div><div class="fbox final">Assessment + Collection + Records</div></article>
+<article class="flow-card"><div class="mini-title">Vijayanagara</div><div class="fbox">Territorial / Nayaka system</div><div class="arrow">↓</div><div class="fbox">Village</div><div class="arrow">↓</div><div class="fbox">Ayagar</div><div class="arrow">↓</div><div class="fbox final">Karanam + Talari + Reddi</div></article>
+</div>
+</section>
+
+<section class="v8-section" id="compareflows">
+<h2>⚖️ 8. HIGH-YIELD COMPARATIVE FLOWCHARTS</h2>
+<div class="flow-grid">
+<article class="flow-card"><div class="mini-title">Centralisation</div><div class="fbox">Maurya</div><div class="arrow">↓</div><div class="fbox">Gupta — comparatively less centralised</div><div class="arrow">↓</div><div class="fbox">Chola — strong centre + strong local bodies</div><div class="arrow">↓</div><div class="fbox">Mughal — strong central + provincial institutions</div></article>
+<article class="flow-card"><div class="mini-title">Revenue Assignment</div><div class="fbox">Iqta</div><div class="arrow">↓</div><div class="fbox">Muqti / Iqtadar</div><div class="arrow">↓</div><div class="fbox">Jagir</div><div class="arrow">↓</div><div class="fbox">Jagirdar</div><div class="arrow">↓</div><div class="fbox final">Khalisa = direct imperial revenue</div></article>
+<article class="flow-card"><div class="mini-title">Military + Administration</div><div class="fbox">Alauddin → standing army</div><div class="arrow">↓</div><div class="fbox">Dagh + Chehra</div><div class="arrow">↓</div><div class="fbox">Mughal → Mansab</div><div class="arrow">↓</div><div class="fbox">Maratha → forts + mobile warfare</div></article>
+<article class="flow-card"><div class="mini-title">Colonial Revenue</div><div class="fbox">Permanent → Zamindar</div><div class="arrow">OR</div><div class="fbox">Ryotwari → Ryot</div><div class="arrow">OR</div><div class="fbox final">Mahalwari → Mahal / village unit</div></article>
+</div>
+</section>
+
+<section class="v8-section" id="studyplan">
+<h2>🎯 9. HOW TO STUDY THIS HTML</h2>
+<div class="study">
+<div><b>STEP 1</b><br>Learn only the hierarchy: Centre → Province → District → Local.</div>
+<div><b>STEP 2</b><br>Attach 5–8 officials to each level.</div>
+<div><b>STEP 3</b><br>Add Revenue + Military + Justice.</div>
+<div><b>STEP 4</b><br>Compare same-level terms across dynasties.</div>
+<div><b>STEP 5</b><br>Use posters for visual recall.</div>
+<div><b>STEP 6</b><br>Revise SSC traps: Iqta/Jagir, Samaharta/Sannidhata, Zat/Sawar, Ur/Sabha/Nagaram.</div>
+</div>
+
+<div class="exam" style="margin-top:18px">
+<b>🔥 FINAL EXAM FORMULA:</b><br>
+WHO → WHERE → WHO OFFICIATED → WHAT FUNCTION → REVENUE → MILITARY/JUSTICE → LOCAL BODY → SPECIAL REFORM → TRAP
+</div>
+
+<h3>10-second recall</h3>
+<div class="chain">
+<span>Maurya = Central + Departments</span><i>→</i>
+<span>Gupta = Bhukti–Vishaya</span><i>→</i>
+<span>Chola = Local Self-Government</span><i>→</i>
+<span>Sultanate = Iqta–Muqti</span><i>→</i>
+<span>Vijayanagara = Nayaka–Ayagar</span><i>→</i>
+<span>Mughal = Subah–Sarkar–Pargana</span><i>→</i>
+<span>Maratha = Ashtapradhan</span><i>→</i>
+<span>British = District–Collector</span>
+</div>
+</section>
+</div>
+
+<style>
+.v9{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#172033}
+.v9 h2{margin-top:30px}.v9 .v9grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.v9 .v9card{background:#fff;border:1px solid #d9dee8;border-radius:16px;padding:16px;box-shadow:0 6px 18px #1018280c}
+.v9 .v9title{font-weight:900;color:#b42318;font-size:19px;margin-bottom:10px}
+.v9 .v9flow{background:#101828;color:#fff;border-radius:16px;padding:18px;margin:12px 0}
+.v9 .v9node{background:#eaf2ff;color:#102a43;border:2px solid #91b7ff;border-radius:12px;padding:10px;text-align:center;font-weight:800}
+.v9 .v9arrow{text-align:center;font-size:20px;padding:4px}.v9 .gold{background:#fff7ed;border-color:#f79009}
+.v9 .green{background:#ecfdf3;border-color:#75d6a0}
+.v9 table{width:100%;border-collapse:collapse;background:#fff}.v9 th,.v9 td{border:1px solid #d9dee8;padding:9px;text-align:left;font-size:13px}.v9 th{background:#f2f4f7}
+</style>
+
+<section class="v9">
+<h2>1. 🧠 ONE NEED → MANY SYSTEMS</h2>
+<div class="v9grid">
+<div class="v9card"><div class="v9title">Need: Revenue Collection</div><b>Maurya:</b> Samaharta<br><b>Gupta:</b> Bhaga + local machinery<br><b>Chola:</b> land assessment + Kadamai<br><b>Sultanate:</b> Kharaj + Iqta machinery<br><b>Mughal:</b> Zabt/Dahsala + Amil<br><b>Maratha:</b> Chauth/Sardeshmukhi<br><b>British:</b> Settlement systems</div>
+<div class="v9card"><div class="v9title">Need: Military Finance</div><b>Sultanate:</b> Iqta → service/administration<br><b>Mughal:</b> Mansab → Jagir<br><b>Vijayanagara:</b> Nayaka/Nayankara<br><b>Maratha:</b> revenue + forts + mobile forces</div>
+<div class="v9card"><div class="v9title">Need: Local Management</div><b>Gupta:</b> local elites + village institutions<br><b>Chola:</b> Ur/Sabha/Variyams<br><b>Sultanate:</b> Muqaddam/Chaudhuri/Patwari<br><b>Vijayanagara:</b> Ayagar<br><b>Mughal:</b> Patwari + headmen</div>
+<div class="v9card"><div class="v9title">Need: City Control</div><b>Maurya:</b> Nagaraka<br><b>Sultanate:</b> Kotwal<br><b>Mughal:</b> Kotwal<br><b>Chola:</b> Nagaram<br><b>British:</b> Municipal institutions</div>
+</div>
+
+<h2>2. 🗺️ SOUTH INDIA — DEEP COMPARATIVE FLOW</h2>
+<div class="v9flow">
+<div class="v9node">PALLAVA<br>King</div><div class="v9arrow">↓</div>
+<div class="v9node">Mandalam / Kottam</div><div class="v9arrow">↓</div>
+<div class="v9node">Nadu-type territorial units</div><div class="v9arrow">↓</div>
+<div class="v9node green">Ur / Sabha → village institutions</div>
+</div>
+
+<div class="v9flow">
+<div class="v9node">CHALUKYA<br>King</div><div class="v9arrow">↓</div>
+<div class="v9node">Territorial divisions</div><div class="v9arrow">↓</div>
+<div class="v9node">Vishaya / Nadu-type units</div><div class="v9arrow">↓</div>
+<div class="v9node green">Village communities + local officers</div>
+</div>
+
+<div class="v9flow">
+<div class="v9node">RASHTRAKUTA<br>King</div><div class="v9arrow">↓</div>
+<div class="v9node">Rashtra / Mandala</div><div class="v9arrow">↓</div>
+<div class="v9node">Vishaya</div><div class="v9arrow">↓</div>
+<div class="v9node green">Village + local elites</div>
+</div>
+
+<div class="v9flow">
+<div class="v9node">PANDYA<br>King</div><div class="v9arrow">↓</div>
+<div class="v9node">Territorial divisions</div><div class="v9arrow">↓</div>
+<div class="v9node">Nadu / Kurram-type units</div><div class="v9arrow">↓</div>
+<div class="v9node green">Village + temple/market institutions</div>
+</div>
+
+<div class="v9flow">
+<div class="v9node">VIJAYANAGARA<br>Raya</div><div class="v9arrow">↓</div>
+<div class="v9node">Nayaka / Nayankara</div><div class="v9arrow">↓</div>
+<div class="v9node">Regional territorial units</div><div class="v9arrow">↓</div>
+<div class="v9node green">Ayagar → Karanam / Talari / Reddi</div>
+</div>
+
+<h2>3. 🏛️ CENTRAL ADMINISTRATION — WHO CONTROLS WHAT?</h2>
+<table>
+<tr><th>Polity</th><th>Supreme</th><th>Finance/Revenue</th><th>Military</th><th>Justice</th><th>Special</th></tr>
+<tr><td>Maurya</td><td>King</td><td>Samaharta</td><td>Senapati</td><td>King/Rajuka machinery</td><td>Adhyakshas + spies</td></tr>
+<tr><td>Gupta</td><td>King</td><td>Revenue/local machinery</td><td>Mahabaladhikrita</td><td>Mahadandanayaka/local courts</td><td>Land grants</td></tr>
+<tr><td>Chola</td><td>King</td><td>Royal + local institutions</td><td>Senapati/Dandanayaka</td><td>King + local assemblies</td><td>Variyams + irrigation</td></tr>
+<tr><td>Sultanate</td><td>Sultan</td><td>Wazir/Diwan-i-Wizarat</td><td>Ariz-i-Mamalik</td><td>Qazi</td><td>Iqta + intelligence</td></tr>
+<tr><td>Vijayanagara</td><td>Raya</td><td>Revenue machinery</td><td>Dandanayaka/Nayakas</td><td>Royal/local mechanisms</td><td>Temple economy</td></tr>
+<tr><td>Mughal</td><td>Emperor</td><td>Diwan</td><td>Mir Bakshi</td><td>Qazi</td><td>Mansab/Jagir</td></tr>
+<tr><td>Maratha</td><td>Chhatrapati</td><td>Amatya</td><td>Senapati</td><td>Nyayadhish</td><td>Ashtapradhan</td></tr>
+<tr><td>British</td><td>Crown/GG/Viceroy</td><td>Collector/finance departments</td><td>Army command</td><td>Formal courts</td><td>District administration</td></tr>
+</table>
+
+<h2>4. 🌾 LAND GRANT → DECENTRALISATION FLOW</h2>
+<div class="v9flow">
+<div class="v9node">Land / Revenue Right granted</div><div class="v9arrow">↓</div>
+<div class="v9node">Recipient gains revenue privileges</div><div class="v9arrow">↓</div>
+<div class="v9node">Local intermediary / landed elite becomes stronger</div><div class="v9arrow">↓</div>
+<div class="v9node">State's direct control may reduce</div><div class="v9arrow">↓</div>
+<div class="v9node gold">Gupta period → important exam association with growing land grants</div>
+</div>
+
+<h2>5. 🕌 IQTA vs JAGIR vs NAYANKARA — DON'T MIX</h2>
+<table>
+<tr><th>Feature</th><th>Iqta</th><th>Jagir</th><th>Nayankara</th></tr>
+<tr><td>Polity</td><td>Delhi Sultanate</td><td>Mughal</td><td>Vijayanagara</td></tr>
+<tr><td>Holder</td><td>Muqti/Iqtadar</td><td>Jagirdar</td><td>Nayaka</td></tr>
+<tr><td>Basic idea</td><td>Revenue assignment</td><td>Revenue assignment</td><td>Territorial/revenue assignment linked to service</td></tr>
+<tr><td>Private land ownership?</td><td>No — not inherently</td><td>No — not inherently</td><td>Not simply private ownership</td></tr>
+<tr><td>Military link</td><td>Important</td><td>Important</td><td>Very important</td></tr>
+<tr><td>SSC keyword</td><td>Muqti</td><td>Mansabdar/Jagirdar</td><td>Nayaka</td></tr>
+</table>
+
+<h2>6. ⚔️ MILITARY ADMINISTRATION — CREATIVE CHAIN</h2>
+<div class="v9grid">
+<div class="v9card"><div class="v9title">Alauddin Khalji</div>Army expansion → cash/revenue pressure → market regulation → <b>Dagh + Chehra</b> → inspection</div>
+<div class="v9card"><div class="v9title">Mughal</div>Mansab → <b>Zat + Sawar</b> → military obligation → Jagir often used as revenue assignment</div>
+<div class="v9card"><div class="v9title">Vijayanagara</div>Nayaka → territorial/military service → revenue rights → forts/army</div>
+<div class="v9card"><div class="v9title">Maratha</div>Forts → mobile cavalry → Ganimi Kava → regional expansion → revenue networks</div>
+</div>
+
+<h2>7. 🏘️ LOCAL GOVERNMENT — “WHO DID WHAT?”</h2>
+<table>
+<tr><th>Term</th><th>Remember as</th><th>Dynasty/System</th></tr>
+<tr><td>Gopa</td><td>Local records/accounts & supervision</td><td>Maurya</td></tr>
+<tr><td>Gramika</td><td>Village head/administrator</td><td>Gupta</td></tr>
+<tr><td>Ur</td><td>Ordinary village assembly</td><td>Chola</td></tr>
+<tr><td>Sabha</td><td>Brahmadeya village assembly</td><td>Chola</td></tr>
+<tr><td>Nagaram</td><td>Urban/merchant organisation</td><td>Chola</td></tr>
+<tr><td>Muqaddam</td><td>Village headman</td><td>Sultanate</td></tr>
+<tr><td>Chaudhuri</td><td>Revenue intermediary</td><td>Sultanate/Mughal context</td></tr>
+<tr><td>Patwari</td><td>Land/revenue records</td><td>Sultanate/Mughal/British contexts</td></tr>
+<tr><td>Karanam</td><td>Accountant</td><td>Vijayanagara Ayagar</td></tr>
+<tr><td>Talari</td><td>Watchman</td><td>Vijayanagara Ayagar</td></tr>
+<tr><td>Reddi</td><td>Village headman</td><td>Vijayanagara</td></tr>
+<tr><td>Collector</td><td>District revenue/administration</td><td>British</td></tr>
+</table>
+
+<h2>8. 🏙️ URBAN ADMINISTRATION FLOW</h2>
+<div class="v9flow">
+<div class="v9node">CITY / TOWN</div><div class="v9arrow">↓</div>
+<div class="v9node">Maurya → Nagaraka</div><div class="v9arrow">↓</div>
+<div class="v9node">Sultanate → Kotwal</div><div class="v9arrow">↓</div>
+<div class="v9node">Mughal → Kotwal + urban officials</div><div class="v9arrow">↓</div>
+<div class="v9node">Chola → Nagaram / merchant organisation</div><div class="v9arrow">↓</div>
+<div class="v9node green">British → Municipality / municipal administration</div>
+</div>
+
+<h2>9. 🚨 “DON'T CONFUSE” FINAL BOARD</h2>
+<div class="v9grid">
+<div class="v9card"><b>Samaharta ≠ Sannidhata</b><br>Revenue collection ≠ Treasury</div>
+<div class="v9card"><b>Uparika ≠ Vishayapati</b><br>Bhukti/province ≠ Vishaya/district</div>
+<div class="v9card"><b>Ur ≠ Sabha ≠ Nagaram</b><br>Ordinary village ≠ Brahmadeya assembly ≠ urban/merchant body</div>
+<div class="v9card"><b>Iqta ≠ Muqti</b><br>Assignment ≠ holder/administrator</div>
+<div class="v9card"><b>Subahdar ≠ Diwan</b><br>Provincial executive/military ≠ finance</div>
+<div class="v9card"><b>Mansab ≠ Jagir</b><br>Rank ≠ revenue assignment</div>
+<div class="v9card"><b>Nayaka ≠ Ayagar</b><br>Territorial/military chief ≠ village official system</div>
+<div class="v9card"><b>Permanent Settlement ≠ District administration</b><br>Revenue settlement ≠ administrative hierarchy</div>
+</div>
+
+<h2>10. 🎯 FINAL 20-SECOND REVISION FLOW</h2>
+<div class="v9flow">
+<div class="v9node">MAURYA → CENTRAL + DEPARTMENTS</div><div class="v9arrow">↓</div>
+<div class="v9node">GUPTA → BHUKTI + VISHAYA + LAND GRANTS</div><div class="v9arrow">↓</div>
+<div class="v9node">SOUTH → TERRITORIAL UNITS + LOCAL INSTITUTIONS</div><div class="v9arrow">↓</div>
+<div class="v9node">CHOLA → MANDALAM → VALANADU → NADU → UR/SABHA/NAGARAM</div><div class="v9arrow">↓</div>
+<div class="v9node">SULTANATE → IQTA → MUQTI + DIWANS</div><div class="v9arrow">↓</div>
+<div class="v9node">VIJAYANAGARA → NAYAKA + AYAGAR</div><div class="v9arrow">↓</div>
+<div class="v9node">MUGHAL → SUBAH → SARKAR → PARGANA → VILLAGE</div><div class="v9arrow">↓</div>
+<div class="v9node">MARATHA → ASHTAPRADHAN + FORTS + REVENUE</div><div class="v9arrow">↓</div>
+<div class="v9node green">BRITISH → PROVINCE → DISTRICT → COLLECTOR → TEHSIL → VILLAGE</div>
+</div>
+
+<div class="exam"><b>⭐ Exam method:</b> First identify the <b>dynasty</b>. Then identify the <b>administrative level</b>. Then match the <b>official</b>. Finally attach the <b>function</b>. If two terms look similar, compare their level before choosing the answer.</div>
+</section>
+</body></html>
