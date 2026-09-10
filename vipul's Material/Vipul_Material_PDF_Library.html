@@ -27,16 +27,16 @@ footer{padding:40px;text-align:center;color:#70839c}
 <header><div class="wrap">
 <div style="color:#65d8ff;font-weight:800;letter-spacing:.08em">• SSC CGL</div>
 <h1>📚 MaterialLibrary</h1>
-<p>Click any card to open the original PDF directly from your <b>Material</b> folder.</p>
+<p>Click any card to open the original study file directly from your <b>vipul's Material</b> folder.</p>
 </div></header>
 
 <main class="wrap">
 <div class="stats">
-<div class="stat"><b>26</b><span>PDF files found</span></div>
-<div class="stat"><b>16</b><span>Geography</span></div>
-<div class="stat"><b>7</b><span>History</span></div>
-<div class="stat"><b>1</b><span>Art & Culture</span></div>
-<div class="stat"><b>2</b><span>English / Others</span></div>
+  <div class="stat"><b>41</b><span>Total study files</span></div>
+  <div class="stat"><b>40</b><span>PDF</span></div>
+  <div class="stat"><b>1</b><span>Excel / XLSX</span></div>
+  <div class="stat"><b>25</b><span>Geography</span></div>
+  <div class="stat"><b>16</b><span>History + Art + Others</span></div>
 </div>
 
 <div class="note">
@@ -52,180 +52,304 @@ If you move the HTML elsewhere, the links may stop working.
 <button onclick="filterCat('History',this)">🏺 History</button>
 <button onclick="filterCat('Art',this)">🎨 Art & Culture</button>
 <button onclick="filterCat('Others',this)">📝 Others</button>
+ <button onclick="filterCat('Polity',this)">🏛️ Polity</button>
+ <button onclick="filterType('pdf',this)">📕 PDF</button>
+ <button onclick="filterType('xlsx',this)">📊 Excel</button>
 </div>
 
 <section class="section">
 <h2>📂 Your PDFs</h2>
 <div class="grid" id="grid">
-
-       
-        <article class="card" data-cat="🌍 Geography" data-text="plain2">
+                <article class="card" data-cat="🎨 Art & Culture" data-type="xlsx" data-text="military exercises military_exercises xlsx art culture">
+          <div class="badge">Excel / Art & Culture</div>
+          <h3>Military Exercises</h3>
+          <div class="path">art&amp;culture/Military_Exercises.xlsx</div>
+          <a class="open" href="art%26culture/Military_Exercises.xlsx" target="_blank" rel="noopener">📊 Open Excel</a>
+        </article>
+<article class="card" data-cat="🎨 Art" data-text="udaan art and culture art&amp;culture/udaan art and culture.pdf">
+          <div class="badge">Art</div>
+          <h3>Udaan Art and Culture</h3>
+          <div class="path">art&amp;culture/Udaan Art and Culture.pdf</div>
+          <a class="open" href="art&culture/Udaan%20Art%20and%20Culture.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🎨 Art" data-text="indian art averm... gsg art&amp;culture/indian art avermi...gsg.pdf">
+          <div class="badge">Art</div>
+          <h3>Indian Art Averm... GSG</h3>
+          <div class="path">art&amp;culture/Indian art avermi...gsg.pdf</div>
+          <a class="open" href="art&culture/Indian%20art%20avermi...gsg.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🎨 Art" data-text="scheme 2026 art&amp;culture/scheme 2026 .pdf">
+          <div class="badge">Art</div>
+          <h3>SCHEME 2026</h3>
+          <div class="path">art&amp;culture/SCHEME 2026 .pdf</div>
+          <a class="open" href="art&culture/SCHEME%202026%20.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🎨 Art" data-text="mind_gk art&amp;culture/mind_gk.pdf">
+          <div class="badge">Art</div>
+          <h3>mind_gk</h3>
+          <div class="path">art&amp;culture/mind_gk.pdf</div>
+          <a class="open" href="art&culture/mind_gk.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="geom geo/geom.pdf">
+          <div class="badge">Geography</div>
+          <h3>Geom</h3>
+          <div class="path">Geo/Geom.pdf</div>
+          <a class="open" href="Geo/Geom.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="plain2 geo/plain2.pdf">
           <div class="badge">Geography</div>
           <h3>plain2</h3>
           <div class="path">Geo/plain2.pdf</div>
           <a class="open" href="Geo/plain2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="plains">
+        <article class="card" data-cat="🌍 Geography" data-text="plains geo/plains.pdf">
           <div class="badge">Geography</div>
           <h3>plains</h3>
           <div class="path">Geo/plains.pdf</div>
           <a class="open" href="Geo/plains.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="himalayas">
+        <article class="card" data-cat="🌍 Geography" data-text="geo_my geo/geo_my.pdf">
+          <div class="badge">Geography</div>
+          <h3>Geo_my</h3>
+          <div class="path">Geo/Geo_my.pdf</div>
+          <a class="open" href="Geo/Geo_my.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="himalayas geo/himalayas.pdf">
           <div class="badge">Geography</div>
           <h3>himalayas</h3>
           <div class="path">Geo/himalayas.pdf</div>
           <a class="open" href="Geo/himalayas.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="drainage2">
+        <article class="card" data-cat="🌍 Geography" data-text="drainage2 geo/drainage2.pdf">
           <div class="badge">Geography</div>
           <h3>Drainage2</h3>
           <div class="path">Geo/Drainage2.pdf</div>
           <a class="open" href="Geo/Drainage2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="climatewindmcqs">
+        <article class="card" data-cat="🌍 Geography" data-text="climatewindmcqs geo/climatewindmcqs.pdf">
           <div class="badge">Geography</div>
           <h3>climatewindmcqs</h3>
           <div class="path">Geo/climatewindmcqs.pdf</div>
           <a class="open" href="Geo/climatewindmcqs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="universe">
+        <article class="card" data-cat="🌍 Geography" data-text="geo_notes geo/geo_notes.pdf">
+          <div class="badge">Geography</div>
+          <h3>Geo_notes</h3>
+          <div class="path">Geo/Geo_notes.pdf</div>
+          <a class="open" href="Geo/Geo_notes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="parmar-geo geo/parmar-geo.pdf">
+          <div class="badge">Geography</div>
+          <h3>Parmar-Geo</h3>
+          <div class="path">Geo/Parmar-Geo.pdf</div>
+          <a class="open" href="Geo/Parmar-Geo.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="universe geo/universe.pdf">
           <div class="badge">Geography</div>
           <h3>universe</h3>
           <div class="path">Geo/universe.pdf</div>
           <a class="open" href="Geo/universe.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="transport">
+        <article class="card" data-cat="🌍 Geography" data-text="transport geo/transport.pdf">
           <div class="badge">Geography</div>
           <h3>transport</h3>
           <div class="path">Geo/transport.pdf</div>
           <a class="open" href="Geo/transport.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="himalayas2">
+        <article class="card" data-cat="🌍 Geography" data-text="himalayas2 geo/himalayas2.pdf">
           <div class="badge">Geography</div>
           <h3>himalayas2</h3>
           <div class="path">Geo/himalayas2.pdf</div>
           <a class="open" href="Geo/himalayas2.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="drainagesystem">
+        <article class="card" data-cat="🌍 Geography" data-text="drainagesystem geo/drainagesystem.pdf">
           <div class="badge">Geography</div>
           <h3>drainagesystem</h3>
           <div class="path">Geo/drainagesystem.pdf</div>
           <a class="open" href="Geo/drainagesystem.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="atmo pressuemcq">
+        <article class="card" data-cat="🌍 Geography" data-text="atmo pressuemcq geo/atmo_pressuemcq.pdf">
           <div class="badge">Geography</div>
           <h3>Atmo PressueMCQ</h3>
           <div class="path">Geo/Atmo_PressueMCQ.pdf</div>
           <a class="open" href="Geo/Atmo_PressueMCQ.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="clouds rainfall">
+        <article class="card" data-cat="🌍 Geography" data-text="dams of india geo/dams of india.pdf">
+          <div class="badge">Geography</div>
+          <h3>Dams of India</h3>
+          <div class="path">Geo/Dams of India.pdf</div>
+          <a class="open" href="Geo/Dams%20of%20India.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🌍 Geography" data-text="clouds rainfall geo/clouds_rainfall.pdf">
           <div class="badge">Geography</div>
           <h3>clouds rainfall</h3>
           <div class="path">Geo/clouds_rainfall.pdf</div>
           <a class="open" href="Geo/clouds_rainfall.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch ssc cgl test (1)">
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch ssc cgl test (1) geo/sambhav_batch_ssc_cgl_test (1).pdf">
           <div class="badge">Geography</div>
           <h3>Sambhav Batch SSC CGL Test (1)</h3>
           <div class="path">Geo/Sambhav_Batch_SSC_CGL_Test (1).pdf</div>
           <a class="open" href="Geo/Sambhav_Batch_SSC_CGL_Test%20(1).pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch geography latlon easymod mcqs">
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav batch geography latlon easymod mcqs geo/sambhav_batch_geography_latlon_easymod_mcqs.pdf">
           <div class="badge">Geography</div>
           <h3>Sambhav Batch Geography LatLon EasyMod MCQs</h3>
           <div class="path">Geo/Sambhav_Batch_Geography_LatLon_EasyMod_MCQs.pdf</div>
           <a class="open" href="Geo/Sambhav_Batch_Geography_LatLon_EasyMod_MCQs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="istlong">
+        <article class="card" data-cat="🌍 Geography" data-text="istlong geo/istlong.pdf">
           <div class="badge">Geography</div>
           <h3>istlong</h3>
           <div class="path">Geo/istlong.pdf</div>
           <a class="open" href="Geo/istlong.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="sambhav geography clouds rainfall">
+        <article class="card" data-cat="🌍 Geography" data-text="sambhav geography clouds rainfall geo/sambhav_geography_clouds_rainfall.pdf">
           <div class="badge">Geography</div>
           <h3>sambhav geography clouds rainfall</h3>
           <div class="path">Geo/sambhav_geography_clouds_rainfall.pdf</div>
           <a class="open" href="Geo/sambhav_geography_clouds_rainfall.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🌍 Geography" data-text="soilvegagric">
+        <article class="card" data-cat="🌍 Geography" data-text="soilvegagric geo/soilvegagric.pdf">
           <div class="badge">Geography</div>
           <h3>soilvegagric</h3>
           <div class="path">Geo/soilvegagric.pdf</div>
           <a class="open" href="Geo/soilvegagric.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="vedic period notes">
+        <article class="card" data-cat="📝 Others" data-text="calender (class file) others/calender (class file) .pdf">
+          <div class="badge">Others</div>
+          <h3>Calender (Class File)</h3>
+          <div class="path">others/Calender (Class File) .pdf</div>
+          <a class="open" href="others/Calender%20(Class%20File)%20.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 Others" data-text="counting figure others/counting figure.pdf">
+          <div class="badge">Others</div>
+          <h3>Counting Figure</h3>
+          <div class="path">others/Counting Figure.pdf</div>
+          <a class="open" href="others/Counting%20Figure.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 Others" data-text="calender class file others/calender class file.pdf">
+          <div class="badge">Others</div>
+          <h3>Calender class file</h3>
+          <div class="path">others/Calender class file.pdf</div>
+          <a class="open" href="others/Calender%20class%20file.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 Others" data-text="basics of english (hand-written notes new-1 (1) others/basics of english (hand-written notes_new-1 (1).pdf">
+          <div class="badge">Others</div>
+          <h3>Basics of English (Hand-written Notes New-1 (1)</h3>
+          <div class="path">others/Basics of English (Hand-written Notes_New-1 (1).pdf</div>
+          <a class="open" href="others/Basics%20of%20English%20(Hand-written%20Notes_New-1%20(1).pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="📝 Others" data-text="100 imp. rules of grammar others/100 imp. rules of grammar.pdf">
+          <div class="badge">Others</div>
+          <h3>100 imp. rules of grammar</h3>
+          <div class="path">others/100 imp. rules of grammar.pdf</div>
+          <a class="open" href="others/100%20imp.%20rules%20of%20grammar.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="vedic period notes history/vedic_period_notes.pdf">
           <div class="badge">History</div>
           <h3>vedic period notes</h3>
           <div class="path">history/vedic_period_notes.pdf</div>
           <a class="open" href="history/vedic_period_notes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="stone age">
+        <article class="card" data-cat="🏺 History" data-text="stone age history/stone_age_.pdf">
           <div class="badge">History</div>
           <h3>Stone Age</h3>
           <div class="path">history/Stone_Age_.pdf</div>
           <a class="open" href="history/Stone_Age_.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="vedic period   later vedic period">
+        <article class="card" data-cat="🏺 History" data-text="vedic period &amp; later vedic period history/vedic_period___later_vedic_period.pdf">
           <div class="badge">History</div>
-          <h3>Vedic Period   Later vedic Period</h3>
+          <h3>Vedic Period &amp; Later Vedic Period</h3>
           <div class="path">history/Vedic_Period___Later_vedic_Period.pdf</div>
           <a class="open" href="history/Vedic_Period___Later_vedic_Period.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="swachhand ias sambhav batch 50 mcqs">
+        <article class="card" data-cat="🏺 History" data-text="swachhand ias sambhav batch 50 mcqs history/swachhand_ias_sambhav_batch_50_mcqs.pdf">
           <div class="badge">History</div>
           <h3>Swachhand IAS Sambhav Batch 50 MCQs</h3>
           <div class="path">history/Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf</div>
           <a class="open" href="history/Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="sindhu saraswati civilization">
+        <article class="card" data-cat="🏺 History" data-text="paraancient history/paraancient.pdf">
+          <div class="badge">History</div>
+          <h3>paraancient</h3>
+          <div class="path">history/paraancient.pdf</div>
+          <a class="open" href="history/paraancient.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+        <article class="card" data-cat="🏺 History" data-text="sindhu saraswati civilization history/sindhu_saraswati_civilization.pdf">
           <div class="badge">History</div>
           <h3>Sindhu Saraswati Civilization</h3>
           <div class="path">history/Sindhu_Saraswati_Civilization.pdf</div>
           <a class="open" href="history/Sindhu_Saraswati_Civilization.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="🏺 History" data-text="saraswati sindhu notes">
+        <article class="card" data-cat="🏺 History" data-text="saraswati sindhu notes history/saraswati_sindhu_notes.pdf">
           <div class="badge">History</div>
           <h3>saraswati sindhu notes</h3>
           <div class="path">history/saraswati_sindhu_notes.pdf</div>
           <a class="open" href="history/saraswati_sindhu_notes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="📝 English / Others" data-text="basics of english (hand-written notes new-1 (1)">
-          <div class="badge">English / Others</div>
-          <h3>Basics of English (Hand-written Notes New-1 (1)</h3>
-          <div class="path">others/Basics of English (Hand-written Notes_New-1 (1).pdf</div>
-          <a class="open" href="others/Basics%20of%20English%20(Hand-written%20Notes_New-1%20(1).pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        <article class="card" data-cat="🏺 History" data-text="mind_his history/mind_his.pdf">
+          <div class="badge">History</div>
+          <h3>mind_his</h3>
+          <div class="path">history/mind_his.pdf</div>
+          <a class="open" href="history/mind_his.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-        <article class="card" data-cat="📝 English / Others" data-text="100 imp. rules of grammar">
-          <div class="badge">English / Others</div>
-          <h3>100 imp. rules of grammar</h3>
-          <div class="path">others/100 imp. rules of grammar.pdf</div>
-          <a class="open" href="others/100%20imp.%20rules%20of%20grammar.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        <article class="card" data-cat="🏺 History" data-text="historynotes history/historynotes.pdf">
+          <div class="badge">History</div>
+          <h3>HistoryNotes</h3>
+          <div class="path">history/HistoryNotes.pdf</div>
+          <a class="open" href="history/HistoryNotes.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
         </article>
-</div>
-</section>
+        <article class="card" data-cat="🏺 History" data-text="ve bk history/ve bk.pdf">
+          <div class="badge">History</div>
+          <h3>VE BK</h3>
+          <div class="path">history/VE BK.pdf</div>
+          <a class="open" href="history/VE%20BK.pdf" target="_blank" rel="noopener">📖 Open PDF</a>
+        </article>
+      </div>
+    </section>
 
-<footer>Vipul's Material • Local PDF Revision Library</footer>
+<footer>Vipul's Material • All Files Revision Library</footer>
 </main>
 
 <script>
 const search=document.getElementById('search');
 const cards=[...document.querySelectorAll('.card')];
+
 function show(){
   const q=search.value.toLowerCase().trim();
   const cat=document.body.dataset.cat||'ALL';
+  const type=document.body.dataset.type||'ALL';
+
   cards.forEach(c=>{
     const okCat=cat==='ALL'||c.dataset.cat.includes(cat);
-    const okText=!q||c.dataset.text.includes(q)||c.querySelector('.path').textContent.toLowerCase().includes(q);
-    c.style.display=(okCat&&okText)?'flex':'none';
+    const okType=type==='ALL'||(c.dataset.type||'pdf')===type;
+    const hay=(c.dataset.text+' '+c.querySelector('.path').textContent).toLowerCase();
+    const okText=!q||hay.includes(q);
+    c.style.display=(okCat&&okType&&okText)?'flex':'none';
   });
 }
+
+function clearActive(){
+  document.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+}
+
 function filterCat(cat,btn){
   document.body.dataset.cat=cat;
-  document.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); show();
+  document.body.dataset.type='ALL';
+  clearActive();
+  btn.classList.add('active');
+  show();
 }
+
+function filterType(type,btn){
+  document.body.dataset.type=type;
+  document.body.dataset.cat='ALL';
+  clearActive();
+  btn.classList.add('active');
+  show();
+}
+
 search.addEventListener('input',show);
 </script>
 </body>
