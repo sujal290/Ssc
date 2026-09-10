@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MASTER HISTORY — 53 Vector Poster Vault</title>
+<style>
+:root {
+  --bg:#07090d; --panel:#0d1118; --panel2:#111720; --line:#29313d;
+  --text:#f4f0e7; --muted:#98a2af; --gold:#d9aa55; --gold2:#f2d38f;
+  --shadow:0 18px 45px rgba(0,0,0,.38);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+ radial-gradient(circle at 82% 10%,rgba(217,170,85,.07),transparent 28%),
+ radial-gradient(circle at 10% 45%,rgba(70,80,110,.06),transparent 28%),
+ var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}
+.topbar{position:sticky;top:0;z-index:20;height:68px;border-bottom:1px solid var(--line);
+ background:rgba(7,9,13,.9);backdrop-filter:blur(14px);display:flex;align-items:center;
+ justify-content:space-between;padding:0 28px}
+.brand{font-size:15px;font-weight:900;letter-spacing:.14em}
+.brand em{color:var(--gold);font-style:normal}
+.top-actions{display:flex;gap:10px}
+.top-actions button,.filter{background:#101620;color:#e9e4da;border:1px solid #2b3542;border-radius:10px;
+ padding:9px 13px;font-size:12px;font-weight:800;letter-spacing:.05em;cursor:pointer}
+.top-actions button:hover,.filter:hover,.filter.active{border-color:var(--gold);color:var(--gold2)}
+.wrap{max-width:1480px;margin:auto;padding:74px 26px 80px}
+.hero{padding:15px 0 54px}
+.kicker,.eyebrow{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:.22em}
+.hero h1{font-family:Georgia,serif;font-size:clamp(48px,7vw,92px);line-height:.9;margin:18px 0 24px;letter-spacing:-.05em}
+.hero h1 span{display:block;color:#e1af57}
+.hero p{max-width:850px;color:#a7b0bd;font-size:17px;line-height:1.6;margin:0 0 25px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.stat{border:1px solid #2b3542;border-radius:10px;padding:11px 14px;background:#0c1118}
+.stat b{color:var(--gold2);font-size:18px;margin-right:7px}
+.stat small{color:#bdc4cc;font-weight:800;letter-spacing:.08em}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:280px;background:#0b1017;border:1px solid #2b3542;color:var(--text);
+ border-radius:10px;padding:14px 16px;outline:none}
+.search:focus{border-color:var(--gold)}
+.section{margin-top:46px}
+.section-head{display:flex;align-items:end;justify-content:space-between;border-bottom:1px solid var(--line);
+ padding-bottom:12px;margin-bottom:16px}
+.section-head h2{font-family:Georgia,serif;font-size:28px;margin:5px 0 0}
+.count{font-size:11px;font-weight:900;color:#748091;letter-spacing:.18em}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.card{min-width:0;background:linear-gradient(180deg,#101620,#0b1016);border:1px solid #2a3441;border-radius:12px;
+ overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.18);transition:.2s transform,.2s border-color}
+.card:hover{transform:translateY(-3px);border-color:#8e6b31}
+.poster-btn{display:block;width:100%;padding:12px;border:0;background:#f7f7f5;cursor:pointer;aspect-ratio:3/4;position:relative}
+.poster-btn img{width:100%;height:100%;object-fit:contain;display:block}
+.poster-btn.missing{background:#151b23}
+.missing-msg{display:none;position:absolute;inset:0;align-items:center;justify-content:center;text-align:center;
+ color:#8d98a7;font-weight:900;font-size:13px;letter-spacing:.1em}
+.caption{display:flex;gap:10px;padding:13px 12px 15px;min-height:82px}
+.num{color:var(--gold);font-size:18px;font-weight:900;line-height:1}
+.label{color:#6f7b8b;font-size:8px;font-weight:900;letter-spacing:.15em;margin-bottom:5px}
+.caption h3{font-size:12px;line-height:1.35;margin:0;color:#f0ece5}
+.footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#657080;text-align:center;
+ font-size:9px;font-weight:900;letter-spacing:.16em}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:30px}
+.modal.show{display:flex}
+.modal-inner{position:relative;max-width:min(92vw,1000px);max-height:94vh;display:flex;flex-direction:column;align-items:center}
+.modal img{max-width:90vw;max-height:84vh;object-fit:contain;background:white;border-radius:5px;box-shadow:var(--shadow)}
+.modal-title{margin-top:12px;color:#d9dee6;text-align:center;font-size:13px;font-weight:800}
+.close{position:fixed;right:25px;top:20px;border:1px solid #44505e;background:#111821;color:white;
+ border-radius:9px;padding:9px 13px;cursor:pointer;font-weight:900}
+@media(max-width:1150px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){.topbar{padding:0 14px}.wrap{padding:45px 14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hero h1{font-size:52px}.section-head h2{font-size:22px}.count{font-size:9px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.caption{padding:10px;min-height:72px}.caption h3{font-size:10px}}
+.hidden{display:none!important}
+</style>
+</head>
+<body id="top">
+<header class="topbar">
+  <div class="brand">MASTER <em>HISTORY</em> / 53-VECTOR POSTER VAULT</div>
+  <div class="top-actions">
+    <button onclick="document.querySelector('#poster-1').scrollIntoView()">OPEN 01</button>
+    <button onclick="scrollTo({top:0,behavior:'smooth'})">TOP ↑</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">DELHI SULTANATE • MEDIEVAL INDIA • POSTER EDITION</div>
+    <h1>53 posters.<span>No raster compromise.</span></h1>
+    <p>Each poster is loaded from the <b>poster_earmed</b> folder as an external JPG. The HTML contains the vault interface only, so the page stays lightweight while your original poster files remain separate.</p>
+    <div class="stats">
+      <div class="stat"><b>53</b><small>POSTERS</small></div>
+      <div class="stat"><b>50</b><small>PDF PAGES</small></div>
+      <div class="stat"><b>JPG</b><small>EXTERNAL ASSETS</small></div>
+      <div class="stat"><b>LIGHT</b><small>HTML FILE</small></div>
+    </div>
+    <div class="controls">
+      <input id="search" class="search" placeholder="Search: Akbar, battles, architecture, revenue..." autocomplete="off">
+      <button class="filter active" data-filter="all">ALL</button>
+      <button class="filter" data-filter="ROADMAP">ROADMAP</button>
+      <button class="filter" data-filter="ARCHITECTURE">ARCHITECTURE</button>
+      <button class="filter" data-filter="WARS">WARS</button>
+      <button class="filter" data-filter="ADMIN">ADMIN</button>
+      <button class="filter" data-filter="PYQ">PYQ</button>
+    </div>
+  </section>
+
+  <div id="vault">
+    
+    <section class="section" id="section-01">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01</div>
+          <h2>ROADMAP & FOUNDATION</h2>
+        </div>
+        <span class="count">05 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="medieval india roadmap — delhi sultanate in the bigger picture" data-number="1">
+          <button class="poster-btn" onclick="openPoster(1)" aria-label="Open poster 1">
+            <img loading="lazy" src="posters_earmed/poster-001.jpg" alt="Poster 1: Medieval India Roadmap — Delhi Sultanate in the Bigger Picture"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 001<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">01</div>
+            <div>
+              <div class="label">POSTER 1</div>
+              <h3>Medieval India Roadmap — Delhi Sultanate in the Bigger Picture</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate overview" data-number="2">
+          <button class="poster-btn" onclick="openPoster(2)" aria-label="Open poster 2">
+            <img loading="lazy" src="posters_earmed/poster-002.jpg" alt="Poster 2: Delhi Sultanate Overview"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 002<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">02</div>
+            <div>
+              <div class="label">POSTER 2</div>
+              <h3>Delhi Sultanate Overview</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate timeline" data-number="3">
+          <button class="poster-btn" onclick="openPoster(3)" aria-label="Open poster 3">
+            <img loading="lazy" src="posters_earmed/poster-003.jpg" alt="Poster 3: Delhi Sultanate Timeline"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 003<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">03</div>
+            <div>
+              <div class="label">POSTER 3</div>
+              <h3>Delhi Sultanate Timeline</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="rise & fall of delhi sultanate — emergence of regional kingdoms" data-number="4">
+          <button class="poster-btn" onclick="openPoster(4)" aria-label="Open poster 4">
+            <img loading="lazy" src="posters_earmed/poster-004.jpg" alt="Poster 4: Rise & Fall of Delhi Sultanate — Emergence of Regional Kingdoms"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 004<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">04</div>
+            <div>
+              <div class="label">POSTER 4</div>
+              <h3>Rise & Fall of Delhi Sultanate — Emergence of Regional Kingdoms</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate dynasties at a glance" data-number="5">
+          <button class="poster-btn" onclick="openPoster(5)" aria-label="Open poster 5">
+            <img loading="lazy" src="posters_earmed/poster-005.jpg" alt="Poster 5: Delhi Sultanate Dynasties at a Glance"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 005<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">05</div>
+            <div>
+              <div class="label">POSTER 5</div>
+              <h3>Delhi Sultanate Dynasties at a Glance</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+    <section class="section" id="section-02">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02</div>
+          <h2>REGIONAL KINGDOMS</h2>
+        </div>
+        <span class="count">18 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="rise of regional kingdoms" data-number="6">
+          <button class="poster-btn" onclick="openPoster(6)" aria-label="Open poster 6">
+            <img loading="lazy" src="posters_earmed/poster-006.jpg" alt="Poster 6: Rise of Regional Kingdoms"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 006<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">06</div>
+            <div>
+              <div class="label">POSTER 6</div>
+              <h3>Rise of Regional Kingdoms</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="gujarat sultanate" data-number="7">
+          <button class="poster-btn" onclick="openPoster(7)" aria-label="Open poster 7">
+            <img loading="lazy" src="posters_earmed/poster-007.jpg" alt="Poster 7: Gujarat Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 007<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">07</div>
+            <div>
+              <div class="label">POSTER 7</div>
+              <h3>Gujarat Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="malwa sultanate" data-number="8">
+          <button class="poster-btn" onclick="openPoster(8)" aria-label="Open poster 8">
+            <img loading="lazy" src="posters_earmed/poster-008.jpg" alt="Poster 8: Malwa Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 008<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">08</div>
+            <div>
+              <div class="label">POSTER 8</div>
+              <h3>Malwa Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="mewar — sisodia dynasty" data-number="9">
+          <button class="poster-btn" onclick="openPoster(9)" aria-label="Open poster 9">
+            <img loading="lazy" src="posters_earmed/poster-009.jpg" alt="Poster 9: Mewar — Sisodia Dynasty"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 009<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">09</div>
+            <div>
+              <div class="label">POSTER 9</div>
+              <h3>Mewar — Sisodia Dynasty</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="maratha empire" data-number="10">
+          <button class="poster-btn" onclick="openPoster(10)" aria-label="Open poster 10">
+            <img loading="lazy" src="posters_earmed/poster-010.jpg" alt="Poster 10: Maratha Empire"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 010<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">10</div>
+            <div>
+              <div class="label">POSTER 10</div>
+              <h3>Maratha Empire</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate — foundation of medieval india" data-number="11">
+          <button class="poster-btn" onclick="openPoster(11)" aria-label="Open poster 11">
+            <img loading="lazy" src="posters_earmed/poster-011.jpg" alt="Poster 11: Delhi Sultanate — Foundation of Medieval India"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 011<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">11</div>
+            <div>
+              <div class="label">POSTER 11</div>
+              <h3>Delhi Sultanate — Foundation of Medieval India</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="the mughal empire — golden age of india" data-number="12">
+          <button class="poster-btn" onclick="openPoster(12)" aria-label="Open poster 12">
+            <img loading="lazy" src="posters_earmed/poster-012.jpg" alt="Poster 12: The Mughal Empire — Golden Age of India"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 012<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">12</div>
+            <div>
+              <div class="label">POSTER 12</div>
+              <h3>The Mughal Empire — Golden Age of India</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="british east india company — rise, expansion & rule" data-number="13">
+          <button class="poster-btn" onclick="openPoster(13)" aria-label="Open poster 13">
+            <img loading="lazy" src="posters_earmed/poster-013.jpg" alt="Poster 13: British East India Company — Rise, Expansion & Rule"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 013<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">13</div>
+            <div>
+              <div class="label">POSTER 13</div>
+              <h3>British East India Company — Rise, Expansion & Rule</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="mewar — sisodia dynasty" data-number="14">
+          <button class="poster-btn" onclick="openPoster(14)" aria-label="Open poster 14">
+            <img loading="lazy" src="posters_earmed/poster-014.jpg" alt="Poster 14: Mewar — Sisodia Dynasty"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 014<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">14</div>
+            <div>
+              <div class="label">POSTER 14</div>
+              <h3>Mewar — Sisodia Dynasty</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="bengal sultanate" data-number="15">
+          <button class="poster-btn" onclick="openPoster(15)" aria-label="Open poster 15">
+            <img loading="lazy" src="posters_earmed/poster-015.jpg" alt="Poster 15: Bengal Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 015<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">15</div>
+            <div>
+              <div class="label">POSTER 15</div>
+              <h3>Bengal Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="jaunpur sultanate" data-number="16">
+          <button class="poster-btn" onclick="openPoster(16)" aria-label="Open poster 16">
+            <img loading="lazy" src="posters_earmed/poster-016.jpg" alt="Poster 16: Jaunpur Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 016<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">16</div>
+            <div>
+              <div class="label">POSTER 16</div>
+              <h3>Jaunpur Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="kashmir sultanate" data-number="17">
+          <button class="poster-btn" onclick="openPoster(17)" aria-label="Open poster 17">
+            <img loading="lazy" src="posters_earmed/poster-017.jpg" alt="Poster 17: Kashmir Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 017<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">17</div>
+            <div>
+              <div class="label">POSTER 17</div>
+              <h3>Kashmir Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="odisha — gajapati kingdom" data-number="18">
+          <button class="poster-btn" onclick="openPoster(18)" aria-label="Open poster 18">
+            <img loading="lazy" src="posters_earmed/poster-018.jpg" alt="Poster 18: Odisha — Gajapati Kingdom"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 018<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">18</div>
+            <div>
+              <div class="label">POSTER 18</div>
+              <h3>Odisha — Gajapati Kingdom</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="assam — ahom kingdom" data-number="19">
+          <button class="poster-btn" onclick="openPoster(19)" aria-label="Open poster 19">
+            <img loading="lazy" src="posters_earmed/poster-019.jpg" alt="Poster 19: Assam — Ahom Kingdom"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 019<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">19</div>
+            <div>
+              <div class="label">POSTER 19</div>
+              <h3>Assam — Ahom Kingdom</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="sayyid dynasty" data-number="20">
+          <button class="poster-btn" onclick="openPoster(20)" aria-label="Open poster 20">
+            <img loading="lazy" src="posters_earmed/poster-020.jpg" alt="Poster 20: Sayyid Dynasty"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 020<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">20</div>
+            <div>
+              <div class="label">POSTER 20</div>
+              <h3>Sayyid Dynasty</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="lodi dynasty" data-number="21">
+          <button class="poster-btn" onclick="openPoster(21)" aria-label="Open poster 21">
+            <img loading="lazy" src="posters_earmed/poster-021.jpg" alt="Poster 21: Lodi Dynasty"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 021<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">21</div>
+            <div>
+              <div class="label">POSTER 21</div>
+              <h3>Lodi Dynasty</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="balance of power — regional kingdoms and their rivalries" data-number="22">
+          <button class="poster-btn" onclick="openPoster(22)" aria-label="Open poster 22">
+            <img loading="lazy" src="posters_earmed/poster-022.jpg" alt="Poster 22: Balance of Power — Regional Kingdoms and Their Rivalries"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 022<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">22</div>
+            <div>
+              <div class="label">POSTER 22</div>
+              <h3>Balance of Power — Regional Kingdoms and Their Rivalries</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="balance of power — regional kingdoms, 15th–16th century india" data-number="23">
+          <button class="poster-btn" onclick="openPoster(23)" aria-label="Open poster 23">
+            <img loading="lazy" src="posters_earmed/poster-022.jpg" alt="Poster 23: Balance of Power — Regional Kingdoms, 15th–16th Century India"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 022<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">23</div>
+            <div>
+              <div class="label">POSTER 23</div>
+              <h3>Balance of Power — Regional Kingdoms, 15th–16th Century India</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+    <section class="section" id="section-03">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">03</div>
+          <h2>ARCHITECTURE & MASTER REVISION</h2>
+        </div>
+        <span class="count">05 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="architecture — dynasty-wise delhi sultanate" data-number="24">
+          <button class="poster-btn" onclick="openPoster(24)" aria-label="Open poster 23">
+            <img loading="lazy" src="posters_earmed/poster-023.jpg" alt="Poster 24: Architecture — Dynasty-wise Delhi Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 023<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">24</div>
+            <div>
+              <div class="label">POSTER 24</div>
+              <h3>Architecture — Dynasty-wise Delhi Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate — complete mini map" data-number="25">
+          <button class="poster-btn" onclick="openPoster(25)" aria-label="Open poster 25">
+            <img loading="lazy" src="posters_earmed/poster-024.jpg" alt="Poster 25: Delhi Sultanate — Complete Mini Map"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 024<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">25</div>
+            <div>
+              <div class="label">POSTER 25</div>
+              <h3>Delhi Sultanate — Complete Mini Map</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate — ultimate ssc revision" data-number="26">
+          <button class="poster-btn" onclick="openPoster(26)" aria-label="Open poster 26">
+            <img loading="lazy" src="posters_earmed/poster-025.jpg" alt="Poster 26: Delhi Sultanate — Ultimate SSC Revision"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 025<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">26</div>
+            <div>
+              <div class="label">POSTER 26</div>
+              <h3>Delhi Sultanate — Ultimate SSC Revision</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate — architecture & art" data-number="27">
+          <button class="poster-btn" onclick="openPoster(27)" aria-label="Open poster 27">
+            <img loading="lazy" src="posters_earmed/poster-026.jpg" alt="Poster 27: Delhi Sultanate — Architecture & Art"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 026<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">27</div>
+            <div>
+              <div class="label">POSTER 27</div>
+              <h3>Delhi Sultanate — Architecture & Art</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="547 to 1526 ad — complete history: all wars, dynasties & major events" data-number="28">
+          <button class="poster-btn" onclick="openPoster(28)" aria-label="Open poster 28">
+            <img loading="lazy" src="posters_earmed/poster-027.jpg" alt="Poster 28: 547 to 1526 AD — Complete History: All Wars, Dynasties & Major Events"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 027<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">28</div>
+            <div>
+              <div class="label">POSTER 28</div>
+              <h3>547 to 1526 AD — Complete History: All Wars, Dynasties & Major Events</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+    <section class="section" id="section-04">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">04</div>
+          <h2>WARS & INVASIONS</h2>
+        </div>
+        <span class="count">06 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="all wars — 547 ad to 1526 ad" data-number="29">
+          <button class="poster-btn" onclick="openPoster(29)" aria-label="Open poster 29">
+            <img loading="lazy" src="posters_earmed/poster-028.jpg" alt="Poster 29: All Wars — 547 AD to 1526 AD"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 028<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">29</div>
+            <div>
+              <div class="label">POSTER 29</div>
+              <h3>All Wars — 547 AD to 1526 AD</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="titles taken & given to rulers" data-number="30">
+          <button class="poster-btn" onclick="openPoster(30)" aria-label="Open poster 30">
+            <img loading="lazy" src="posters_earmed/poster-029.jpg" alt="Poster 30: Titles Taken & Given to Rulers"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 029<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">30</div>
+            <div>
+              <div class="label">POSTER 30</div>
+              <h3>Titles Taken & Given to Rulers</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="complete timeline — 712 to 1526 ad" data-number="31">
+          <button class="poster-btn" onclick="openPoster(31)" aria-label="Open poster 31">
+            <img loading="lazy" src="posters_earmed/poster-030.jpg" alt="Poster 31: Complete Timeline — 712 to 1526 AD"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 030<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">31</div>
+            <div>
+              <div class="label">POSTER 31</div>
+              <h3>Complete Timeline — 712 to 1526 AD</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate — dynasties at a glance" data-number="32">
+          <button class="poster-btn" onclick="openPoster(32)" aria-label="Open poster 32">
+            <img loading="lazy" src="posters_earmed/poster-031.jpg" alt="Poster 32: Delhi Sultanate — Dynasties at a Glance"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 031<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">32</div>
+            <div>
+              <div class="label">POSTER 32</div>
+              <h3>Delhi Sultanate — Dynasties at a Glance</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="all foreign invaders of india — 712–1526 ad" data-number="33">
+          <button class="poster-btn" onclick="openPoster(33)" aria-label="Open poster 33">
+            <img loading="lazy" src="posters_earmed/poster-032.jpg" alt="Poster 33: All Foreign Invaders of India — 712–1526 AD"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 032<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">33</div>
+            <div>
+              <div class="label">POSTER 33</div>
+              <h3>All Foreign Invaders of India — 712–1526 AD</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="foreign invasions — timeline, routes, objectives & results" data-number="34">
+          <button class="poster-btn" onclick="openPoster(34)" aria-label="Open poster 34">
+            <img loading="lazy" src="posters_earmed/poster-032.jpg" alt="Poster 34: Foreign Invasions — Timeline, Routes, Objectives & Results"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 032<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">34</div>
+            <div>
+              <div class="label">POSTER 34</div>
+              <h3>Foreign Invasions — Timeline, Routes, Objectives & Results</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+    <section class="section" id="section-05">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">05</div>
+          <h2>ADMINISTRATION & SYSTEMS</h2>
+        </div>
+        <span class="count">06 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="delhi sultanate administration" data-number="35">
+          <button class="poster-btn" onclick="openPoster(35)" aria-label="Open poster 35">
+            <img loading="lazy" src="posters_earmed/poster-033.jpg" alt="Poster 35: Delhi Sultanate Administration"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 033<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">35</div>
+            <div>
+              <div class="label">POSTER 35</div>
+              <h3>Delhi Sultanate Administration</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate revenue system" data-number="36">
+          <button class="poster-btn" onclick="openPoster(36)" aria-label="Open poster 36">
+            <img loading="lazy" src="posters_earmed/poster-034.jpg" alt="Poster 36: Delhi Sultanate Revenue System"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 034<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">36</div>
+            <div>
+              <div class="label">POSTER 36</div>
+              <h3>Delhi Sultanate Revenue System</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="delhi sultanate military system" data-number="37">
+          <button class="poster-btn" onclick="openPoster(37)" aria-label="Open poster 37">
+            <img loading="lazy" src="posters_earmed/poster-035.jpg" alt="Poster 37: Delhi Sultanate Military System"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 035<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">37</div>
+            <div>
+              <div class="label">POSTER 37</div>
+              <h3>Delhi Sultanate Military System</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="major reforms & experiments of delhi sultanate" data-number="38">
+          <button class="poster-btn" onclick="openPoster(38)" aria-label="Open poster 38">
+            <img loading="lazy" src="posters_earmed/poster-036.jpg" alt="Poster 38: Major Reforms & Experiments of Delhi Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 036<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">38</div>
+            <div>
+              <div class="label">POSTER 38</div>
+              <h3>Major Reforms & Experiments of Delhi Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="literature in delhi sultanate" data-number="39">
+          <button class="poster-btn" onclick="openPoster(39)" aria-label="Open poster 39">
+            <img loading="lazy" src="posters_earmed/poster-037.jpg" alt="Poster 39: Literature in Delhi Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 037<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">39</div>
+            <div>
+              <div class="label">POSTER 39</div>
+              <h3>Literature in Delhi Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="architecture in delhi sultanate" data-number="40">
+          <button class="poster-btn" onclick="openPoster(40)" aria-label="Open poster 40">
+            <img loading="lazy" src="posters_earmed/poster-037.jpg" alt="Poster 40: Architecture in Delhi Sultanate"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 038<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">40</div>
+            <div>
+              <div class="label">POSTER 40</div>
+              <h3>Architecture in Delhi Sultanate</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+    <section class="section" id="section-06">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">06</div>
+          <h2>BATTLES, ONE-LINERS & PYQs</h2>
+        </div>
+        <span class="count">13 POSTERS</span>
+      </div>
+      <div class="grid">
+    
+        <article class="card" data-title="complete battles — delhi sultanate to mughals" data-number="41">
+          <button class="poster-btn" onclick="openPoster(41)" aria-label="Open poster 41">
+            <img loading="lazy" src="posters_earmed/poster-038.jpg" alt="Poster 41: Complete Battles — Delhi Sultanate to Mughals"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 039<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">41</div>
+            <div>
+              <div class="label">POSTER 41</div>
+              <h3>Complete Battles — Delhi Sultanate to Mughals</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="one-liners — delhi sultanate to mughals" data-number="42">
+          <button class="poster-btn" onclick="openPoster(42)" aria-label="Open poster 42">
+            <img loading="lazy" src="posters_earmed/poster-039.jpg" alt="Poster 42: One-Liners — Delhi Sultanate to Mughals"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 040<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">42</div>
+            <div>
+              <div class="label">POSTER 42</div>
+              <h3>One-Liners — Delhi Sultanate to Mughals</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — founders & capitals" data-number="43">
+          <button class="poster-btn" onclick="openPoster(43)" aria-label="Open poster 43">
+            <img loading="lazy" src="posters_earmed/poster-040.jpg" alt="Poster 43: SSC PYQ One-Liners — Founders & Capitals"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 041<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">43</div>
+            <div>
+              <div class="label">POSTER 43</div>
+              <h3>SSC PYQ One-Liners — Founders & Capitals</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — builders & monuments" data-number="44">
+          <button class="poster-btn" onclick="openPoster(44)" aria-label="Open poster 44">
+            <img loading="lazy" src="posters_earmed/poster-041.jpg" alt="Poster 44: SSC PYQ One-Liners — Builders & Monuments"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 042<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">44</div>
+            <div>
+              <div class="label">POSTER 44</div>
+              <h3>SSC PYQ One-Liners — Builders & Monuments</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — administration & reforms" data-number="45">
+          <button class="poster-btn" onclick="openPoster(45)" aria-label="Open poster 45">
+            <img loading="lazy" src="posters_earmed/poster-042.jpg" alt="Poster 45: SSC PYQ One-Liners — Administration & Reforms"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 043<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">45</div>
+            <div>
+              <div class="label">POSTER 45</div>
+              <h3>SSC PYQ One-Liners — Administration & Reforms</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — battles & campaigns" data-number="46">
+          <button class="poster-btn" onclick="openPoster(46)" aria-label="Open poster 46">
+            <img loading="lazy" src="posters_earmed/poster-043.jpg" alt="Poster 46: SSC PYQ One-Liners — Battles & Campaigns"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 044<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">46</div>
+            <div>
+              <div class="label">POSTER 46</div>
+              <h3>SSC PYQ One-Liners — Battles & Campaigns</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — literature, travellers & intellectuals" data-number="47">
+          <button class="poster-btn" onclick="openPoster(47)" aria-label="Open poster 47">
+            <img loading="lazy" src="posters_earmed/poster-044.jpg" alt="Poster 47: SSC PYQ One-Liners — Literature, Travellers & Intellectuals"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 045<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">47</div>
+            <div>
+              <div class="label">POSTER 47</div>
+              <h3>SSC PYQ One-Liners — Literature, Travellers & Intellectuals</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — titles, nicknames, honorifics & epithets" data-number="48">
+          <button class="poster-btn" onclick="openPoster(48)" aria-label="Open poster 48">
+            <img loading="lazy" src="posters_earmed/poster-045.jpg" alt="Poster 48: SSC PYQ One-Liners — Titles, Nicknames, Honorifics & Epithets"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 046<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">48</div>
+            <div>
+              <div class="label">POSTER 48</div>
+              <h3>SSC PYQ One-Liners — Titles, Nicknames, Honorifics & Epithets</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — administrative terms, revenue, economy & taxes" data-number="49">
+          <button class="poster-btn" onclick="openPoster(49)" aria-label="Open poster 49">
+            <img loading="lazy" src="posters_earmed/poster-046.jpg" alt="Poster 49: SSC PYQ One-Liners — Administrative Terms, Revenue, Economy & Taxes"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 047<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">49</div>
+            <div>
+              <div class="label">POSTER 49</div>
+              <h3>SSC PYQ One-Liners — Administrative Terms, Revenue, Economy & Taxes</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — reforms, policies, systems & social facts" data-number="50">
+          <button class="poster-btn" onclick="openPoster(50)" aria-label="Open poster 50">
+            <img loading="lazy" src="posters_earmed/poster-047.jpg" alt="Poster 50: SSC PYQ One-Liners — Reforms, Policies, Systems & Social Facts"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 048<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">50</div>
+            <div>
+              <div class="label">POSTER 50</div>
+              <h3>SSC PYQ One-Liners — Reforms, Policies, Systems & Social Facts</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — dynasties, kingdoms & empires" data-number="51">
+          <button class="poster-btn" onclick="openPoster(51)" aria-label="Open poster 51">
+            <img loading="lazy" src="posters_earmed/poster-048.jpg" alt="Poster 51: SSC PYQ One-Liners — Dynasties, Kingdoms & Empires"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 049<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">51</div>
+            <div>
+              <div class="label">POSTER 51</div>
+              <h3>SSC PYQ One-Liners — Dynasties, Kingdoms & Empires</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq one-liners — miscellaneous, culture, places & more" data-number="52">
+          <button class="poster-btn" onclick="openPoster(52)" aria-label="Open poster 52">
+            <img loading="lazy" src="posters_earmed/poster-049.jpg" alt="Poster 52: SSC PYQ One-Liners — Miscellaneous, Culture, Places & More"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 050<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">52</div>
+            <div>
+              <div class="label">POSTER 52</div>
+              <h3>SSC PYQ One-Liners — Miscellaneous, Culture, Places & More</h3>
+            </div>
+          </div>
+        </article>
+        
+        <article class="card" data-title="ssc pyq master revision — delhi sultanate & medieval india" data-number="53">
+          <button class="poster-btn" onclick="openPoster(53)" aria-label="Open poster 53">
+            <img loading="lazy" src="posters_earmed/poster-050.jpg" alt="Poster 53: SSC PYQ Master Revision — Delhi Sultanate & Medieval India"
+                 onerror="this.parentElement.classList.add('missing'); this.style.display='none'; this.parentElement.querySelector('.missing-msg').style.display='flex';">
+            <span class="missing-msg">Poster 051<br><small>Image not found</small></span>
+          </button>
+          <div class="caption">
+            <div class="num">53</div>
+            <div>
+              <div class="label">POSTER 53</div>
+              <h3>SSC PYQ Master Revision — Delhi Sultanate & Medieval India</h3>
+            </div>
+          </div>
+        </article>
+        </div></section>
+  </div>
+
+  <div class="footer">MASTER HISTORY • 53 INDIVIDUAL POSTER UNITS • EXTERNAL JPG EDITION • NO PDF VIEWER</div>
+</main>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closePoster()">
+  <button class="close" onclick="closePoster()">CLOSE ✕</button>
+  <div class="modal-inner">
+    <img id="modalImg" src="" alt="">
+    <div id="modalTitle" class="modal-title"></div>
+  </div>
+</div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+const sections = [...document.querySelectorAll('.section')];
+const search = document.querySelector('#search');
+let currentFilter = 'all';
+
+function applyFilters() {
+  const q = search.value.trim().toLowerCase();
+  cards.forEach(card => {
+    const title = card.dataset.title;
+    const n = Number(card.dataset.number);
+    let okFilter = true;
+    if(currentFilter === 'ROADMAP') okFilter = n <= 5;
+    if(currentFilter === 'ARCHITECTURE') okFilter = n >= 24 && n <= 28;
+    if(currentFilter === 'WARS') okFilter = n >= 29 && n <= 34;
+    if(currentFilter === 'ADMIN') okFilter = n >= 35 && n <= 40;
+    if(currentFilter === 'PYQ') okFilter = n >= 41;
+    const okSearch = !q || title.includes(q) || String(n).includes(q);
+    card.classList.toggle('hidden', !(okFilter && okSearch));
+  });
+  sections.forEach(section => {
+    const visible = section.querySelectorAll('.card:not(.hidden)').length;
+    section.classList.toggle('hidden', visible === 0);
+  });
+}
+search.addEventListener('input', applyFilters);
+document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.filter;
+  applyFilters();
+}));
+
+function posterFileNumber(n) {
+  if (n <= 22) return n;
+  if (n === 23) return 22;
+  if (n <= 32) return n - 1;
+  if (n === 33) return 32;
+  return n - 2;
+}
+
+function openPoster(n) {
+  const fileNo = posterFileNumber(n);
+  const modal = document.querySelector('#modal');
+  document.querySelector('#modalImg').src =
+    `posters_earmed/poster-${String(fileNo).padStart(3,'0')}.jpg`;
+  document.querySelector('#modalTitle').textContent =
+    `${String(n).padStart(2,'0')} — ${titlesFromDOM(n)}`;
+  modal.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function titlesFromDOM(n) {
+  const c = document.querySelector(`.card[data-number="${n}"]`);
+  return c ? c.querySelector('h3').textContent : '';
+}
+function closePoster() {
+  document.querySelector('#modal').classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closePoster();
+});
+</script>
+</body>
+</html>
