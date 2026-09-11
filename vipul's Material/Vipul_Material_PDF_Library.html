@@ -82,7 +82,7 @@ h1{font-size:25px;letter-spacing:-.6px;margin:0 0 5px}
     <div class="heading">
       <div>
         <h1 id="title">All Files</h1>
-        <p class="sub">Open the original local study files directly from their folders.</p>
+        <p class="sub">Open the original local study files directly from their folders, including the new Test collection.</p>
       </div>
       <div class="status" id="status"></div>
     </div>
@@ -135,6 +135,42 @@ const FILES=[
   {folder:"Geo",name:"istlong.pdf",type:"pdf",title:"IST Longitudes"},
   {folder:"Geo",name:"sambhav_geography_clouds_rainfall.pdf",type:"pdf",title:"Sambhav Geography — Clouds & Rainfall"},
   {folder:"Geo",name:"soilvegagric.pdf",type:"pdf",title:"Soil, Vegetation & Agriculture"},
+  {folder:"test",name:"Festivals_AnswerKey (2).pdf",type:"pdf",title:"Festivals — Answer Key"},
+  {folder:"test",name:"Geography_Hard (1).pdf",type:"pdf",title:"Geography — Hard"},
+  {folder:"test",name:"Reasoning_SittingArrangements.pdf",type:"pdf",title:"Reasoning — Sitting Arrangements"},
+  {folder:"test",name:"MCQs (2).pdf",type:"pdf",title:"MCQs — Set 2"},
+  {folder:"test",name:"Reasoning_OWS_Hard_MCQs.pdf",type:"pdf",title:"Reasoning — OWS Hard MCQs"},
+  {folder:"test",name:"Reasoning_Direction_Syllogism_Hard.pdf",type:"pdf",title:"Reasoning — Direction & Syllogism Hard"},
+  {folder:"test",name:"LocalBodies_Emergency.pdf",type:"pdf",title:"Local Bodies & Emergency"},
+  {folder:"test",name:"Geography_Atmosphere_MCQs.pdf",type:"pdf",title:"Geography — Atmosphere MCQs"},
+  {folder:"test",name:"Hard_Geography_50_MCQs.pdf",type:"pdf",title:"Geography — Hard 50 MCQs"},
+  {folder:"test",name:"Tribunals_Notes.pdf",type:"pdf",title:"Tribunals — Notes"},
+  {folder:"test",name:"Reasoning_Hard (1).pdf",type:"pdf",title:"Reasoning — Hard"},
+  {folder:"test",name:"Geography_MCQs.pdf",type:"pdf",title:"Geography — MCQs"},
+  {folder:"test",name:"Hard_Amendments_Tribunals.pdf",type:"pdf",title:"Amendments & Tribunals — Hard"},
+  {folder:"test",name:"Geography_Hard_Module.pdf",type:"pdf",title:"Geography — Hard Module"},
+  {folder:"test",name:"Festivals_of_India_MCQs.pdf",type:"pdf",title:"Festivals of India — MCQs"},
+  {folder:"test",name:"Polity_Amendments_Tribunals.pdf",type:"pdf",title:"Polity — Amendments & Tribunals"},
+  {folder:"test",name:"World_Geography_100_MCQs.pdf",type:"pdf",title:"World Geography — 100 MCQs"},
+  {folder:"test",name:"Geography_Moderate.pdf",type:"pdf",title:"Geography — Moderate"},
+  {folder:"test",name:"sambhav_batch_economy_mcqs.pdf",type:"pdf",title:"Economy — MCQs"},
+  {folder:"test",name:"Height_Distance_MCQs.pdf",type:"pdf",title:"Maths — Height & Distance MCQs"},
+  {folder:"test",name:"Constitutional_Amendments.pdf",type:"pdf",title:"Constitutional Amendments"},
+  {folder:"test",name:"Geography_Earth_Oceans.pdf",type:"pdf",title:"Geography — Earth & Oceans"},
+  {folder:"test",name:"Hard_Geography_Earth_Oceans.pdf",type:"pdf",title:"Geography — Earth & Oceans — Hard"},
+  {folder:"test",name:"Geography_Plains_Islands_MCQs.pdf",type:"pdf",title:"Geography — Plains & Islands MCQs"},
+  {folder:"test",name:"Coordinate_Geometry_50_Hard_MCQs.pdf",type:"pdf",title:"Coordinate Geometry — 50 Hard MCQs"},
+  {folder:"test",name:"Reasoning_Calendar_Hard.pdf",type:"pdf",title:"Reasoning — Calendar Hard"},
+  {folder:"test",name:"Geography_Easy_Moderate_MCQs.pdf",type:"pdf",title:"Geography — Easy & Moderate MCQs"},
+  {folder:"test",name:"Paramount_Coaching_Reasoning_MCQs.pdf",type:"pdf",title:"Reasoning MCQs — Paramount Coaching"},
+  {folder:"test",name:"Hard_Polity_Set (1).pdf",type:"pdf",title:"Polity — Hard Set"},
+  {folder:"test",name:"Geography_100 (1).pdf",type:"pdf",title:"Geography — 100 MCQs"},
+  {folder:"test",name:"Geography_Hard_MCQs.pdf",type:"pdf",title:"Geography — Hard MCQs"},
+  {folder:"test",name:"Hard_Amendments_Tribunals (1).pdf",type:"pdf",title:"Amendments & Tribunals — Hard Set 2"},
+  {folder:"test",name:"Maths_Mensuration_Hard.pdf",type:"pdf",title:"Maths — Mensuration Hard"},
+  {folder:"test",name:"Festivals_India (4).pdf",type:"pdf",title:"Festivals of India — Set 4"},
+  {folder:"test",name:"Maths_Average_Ratio.pdf",type:"pdf",title:"Maths — Average & Ratio"},
+  {folder:"test",name:"Answer_Key_Hard.pdf",type:"pdf",title:"Answer Key — Hard"},
   {folder:"others",name:"Calender (Class File) .pdf",type:"pdf",title:"Calendar — Class File"},
   {folder:"others",name:"Counting Figure.pdf",type:"pdf",title:"Counting Figure"},
   {folder:"others",name:"Calender class file.pdf",type:"pdf",title:"Calendar Class File"},
@@ -154,13 +190,13 @@ const FILES=[
 ];
 
 const ICONS={
-  ALL:"▦",polity:"🏛️","art&culture":"🎨",Geo:"🌍",history:"🏺",others:"📝"
+  ALL:"▦",polity:"🏛️","art&culture":"🎨",Geo:"🌍",history:"🏺",others:"📝",test:"📚"
 };
 
-const ORDER=["ALL","polity","art&culture","Geo","history","others"];
+const ORDER=["ALL","polity","art&culture","Geo","history","test","others"];
 const LABELS={
  ALL:"All Files",polity:"Polity","art&culture":"Art & Culture",Geo:"Geography",
- history:"History",others:"Others"
+ history:"History",test:"Test",others:"Others"
 };
 
 let folder="ALL";
@@ -209,6 +245,7 @@ function render(){
     const card=document.createElement("article");
     card.className="card";
     const icon=x.type==="xlsx"?"📊":x.type==="png"?"🖼️":"📕";
+    const displayName=x.name.replace(/^Sambhav_Batch_/i,"").replace(/_/g," ");
     const label=x.type==="xlsx"?"Excel":x.type==="png"?"Image":"PDF";
     card.innerHTML=`
       <div class="top">
@@ -216,7 +253,7 @@ function render(){
         <span class="tag">${LABELS[x.folder]} • ${label}</span>
       </div>
       <h3>${esc(x.title)}</h3>
-      <div class="file" title="${esc(x.folder+"/"+x.name)}">${esc(x.name)}</div>
+      <div class="file" title="${esc(x.folder+"/"+x.name)}">${esc(displayName)}</div>
       <a class="open" href="${fileURL(x)}" target="_blank" rel="noopener">Open ${label} →</a>
     `;
     grid.appendChild(card);
