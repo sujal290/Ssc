@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medieval India — UPSC / State PSC Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1209;
+    --parchment: #f5edd8;
+    --aged:      #e8d9b8;
+    --rust:      #a0430e;
+    --gold:      #c8902a;
+    --teal:      #1b5e6e;
+    --olive:     #4a5e28;
+    --faint:     #f0e4c8;
+    --white:     #fdf8ef;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(200,144,42,.04) 30px,
+      rgba(200,144,42,.04) 31px
+    );
+  }
+  .hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 6vw, 54px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: .5px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    margin-top: 12px;
+    color: #c8b88a;
+  }
+  .hero-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+    margin-top: 22px;
+  }
+  .chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    border: 1px solid rgba(200,144,42,.5);
+    color: var(--gold);
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── Layout ── */
+  .page { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* ── Section headers ── */
+  .era-header {
+    display: flex; align-items: center; gap: 14px;
+    margin: 48px 0 6px;
+  }
+  .era-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; color: var(--rust);
+    flex-shrink: 0;
+  }
+  .era-rule { flex: 1; height: 1px; background: var(--rust); opacity: .3; }
+  .era-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 3.5vw, 26px);
+    font-weight: 600;
+    color: var(--rust);
+    margin-bottom: 2px;
+  }
+  .era-span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1px; color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  /* ── Topic card ── */
+  .card {
+    background: var(--white);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 22px 24px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 6px rgba(26,18,9,.06);
+  }
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: .5px;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .card p { font-size: 15.5px; margin-bottom: 8px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* ── Key-fact pills ── */
+  .facts {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 12px;
+  }
+  .fact {
+    background: var(--faint);
+    border: 1px solid var(--aged);
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: var(--ink);
+    padding: 4px 11px;
+  }
+  .fact strong { color: var(--rust); }
+
+  /* ── Quote / mnemonic box ── */
+  .mnemonic {
+    background: var(--ink);
+    color: var(--parchment);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 10px 0 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+  }
+  .mnemonic span { color: var(--gold); font-weight: 600; }
+
+  /* ── Ruler table ── */
+  .ruler-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 12px; font-size: 14.5px;
+  }
+  .ruler-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--white);
+    background: var(--teal);
+    padding: 9px 12px; text-align: left;
+  }
+  .ruler-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--aged);
+    vertical-align: top;
+  }
+  .ruler-table tr:nth-child(even) td { background: var(--faint); }
+  .ruler-table td:first-child { font-weight: 600; color: var(--rust); }
+
+  /* ── Two-column grid ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width:600px){ .grid2 { grid-template-columns: 1fr; } }
+
+  /* ── Highlight box (teal accent) ── */
+  .highlight {
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+  }
+  .highlight .card-title { color: #a8dde8; }
+  .highlight p { font-size: 15px; }
+
+  /* ── Olive accent card ── */
+  .olive-card {
+    background: var(--white);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 6px 6px 0;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .olive-card .card-title { color: var(--olive); }
+
+  /* ── UPSC tip banner ── */
+  .tip {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #fff8ec;
+    border: 1px solid #e8c87a;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .tip strong { color: var(--rust); display: block; margin-bottom: 2px; }
+
+  /* ── Divider ── */
+  hr.ornament {
+    border: none;
+    text-align: center;
+    margin: 36px 0 8px;
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 8px;
+  }
+  hr.ornament::before { content: '◆  ◆  ◆'; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--white);
+    border: 1px solid var(--aged);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin: 30px 0 10px;
+  }
+  .toc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 14px;
+  }
+  .toc ol { padding-left: 20px; }
+  .toc li {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+    color: var(--teal);
+  }
+
+  /* ── Dense fact list (for exhaustive points) ── */
+  .point-list { margin: 10px 0 4px; padding-left: 0; list-style: none; }
+  .point-list li {
+    font-size: 15px;
+    margin-bottom: 7px;
+    padding-left: 18px;
+    position: relative;
+  }
+  .point-list li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--rust);
+    font-weight: 600;
+  }
+  .point-list li strong { color: var(--rust); }
+
+  /* ── Sub-card heading inside a card (for stacked mini-topics) ── */
+  .sub-head {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--gold);
+    margin: 14px 0 6px;
+    border-top: 1px dashed var(--aged);
+    padding-top: 10px;
+  }
+  .card .sub-head:first-of-type { border-top: none; padding-top: 0; margin-top: 4px; }
+
+  /* ── Fact grid 3-col for dense data ── */
+  .fact-grid3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+    margin-top: 10px;
+  }
+  @media(max-width:650px){ .fact-grid3 { grid-template-columns: 1fr 1fr; } }
+  .fact-grid3 .fact { text-align: left; }
+
+  /* ── Wide single-column card for long lists ── */
+  .wide-card { grid-column: 1 / -1; }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--parchment); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <div class="hero-label">Complete Study Notes</div>
+  <h1>Medieval <span>India</span></h1>
+  <div class="hero-sub">750 CE – 1757 CE · Exhaustive Facts, Rulers & Exam Insights</div>
+  <div class="hero-chips">
+    <div class="chip">UPSC Prelims & Mains</div>
+    <div class="chip">State PSC</div>
+    <div class="chip">SSC CGL / CHSL</div>
+  </div>
+</div>
+
+<!-- ══════════ PAGE ══════════ -->
+<div class="page">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li>Rajput Age & Arab/Turkish Invasions (750–1206)</li>
+      <li>Delhi Sultanate — All Five Dynasties (1206–1526)</li>
+      <li>Administration of the Delhi Sultanate</li>
+      <li>Vijayanagara & Bahmani Kingdoms</li>
+      <li>Provincial / Regional Kingdoms</li>
+      <li>Mughal Empire — The Great Mughals (1526–1707)</li>
+      <li>Mughal Administration in Depth</li>
+      <li>Later Mughals & Decline (1707–1857)</li>
+      <li>Rise of the Marathas</li>
+      <li>Art, Architecture & Painting</li>
+      <li>Language, Literature & Music</li>
+      <li>Economy, Trade & Society</li>
+      <li>Bhakti & Sufi Movements</li>
+      <li>UPSC PYQ Themes & Quick Recall</li>
+    </ol>
+  </div>
+
+  <!-- ══════════ 1. RAJPUT AGE ══════════ -->
+  <div class="era-header">
+    <div class="era-num">ERA I</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Rajput Age & Early Medieval India</div>
+  <div class="era-span">750 – 1206 CE</div>
+
+  <div class="card">
+    <div class="card-title">Who Were the Rajputs?</div>
+    <p>Rajputs were warrior clans that rose to dominance in north and west India after the decline of the Gupta and post-Gupta polities (Pratiharas, Palas, Rashtrakutas). They followed the <em>kshatriya</em> (warrior) code and legitimised rule through genealogies tracing descent from the Sun (<strong>Suryavanshi</strong>), the Moon (<strong>Chandravanshi</strong>), or sacred fire (<strong>Agnikula</strong>).</p>
+    <ul class="point-list">
+      <li><strong>Tripartite Struggle (8th–10th c.):</strong> Three-way contest for control of Kanauj among the Gurjara-Pratiharas, Palas (Bengal), and Rashtrakutas (Deccan).</li>
+      <li><strong>Pratiharas:</strong> Capital Kanauj; founder Nagabhata I; greatest ruler Mihira Bhoja; defended India's northwest from Arab incursions.</li>
+      <li><strong>Chahamanas (Chauhans):</strong> Capital Ajmer/Delhi; greatest ruler Prithviraj Chauhan III; lost to Muhammad Ghori at Second Tarain (1192).</li>
+      <li><strong>Chandellas:</strong> Bundelkhand; capital Khajuraho/Kalinjar; built the famous Khajuraho temples (Lakshmana, Kandariya Mahadeva).</li>
+      <li><strong>Paramaras:</strong> Malwa; capital Dhar; ruler Bhoja I — great patron of Sanskrit learning, wrote on architecture and medicine.</li>
+      <li><strong>Gahadavalas:</strong> Kanauj/Varanasi; ruler Govindachandra; last major ruler Jaichand defeated by Ghori (1194, Battle of Chandawar).</li>
+      <li><strong>Solankis (Chaulukyas):</strong> Gujarat; capital Anhilwara (Patan); built the Rani ki Vav stepwell and Modhera Sun Temple.</li>
+      <li><strong>Kalachuris:</strong> Central India (Tripuri); often warred with Chandellas and Paramaras.</li>
+    </ul>
+    <div class="sub-head">Rajput Polity & Society</div>
+    <ul class="point-list">
+      <li>Polity was <strong>feudal</strong> — no single paramount power; constant inter-clan warfare weakened collective resistance to invasions.</li>
+      <li>Land grants to vassals (<em>samanta</em> system) in return for military service.</li>
+      <li>Strong code of personal honour, chivalry, and the practice of <em>jauhar</em> (self-immolation by women to avoid capture) during sieges.</li>
+      <li>Patronised temple-building extensively — Khajuraho, Modhera, Osian, Mount Abu (Dilwara Jain temples, built under Solanki patronage).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Arab Invasion of Sindh — 712 CE</div>
+    <p><strong>Muhammad bin Qasim</strong>, general of the Umayyad governor of Iraq, defeated <strong>Raja Dahir</strong> of Sindh in 712 CE at the <strong>Battle of Aror</strong>, annexing Sindh and southern Punjab — the first permanent Islamic foothold in India.</p>
+    <ul class="point-list">
+      <li>Sindh became part of the Umayyad Caliphate; local Hindus and Buddhists were granted <em>dhimmi</em> (protected subject) status with religious freedom on payment of <em>jizya</em>.</li>
+      <li>Arab rule introduced new agricultural techniques, copper coinage, and was a channel for the transmission of Indian numerals, astronomy, and Sanskrit texts (translated into Arabic) to the Islamic world.</li>
+      <li>The Arab conquest remained confined to Sindh and did not expand further into India at this stage.</li>
+      <li><strong>Principal source:</strong> <em>Chach Nama</em> (Persian chronicle of the Sindh conquest).</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Mahmud of Ghazni (r. 998–1030)</div>
+      <p>Ruler of the Turkic <strong>Ghaznavid dynasty</strong> (Afghanistan); raided India <strong>17 times</strong> between 1000–1027 CE, mainly for plunder, not territorial conquest.</p>
+      <ul class="point-list">
+        <li><strong>Most famous raid:</strong> Somnath Temple (Gujarat), 1025 CE — temple destroyed, immense wealth looted.</li>
+        <li>Defeated the Hindu Shahi rulers Jaipal and Anandapal of the Punjab–Afghan frontier.</li>
+        <li>Annexed Punjab to the Ghaznavid empire — only lasting territorial gain in India.</li>
+        <li>Patron of letters: court included <strong>Al-Biruni</strong> (<em>Kitab-ul-Hind / Tahqiq-i-Hind</em>, a study of Indian society, science & religion) and the Persian poet <strong>Firdausi</strong> (<em>Shahnama</em>).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Muhammad Ghori (r. 1173–1206)</div>
+      <p>Sultan of the Ghorid dynasty; unlike Mahmud, aimed at permanent conquest and empire-building in India.</p>
+      <ul class="point-list">
+        <li><strong>First Battle of Tarain (1191):</strong> Defeated by Prithviraj Chauhan III.</li>
+        <li><strong>Second Battle of Tarain (1192):</strong> Decisively defeated Prithviraj — turning point for Muslim rule in north India.</li>
+        <li><strong>Battle of Chandawar (1194):</strong> Defeated Jaichand of Kanauj.</li>
+        <li>His slave-general <strong>Qutbuddin Aibak</strong> consolidated conquests in India and, after Ghori's assassination (1206), founded the Delhi Sultanate.</li>
+        <li>General <strong>Bakhtiyar Khilji</strong> raided Bihar and Bengal, destroying the Buddhist monastic university of <strong>Nalanda</strong> (c. 1202–03).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-icon">💡</div>
+    <div><strong>UPSC Tip</strong> Distinguish Mahmud (plunder, 17 raids, Somnath, Al-Biruni) from Ghori (conquest, Tarain battles, founded basis of Sultanate). A favourite trap is mixing up which one defeated Prithviraj Chauhan.</div>
+  </div>
+
+  <!-- ══════════ 2. DELHI SULTANATE ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA II</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Delhi Sultanate</div>
+  <div class="era-span">1206 – 1526 CE · Five Dynasties</div>
+
+  <div class="mnemonic">
+    <span>Mnemonic — "Slaves Killed Twice; Lodi's Syed"</span><br>
+    <strong>S</strong>lave Dynasty → <strong>K</strong>hiljis → <strong>T</strong>ughlaqs → <strong>S</strong>ayyids → <strong>L</strong>odis
+  </div>
+
+  <table class="ruler-table" style="margin-bottom:20px">
+    <thead>
+      <tr><th>Dynasty</th><th>Period</th><th>Key Rulers</th><th>Landmark Events</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Slave (Mamluk)</td><td>1206–1290</td><td>Qutbuddin Aibak, Iltutmish, Razia Sultana, Balban</td><td>Qutb Minar begun; <em>Turkan-i-Chahalgani</em> (Forty); <em>Iqta</em> system formalised</td></tr>
+      <tr><td>Khilji</td><td>1290–1320</td><td>Jalaluddin Khilji, Alauddin Khilji</td><td>Market price-control reforms; Mongol invasions repulsed 6 times; Deccan conquest via Malik Kafur</td></tr>
+      <tr><td>Tughlaq</td><td>1320–1414</td><td>Ghiyasuddin, Muhammad bin Tughlaq, Firuz Shah</td><td>Capital transfer to Daulatabad; token currency; widest territorial extent of Sultanate</td></tr>
+      <tr><td>Sayyid</td><td>1414–1451</td><td>Khizr Khan, Mubarak Shah</td><td>Weak, declining rule; nominal subordination to Timurids</td></tr>
+      <tr><td>Lodi</td><td>1451–1526</td><td>Bahlul Lodi, Sikandar Lodi, Ibrahim Lodi</td><td>Only Afghan dynasty; ended at First Battle of Panipat (1526)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <div class="card-title">Slave (Mamluk) Dynasty — 1206–1290</div>
+    <div class="sub-head">Qutbuddin Aibak (1206–1210)</div>
+    <ul class="point-list">
+      <li>Former slave-general of Muhammad Ghori; founded the Sultanate after Ghori's death; ruled from Lahore.</li>
+      <li>Began construction of <strong>Qutb Minar</strong> and <strong>Quwwat-ul-Islam Mosque</strong> (Delhi) and <strong>Adhai Din ka Jhonpra</strong> (Ajmer).</li>
+      <li>Known as <em>Lakh Baksh</em> ("giver of lakhs") for his generosity; died falling from a horse while playing <em>chaugan</em> (polo).</li>
+    </ul>
+    <div class="sub-head">Iltutmish (1210–1236)</div>
+    <ul class="point-list">
+      <li>Real founder/consolidator of the Sultanate; shifted capital to Delhi; secured recognition from the Caliph of Baghdad (legitimised his rule).</li>
+      <li>Organised the <strong>Iqta system</strong> (land assignments to nobles in lieu of salary) and the <strong>Turkan-i-Chahalgani</strong> (Forty, a corps of loyal Turkish slave-nobles).</li>
+      <li>Introduced silver <em>tanka</em> and copper <em>jital</em> — standard Sultanate coinage.</li>
+      <li>Completed the Qutb Minar.</li>
+    </ul>
+    <div class="sub-head">Razia Sultana (1236–1240)</div>
+    <ul class="point-list">
+      <li>India's <strong>first and only female ruler of Delhi</strong>; daughter of Iltutmish, nominated by him over his sons.</li>
+      <li>Discarded the veil (purdah), dressed like a man at court, and personally led troops.</li>
+      <li>Deposed and killed by the <em>Chalisa</em> (Group of Forty Turkish nobles) who resented her independent rule.</li>
+    </ul>
+    <div class="sub-head">Ghiyasuddin Balban (1266–1287)</div>
+    <ul class="point-list">
+      <li>Broke the power of the Chalisa nobles; introduced the theory of kingship as "shadow of God" (<em>Niyabat-i-Khudai</em>) and rigid court ceremonial (<em>sijda</em>, <em>paibos</em>).</li>
+      <li>Organised a strong, centralised army and a separate military department (<em>Diwan-i-Arz</em>).</li>
+      <li>Successfully defended against Mongol incursions in the northwest.</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <div class="card-title">⚔️ Alauddin Khilji — The Market Reformer (r. 1296–1316)</div>
+    <p>Came to power after murdering his uncle Jalaluddin Khilji; one of the most powerful and innovative Sultans.</p>
+    <div class="sub-head" style="color:#a8dde8">Market Reforms (to maintain a large standing army cheaply)</div>
+    <ul class="point-list" style="color:var(--white)">
+      <li><strong>Shahna-i-Mandi:</strong> Grain market — prices fixed and regulated by officers.</li>
+      <li><strong>Cloth market</strong> and <strong>Cattle market</strong> — prices similarly controlled.</li>
+      <li><strong>Horse/slave market</strong> — separate market for war animals and slaves.</li>
+      <li>Maintained a network of spies (<em>barids</em> and <em>munhiyans</em>) to report on prices and prevent hoarding/cheating.</li>
+      <li>State granaries built to control supply during scarcity.</li>
+    </ul>
+    <div class="sub-head" style="color:#a8dde8">Military & Administrative Reforms</div>
+    <ul class="point-list" style="color:var(--white)">
+      <li><strong>Dagh</strong> (branding of horses) and <strong>Chehra</strong> (descriptive roll of soldiers) — prevented fraud in the army.</li>
+      <li>Repelled <strong>Mongol invasions six times</strong> under Chagatai leader Qutlugh Khwaja and others.</li>
+      <li>Raised land revenue to 50% of produce; reduced the power of the nobility and curtailed their wealth.</li>
+      <li>Conquered the Deccan and South India through general <strong>Malik Kafur</strong> — defeated Devagiri (Yadavas), Warangal (Kakatiyas), Dwarasamudra (Hoysalas), and Madurai (Pandyas).</li>
+      <li>Built the <strong>Alai Darwaza</strong> and founded the city of <strong>Siri</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Muhammad bin Tughlaq (r. 1325–1351)</div>
+      <p>Known for bold but ultimately unsuccessful administrative experiments.</p>
+      <ul class="point-list">
+        <li><strong>Transfer of capital</strong> from Delhi to Devagiri, renamed <strong>Daulatabad</strong> (1327) — later reversed, causing immense hardship.</li>
+        <li><strong>Token currency</strong> — introduced copper/brass coins to be valued as silver; collapsed due to large-scale counterfeiting.</li>
+        <li><strong>Khorasan expedition</strong> — raised a huge army for a planned (never executed) campaign in Central Asia; drained treasury.</li>
+        <li><strong>Qarachil expedition</strong> — failed campaign into the Himalayan foothills.</li>
+        <li>Doubled taxation in the Doab region, triggering famine and revolt.</li>
+        <li><strong>Ibn Battuta</strong> (Moroccan traveller) visited his court and served as a qazi; left a detailed account (<em>Rihla</em>).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Firuz Shah Tughlaq (r. 1351–1388)</div>
+      <ul class="point-list">
+        <li>Built the city of <strong>Firozabad</strong> in Delhi; repaired the Qutb Minar (damaged by earthquake/lightning).</li>
+        <li>Established <strong>shifa khanas</strong> (hospitals) and a department for finding jobs for the unemployed (<em>Diwan-i-Khairat</em>).</li>
+        <li>Abolished <strong>23 oppressive cesses (abwabs)</strong>; reduced number of taxes to four sanctioned by Islamic law.</li>
+        <li><strong>First Sultan to levy jaziya on Brahmins</strong> (previously exempt).</li>
+        <li>Brought two <strong>Ashokan pillars</strong> to Delhi (from Topra and Meerut).</li>
+        <li>Dug new canals for irrigation; founded towns Hisar, Jaunpur, Firozpur.</li>
+        <li>Made the <em>Iqta</em> and slave-corps (<em>bandagan</em>) hereditary — weakened central control, hastened later decline.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Decline: Sayyid & Lodi Dynasties (1414–1526)</div>
+    <ul class="point-list">
+      <li><strong>Timur's invasion (1398)</strong> — sacked Delhi just before Sayyid rule began, leaving the Sultanate severely weakened.</li>
+      <li><strong>Khizr Khan</strong> founded the Sayyid dynasty as a nominal vassal of Timurid rulers; dynasty controlled only a small region around Delhi.</li>
+      <li><strong>Bahlul Lodi</strong> (1451) founded the only Afghan dynasty to rule Delhi; expanded into Jaunpur.</li>
+      <li><strong>Sikandar Lodi</strong> — able administrator; founded Agra (1504); standardised measurements.</li>
+      <li><strong>Ibrahim Lodi</strong> — last Sultan; alienated Afghan nobles, notably <strong>Daulat Khan Lodi</strong> (Punjab governor) who invited <strong>Babur</strong> to invade.</li>
+      <li>Sultanate ended at the <strong>First Battle of Panipat (1526)</strong>, where Babur defeated and killed Ibrahim Lodi.</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ 3. ADMINISTRATION OF SULTANATE ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA III</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Administration of the Delhi Sultanate</div>
+  <div class="era-span">Structures of Governance</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Central Administration</div>
+      <ul class="point-list">
+        <li><strong>Sultan:</strong> Supreme head — military, judicial, executive authority; theoretically subordinate to the Caliph.</li>
+        <li><strong>Wazir:</strong> Prime minister, head of revenue department (<em>Diwan-i-Wizarat</em>).</li>
+        <li><strong>Ariz-i-Mumalik:</strong> Head of military department (<em>Diwan-i-Arz</em>).</li>
+        <li><strong>Diwan-i-Insha:</strong> Department of correspondence/royal letters.</li>
+        <li><strong>Diwan-i-Risalat:</strong> Department of religious/judicial affairs, headed by <em>Sadr-us-Sadur</em>.</li>
+        <li><strong>Qazi-ul-Mumalik:</strong> Chief justice.</li>
+        <li><strong>Barid-i-Mumalik:</strong> Head of state intelligence/news reporting.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Provincial & Local Administration</div>
+      <ul class="point-list">
+        <li><strong>Iqta:</strong> Territorial assignment given to a noble (<em>muqti</em>/<em>wali</em>) in lieu of salary, in exchange for military service and revenue collection.</li>
+        <li><strong>Shiq:</strong> Sub-division of a province under Sultanate administration.</li>
+        <li><strong>Pargana:</strong> Group of villages, administered by <em>Amil</em> (revenue collector) and <em>Patwari</em> (accountant).</li>
+        <li><strong>Village level:</strong> Headman (<em>Muqaddam/Khot</em>) and accountant (<em>Patwari</em>) managed local affairs.</li>
+        <li>Land revenue (<em>kharaj</em>) was the chief source of income, generally 1/3 to 1/2 of produce.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Key Administrative & Social Terms</div>
+    <div class="fact-grid3">
+      <div class="fact"><strong>Jizya:</strong> Tax on non-Muslims</div>
+      <div class="fact"><strong>Zakat:</strong> Tax on Muslims (2.5% of wealth)</div>
+      <div class="fact"><strong>Khalisa:</strong> Crown land</div>
+      <div class="fact"><strong>Inam:</strong> Land grant, often tax-free</div>
+      <div class="fact"><strong>Waqf:</strong> Land/endowment for religious-charitable use</div>
+      <div class="fact"><strong>Sijda & Paibos:</strong> Balban's court ceremonials</div>
+      <div class="fact"><strong>Dagh & Chehra:</strong> Alauddin's army reforms</div>
+      <div class="fact"><strong>Iqta:</strong> Revenue assignment to nobles</div>
+      <div class="fact"><strong>Karkhana:</strong> State-run royal workshop</div>
+    </div>
+  </div>
+
+  <!-- ══════════ 4. VIJAYANAGARA & BAHMANI ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA IV</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Vijayanagara & Bahmani Kingdoms</div>
+  <div class="era-span">1336 – 1565 CE</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Vijayanagara Empire</div>
+      <p>Founded in <strong>1336 CE</strong> by brothers <strong>Harihara I</strong> and <strong>Bukka I</strong> (Sangama dynasty) at Hampi on the Tungabhadra river, with the spiritual guidance of saint <strong>Vidyaranya</strong>.</p>
+      <div class="sub-head">Four Ruling Dynasties</div>
+      <ul class="point-list">
+        <li><strong>Sangama</strong> (1336–1485) — founding dynasty.</li>
+        <li><strong>Saluva</strong> (1485–1505) — Saluva Narasimha usurped the throne.</li>
+        <li><strong>Tuluva</strong> (1505–1570) — golden age; included Krishnadeva Raya.</li>
+        <li><strong>Aravidu</strong> (1570–1646) — final, declining dynasty after Talikota.</li>
+      </ul>
+      <div class="sub-head">Krishnadeva Raya (1509–1529)</div>
+      <ul class="point-list">
+        <li>Greatest Vijayanagara ruler; defeated the Gajapatis of Odisha and the Bahmani successor states.</li>
+        <li>Wrote <em>Amuktamalyada</em> (Telugu) — work on statecraft.</li>
+        <li>Court had the <strong>Ashtadiggajas</strong> — eight great Telugu literary scholars, including poet <strong>Allasani Peddana</strong>.</li>
+        <li>Built grand temples (Vitthalswami, Hazara Rama temple at Hampi) and the Krishna temple.</li>
+      </ul>
+      <div class="facts">
+        <div class="fact"><strong>Capital:</strong> Hampi (Vijayanagara)</div>
+        <div class="fact"><strong>Decline:</strong> Battle of Talikota, 1565</div>
+        <div class="fact"><strong>Travellers:</strong> Nicolo de Conti, Abdur Razzaq, Domingo Paes, Fernao Nuniz</div>
+        <div class="fact"><strong>Admin unit:</strong> Nayankara system (military chiefs)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Bahmani Kingdom</div>
+      <p>Founded by <strong>Alauddin Bahman Shah</strong> (originally Hasan Gangu) in <strong>1347 CE</strong>, breaking away from the Delhi Sultanate. Capital initially Gulbarga, later shifted to <strong>Bidar</strong>.</p>
+      <ul class="point-list">
+        <li>Perennial conflict with Vijayanagara over the fertile <strong>Raichur Doab</strong> (between Krishna and Tungabhadra rivers).</li>
+        <li><strong>Firuz Shah Bahmani</strong> — patron of arts and learning.</li>
+        <li><strong>Mahmud Gawan</strong> — celebrated prime minister under Muhammad Shah III; reorganised administration into 8 provinces (<em>tarafs</em>); built a famous <strong>Madrasa at Bidar</strong>; eventually executed on false charges (1481), accelerating decline.</li>
+        <li>Kingdom fragmented (after 1518) into <strong>five Deccan Sultanates</strong>: Bijapur (Adil Shahi), Golconda (Qutb Shahi), Ahmadnagar (Nizam Shahi), Bidar (Barid Shahi), Berar (Imad Shahi).</li>
+      </ul>
+      <div class="facts">
+        <div class="fact"><strong>Visitor:</strong> Russian traveller Afanasy Nikitin</div>
+        <div class="fact"><strong>Famous monument:</strong> Gol Gumbaz (Bijapur, later)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-icon">🏹</div>
+    <div><strong>Battle of Talikota / Rakshasi-Tangadi (1565 CE)</strong> — Combined Deccan Sultanates (Bijapur, Bidar, Ahmadnagar, Golconda) defeated Vijayanagara ruler <strong>Aliya Rama Raya</strong>. The city of Hampi was sacked and never fully recovered. This effectively ended Vijayanagara's imperial power, though the Aravidu dynasty nominally continued.</div>
+  </div>
+
+  <!-- ══════════ 5. PROVINCIAL KINGDOMS ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA V</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Provincial / Regional Kingdoms</div>
+  <div class="era-span">14th – 16th Century</div>
+
+  <div class="grid2">
+    <div class="olive-card">
+      <div class="card-title">Bengal Sultanate</div>
+      <p>Independent from 1338. <strong>Ilyas Shah</strong> unified Bengal (1352), founding the Ilyas Shahi dynasty. <strong>Hussain Shah</strong> (1493–1519) — greatest independent sultan; patronised Bengali literature; saint <strong>Chaitanya Mahaprabhu</strong> flourished in his reign.</p>
+    </div>
+    <div class="olive-card">
+      <div class="card-title">Kashmir Sultanate</div>
+      <p>Founded by Shah Mir (1339). <strong>Zainul Abidin</strong> (1420–1470), called "Bud Shah" (Great King) — most enlightened ruler; patronised Sanskrit, Persian, and Kashmiri literature; banned cow slaughter; recalled Hindus who had fled persecution.</p>
+    </div>
+    <div class="olive-card">
+      <div class="card-title">Malwa Sultanate</div>
+      <p>Founded 1401 by Dilawar Khan Ghuri. <strong>Hoshang Shah</strong> built the <strong>Hindola Mahal</strong> and <strong>Jami Masjid</strong> at Mandu (capital, renamed Shadiabad). Annexed by Gujarat Sultanate in 1531.</p>
+    </div>
+    <div class="olive-card">
+      <div class="card-title">Gujarat Sultanate</div>
+      <p>Founded by Zafar Khan (1407). <strong>Mahmud Begarha</strong> (1458–1511) — most powerful ruler; conquered forts of Champaner and Girnar; capital Ahmedabad; major centre of trade.</p>
+    </div>
+    <div class="olive-card">
+      <div class="card-title">Jaunpur Sultanate (Sharqi)</div>
+      <p>Founded by Malik Sarwar (1394) after Timur's invasion weakened Delhi. Known as the "Shiraz of India" for cultural patronage; Atala Masjid is a notable monument. Annexed by the Lodis (1483–84).</p>
+    </div>
+    <div class="olive-card">
+      <div class="card-title">Mewar (Rajput)</div>
+      <p><strong>Rana Kumbha</strong> built Kumbhalgarh Fort and the <em>Vijay Stambha</em> (Tower of Victory) at Chittorgarh, commemorating victory over Mahmud Khilji of Malwa. <strong>Rana Sanga</strong> nearly unified the Rajputs before being defeated by Babur at the <strong>Battle of Khanwa (1527)</strong>.</p>
+    </div>
+  </div>
+
+  <!-- ══════════ 6. MUGHAL EMPIRE ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA VI</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Mughal Empire</div>
+  <div class="era-span">1526 – 1707 CE · The Great Mughals</div>
+
+  <div class="mnemonic">
+    <span>Mnemonic — "Big Heroes Always Join Sturdy Armies"</span><br>
+    <strong>B</strong>abur → <strong>H</strong>umayun → <strong>A</strong>kbar → <strong>J</strong>ahangir → <strong>S</strong>hah Jahan → <strong>A</strong>urangzeb
+  </div>
+
+  <table class="ruler-table" style="margin-bottom:20px">
+    <thead>
+      <tr><th>Emperor</th><th>Reign</th><th>Key Achievement</th><th>Famous Battle / Work</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Babur</td><td>1526–1530</td><td>Founded Mughal Empire; introduced <em>tulughma</em> tactic & field artillery (matchlock guns)</td><td>1st Panipat (1526); Khanwa (1527) vs Rana Sanga; Chanderi & Ghaghra (1529)</td></tr>
+      <tr><td>Humayun</td><td>1530–40, 1555–56</td><td>Lost & regained throne; took refuge in Persia under Shah of Safavid dynasty</td><td>Defeated by Sher Shah at Chausa (1539) & Kanauj (1540); died falling from library steps</td></tr>
+      <tr><td>Akbar</td><td>1556–1605</td><td>Greatest consolidator; <em>Din-i-Ilahi</em>; <em>Sulh-i-Kul</em>; Mansabdari & Zabt revenue systems; abolished jaziya & pilgrimage tax</td><td>2nd Panipat (1556) vs Hemu; Haldighati (1576) vs Rana Pratap; conquest of Gujarat, Bengal, Kashmir</td></tr>
+      <tr><td>Jahangir</td><td>1605–1627</td><td>Painting & natural-history art flourished; Nur Jahan's political influence; system of golden "Chain of Justice"</td><td><em>Tuzuk-i-Jahangiri</em> (autobiography); Thomas Roe's embassy (1615); execution of Guru Arjan Dev</td></tr>
+      <tr><td>Shah Jahan</td><td>1627–1658</td><td>Architecture's golden age; Peacock Throne; conquest of Deccan Sultanates begun</td><td>Taj Mahal; Red Fort; Jama Masjid; Shahjahanabad founded</td></tr>
+      <tr><td>Aurangzeb</td><td>1658–1707</td><td>Largest territorial extent; re-imposed jaziya (1679); orthodox policies; <em>Fatwa-i-Alamgiri</em> (legal code)</td><td>Long Deccan wars; conquest of Bijapur (1686) & Golconda (1687); rise of Maratha resistance under Shivaji</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card">
+    <div class="card-title">Babur (r. 1526–1530) — Founder</div>
+    <ul class="point-list">
+      <li>Descendant of Timur (father's side) and Genghis Khan (mother's side); originally ruler of Farghana (Central Asia).</li>
+      <li><strong>First Battle of Panipat (1526):</strong> Defeated Ibrahim Lodi using <em>tulughma</em> (flanking) tactics and gunpowder artillery under Ustad Ali and Mustafa.</li>
+      <li><strong>Battle of Khanwa (1527):</strong> Defeated the Rajput confederacy under Rana Sanga of Mewar — secured Mughal hold over north India.</li>
+      <li><strong>Battle of Chanderi (1528)</strong> and <strong>Battle of Ghaghra (1529)</strong> — defeated Afghan chiefs and the Sultan of Bengal.</li>
+      <li>Wrote his memoirs, the <em>Baburnama</em>, in Chagatai Turkish — a vivid account of his life and India.</li>
+      <li>Laid out Persian-style gardens (<em>charbagh</em>) in India, e.g. Ram Bagh, Agra.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Humayun (r. 1530–40, restored 1555–56)</div>
+    <ul class="point-list">
+      <li>Faced rebellion from brothers and the rising power of <strong>Sher Shah Suri</strong>.</li>
+      <li>Defeated at <strong>Chausa (1539)</strong> and decisively at <strong>Kanauj (1540)</strong>, forcing him into 15 years of exile.</li>
+      <li>Took refuge with the Safavid Shah of Persia, Tahmasp I, gaining Persian cultural/artistic influence that later shaped Mughal painting.</li>
+      <li>Regained the throne in 1555 after Sher Shah's successors weakened; died in 1556 falling from the steps of his library in Delhi.</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <div class="card-title">🎓 Akbar (r. 1556–1605) — The Great Consolidator</div>
+    <div class="sub-head" style="color:#a8dde8">Early Reign & Conquests</div>
+    <ul class="point-list" style="color:var(--white)">
+      <li>Ascended at age 13; regency under <strong>Bairam Khan</strong> who won the <strong>Second Battle of Panipat (1556)</strong> against Hemu.</li>
+      <li>Conquered Malwa, Gondwana, Chittor & Ranthambore (Rajputana), Gujarat (1572), Bengal (1576), Kashmir (1586), Sindh, Orissa, and parts of the Deccan (Khandesh, Ahmadnagar).</li>
+      <li><strong>Battle of Haldighati (1576):</strong> Mughal forces under Man Singh defeated Rana Pratap Singh of Mewar, though Mewar was never fully subjugated.</li>
+      <li>Most Rajput states accepted Mughal suzerainty through alliance & matrimony (e.g., Amber/Jaipur under Bharmal); Mewar remained defiant.</li>
+    </ul>
+    <div class="sub-head" style="color:#a8dde8">Religious Policy</div>
+    <ul class="point-list" style="color:var(--white)">
+      <li>Abolished <strong>jaziya</strong> (1564) and pilgrimage tax on Hindus.</li>
+      <li>Built the <strong>Ibadat Khana</strong> (House of Worship, 1575) at Fatehpur Sikri for debates among scholars of different faiths.</li>
+      <li><strong>Din-i-Ilahi (1582):</strong> A syncretic ethical order, NOT a new religion — drew from Islam, Hinduism, Zoroastrianism, Jainism, and Christianity. Had only about 18 followers, mostly courtiers; <strong>Birbal</strong> was the only Hindu to accept it.</li>
+      <li>Policy of <strong>Sulh-i-Kul</strong> ("peace with all") — religious tolerance as state policy.</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Jahangir (r. 1605–1627)</div>
+      <ul class="point-list">
+        <li>Real name Salim; rebelled against Akbar before succeeding him.</li>
+        <li>Married <strong>Nur Jahan (Mehrunnisa)</strong> in 1611 — she became extremely influential in governance.</li>
+        <li>Famous for the symbolic golden <strong>"Chain of Justice"</strong> outside his palace for subjects to seek redress.</li>
+        <li>British ambassador <strong>Sir Thomas Roe</strong> visited his court (1615–18), securing trading rights for the English East India Company.</li>
+        <li>Ordered the execution of Sikh Guru <strong>Arjan Dev</strong> (1606).</li>
+        <li>Wrote the autobiographical <em>Tuzuk-i-Jahangiri</em>.</li>
+        <li>Patron of naturalistic painting — artist <strong>Ustad Mansur</strong> famed for depicting flora and fauna.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Shah Jahan (r. 1627–1658)</div>
+      <ul class="point-list">
+        <li>Reign considered the golden age of Mughal architecture.</li>
+        <li>Built the <strong>Taj Mahal</strong> (1632–53) for wife Mumtaz Mahal, the <strong>Red Fort</strong> and <strong>Jama Masjid</strong> in Delhi, and founded the city of <strong>Shahjahanabad</strong>.</li>
+        <li>Commissioned the ornate <strong>Peacock Throne (Takht-e-Taus)</strong>, later carried off by Nadir Shah in 1739.</li>
+        <li>Launched campaigns into the Deccan against Ahmadnagar and Golconda.</li>
+        <li>Deposed by son Aurangzeb in 1658 amid the war of succession; imprisoned in Agra Fort till his death (1666).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Aurangzeb (r. 1658–1707)</div>
+    <ul class="point-list">
+      <li>Came to power after defeating brothers (notably Dara Shikoh) in a brutal war of succession.</li>
+      <li>Empire reached its <strong>largest territorial extent</strong> under him, but at immense military and financial cost.</li>
+      <li><strong>Re-imposed jaziya (1679)</strong> on non-Muslims, reversing Akbar's policy; banned music at court; destroyed several temples (policy debated by historians).</li>
+      <li>Issued the <em>Fatwa-i-Alamgiri</em> — compendium of Islamic law for administration.</li>
+      <li>Conquered the Deccan Sultanates of <strong>Bijapur (1686)</strong> and <strong>Golconda (1687)</strong>, but faced prolonged resistance from the rising <strong>Maratha</strong> power under Shivaji and later his successors.</li>
+      <li>Spent the last 25+ years of his reign in the Deccan fighting the Marathas — drained the treasury and weakened central control.</li>
+      <li>Death (1707) is widely seen by historians as marking the start of Mughal decline.</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ 7. MUGHAL ADMINISTRATION ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA VII</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Mughal Administration in Depth</div>
+  <div class="era-span">Systems Under Akbar & Successors</div>
+
+  <div class="highlight">
+    <div class="card-title">Mansabdari System</div>
+    <p>Every officer (<strong>mansabdar</strong>) held a dual numerical rank: <strong>zat</strong> (personal pay/status rank) and <strong>sawar</strong> (number of cavalry the holder was obliged to maintain).</p>
+    <ul class="point-list" style="color:var(--white)">
+      <li>Ranks ranged from <strong>10 to 10,000</strong>; ranks above 5,000 normally reserved for princes of the blood (some special nobles got up to 7,000–12,000).</li>
+      <li>Mansabdars were paid in cash or, more often, through revenue assignments called <em>jagirs</em> (NOT hereditary, unlike the earlier Iqta in spirit but distinct in practice).</li>
+      <li><strong>Dagh system</strong> (horse branding) continued from the Sultanate period to check fraud in maintained cavalry.</li>
+      <li>System became strained under Aurangzeb due to a shortage of jagirs relative to the growing number of mansabdars (the so-called <em>"jagirdari crisis"</em>) — a key structural cause of later Mughal decline.</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Land Revenue System</div>
+      <ul class="point-list">
+        <li><strong>Todar Mal's Dahsala / Zabt system:</strong> Ten-year average of prices and crop yields used to fix cash revenue rates per unit of land.</li>
+        <li>Land measured using the standardised <strong>ilahi gaz</strong> and a uniform <strong>bigha</strong>.</li>
+        <li>Land classified into four categories: <em>Polaj</em> (continuously cultivated), <em>Parauti</em> (fallow), <em>Chachar</em> (fallow 3–4 years), <em>Banjar</em> (uncultivated for 5+ years).</li>
+        <li>Revenue typically fixed at <strong>1/3 of the average produce</strong>.</li>
+        <li><strong>Khalisa</strong> land — revenue went directly to the imperial treasury (not assigned to a jagirdar).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Central & Provincial Offices</div>
+      <ul class="point-list">
+        <li><strong>Wazir / Diwan-i-Kul:</strong> Finance minister, head of revenue.</li>
+        <li><strong>Mir Bakshi:</strong> Head of the military department, in charge of mansabdars.</li>
+        <li><strong>Sadr-us-Sadur:</strong> Head of religious & charitable endowments.</li>
+        <li><strong>Qazi-ul-Quzat:</strong> Chief justice.</li>
+        <li><strong>Provinces (Subas):</strong> Headed by a <em>Subedar</em>; below him <em>Diwan</em> (revenue), <em>Bakshi</em> (military pay), <em>Qazi</em> (justice), <em>Kotwal</em> (law & order in towns).</li>
+        <li>Akbar organised the empire into <strong>12 provinces (subas)</strong>; later expanded under successors.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════ 8. LATER MUGHALS ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA VIII</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Later Mughals & Decline</div>
+  <div class="era-span">1707 – 1857 CE</div>
+
+  <div class="card">
+    <div class="card-title">Causes of Mughal Decline</div>
+    <ul class="point-list">
+      <li><strong>Aurangzeb's policies:</strong> Re-imposition of jaziya, certain temple destructions, and the prolonged, costly Deccan wars alienated Rajputs, Marathas, and drained the treasury.</li>
+      <li><strong>Weak successors:</strong> After Aurangzeb (1707), about a dozen emperors ruled in roughly 50 years, mostly as puppets of powerful nobles (the "King-makers").</li>
+      <li><strong>War of succession after every death</strong> — no fixed law of succession destabilised the throne repeatedly.</li>
+      <li><strong>Jagirdari & Mansabdari crisis</strong> — too many nobles competing for limited revenue-yielding land.</li>
+      <li><strong>Rise of regional/successor states:</strong> Marathas, Sikhs, Jats, Rohillas, and semi-independent Nawabs of Bengal, Awadh, and Hyderabad.</li>
+      <li><strong>Foreign invasions:</strong> <strong>Nadir Shah (1739)</strong> sacked Delhi, massacred citizens, and carried off the Peacock Throne and the Kohinoor diamond. <strong>Ahmad Shah Abdali</strong> invaded multiple times (1748–1761), including the decisive <strong>Third Battle of Panipat (1761)</strong> against the Marathas.</li>
+      <li><strong>Growing European commercial & political presence</strong> — the English, French, Dutch, and Portuguese trading companies gradually expanded influence amid the political vacuum.</li>
+    </ul>
+    <div class="facts">
+      <div class="fact"><strong>Last effective emperor:</strong> Aurangzeb (d. 1707)</div>
+      <div class="fact"><strong>Last titular Mughal:</strong> Bahadur Shah Zafar (deposed 1857)</div>
+      <div class="fact"><strong>Nadir Shah:</strong> Sacked Delhi, 1739</div>
+    </div>
+  </div>
+
+  <!-- ══════════ 9. MARATHAS ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA IX</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Rise of the Marathas</div>
+  <div class="era-span">17th – 18th Century</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Shivaji Maharaj (1630–1680)</div>
+      <ul class="point-list">
+        <li>Founder of the Maratha kingdom; carved out territory from the Bijapur Sultanate and resisted Mughal expansion.</li>
+        <li>Crowned himself <strong>Chhatrapati</strong> at Raigad (1674) in an elaborate coronation following Vedic rites.</li>
+        <li>Built/captured a chain of forts (e.g., Raigad, Pratapgad, Sinhagad) using innovative guerrilla tactics (<em>Ganimi Kava</em>).</li>
+        <li>Set up an efficient administration with eight ministers (<em>Ashtapradhan</em>); systematised land revenue.</li>
+        <li>Famous episodes: killing of Afzal Khan (Bijapur general, 1659); escape from Mughal custody at Agra (1666) under Aurangzeb.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Maratha Confederacy & Peshwas</div>
+      <ul class="point-list">
+        <li>After Shivaji's successors, real power shifted to the <strong>Peshwa</strong> (chief minister), especially under the Bhat family.</li>
+        <li><strong>Balaji Vishwanath</strong> and <strong>Baji Rao I</strong> expanded Maratha influence across much of India.</li>
+        <li>Maratha confederacy included semi-autonomous houses: Scindias (Gwalior), Holkars (Indore), Bhonsles (Nagpur), Gaekwads (Baroda).</li>
+        <li><strong>Third Battle of Panipat (1761):</strong> Marathas suffered a heavy defeat against Ahmad Shah Abdali — checked their northward expansion temporarily but they recovered within a decade.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════ 10. ART & ARCHITECTURE ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA X</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Art, Architecture & Painting</div>
+  <div class="era-span">Indo-Islamic Synthesis</div>
+
+  <table class="ruler-table" style="margin-bottom:20px">
+    <thead>
+      <tr><th>Monument</th><th>Builder</th><th>Style / Feature</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Qutb Minar</td><td>Qutbuddin Aibak (begun), Iltutmish (completed)</td><td>First minaret in India; 72.5m; Arabic inscriptions; repaired by Firuz Shah Tughlaq</td></tr>
+      <tr><td>Quwwat-ul-Islam Mosque</td><td>Qutbuddin Aibak</td><td>Earliest extant mosque in India; built on a demolished temple complex</td></tr>
+      <tr><td>Alai Darwaza</td><td>Alauddin Khilji (1311)</td><td>First true arch & true dome in India; red sandstone & white marble</td></tr>
+      <tr><td>Tughlaqabad Fort</td><td>Ghiyasuddin Tughlaq</td><td>Massive military architecture; sloping (battered) walls</td></tr>
+      <tr><td>Lodi Gardens tombs</td><td>Lodi-era nobles</td><td>Octagonal tomb style; transition to Mughal forms</td></tr>
+      <tr><td>Humayun's Tomb</td><td>Haji Begum (wife of Humayun)</td><td>First garden tomb (charbagh) in India; prototype for the Taj Mahal</td></tr>
+      <tr><td>Fatehpur Sikri</td><td>Akbar (1571)</td><td>Blend of Hindu–Islamic styles; abandoned due to water scarcity; includes Buland Darwaza, Panch Mahal, Jodha Bai's Palace</td></tr>
+      <tr><td>Taj Mahal</td><td>Shah Jahan (1632–53)</td><td>White marble; Persian-Indian synthesis; pietra dura inlay; UNESCO World Heritage Site</td></tr>
+      <tr><td>Red Fort (Lal Qila)</td><td>Shah Jahan (1638–48)</td><td>Octagonal towers; Diwan-i-Aam, Diwan-i-Khas; seat of Shahjahanabad</td></tr>
+      <tr><td>Jama Masjid, Delhi</td><td>Shah Jahan</td><td>Largest mosque in India at the time</td></tr>
+      <tr><td>Gol Gumbaz, Bijapur</td><td>Muhammad Adil Shah</td><td>World's second-largest pre-modern dome; famous whispering gallery</td></tr>
+      <tr><td>Char Minar, Hyderabad</td><td>Muhammad Quli Qutb Shah</td><td>Symbol of Hyderabad; built to commemorate end of a plague</td></tr>
+      <tr><td>Vijay Stambha, Chittorgarh</td><td>Rana Kumbha</td><td>Tower of Victory; commemorates win over Mahmud Khilji of Malwa</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Mughal Painting School</div>
+      <ul class="point-list">
+        <li>Founded by <strong>Akbar</strong>, who invited Persian master painters <strong>Mir Sayyid Ali</strong> and <strong>Abdus Samad</strong> to his court.</li>
+        <li>Major project: illustrated <em>Hamzanama</em> — around 1,400 large paintings on cloth depicting the adventures of Amir Hamza.</li>
+        <li><strong>Jahangir's reign = peak</strong> of naturalistic and portrait painting: artists <strong>Bichitr, Abul Hasan, Ustad Mansur</strong> (famous for studies of birds, animals, and flowers).</li>
+        <li><strong>Shah Jahan</strong> patronised refined court and miniature portraits, often static and formal compared to Jahangir's naturalism.</li>
+        <li>Decline under Aurangzeb due to his austere religious outlook; many painters migrated to regional courts (Rajasthani & Pahari schools later flourished).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Sultanate-era Architectural Features</div>
+      <ul class="point-list">
+        <li>Introduction of the <strong>true arch and true dome</strong> (using radiating voussoirs) — distinct from indigenous corbelled/lintel-beam construction.</li>
+        <li>Use of <strong>concrete and mortar</strong> as binding material instead of clamps and dowels.</li>
+        <li>Decorative use of <strong>calligraphy, geometric and arabesque patterns</strong> (avoiding figural representation in religious buildings).</li>
+        <li>Indo-Islamic style is broadly seen in sub-styles: <em>Imperial</em> (Delhi Sultanate), <em>Provincial</em> (Bengal, Gujarat, Jaunpur, Malwa, Deccan), and <em>Mughal</em>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════ 11. LANGUAGE & LITERATURE ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA XI</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Language, Literature & Music</div>
+  <div class="era-span">Cultural Synthesis</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Language Developments</div>
+      <ul class="point-list">
+        <li><strong>Persian:</strong> Official language of the Sultanate and Mughal courts.</li>
+        <li><strong>Urdu (Hindavi/Rekhta):</strong> Emerged as a composite language from interaction of Persian/Arabic with regional Hindi/Khari Boli dialects, especially in army camps and Sufi circles.</li>
+        <li><strong>Amir Khusrau</strong> (13th–14th century) — called "Tuti-i-Hind" (Parrot of India); pioneer of Hindavi poetry; credited (debatably) with inventing or popularising the <strong>sitar</strong> and <strong>tabla</strong>; composed riddles, <em>do-sukhane</em>, and the genre of <em>qawwali</em>.</li>
+        <li>Regional languages flourished under Bhakti poets: Hindi (Kabir, Tulsidas), Marathi (Tukaram, Eknath), Bengali (Chaitanya tradition), Punjabi (Guru Nanak), Telugu (Krishnadeva Raya's court).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Important Literary Works</div>
+      <ul class="point-list">
+        <li><strong>Baburnama</strong> — Babur (autobiography, Chagatai Turkish).</li>
+        <li><strong>Humayun-nama</strong> — Gulbadan Begum (Babur's daughter), on Humayun's reign.</li>
+        <li><strong>Akbarnama & Ain-i-Akbari</strong> — Abul Fazl; the Ain is an administrative gazetteer of Akbar's empire.</li>
+        <li><strong>Tuzuk-i-Jahangiri</strong> — Jahangir's own memoirs.</li>
+        <li><strong>Padshahnama</strong> — official chronicle of Shah Jahan's reign.</li>
+        <li><strong>Amuktamalyada</strong> — Krishnadeva Raya (Telugu, statecraft).</li>
+        <li><strong>Ramcharitmanas</strong> — Tulsidas (Awadhi, retelling of the Ramayana).</li>
+        <li><strong>Chach Nama</strong> — Persian chronicle on the Arab conquest of Sindh.</li>
+        <li><strong>Tahqiq-i-Hind / Kitab-ul-Hind</strong> — Al-Biruni's study of India.</li>
+        <li><strong>Rihla</strong> — Ibn Battuta's travel account.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Music</div>
+    <ul class="point-list">
+      <li><strong>Tansen</strong> — one of the <em>Navaratnas</em> (nine gems) of Akbar's court; composed ragas such as <em>Miyan ki Todi</em> and <em>Miyan ki Malhar</em>; credited with developing the <em>Dhrupad</em> style further.</li>
+      <li>Sufi-influenced <strong>qawwali</strong> tradition popularised by Amir Khusrau, centred around shrines like that of Nizamuddin Auliya.</li>
+      <li>Aurangzeb's later reign saw an official (though widely disregarded) ban on court music; many musicians moved to regional Rajput and Deccan courts.</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ 12. ECONOMY & SOCIETY ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA XII</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Economy, Trade & Society</div>
+  <div class="era-span">Medieval Period Overview</div>
+
+  <div class="card">
+    <div class="card-title">Land Revenue — The Backbone of Economy</div>
+    <ul class="point-list">
+      <li>Land revenue formed the primary source of state income — typically <strong>1/3 to 1/2 of produce</strong> depending on the period and ruler.</li>
+      <li><strong>Batai/Ghalla-bakshi:</strong> Crop-sharing system — actual division of produce between state and cultivator.</li>
+      <li><strong>Kankut:</strong> Estimation of expected yield based on inspection of standing crop.</li>
+      <li><strong>Nasaq:</strong> Revenue fixed using past records/averages without fresh measurement each year.</li>
+      <li><strong>Zabt (Akbar):</strong> Cash assessment based on the Dahsala system (Todar Mal) — ten-year average of prices/yields used to fix per-bigha revenue rates.</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Sher Shah Suri's Economic Reforms</div>
+      <ul class="point-list">
+        <li>Built the <strong>Grand Trunk Road</strong> from Peshawar (Sonargaon end in Bengal) with rest houses (<em>sarais</em>) at intervals.</li>
+        <li>Introduced the silver <strong>Rupiya</strong> and copper <strong>Dam</strong> — became the standard for later Mughal currency.</li>
+        <li>Reformed land revenue with <strong>patta</strong> (deed) and <strong>qabuliyat</strong> (deed of agreement) documenting cultivator rights and obligations.</li>
+        <li>Reorganised the postal system using a network of horse-relay stations (<em>dak chaukis</em>).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Trade & Ports</div>
+      <ul class="point-list">
+        <li>India exported fine textiles (cotton & silk), indigo, spices, and saltpetre; imported horses, bullion (gold/silver), and luxury items.</li>
+        <li>Key ports: <strong>Surat</strong> (most important Mughal-era port, called "Gate to Mecca"), Calicut, Masulipatnam, Hooghly, Cambay.</li>
+        <li>Bankers (<em>shroffs/sahukars</em>) facilitated long-distance trade through <em>hundis</em> (negotiable bills of exchange).</li>
+        <li><strong>Karimi merchants</strong> dominated the lucrative Red Sea spice trade in earlier centuries.</li>
+        <li>European trading companies (Portuguese from 1498, later Dutch, English, French) progressively established coastal factories from the 16th century onward.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Crafts, Guilds & Industry</div>
+      <ul class="point-list">
+        <li>Textile weaving (<em>khatris, julahas, tantis</em>) was the largest craft industry — Bengal famous for fine muslin ("woven air"), Gujarat for silk and cotton.</li>
+        <li>Akbar established royal <strong>karkhanas</strong> (state workshops) producing luxury textiles, arms, and decorative items for the court.</li>
+        <li>Metalwork, shipbuilding, paper-making, and indigo processing were significant regional industries.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Social Structure</div>
+      <ul class="point-list">
+        <li>Society remained largely agrarian; caste hierarchy persisted among Hindus, with regional variations.</li>
+        <li>Muslim society had its own social stratification (Ashraf/elite vs. Ajlaf/lower groups), often along ethnic/occupational lines.</li>
+        <li><strong>Sati</strong> and <strong>jauhar</strong> persisted among some Rajput communities, especially during war; <strong>purdah</strong> practised in elite households of both communities.</li>
+        <li>Position of women varied by class: royal/noble women (e.g., Nur Jahan, Gulbadan Begum, Chand Bibi) wielded real influence; common women faced greater social restriction.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════ 13. BHAKTI & SUFI ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA XIII</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">Bhakti & Sufi Movements</div>
+  <div class="era-span">Social & Religious Reform</div>
+
+  <table class="ruler-table" style="margin-bottom:16px">
+    <thead>
+      <tr><th>Saint</th><th>Region / Period</th><th>Key Teaching / Work</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ramanuja</td><td>Tamil Nadu, 12th c.</td><td>Vishishtadvaita philosophy; devotion to Vishnu; accepted disciples from all castes</td></tr>
+      <tr><td>Basavanna</td><td>Karnataka, 12th c.</td><td>Founded the Lingayat (Virashaiva) movement; rejected caste and idol worship</td></tr>
+      <tr><td>Ramananda</td><td>North India, 14th c.</td><td>Devotion to Rama; accepted disciples from all castes, including Kabir and Raidas</td></tr>
+      <tr><td>Kabir</td><td>Varanasi, 15th c.</td><td><em>Nirguna</em> Bhakti (formless God); rejected rituals & caste; works compiled in the <em>Bijak</em>; influenced Sikhism</td></tr>
+      <tr><td>Guru Nanak</td><td>Punjab, 15th–16th c.</td><td>Founded Sikhism; one formless God, rejected caste & ritualism; hymns later compiled in the <em>Adi Granth</em></td></tr>
+      <tr><td>Mirabai</td><td>Rajasthan, 16th c.</td><td><em>Saguna</em> Bhakti devotion to Krishna; composed devotional <em>bhajans</em>; defied social/caste norms as a royal widow</td></tr>
+      <tr><td>Chaitanya Mahaprabhu</td><td>Bengal, 15th–16th c.</td><td>Popularised Krishna-bhakti through <em>kirtan</em> (devotional singing); foundation of the Gaudiya Vaishnavism tradition</td></tr>
+      <tr><td>Tukaram</td><td>Maharashtra, 17th c.</td><td>Composed <em>Abhangas</em>; central figure of the Varkari (Vitthal/Pandharpur) movement</td></tr>
+      <tr><td>Surdas</td><td>North India, 16th c.</td><td>Krishna-bhakti poet; <em>Sur Sagar</em></td></tr>
+      <tr><td>Tulsidas</td><td>North India, 16th c.</td><td>Rama-bhakti; authored <em>Ramcharitmanas</em> in Awadhi</td></tr>
+      <tr><td>Shankaradeva</td><td>Assam, 15th–16th c.</td><td>Neo-Vaishnavism; established <em>satras</em> (monastic institutions); preached <em>Ekasarana Dharma</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Sufi Orders (Silsilas) in India</div>
+      <ul class="point-list">
+        <li><strong>Chishti:</strong> Most popular and widespread in India; deliberately avoided state patronage; key figures — <strong>Khwaja Moinuddin Chishti</strong> (Ajmer, dargah a major pilgrimage site) and <strong>Nizamuddin Auliya</strong> (Delhi).</li>
+        <li><strong>Suhrawardi:</strong> Generally accepted state office and patronage, unlike the Chishtis.</li>
+        <li><strong>Qadiri:</strong> Gained prominence later, associated with figures like Dara Shikoh (Shah Jahan's son), who was sympathetic to Hindu philosophy.</li>
+        <li><strong>Naqshbandi:</strong> Stricter, orthodox order; <strong>Sheikh Ahmad Sirhindi</strong> was a notable critic of Akbar's liberal religious policies and Din-i-Ilahi.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Impact of Bhakti–Sufi Movements</div>
+      <ul class="point-list">
+        <li>Promoted ideas of <strong>social equality</strong> — challenged caste rigidity, untouchability, and empty ritualism.</li>
+        <li>Encouraged the growth of <strong>vernacular literature</strong> — Hindi, Marathi, Punjabi, Bengali, Assamese — making religious and ethical ideas accessible to ordinary people.</li>
+        <li>Fostered <strong>Hindu–Muslim cultural synthesis</strong> — shared shrines, common devotional practices, syncretic art and music forms.</li>
+        <li>The <strong>Guru Granth Sahib</strong> (Sikh scripture) incorporates verses of Bhakti saints like Kabir, Farid, Namdev, and Raidas alongside the Sikh Gurus' own compositions — a direct textual marker of this synthesis.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════ 14. QUICK RECALL ══════════ -->
+  <hr class="ornament">
+  <div class="era-header">
+    <div class="era-num">ERA XIV</div>
+    <div class="era-rule"></div>
+  </div>
+  <div class="era-title">UPSC PYQ Themes & Quick Recall</div>
+  <div class="era-span">High-Yield Facts for Prelims & Mains</div>
+
+  <div class="highlight">
+    <div class="card-title">⚡ Super-Fast Recall — Firsts & Onlys</div>
+    <ul class="point-list" style="color:var(--white)">
+      <li><strong>First Muslim ruler of Delhi:</strong> Qutbuddin Aibak (1206)</li>
+      <li><strong>First and only woman Sultan of Delhi:</strong> Razia Sultana (1236)</li>
+      <li><strong>First true arch & true dome in India:</strong> Alai Darwaza (1311)</li>
+      <li><strong>First Sultan to levy jaziya on Brahmins:</strong> Firuz Shah Tughlaq</li>
+      <li><strong>First garden tomb (charbagh style) in India:</strong> Humayun's Tomb (1572)</li>
+      <li><strong>First Mughal emperor:</strong> Babur (1526)</li>
+      <li><strong>Only Hindu follower of Din-i-Ilahi:</strong> Birbal</li>
+      <li><strong>First use of pietra dura inlay:</strong> Itimad-ud-Daula's Tomb (commissioned by Nur Jahan)</li>
+      <li><strong>Only Mughal queen to have coins struck in her own name:</strong> Nur Jahan</li>
+      <li><strong>Founder of Vijayanagara Empire:</strong> Harihara I & Bukka I (1336)</li>
+      <li><strong>Founder of the Maratha kingdom:</strong> Shivaji (crowned Chhatrapati, 1674)</li>
+    </ul>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Important Books & Their Authors</div>
+      <div class="facts" style="flex-direction:column; gap:6px; align-items:flex-start">
+        <div class="fact"><strong>Baburnama</strong> — Babur (Chagatai Turkish)</div>
+        <div class="fact"><strong>Humayun-nama</strong> — Gulbadan Begum</div>
+        <div class="fact"><strong>Akbarnama / Ain-i-Akbari</strong> — Abul Fazl</div>
+        <div class="fact"><strong>Tuzuk-i-Jahangiri</strong> — Jahangir</div>
+        <div class="fact"><strong>Padshahnama</strong> — Court chronicle, Shah Jahan's reign</div>
+        <div class="fact"><strong>Amuktamalyada</strong> — Krishnadeva Raya</div>
+        <div class="fact"><strong>Ramcharitmanas</strong> — Tulsidas</div>
+        <div class="fact"><strong>Chach Nama</strong> — Anonymous, Arab conquest of Sindh</div>
+        <div class="fact"><strong>Tahqiq-i-Hind</strong> — Al-Biruni</div>
+        <div class="fact"><strong>Rihla</strong> — Ibn Battuta</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Important Foreign Visitors</div>
+      <div class="facts" style="flex-direction:column; gap:6px; align-items:flex-start">
+        <div class="fact"><strong>Al-Biruni</strong> — Mahmud of Ghazni's court</div>
+        <div class="fact"><strong>Ibn Battuta</strong> — Muhammad bin Tughlaq's court (Moroccan)</div>
+        <div class="fact"><strong>Nicolo de Conti</strong> — Vijayanagara, under Deva Raya I (Italian)</div>
+        <div class="fact"><strong>Abdur Razzaq</strong> — Vijayanagara, under Deva Raya II (Persian)</div>
+        <div class="fact"><strong>Domingo Paes & Fernao Nuniz</strong> — Vijayanagara (Portuguese)</div>
+        <div class="fact"><strong>Afanasy Nikitin</strong> — Bahmani Kingdom (Russian)</div>
+        <div class="fact"><strong>Thomas Roe</strong> — Jahangir's court (English ambassador)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-icon">🎯</div>
+    <div><strong>Panipat Memory Hook</strong> — Three Battles, Three Outcomes:<br>
+    <strong>1526:</strong> Babur vs Ibrahim Lodi → Mughal Empire founded<br>
+    <strong>1556:</strong> Akbar (Bairam Khan) vs Hemu → Mughal Empire consolidated<br>
+    <strong>1761:</strong> Ahmad Shah Abdali vs Marathas → Maratha northward expansion checked</div>
+  </div>
+
+  <div class="card wide-card" style="border-left-color: var(--rust)">
+    <div class="card-title" style="color:var(--rust)">Frequently Asked UPSC Themes — Medieval India</div>
+    <ul class="point-list">
+      <li>Mansabdari system and its features, and how it differed from the Iqta system (Prelims + Mains GS-I)</li>
+      <li>Bhakti movement saints and their social/religious impact, and Bhakti vs Sufi comparison (GS-I)</li>
+      <li>Architecture: distinguishing features of Delhi Sultanate styles vs Mughal styles, and key monuments</li>
+      <li>Agrarian relations and revenue systems — Zabt, Dahsala, Batai, Kankut, Nasaq</li>
+      <li>Sufi orders — Chishti vs Suhrawardi vs Naqshbandi, attitude to state patronage</li>
+      <li>Trade and economy — medieval guilds, major ports, currency systems (tanka, jital, rupiya)</li>
+      <li>Role of women in the medieval period — Razia Sultana, Nur Jahan, Chand Bibi, Mirabai, Gulbadan Begum</li>
+      <li>Composite/syncretic culture — Indo-Islamic art, language (Urdu's emergence), and music</li>
+      <li>Causes of decline of the Delhi Sultanate and separately, the Mughal Empire — compare structurally</li>
+      <li>Vijayanagara administrative system — Nayankara, Ayagar systems and temple-centred urbanism</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid var(--aged)">
+    <div style="font-family:'Cinzel',serif; font-size:13px; letter-spacing:2px; color:var(--gold)">◆ PD CAMPUS ◆</div>
+    <div style="font-family:'Inter',sans-serif; font-size:12px; color:#999; margin-top:6px">Medieval India Notes · UPSC / State PSC / SSC Edition</div>
+  </div>
+
+</div><!-- .page -->
+</body>
+</html>
