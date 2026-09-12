@@ -37,17 +37,86 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
 h1{font-size:25px;letter-spacing:-.6px;margin:0 0 5px}
 .sub{margin:0;color:var(--muted);font-size:12px}
 .status{font-size:12px;color:var(--muted);white-space:nowrap}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px}
-.card{background:#fff;border:1px solid #e1e1e5;border-radius:13px;padding:14px;min-height:145px;display:flex;flex-direction:column;transition:.15s;box-shadow:0 1px 2px #00000008}
-.card:hover{transform:translateY(-2px);border-color:#a9cbed;box-shadow:0 8px 24px #00000010}
-.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.icon{font-size:23px}.tag{font-size:9px;color:#667;text-transform:uppercase;font-weight:750;letter-spacing:.6px}
-.card h3{font-size:14px;line-height:1.35;margin:12px 0 7px}
-.file{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.open{margin-top:auto;padding-top:12px;color:var(--blue);font-size:11px;font-weight:650;text-decoration:none}
+.library-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:14px;min-height:calc(100vh - 175px)}
+.file-area{min-width:0}
+.file-list-head{height:32px;display:grid;grid-template-columns:minmax(0,1fr) 120px;align-items:center;padding:0 15px;color:#8a8a8f;font-size:9px;font-weight:750;letter-spacing:.7px}
+.grid{display:flex;flex-direction:column;gap:7px}
+.card{background:#fff;border:1px solid #e1e1e5;border-radius:10px;padding:10px 14px;min-height:68px;display:grid;grid-template-columns:42px minmax(0,1fr) 120px;align-items:center;gap:13px;cursor:pointer;transition:.15s;box-shadow:0 1px 2px #00000008}
+.card:hover{transform:none;border-color:#a9cbed;box-shadow:0 4px 16px #00000010}
+.card.selected{border-color:#007aff;background:#f5f9ff;box-shadow:0 0 0 1px #007aff22}
+.top{display:flex;justify-content:center;align-items:center}
+.icon{font-size:22px}.tag{font-size:9px;color:#667;text-transform:uppercase;font-weight:750;letter-spacing:.6px;text-align:center}
+.card h3{font-size:14px;line-height:1.25;margin:0 0 4px;grid-column:2;grid-row:1}
+.file{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;grid-column:2;grid-row:2}
+.card .top{grid-column:1;grid-row:1 / span 2}
+.card .tag{grid-column:3;grid-row:1 / span 2}
+.open{display:none}
 .empty{display:none;text-align:center;color:var(--muted);padding:80px}
-@media(max-width:800px){.sidebar{width:190px;flex-basis:190px}#search{width:230px}}
-@media(max-width:620px){.sidebar{display:none}.path{display:none}.searchWrap{width:100%}#search{width:100%}.grid{grid-template-columns:1fr}}
+
+/* Right preview pane */
+.preview-panel{background:#fff;border:1px solid #dedee3;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-height:600px;position:sticky;top:0;box-shadow:0 1px 3px #00000008}
+.preview-header{padding:14px 15px 11px;border-bottom:1px solid #e5e5e7;display:flex;align-items:flex-start;gap:10px}
+.preview-label{font-size:9px;color:#8a8a8f;font-weight:750;letter-spacing:.8px}
+.preview-header h2{margin:4px 0 0;font-size:15px;line-height:1.25;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.preview-header button{margin-left:auto;border:0;background:#f2f2f7;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:17px}
+.preview-subtitle{padding:11px 15px;color:#6e6e73;font-size:10.5px;line-height:1.4;border-bottom:1px solid #eee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-stage{
+  position:relative;
+  flex:1;
+  min-height:0;
+  height:calc(100vh - 330px);
+  background:#d9d9de;
+  overflow:auto;
+  padding:14px;
+}
+.preview-stage iframe{
+  position:relative;
+  display:block;
+  width:100%;
+  height:900px;
+  min-height:900px;
+  border:0;
+  background:#fff;
+}
+.preview-stage img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  margin:0 auto;
+}
+.preview-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#8a8a8f;font-size:12px;gap:10px}
+.preview-big-icon{font-size:34px;opacity:.55}
+.preview-hit-area{position:absolute;inset:0;z-index:5;cursor:pointer;background:transparent}
+.preview-double-hint{padding:9px 12px;border-top:1px solid #e5e5e7;background:#fff;text-align:center;color:#777;font-size:10px}
+
+#sameTabViewer{position:fixed;inset:0;z-index:10000;display:none;flex-direction:column;background:#e8e8ed}
+#sameTabViewer.show{display:flex}
+.same-tab-toolbar{height:58px;flex:0 0 58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 16px}
+.same-tab-back{border:0;background:#f2f2f7;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:650;cursor:pointer}
+.same-tab-title{font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.same-tab-meta{margin-left:auto;color:var(--muted);font-size:10px}
+.same-tab-body{flex:1;min-height:0;background:#333}
+.same-tab-body iframe{width:100%;height:100%;border:0;background:#fff}
+@media(max-width:900px){.library-layout{grid-template-columns:minmax(0,1fr) 330px}.card{grid-template-columns:38px minmax(0,1fr) 100px}}
+@media(max-width:700px){.sidebar{display:none}.path{display:none}.searchWrap{width:100%}#search{width:100%}.library-layout{display:block}.preview-panel{position:fixed;inset:70px 10px 10px 10px;z-index:3000;min-height:0}.file-list-head{display:none}.card{grid-template-columns:38px minmax(0,1fr)}.card .tag{grid-column:2;grid-row:3;text-align:left}}
+
+/* Scrollable preview pane: show a window of the PDF, not the whole document at once. */
+.preview-panel{height:calc(100vh - 175px);max-height:calc(100vh - 175px);min-height:0}
+.preview-stage{scroll-behavior:smooth;overscroll-behavior:contain}
+.preview-stage iframe{pointer-events:auto}
+@media(max-width:700px){
+  .preview-panel{height:calc(100vh - 80px);max-height:calc(100vh - 80px)}
+  .preview-stage{height:auto;min-height:0}
+  .preview-stage iframe{height:750px;min-height:750px}
+}
+
+
+.pdf-preview-page{background:#fff;margin:0 auto 16px;box-shadow:0 3px 14px #0002;width:100%;max-width:340px}
+.pdf-preview-page canvas{display:block;width:100%;height:auto}
+.pdf-preview-label{text-align:center;padding:6px;font-size:9px;color:#777;background:#fff}
+.pdf-preview-loading{text-align:center;padding:45px 10px;color:#777;font-size:11px}
+.preview-stage{overflow-y:auto!important;overflow-x:hidden!important}
 </style>
 </head>
 <body>
@@ -82,22 +151,49 @@ h1{font-size:25px;letter-spacing:-.6px;margin:0 0 5px}
     <div class="heading">
       <div>
         <h1 id="title">All Files</h1>
-        <p class="sub">Open the original local study files directly from their folders, including the new Test collection.</p>
+        <p class="sub">Click a file to preview it on the right. Double-click the preview to open the full PDF.</p>
       </div>
       <div class="status" id="status"></div>
     </div>
 
-    <div class="grid" id="grid"></div>
-    <div class="empty" id="empty">🔎<br><br>No matching file found.</div>
+    <div class="library-layout">
+      <section class="file-area">
+        <div class="file-list-head"><span>FILE</span><span>TYPE</span></div>
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="empty">🔎<br><br>No matching file found.</div>
+      </section>
+
+      <aside class="preview-panel" id="previewPanel">
+        <div class="preview-header">
+          <div>
+            <div class="preview-label">PREVIEW</div>
+            <h2 id="previewTitle">Select a file</h2>
+          </div>
+          <button id="previewClose" type="button">×</button>
+        </div>
+        <div class="preview-subtitle" id="previewSubtitle">Click any file on the left to see its contents here.</div>
+        <div class="preview-stage" id="previewStage">
+          <div class="preview-placeholder"><div class="preview-big-icon">👁</div><div>Select a PDF to preview</div></div>
+        </div>
+        <div class="preview-double-hint" id="previewHint">Double-click the preview to open the full PDF</div>
+      </aside>
+    </div>
   </main>
 </section>
 </div>
 
+<div id="sameTabViewer" aria-hidden="true">
+  <div class="same-tab-toolbar">
+    <button class="same-tab-back" id="sameTabBack" type="button">← Back to Library</button>
+    <div class="same-tab-title" id="sameTabTitle"></div>
+    <div class="same-tab-meta" id="sameTabMeta"></div>
+  </div>
+  <div class="same-tab-body" id="sameTabBody"></div>
+</div>
 <script>
 const FILES=[
   {folder:"polity",name:"EMERGENCY PROVISIONS .pdf",type:"pdf",title:"Emergency Provisions"},
   {folder:"polity",name:"Polity-Mindmap.pdf",type:"pdf",title:"Polity Mindmap"},
-  {folder:"polity",name:"Path to British control of India.png",type:"png",title:"Path to British Control of India"},
   {folder:"polity",name:"Preamble.pdf",type:"pdf",title:"Preamble"},
   {folder:"polity",name:"CONSTITUENT ASSEMBLY.pdf",type:"pdf",title:"Constituent Assembly"},
   {folder:"polity",name:"Polity-1.pdf",type:"pdf",title:"Polity — Part 1"},
@@ -171,6 +267,7 @@ const FILES=[
   {folder:"test",name:"Festivals_India (4).pdf",type:"pdf",title:"Festivals of India — Set 4"},
   {folder:"test",name:"Maths_Average_Ratio.pdf",type:"pdf",title:"Maths — Average & Ratio"},
   {folder:"test",name:"Answer_Key_Hard.pdf",type:"pdf",title:"Answer Key — Hard"},
+    {folder:"test",name:"Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf",type:"pdf",title:"Swachhand IAS Sambhav Batch — 50 MCQs"},
   {folder:"others",name:"Calender (Class File) .pdf",type:"pdf",title:"Calendar — Class File"},
   {folder:"others",name:"Counting Figure.pdf",type:"pdf",title:"Counting Figure"},
   {folder:"others",name:"Calender class file.pdf",type:"pdf",title:"Calendar Class File"},
@@ -179,7 +276,420 @@ const FILES=[
   {folder:"history",name:"vedic_period_notes.pdf",type:"pdf",title:"Vedic Period Notes"},
   {folder:"history",name:"Stone_Age_.pdf",type:"pdf",title:"Stone Age"},
   {folder:"history",name:"Vedic_Period___Later_vedic_Period.pdf",type:"pdf",title:"Vedic Period & Later Vedic Period"},
-  {folder:"history",name:"Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf",type:"pdf",title:"Swachhand IAS Sambhav Batch — 50 MCQs"},
+  {folder:"history",name:"paraancient.pdf",type:"pdf",title:"Ancient History"},
+  {folder:"history",name:"Sindhu_Saraswati_Civilization.pdf",type:"pdf",title:"Sindhu Saraswati Civilization"},
+  {folder:"history",name:"saraswati_sindhu_notes.pdf",type:"pdf",title:"Saraswati Sindhu Notes"},
+  {folder:"history",name:"MAURYAN EMPIRE.pdf",type:"pdf",title:"Mauryan Empire"},
+  {folder:"history",name:"mind_his.pdf",type:"pdf",title:"Mind History"},
+  {folder:"history",name:"HistoryNotes.pdf",type:"pdf",title:"History Notes"},
+  {folder:"history",name:"VE BK.pdf",type:"pdf",title:"VE BK"}
+];
+
+const ICONS={
+  ALL:"▦",polity:"🏛️","art&culture":"🎨",Geo:"🌍",history:"🏺",others:"📝",test:"📚"
+};
+
+const ORDER=["ALL","polity","art&culture","Geo","history","test","others"];
+const LABELS={
+ ALL:"All Files",polity:"Polity","art&culture":"Art & Culture",Geo:"Geography",
+ history:"History",test:"Test",others:"Others"
+};
+
+let folder="ALL";
+const nav=document.getElementById("nav");
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+const title=document.getElementById("title");
+const crumb=document.getElementById("crumb");
+const status=document.getElementById("status");
+const empty=document.getElementById("empty");
+
+const counts={ALL:FILES.length};
+FILES.forEach(x=>counts[x.folder]=(counts[x.folder]||0)+1);
+document.getElementById("total").textContent=FILES.length;
+
+ORDER.forEach((key,i)=>{
+  const b=document.createElement("button");
+  b.innerHTML=`<span>${ICONS[key]}</span><span>${LABELS[key]}</span><span class="count">${counts[key]||0}</span>`;
+  b.onclick=()=>{
+    folder=key;
+    document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    render();
+  };
+  nav.appendChild(b);
+});
+nav.firstElementChild.classList.add("active");
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+
+function fileURL(x){
+  return encodeURIComponent(x.folder) + "/" + encodeURIComponent(x.name);
+}
+
+function render(){
+  const q=search.value.toLowerCase().trim();
+  const visible=FILES.filter(x=>
+    (folder==="ALL"||x.folder===folder) &&
+    (!q || `${x.title} ${x.name} ${x.folder}`.toLowerCase().includes(q))
+  );
+
+  grid.innerHTML="";
+  visible.forEach(x=>{
+    const card=document.createElement("article");
+    card.className="card";
+    const icon=x.type==="xlsx"?"📊":x.type==="png"?"🖼️":"📕";
+    const displayName=x.name.replace(/^Sambhav_Batch_/i,"").replace(/_/g," ");
+    const label=x.type==="xlsx"?"Excel":x.type==="png"?"Image":"PDF";
+    card.innerHTML=`
+      <div class="top"><span class="icon">${icon}</span></div>
+      <h3>${esc(x.title)}</h3>
+      <div class="file" title="${esc(x.folder+"/"+x.name)}">${esc(displayName)}</div>
+      <span class="tag">${LABELS[x.folder]} • ${label}</span>
+    `;
+    card.addEventListener("click",()=>selectFile(x,card));
+    card.addEventListener("dblclick",()=>openSameTab(x));
+    grid.appendChild(card);
+  });
+
+  title.textContent=folder==="ALL"?"All Files":LABELS[folder];
+  crumb.textContent=folder==="ALL"?"All Files":LABELS[folder];
+  status.textContent=`${visible.length} of ${FILES.length} files`;
+  empty.style.display=visible.length?"none":"block";
+}
+
+
+let selectedFile=null;
+const previewTitle=document.getElementById("previewTitle");
+const previewSubtitle=document.getElementById("previewSubtitle");
+const previewStage=document.getElementById("previewStage");
+
+function selectFile(x,card){
+  selectedFile=x;
+  document.querySelectorAll(".card.selected").forEach(c=>c.classList.remove("selected"));
+  card.classList.add("selected");
+
+  previewTitle.textContent=x.title;
+  previewSubtitle.textContent=x.name;
+  previewStage.innerHTML="";
+  previewStage.ondblclick=null;
+
+  if(x.type==="pdf"){
+    previewStage.innerHTML='<div class="pdf-preview-loading">Loading PDF preview…</div>';
+    previewStage.title="Double-click any page to open the full PDF";
+    previewStage.ondblclick=(e)=>{
+      if(selectedFile) openSameTab(selectedFile);
+    };
+    renderPdfPreview(x);
+    document.getElementById("previewHint").textContent="Scroll through preview • Double-click any page to open the full PDF";
+  }else if(["png","jpg","jpeg","gif","webp","svg"].includes(String(x.type).toLowerCase())){
+    const img=document.createElement("img");
+    img.src=fileURL(x);
+    img.alt=x.title;
+    previewStage.appendChild(img);
+    previewStage.ondblclick=()=>{if(selectedFile)openSameTab(selectedFile)};
+    document.getElementById("previewHint").textContent="Double-click the preview to open the file";
+  }else{
+    previewStage.innerHTML='<div class="preview-placeholder"><div class="preview-big-icon">📄</div><div>No visual preview available</div></div>';
+    document.getElementById("previewHint").textContent="Double-click the preview to open the file";
+  }
+}
+
+async function renderPdfPreview(x){
+  try{
+    const pdfjsLib=await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs");
+    pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+    const pdf=await pdfjsLib.getDocument({url:fileURL(x)}).promise;
+    if(selectedFile!==x)return;
+
+    previewStage.innerHTML="";
+    const maxPages=Math.min(pdf.numPages,8);
+
+    for(let pageNo=1;pageNo<=maxPages;pageNo++){
+      const page=await pdf.getPage(pageNo);
+      const base=page.getViewport({scale:1});
+      const available=Math.max(260,previewStage.clientWidth-32);
+      const scale=Math.min(1.25,available/base.width);
+      const viewport=page.getViewport({scale});
+
+      const holder=document.createElement("div");
+      holder.className="pdf-preview-page";
+
+      const canvas=document.createElement("canvas");
+      const dpr=Math.min(window.devicePixelRatio||1,2);
+      canvas.width=Math.floor(viewport.width*dpr);
+      canvas.height=Math.floor(viewport.height*dpr);
+      canvas.style.width=Math.floor(viewport.width)+"px";
+      canvas.style.height=Math.floor(viewport.height)+"px";
+      holder.appendChild(canvas);
+
+      const label=document.createElement("div");
+      label.className="pdf-preview-label";
+      label.textContent="PAGE "+pageNo;
+      holder.appendChild(label);
+      previewStage.appendChild(holder);
+
+      await page.render({
+        canvasContext:canvas.getContext("2d"),
+        viewport:viewport,
+        transform:dpr!==1?[dpr,0,0,dpr,0,0]:null
+      }).promise;
+    }
+
+    if(pdf.numPages>maxPages){
+      const more=document.createElement("div");
+      more.className="pdf-preview-label";
+      more.textContent="Preview: first "+maxPages+" of "+pdf.numPages+" pages";
+      previewStage.appendChild(more);
+    }
+  }catch(err){
+    console.error(err);
+    previewStage.innerHTML='<div class="pdf-preview-loading"><b>Preview could not be rendered.</b><br><br>Double-click this area to open the full PDF.</div>';
+    previewStage.ondblclick=()=>{if(selectedFile)openSameTab(selectedFile)};
+  }
+}
+
+function openSameTab(x){
+  if(!x)return;
+  const viewer=document.getElementById("sameTabViewer");
+  const body=document.getElementById("sameTabBody");
+  document.getElementById("sameTabTitle").textContent=x.title;
+  document.getElementById("sameTabMeta").textContent=(LABELS[x.folder]||x.folder)+" • "+String(x.type).toUpperCase();
+  body.innerHTML="";
+  const frame=document.createElement("iframe");
+  frame.src=fileURL(x);
+  frame.title=x.title;
+  frame.setAttribute("allowfullscreen","");
+  body.appendChild(frame);
+  viewer.classList.add("show");
+  viewer.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+
+function closeSameTab(){
+  const viewer=document.getElementById("sameTabViewer");
+  viewer.classList.remove("show");
+  viewer.setAttribute("aria-hidden","true");
+  document.getElementById("sameTabBody").innerHTML="";
+  document.body.style.overflow="";
+}
+
+document.getElementById("previewClose").addEventListener("click",()=>{
+  selectedFile=null;
+  document.querySelectorAll(".card.selected").forEach(c=>c.classList.remove("selected"));
+  previewTitle.textContent="Select a file";
+  previewSubtitle.textContent="Click any file on the left to see its contents here.";
+  previewStage.innerHTML='<div class="preview-placeholder"><div class="preview-big-icon">👁</div><div>Select a PDF to preview</div></div>';
+});
+
+document.getElementById("sameTabBack").addEventListener("click",(e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+  closeSameTab();
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && document.getElementById("sameTabViewer").classList.contains("show")) closeSameTab();
+});
+
+search.addEventListener("input",render);
+
+document.getElementById("back").onclick=()=>{
+  folder="ALL";search.value="";
+  document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));
+  nav.firstElementChild.classList.add("active");render();
+};
+document.getElementById("forward").onclick=()=>search.focus();
+
+render();
+</script>
+
+</html>
+
+
+<!-- <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SSC CGL  Material Library</title>
+<style>
+*{box-sizing:border-box}
+:root{
+ --bg:#f5f5f7;--sidebar:#ededf2;--panel:#fff;--line:#d8d8dd;
+ --text:#1d1d1f;--muted:#6e6e73;--blue:#007aff;--soft:#e6f1ff;
+}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+.app{height:100vh;display:flex;overflow:hidden}
+.sidebar{width:235px;flex:0 0 235px;background:var(--sidebar);border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column}
+.brand{padding:4px 10px 20px}
+.brand h2{font-size:18px;margin:0 0 4px;letter-spacing:-.3px}
+.brand p{margin:0;color:var(--muted);font-size:11px}
+.label{font-size:10px;color:#8a8a8f;font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding:0 10px 8px}
+.nav{display:flex;flex-direction:column;gap:3px}
+.nav button{border:0;background:transparent;border-radius:8px;padding:9px 10px;text-align:left;font-size:13px;color:#38383d;cursor:pointer;display:flex;gap:9px;align-items:center}
+.nav button:hover{background:#e2e2e7}
+.nav button.active{background:var(--soft);color:#0066cc;font-weight:650}
+.count{margin-left:auto;color:#8b8b90;font-size:11px}
+.bottom{margin-top:auto;padding:16px 10px 3px;color:#888;font-size:10px;line-height:1.5}
+.content{flex:1;min-width:0;display:flex;flex-direction:column}
+.toolbar{height:70px;flex:0 0 70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 18px}
+.traffic{display:flex;gap:7px;margin-right:5px}.traffic i{width:11px;height:11px;border-radius:50%;background:#d1d1d6}
+.arrows button{border:0;background:transparent;color:#555;font-size:22px;width:27px;height:30px;border-radius:7px;cursor:pointer}
+.arrows button:hover{background:#eeeef1}
+.path{font-size:13px;white-space:nowrap}.path span{color:#999;margin:0 7px}
+.searchWrap{margin-left:auto;position:relative}.searchIcon{position:absolute;left:11px;top:8px;color:#777}
+#search{width:300px;height:34px;border:1px solid #d1d1d6;border-radius:9px;background:#f4f4f6;padding:7px 12px 7px 31px;outline:none;font-size:13px}
+#search:focus{background:#fff;border-color:#8bbcf5;box-shadow:0 0 0 3px #007aff18}
+.main{overflow:auto;padding:23px 26px 35px}
+.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:17px;gap:20px}
+h1{font-size:25px;letter-spacing:-.6px;margin:0 0 5px}
+.sub{margin:0;color:var(--muted);font-size:12px}
+.status{font-size:12px;color:var(--muted);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:12px}
+.card{background:#fff;border:1px solid #e1e1e5;border-radius:13px;padding:14px;min-height:145px;display:flex;flex-direction:column;transition:.15s;box-shadow:0 1px 2px #00000008}
+.card:hover{transform:translateY(-2px);border-color:#a9cbed;box-shadow:0 8px 24px #00000010}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.icon{font-size:23px}.tag{font-size:9px;color:#667;text-transform:uppercase;font-weight:750;letter-spacing:.6px}
+.card h3{font-size:14px;line-height:1.35;margin:12px 0 7px}
+.file{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.open{margin-top:auto;padding-top:12px;color:var(--blue);font-size:11px;font-weight:650;text-decoration:none}
+.empty{display:none;text-align:center;color:var(--muted);padding:80px}
+@media(max-width:800px){.sidebar{width:190px;flex-basis:190px}#search{width:230px}}
+@media(max-width:620px){.sidebar{display:none}.path{display:none}.searchWrap{width:100%}#search{width:100%}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">
+    <h2>📚 Material Library</h2>
+    <p>SSC CGL</p>
+  </div>
+  <div class="label">Folders</div>
+  <div class="nav" id="nav"></div>
+  <div class="bottom">
+    Local study library<br>
+    <span id="total"></span> files indexed
+  </div>
+</aside>
+
+<section class="content">
+  <div class="toolbar">
+    <div class="traffic"><i></i><i></i><i></i></div>
+    <div class="arrows">
+      <button id="back">‹</button><button id="forward">›</button>
+    </div>
+    <div class="path"><b>SSC Material</b><span>›</span><span id="crumb">All Files</span></div>
+    <div class="searchWrap">
+      <span class="searchIcon">⌕</span>
+      <input id="search" placeholder="Search files or topics..." autocomplete="off">
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="heading">
+      <div>
+        <h1 id="title">All Files</h1>
+        <p class="sub">Open the original local study files directly from their folders, including the new Test collection.</p>
+      </div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">🔎<br><br>No matching file found.</div>
+  </main>
+</section>
+</div>
+
+<script>
+const FILES=[
+  {folder:"polity",name:"EMERGENCY PROVISIONS .pdf",type:"pdf",title:"Emergency Provisions"},
+  {folder:"polity",name:"Polity-Mindmap.pdf",type:"pdf",title:"Polity Mindmap"},
+  {folder:"polity",name:"Preamble.pdf",type:"pdf",title:"Preamble"},
+  {folder:"polity",name:"CONSTITUENT ASSEMBLY.pdf",type:"pdf",title:"Constituent Assembly"},
+  {folder:"polity",name:"Polity-1.pdf",type:"pdf",title:"Polity — Part 1"},
+  {folder:"polity",name:"National_Symbols_WhatsApp_Final.pdf",type:"pdf",title:"National Symbols"},
+  {folder:"polity",name:"fr fd dpsp.pdf",type:"pdf",title:"Fundamental Rights & DPSP"},
+  {folder:"polity",name:"Emer_quizpolpity.pdf",type:"pdf",title:"Emergency Quiz — Polity"},
+  {folder:"polity",name:"Indian Polity start.pdf",type:"pdf",title:"Indian Polity — Start"},
+  {folder:"polity",name:"Citizenship of India.pdf",type:"pdf",title:"Citizenship of India"},
+  {folder:"polity",name:"Fundamental Rights ( English).pdf",type:"pdf",title:"Fundamental Rights"},
+  {folder:"art&culture",name:"Udaan Art and Culture.pdf",type:"pdf",title:"Udaan Art and Culture"},
+  {folder:"art&culture",name:"Indian art avermi...gsg.pdf",type:"pdf",title:"Indian Art — Avermi GSG"},
+  {folder:"art&culture",name:" SCHEME 2026 .pdf",type:"pdf",title:"SCHEME 2026"},
+  {folder:"art&culture",name:"militry_ex.pdf",type:"pdf",title:"Military Exercises"},
+  {folder:"art&culture",name:"Ramsar sites.pdf",type:"pdf",title:"Ramsar Sites"},
+  {folder:"art&culture",name:"mind_gk.pdf",type:"pdf",title:"Mind GK"},
+  {folder:"art&culture",name:"Military_Exercises.xlsx",type:"xlsx",title:"Military Exercises"},
+  {folder:"Geo",name:"Geom.pdf",type:"pdf",title:"Geom"},
+  {folder:"Geo",name:"plain2.pdf",type:"pdf",title:"Plain 2"},
+  {folder:"Geo",name:"plains.pdf",type:"pdf",title:"Plains"},
+  {folder:"Geo",name:"Geo_my.pdf",type:"pdf",title:"Geo My"},
+  {folder:"Geo",name:"himalayas.pdf",type:"pdf",title:"Himalayas"},
+  {folder:"Geo",name:"Drainage2.pdf",type:"pdf",title:"Drainage 2"},
+  {folder:"Geo",name:"climatewindmcqs.pdf",type:"pdf",title:"Climate & Winds MCQs"},
+  {folder:"Geo",name:"Geo_notes.pdf",type:"pdf",title:"Geography Notes"},
+  {folder:"Geo",name:"Parmar-Geo.pdf",type:"pdf",title:"Parmar Geography"},
+  {folder:"Geo",name:"universe.pdf",type:"pdf",title:"Universe"},
+  {folder:"Geo",name:"transport.pdf",type:"pdf",title:"Transport"},
+  {folder:"Geo",name:"himalayas2.pdf",type:"pdf",title:"Himalayas 2"},
+  {folder:"Geo",name:"drainagesystem.pdf",type:"pdf",title:"Drainage System"},
+  {folder:"Geo",name:"Atmo_PressueMCQ.pdf",type:"pdf",title:"Atmospheric Pressure MCQ"},
+  {folder:"Geo",name:"Dams of India.pdf",type:"pdf",title:"Dams of India"},
+  {folder:"Geo",name:"clouds_rainfall.pdf",type:"pdf",title:"Clouds & Rainfall"},
+  {folder:"Geo",name:"Sambhav_Batch_SSC_CGL_Test (1).pdf",type:"pdf",title:"Sambhav Batch SSC CGL Test"},
+  {folder:"Geo",name:"Sambhav_Batch_Geography_LatLon_EasyMod_MCQs.pdf",type:"pdf",title:"Sambhav Geography Lat-Lon Easy Mode MCQs"},
+  {folder:"Geo",name:"istlong.pdf",type:"pdf",title:"IST Longitudes"},
+  {folder:"Geo",name:"sambhav_geography_clouds_rainfall.pdf",type:"pdf",title:"Sambhav Geography — Clouds & Rainfall"},
+  {folder:"Geo",name:"soilvegagric.pdf",type:"pdf",title:"Soil, Vegetation & Agriculture"},
+  {folder:"test",name:"Festivals_AnswerKey (2).pdf",type:"pdf",title:"Festivals — Answer Key"},
+  {folder:"test",name:"Geography_Hard (1).pdf",type:"pdf",title:"Geography — Hard"},
+  {folder:"test",name:"Reasoning_SittingArrangements.pdf",type:"pdf",title:"Reasoning — Sitting Arrangements"},
+  {folder:"test",name:"MCQs (2).pdf",type:"pdf",title:"MCQs — Set 2"},
+  {folder:"test",name:"Reasoning_OWS_Hard_MCQs.pdf",type:"pdf",title:"Reasoning — OWS Hard MCQs"},
+  {folder:"test",name:"Reasoning_Direction_Syllogism_Hard.pdf",type:"pdf",title:"Reasoning — Direction & Syllogism Hard"},
+  {folder:"test",name:"LocalBodies_Emergency.pdf",type:"pdf",title:"Local Bodies & Emergency"},
+  {folder:"test",name:"Geography_Atmosphere_MCQs.pdf",type:"pdf",title:"Geography — Atmosphere MCQs"},
+  {folder:"test",name:"Hard_Geography_50_MCQs.pdf",type:"pdf",title:"Geography — Hard 50 MCQs"},
+  {folder:"test",name:"Tribunals_Notes.pdf",type:"pdf",title:"Tribunals — Notes"},
+  {folder:"test",name:"Reasoning_Hard (1).pdf",type:"pdf",title:"Reasoning — Hard"},
+  {folder:"test",name:"Geography_MCQs.pdf",type:"pdf",title:"Geography — MCQs"},
+  {folder:"test",name:"Hard_Amendments_Tribunals.pdf",type:"pdf",title:"Amendments & Tribunals — Hard"},
+  {folder:"test",name:"Geography_Hard_Module.pdf",type:"pdf",title:"Geography — Hard Module"},
+  {folder:"test",name:"Festivals_of_India_MCQs.pdf",type:"pdf",title:"Festivals of India — MCQs"},
+  {folder:"test",name:"Polity_Amendments_Tribunals.pdf",type:"pdf",title:"Polity — Amendments & Tribunals"},
+  {folder:"test",name:"World_Geography_100_MCQs.pdf",type:"pdf",title:"World Geography — 100 MCQs"},
+  {folder:"test",name:"Geography_Moderate.pdf",type:"pdf",title:"Geography — Moderate"},
+  {folder:"test",name:"sambhav_batch_economy_mcqs.pdf",type:"pdf",title:"Economy — MCQs"},
+  {folder:"test",name:"Height_Distance_MCQs.pdf",type:"pdf",title:"Maths — Height & Distance MCQs"},
+  {folder:"test",name:"Constitutional_Amendments.pdf",type:"pdf",title:"Constitutional Amendments"},
+  {folder:"test",name:"Geography_Earth_Oceans.pdf",type:"pdf",title:"Geography — Earth & Oceans"},
+  {folder:"test",name:"Hard_Geography_Earth_Oceans.pdf",type:"pdf",title:"Geography — Earth & Oceans — Hard"},
+  {folder:"test",name:"Geography_Plains_Islands_MCQs.pdf",type:"pdf",title:"Geography — Plains & Islands MCQs"},
+  {folder:"test",name:"Coordinate_Geometry_50_Hard_MCQs.pdf",type:"pdf",title:"Coordinate Geometry — 50 Hard MCQs"},
+  {folder:"test",name:"Reasoning_Calendar_Hard.pdf",type:"pdf",title:"Reasoning — Calendar Hard"},
+  {folder:"test",name:"Geography_Easy_Moderate_MCQs.pdf",type:"pdf",title:"Geography — Easy & Moderate MCQs"},
+  {folder:"test",name:"Paramount_Coaching_Reasoning_MCQs.pdf",type:"pdf",title:"Reasoning MCQs — Paramount Coaching"},
+  {folder:"test",name:"Hard_Polity_Set (1).pdf",type:"pdf",title:"Polity — Hard Set"},
+  {folder:"test",name:"Geography_100 (1).pdf",type:"pdf",title:"Geography — 100 MCQs"},
+  {folder:"test",name:"Geography_Hard_MCQs.pdf",type:"pdf",title:"Geography — Hard MCQs"},
+  {folder:"test",name:"Hard_Amendments_Tribunals (1).pdf",type:"pdf",title:"Amendments & Tribunals — Hard Set 2"},
+  {folder:"test",name:"Maths_Mensuration_Hard.pdf",type:"pdf",title:"Maths — Mensuration Hard"},
+  {folder:"test",name:"Festivals_India (4).pdf",type:"pdf",title:"Festivals of India — Set 4"},
+  {folder:"test",name:"Maths_Average_Ratio.pdf",type:"pdf",title:"Maths — Average & Ratio"},
+  {folder:"test",name:"Answer_Key_Hard.pdf",type:"pdf",title:"Answer Key — Hard"},
+    {folder:"test",name:"Swachhand_IAS_Sambhav_Batch_50_MCQs.pdf",type:"pdf",title:"Swachhand IAS Sambhav Batch — 50 MCQs"},
+  {folder:"others",name:"Calender (Class File) .pdf",type:"pdf",title:"Calendar — Class File"},
+  {folder:"others",name:"Counting Figure.pdf",type:"pdf",title:"Counting Figure"},
+  {folder:"others",name:"Calender class file.pdf",type:"pdf",title:"Calendar Class File"},
+  {folder:"others",name:"Basics of English (Hand-written Notes_New-1 (1).pdf",type:"pdf",title:"Basics of English — Hand-written Notes"},
+  {folder:"others",name:"100 imp. rules of grammar.pdf",type:"pdf",title:"100 Important Rules of Grammar"},
+  {folder:"history",name:"vedic_period_notes.pdf",type:"pdf",title:"Vedic Period Notes"},
+  {folder:"history",name:"Stone_Age_.pdf",type:"pdf",title:"Stone Age"},
+  {folder:"history",name:"Vedic_Period___Later_vedic_Period.pdf",type:"pdf",title:"Vedic Period & Later Vedic Period"},
   {folder:"history",name:"paraancient.pdf",type:"pdf",title:"Ancient History"},
   {folder:"history",name:"Sindhu_Saraswati_Civilization.pdf",type:"pdf",title:"Sindhu Saraswati Civilization"},
   {folder:"history",name:"saraswati_sindhu_notes.pdf",type:"pdf",title:"Saraswati Sindhu Notes"},
@@ -277,4 +787,4 @@ document.getElementById("forward").onclick=()=>search.focus();
 render();
 </script>
 </body>
-</html>
+</html> -->
