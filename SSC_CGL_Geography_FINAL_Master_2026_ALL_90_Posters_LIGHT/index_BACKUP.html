@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SSC CGL Geography — 90+ Poster Master 2026</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#0b1020;color:#eef2ff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow:hidden}
+.app{height:100%;display:grid;grid-template-columns:300px 1fr;grid-template-rows:62px 1fr}
+header{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:10px 16px;background:#121a2d;border-bottom:1px solid #27324d;z-index:5}
+.brand{font-weight:800;letter-spacing:.2px;white-space:nowrap}.count{font-size:12px;opacity:.7}
+.search{margin-left:auto;width:min(360px,35vw);background:#0b1020;border:1px solid #33405e;color:#fff;border-radius:10px;padding:9px 12px;outline:none}
+.toolbar{display:flex;gap:7px}button{border:1px solid #34415f;background:#18233b;color:#fff;border-radius:9px;padding:8px 10px;cursor:pointer}button:hover{background:#22304e}
+aside{overflow:auto;background:#0f1628;border-right:1px solid #27324d;padding:10px}.thumb{display:flex;align-items:center;gap:9px;width:100%;text-align:left;margin-bottom:8px;padding:7px;border-radius:10px;background:#131d33;border:1px solid transparent}.thumb.active{border-color:#7dd3fc;background:#1a2944}.thumb img{width:54px;height:70px;object-fit:cover;border-radius:5px;background:#070b14}.thumb span{font-size:12px;line-height:1.25}
+main{position:relative;overflow:hidden;background:#070b14;display:flex;align-items:center;justify-content:center}#stage{position:relative;transform-origin:center center;user-select:none;cursor:grab}#stage.dragging{cursor:grabbing}#viewer{display:block;max-width:none;max-height:none;box-shadow:0 15px 55px rgba(0,0,0,.45)}
+.overlay{position:absolute;left:14px;bottom:14px;background:rgba(9,14,27,.84);border:1px solid #2e3a57;border-radius:12px;padding:8px 11px;font-size:12px;backdrop-filter:blur(6px)}
+@media(max-width:800px){.app{grid-template-columns:0 1fr}aside{display:none}.search{width:150px}.brand{font-size:13px}}
+</style></head><body><div class="app"><header><div class="brand">📚 SSC CGL Geography — 90+ Posters • 2026</div><div class="count" id="count"></div><input id="search" class="search" placeholder="Search poster #..."/><div class="toolbar"><button onclick="zoom(-1)">−</button><button onclick="fit()">Fit</button><button onclick="zoom(1)">+</button><button onclick="actual()">100%</button><button onclick="prev()">‹</button><button onclick="next()">›</button><button onclick="fs()">⛶</button></div></header><aside id="sidebar"></aside><main id="main"><div id="stage"><img id="viewer" alt="Geography poster" draggable="false"></div><div class="overlay" id="overlay"></div></main></div>
+<script>
+const posters=[{n:1,src:"posters/poster-001.jpg",title:'COVER — SSC CGL GEOGRAPHY UPDATED MASTER'},
+{n:2,src:"posters/poster-002.jpg",title:'Poster 02'},
+{n:3,src:"posters/poster-003.jpg",title:'Poster 03'},
+{n:4,src:"posters/poster-004.jpg",title:'Poster 04'},
+{n:5,src:"posters/poster-005.jpg",title:'Poster 05'},
+{n:6,src:"posters/poster-006.jpg",title:'Poster 06'},
+{n:7,src:"posters/poster-007.jpg",title:'Poster 07'},
+{n:8,src:"posters/poster-008.jpg",title:'Poster 08'},
+{n:9,src:"posters/poster-009.jpg",title:'Poster 09'},
+{n:10,src:"posters/poster-010.jpg",title:'Poster 10'},
+{n:11,src:"posters/poster-011.jpg",title:'Poster 11'},
+{n:12,src:"posters/poster-012.jpg",title:'Poster 12'},
+{n:13,src:"posters/poster-013.jpg",title:'Poster 13'},
+{n:14,src:"posters/poster-014.jpg",title:'Poster 14'},
+{n:15,src:"posters/poster-015.jpg",title:'Poster 15'},
+{n:16,src:"posters/poster-016.jpg",title:'Poster 16'},
+{n:17,src:"posters/poster-017.jpg",title:'Poster 17'},
+{n:18,src:"posters/poster-018.jpg",title:'Poster 18'},
+{n:19,src:"posters/poster-019.jpg",title:'Poster 19'},
+{n:20,src:"posters/poster-020.jpg",title:'Poster 20'},
+{n:21,src:"posters/poster-021.jpg",title:'Poster 21'},
+{n:22,src:"posters/poster-022.jpg",title:'Poster 22'},
+{n:23,src:"posters/poster-023.jpg",title:'Poster 23'},
+{n:24,src:"posters/poster-024.jpg",title:'Poster 24'},
+{n:25,src:"posters/poster-025.jpg",title:'Poster 25'},
+{n:26,src:"posters/poster-026.jpg",title:'Poster 26'},
+{n:27,src:"posters/poster-027.jpg",title:'Poster 27'},
+{n:28,src:"posters/poster-028.jpg",title:'Poster 28'},
+{n:29,src:"posters/poster-029.jpg",title:'Poster 29'},
+{n:30,src:"posters/poster-030.jpg",title:'Poster 30'},
+{n:31,src:"posters/poster-031.jpg",title:'Poster 31'},
+{n:32,src:"posters/poster-032.jpg",title:'Poster 32'},
+{n:33,src:"posters/poster-033.jpg",title:'Poster 33'},
+{n:34,src:"posters/poster-034.jpg",title:'Poster 34'},
+{n:35,src:"posters/poster-035.jpg",title:'Poster 35'},
+{n:36,src:"posters/poster-036.jpg",title:'Poster 36'},
+{n:37,src:"posters/poster-037.jpg",title:'Poster 37'},
+{n:38,src:"posters/poster-038.jpg",title:'Poster 38'},
+{n:39,src:"posters/poster-039.jpg",title:'Poster 39'},
+{n:40,src:"posters/poster-040.jpg",title:'Poster 40'},
+{n:41,src:"posters/poster-041.jpg",title:'Poster 41'},
+{n:42,src:"posters/poster-042.jpg",title:'Poster 42'},
+{n:43,src:"posters/poster-043.jpg",title:'Poster 43'},
+{n:44,src:"posters/poster-044.jpg",title:'Poster 44'},
+{n:45,src:"posters/poster-045.jpg",title:'Poster 45'},
+{n:46,src:"posters/poster-046.jpg",title:'Poster 46'},
+{n:47,src:"posters/poster-047.jpg",title:'Poster 47'},
+{n:48,src:"posters/poster-048.jpg",title:'Poster 48'},
+{n:49,src:"posters/poster-049.jpg",title:'FINAL MASTER 2026 — INDIA + WORLD / ALL POSTERS'},
+{n:50,src:"posters/poster-050.jpg",title:'WORLD ADDENDUM — CONTINUED'},
+{n:51,src:"posters/poster-051.jpg",title:'GLACIERS & ICE CAPS'},
+{n:52,src:"posters/poster-052.jpg",title:'Poster 52'},
+{n:53,src:"posters/poster-053.jpg",title:'Poster 53'},
+{n:54,src:"posters/poster-054.jpg",title:'Poster 54'},
+{n:55,src:"posters/poster-055.jpg",title:'Poster 55'},
+{n:56,src:"posters/poster-056.jpg",title:'Poster 56'},
+{n:57,src:"posters/poster-057.jpg",title:'Poster 57'},
+{n:58,src:"posters/poster-058.jpg",title:'Poster 58'},
+{n:59,src:"posters/poster-059.jpg",title:'Poster 59'},
+{n:60,src:"posters/poster-060.jpg",title:'Poster 60'},
+{n:61,src:"posters/poster-061.jpg",title:'Poster 61'},
+{n:62,src:"posters/poster-062.jpg",title:'Poster 62'},
+{n:63,src:"posters/poster-063.jpg",title:'Poster 63'},
+{n:64,src:"posters/poster-064.jpg",title:'Poster 64'},
+{n:65,src:"posters/poster-065.jpg",title:'Poster 65'},
+{n:66,src:"posters/poster-066.jpg",title:'Poster 66'},
+{n:67,src:"posters/poster-067.jpg",title:'Poster 67'},
+{n:68,src:"posters/poster-068.jpg",title:'Poster 68'},
+{n:69,src:"posters/poster-069.jpg",title:'Poster 69'},
+{n:70,src:"posters/poster-070.jpg",title:'Poster 70'},
+{n:71,src:"posters/poster-071.jpg",title:'Poster 71'},
+{n:72,src:"posters/poster-072.jpg",title:'Poster 72'},
+{n:73,src:"posters/poster-073.jpg",title:'Poster 73'},
+{n:74,src:"posters/poster-074.jpg",title:'Poster 74'},
+{n:75,src:"posters/poster-075.jpg",title:'Poster 75'},
+{n:76,src:"posters/poster-076.jpg",title:'Poster 76'},
+{n:77,src:"posters/poster-077.jpg",title:'Poster 77'},
+{n:78,src:"posters/poster-078.jpg",title:'Poster 78'},
+{n:79,src:"posters/poster-079.jpg",title:'Poster 79'},
+{n:80,src:"posters/poster-080.jpg",title:'Poster 80'},
+{n:81,src:"posters/poster-081.jpg",title:'Poster 81'},
+{n:82,src:"posters/poster-082.jpg",title:'Poster 82'},
+{n:83,src:"posters/poster-083.jpg",title:'Poster 83'},
+{n:84,src:"posters/poster-084.jpg",title:'Poster 84'},
+{n:85,src:"posters/poster-085.jpg",title:'Poster 85'},
+{n:86,src:"posters/poster-086.jpg",title:'Poster 86'},
+{n:87,src:"posters/poster-087.jpg",title:'Poster 87'},
+{n:88,src:"posters/poster-088.jpg",title:'Poster 88'},
+{n:89,src:"posters/poster-089.jpg",title:'Poster 89'},
+{n:90,src:"posters/poster-090.jpg",title:'Poster 90'}];
+let idx=0,scale=1,x=0,y=0,drag=false,sx=0,sy=0,ox=0,oy=0;
+const img=document.getElementById('viewer'),stage=document.getElementById('stage'),main=document.getElementById('main'),overlay=document.getElementById('overlay'),sidebar=document.getElementById('sidebar'),count=document.getElementById('count');
+function renderSidebar(filter=''){sidebar.innerHTML='';posters.forEach((p,i)=>{if(filter && !((String(p.n)).includes(filter)||p.title.toLowerCase().includes(filter.toLowerCase())))return;const b=document.createElement('button');b.className='thumb'+(i===idx?' active':'');b.innerHTML=`<img src="${p.src}"><span><b>${String(p.n).padStart(2,'0')}</b> — ${p.title}</span>`;b.onclick=()=>show(i);sidebar.appendChild(b)})}
+function show(i){idx=(i+posters.length)%posters.length;img.src=posters[idx].src;img.onload=()=>fit();renderSidebar(document.getElementById('search').value.trim());overlay.textContent=`Poster ${idx+1} / ${posters.length} • ${posters[idx].title}`;count.textContent=`${idx+1} / ${posters.length}`;}
+function apply(){stage.style.transform=`translate(${x}px,${y}px) scale(${scale})`}
+function fit(){if(!img.naturalWidth)return;const r=main.getBoundingClientRect();scale=Math.min((r.width-36)/img.naturalWidth,(r.height-36)/img.naturalHeight);x=0;y=0;apply()}
+function actual(){scale=1;x=0;y=0;apply()}
+function zoom(d){scale*=d>0?1.18:.847;x*=d>0?1.18:.847;y*=d>0?1.18:.847;apply()}
+function next(){show(idx+1)}function prev(){show(idx-1)}
+function fs(){document.documentElement.requestFullscreen?.()}
+main.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1:-1)},{passive:false});
+stage.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX;sy=e.clientY;ox=x;oy=y;stage.classList.add('dragging');stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{if(!drag)return;x=ox+e.clientX-sx;y=oy+e.clientY-sy;apply()});
+stage.addEventListener('pointerup',()=>{drag=false;stage.classList.remove('dragging')});
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key===' ')next();else if(e.key==='ArrowLeft')prev();else if(e.key==='+')zoom(1);else if(e.key==='-')zoom(-1);else if(e.key==='0')fit();else if(e.key==='1')actual();});
+window.addEventListener('resize',()=>{if(scale<1.01)fit()});document.getElementById('search').addEventListener('input',e=>renderSidebar(e.target.value.trim()));show(0);
+</script></body></html>
