@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parmar Notes — Reasoning</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+.header{
+  background:linear-gradient(135deg,#172554,#1e40af);
+  color:white;
+  padding:30px 22px 26px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 5px 20px rgba(15,23,42,.15)
+}
+
+.header-inner{max-width:1100px;margin:auto}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  padding:6px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.5px
+}
+
+h1{margin:12px 0 5px;font-size:32px}
+
+.subtitle{
+  margin:0;
+  color:#dbeafe;
+  font-size:15px
+}
+
+.search{
+  margin-top:20px;
+  width:100%;
+  padding:14px 16px;
+  border:0;
+  border-radius:12px;
+  outline:none;
+  font-size:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.12)
+}
+
+.container{
+  max-width:1100px;
+  margin:28px auto;
+  padding:0 18px
+}
+
+.stats{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:22px
+}
+
+.stat{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px 16px;
+  min-width:130px
+}
+
+.stat b{
+  display:block;
+  font-size:20px
+}
+
+.stat span{
+  font-size:12px;
+  color:#64748b
+}
+
+.folder{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:16px;
+  margin:18px 0;
+  overflow:hidden;
+  box-shadow:0 3px 12px rgba(15,23,42,.05)
+}
+
+.folder-head{
+  padding:17px 18px;
+  background:#f8fafc;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  cursor:pointer
+}
+
+.folder-title{
+  display:flex;
+  align-items:center;
+  gap:12px
+}
+
+.folder-icon{font-size:25px}
+
+.folder-name{
+  font-size:18px;
+  font-weight:800
+}
+
+.folder-description{
+  font-size:12px;
+  color:#64748b;
+  margin-top:2px
+}
+
+.count{
+  font-size:12px;
+  background:#dbeafe;
+  color:#1d4ed8;
+  padding:5px 9px;
+  border-radius:999px;
+  font-weight:700;
+  white-space:nowrap
+}
+
+.files{padding:10px}
+
+.file{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 12px;
+  border-radius:11px;
+  margin:3px 0
+}
+
+.file:hover{background:#f1f5f9}
+
+.file-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0
+}
+
+.pdf-icon{
+  width:38px;
+  height:38px;
+  border-radius:9px;
+  background:#fee2e2;
+  color:#dc2626;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:900;
+  flex:none
+}
+
+.file-info{min-width:0}
+
+.file-name{
+  font-weight:650;
+  font-size:14px;
+  word-break:break-word
+}
+
+.file-type{
+  font-size:11px;
+  color:#94a3b8;
+  margin-top:3px;
+  word-break:break-all
+}
+
+.open{
+  text-decoration:none;
+  background:#1d4ed8;
+  color:white;
+  padding:9px 13px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:750;
+  white-space:nowrap
+}
+
+.open:hover{background:#1e3a8a}
+
+.empty{
+  padding:25px;
+  text-align:center;
+  color:#64748b;
+  display:none
+}
+
+.footer{
+  text-align:center;
+  color:#94a3b8;
+  font-size:12px;
+  padding:25px
+}
+
+/* PDF PREVIEW MODAL */
+.preview-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.78);
+  backdrop-filter:blur(5px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:1000;
+}
+.preview-modal.show{display:flex}
+
+.preview-box{
+  width:min(1050px,100%);
+  height:min(88vh,850px);
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  display:flex;
+  flex-direction:column;
+}
+
+.preview-top{
+  min-height:62px;
+  padding:12px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid #e5e7eb;
+  background:#fff;
+}
+
+.preview-title{
+  min-width:0;
+  font-weight:800;
+  font-size:15px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.preview-actions{
+  display:flex;
+  gap:8px;
+  flex:none;
+}
+
+.preview-btn{
+  border:0;
+  text-decoration:none;
+  cursor:pointer;
+  padding:9px 12px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:750;
+}
+
+.preview-open{
+  background:#1d4ed8;
+  color:#fff;
+}
+
+.preview-close{
+  background:#e5e7eb;
+  color:#172033;
+}
+
+.preview-frame{
+  width:100%;
+  height:100%;
+  border:0;
+  background:#eef2f7;
+}
+
+.file{
+  cursor:pointer;
+}
+
+.file .open{
+  cursor:pointer;
+  position:relative;
+  z-index:2;
+}
+
+.preview-hint{
+  font-size:11px;
+  color:#64748b;
+  margin-top:3px;
+}
+
+@media(max-width:650px){
+  h1{font-size:25px}
+  .header{padding:23px 16px}
+  .container{padding:0 10px}
+  .file{align-items:flex-start}
+  .open{padding:8px 10px}
+  .file-name{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="badge">SSC • REASONING</span>
+    <h1>📚 Parmar Notes</h1>
+    <p class="subtitle">Reasoning Fast Revision • Kamal Sir</p>
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="🔎 Search topic or PDF name..."
+    >
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="stats">
+    <div class="stat">
+      <b id="folderCount">3</b>
+      <span>Folders</span>
+    </div>
+
+    <div class="stat">
+      <b id="fileCount">0</b>
+      <span>Total PDFs</span>
+    </div>
+
+    <div class="stat">
+      <b id="visibleCount">0</b>
+      <span>Showing</span>
+    </div>
+  </div>
+
+  <div id="library"></div>
+
+  <div id="noResults" class="empty">
+    No matching PDF found.
+  </div>
+
+</main>
+
+<!-- PDF PREVIEW MODAL -->
+<div id="previewModal" class="preview-modal" onclick="closePreview(event)">
+  <div class="preview-box" onclick="event.stopPropagation()">
+
+    <div class="preview-top">
+      <div>
+        <div id="previewTitle" class="preview-title">PDF Preview</div>
+        <div class="preview-hint">Preview first • Open full PDF only when ready</div>
+      </div>
+
+      <div class="preview-actions">
+        <a id="fullPdf" class="preview-btn preview-open"
+           href="#" target="_blank" rel="noopener">
+          Open Full PDF ↗
+        </a>
+
+        <button class="preview-btn preview-close"
+                onclick="closePreview()">
+          ✕ Close
+        </button>
+      </div>
+    </div>
+
+    <iframe id="previewFrame"
+            class="preview-frame"
+            title="PDF Preview">
+    </iframe>
+
+  </div>
+</div>
+
+<div class="footer">
+  Parmar Notes • Reasoning Revision Library • Click a file to Preview
+</div>
+
+<script>
+
+/*
+=========================================================
+IMPORTANT FOLDER STRUCTURE
+=========================================================
+
+Parmar/
+│
+├── index_parmar.html   ← THIS HTML FILE
+│
+├── Rea/
+│   ├── Kamal Sir revision PDFs...
+│
+├── set-reasoning/
+│   ├── Topic-wise set PDFs...
+│
+└── MindMap/
+    ├── BIOLOGY.pdf
+    ├── CHEMISTRY.pdf
+    ├── ECONOMICS.pdf
+    ├── GEOGRAPHY.pdf
+    ├── HISTORY.pdf
+    ├── PHYSICS.pdf
+    ├── POLITY.pdf
+    └── STATIC GK.pdf
+
+Because this HTML is already INSIDE Parmar,
+PDF links MUST start with "./Rea/" or "./set-reasoning/".
+Do NOT use "Parmar/Rea/".
+=========================================================
+*/
+
+const folders = [
+
+  {
+    name:"Rea",
+    icon:"🧠",
+    description:"Fast Revision / Annotation — Kamal Sir",
+
+    files:[
+      ["ANALOGY & SIMILARITY - ANNOTATION - BY KAMAL SIR.pdf","Analogy & Similarity"],
+      ["ANALYTICAL - ANNOTATION - BY KAMAL SIR.pdf","Analytical Reasoning"],
+      ["ARITHMETIC REASONING - ANNOTATION - BY KAMAL SIR.pdf","Arithmetic Reasoning"],
+      ["BLOOD RELATION - ANNOTATION - BY KAMAL SIR.pdf","Blood Relation"],
+      ["CALENDAR - ANNOTATION - BY KAMAL SIR.pdf","Calendar"],
+      ["CODING DECODING - ANNOTATION - BY KAMAL SIR.pdf","Coding-Decoding"],
+      ["COUNTING FIGURES - ANNOTATION - BY KAMAL SIR.pdf","Counting Figures"],
+      ["DIRECTION - ANNOTATED PDF.pdf","Direction"],
+      ["MATHEMATICAL OPERATIONS ANNOTATED PDF - BY KAMAL SIR.pdf","Mathematical Operations"],
+      ["NON VERBAL SERIES - ANNOTATION - BY KAMAL SIR.pdf","Non-Verbal Series"],
+      ["NUMBER & LETTER SERIES - ANNOTATION - BY KAMAL SIR.pdf","Number & Letter Series"],
+      ["ORDER & RANKING - ANNOTATION - BY KAMAL SIR.pdf","Order & Ranking"],
+      ["PUZZLE  - ANNOTATION - BY KAMAL SIR.pdf","Puzzle"],
+      ["REASONING GD 2026 - SHOT 1.pdf","Reasoning GD 2026 — Shot 1"],
+      ["REASONING GD 2026 - SHOT 2.pdf","Reasoning GD 2026 — Shot 2"],
+      ["REASONING GD 2026 - SHOT 3.pdf","Reasoning GD 2026 — Shot 3"],
+      ["REASONING GD 2026 - SHOT 4.pdf","Reasoning GD 2026 — Shot 4"],
+      ["SITTING ARRANGEMENT - ANNOTATION - BY KAMAL SIR.pdf","Sitting Arrangement"],
+      ["SYLLOGISM - ANNOTATION - BY KAMAL SIR.pdf","Syllogism"]
+    ]
+  },
+
+  {
+    name:"set-reasoning",
+    icon:"📘",
+    description:"Reasoning topic-wise set practice",
+
+    files:[
+      ["ANALOGY & SIMILARITY.pdf","Analogy & Similarity"],
+      ["ANALYTICAL.pdf","Analytical Reasoning"],
+      ["ARITHMETIC REASONING.pdf","Arithmetic Reasoning"],
+      ["BLOOD RELATION.pdf","Blood Relation"],
+      ["CALENDAR.pdf","Calendar"],
+      ["CODING DECODING.pdf","Coding-Decoding"],
+      ["COUNTING FIGURES.pdf","Counting Figures"],
+      ["DIRECTION.pdf","Direction"],
+      ["MATHEMATICAL OPERATIONS.pdf","Mathematical Operations"],
+      ["NON VERBAL SERIES.pdf","Non-Verbal Series"],
+      ["NUMBER & LETTERS.pdf","Number & Letters"],
+      ["ORDER & RANKING.pdf","Order & Ranking"],
+      ["PUZZLE.pdf","Puzzle"],
+      ["SITTING ARRANGEMENT.pdf","Sitting Arrangement"],
+      ["SYLLOGISM.pdf","Syllogism"]
+    ]
+  },
+
+  {
+    name:"MindMap",
+    icon:"🗺️",
+    description:"SSC subject-wise mind maps",
+
+    files:[
+      ["BIOLOGY.pdf","Biology"],
+      ["CHEMISTRY.pdf","Chemistry"],
+      ["ECONOMICS.pdf","Economics"],
+      ["GEOGRAPHY.pdf","Geography"],
+      ["HISTORY.pdf","History"],
+      ["PHYSICS.pdf","Physics"],
+      ["POLITY.pdf","Polity"],
+      ["STATIC GK.pdf","Static GK"]
+    ]
+  }
+
+];
+
+const library = document.getElementById("library");
+const search = document.getElementById("search");
+const noResults = document.getElementById("noResults");
+
+const total = folders.reduce(
+  (number, folder) => number + folder.files.length,
+  0
+);
+
+document.getElementById("fileCount").textContent = total;
+document.getElementById("visibleCount").textContent = total;
+
+
+/* Safely create a URL for local PDF files */
+function pdfPath(folderName, fileName){
+
+  return "./"
+    + encodeURIComponent(folderName)
+    + "/"
+    + encodeURIComponent(fileName);
+}
+
+
+/* Escape text before putting it into HTML */
+function escapeHtml(text){
+
+  return text.replace(/[&<>"']/g, function(match){
+
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[match];
+
+  });
+
+}
+
+
+/* Render complete library */
+function render(query=""){
+
+  library.innerHTML = "";
+
+  let shown = 0;
+
+  query = query.toLowerCase().trim();
+
+
+  folders.forEach((folder,index)=>{
+
+    const matches = folder.files.filter(([file,title])=>{
+
+      return !query
+        || file.toLowerCase().includes(query)
+        || title.toLowerCase().includes(query);
+
+    });
+
+
+    if(matches.length === 0) return;
+
+    shown += matches.length;
+
+
+    const section = document.createElement("section");
+
+    section.className = "folder";
+
+
+    section.innerHTML = `
+
+      <div class="folder-head" onclick="toggleFolder(${index})">
+
+        <div class="folder-title">
+
+          <span class="folder-icon">
+            ${folder.icon}
+          </span>
+
+          <div>
+
+            <div class="folder-name">
+              ${escapeHtml(folder.name)}
+            </div>
+
+            <div class="folder-description">
+              ${escapeHtml(folder.description)}
+            </div>
+
+          </div>
+
+        </div>
+
+        <span class="count">
+          ${matches.length} PDFs
+        </span>
+
+      </div>
+
+      <div class="files" id="folder-${index}"></div>
+
+    `;
+
+
+    library.appendChild(section);
+
+
+    const filesEl = section.querySelector(".files");
+
+
+    matches.forEach(([file,title])=>{
+
+      const row = document.createElement("div");
+
+      row.className = "file";
+
+
+      const href = pdfPath(folder.name,file);
+
+
+      row.innerHTML = `
+
+        <div class="file-left">
+
+          <div class="pdf-icon">
+            PDF
+          </div>
+
+          <div class="file-info">
+
+            <div class="file-name">
+              ${escapeHtml(title)}
+            </div>
+
+            <div class="file-type">
+              ${escapeHtml(file)}
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <a
+          class="open"
+          href="${href}"
+          target="_blank"
+          rel="noopener"
+          onclick="event.stopPropagation()"
+        >
+          Open Full PDF ↗
+        </a>
+
+      `;
+
+      /* Clicking anywhere else on the PDF row opens the preview */
+      row.addEventListener("click", function(){
+        openPreview(href, title);
+      });
+
+      filesEl.appendChild(row);
+
+    });
+
+  });
+
+
+  document.getElementById("visibleCount").textContent = shown;
+
+  noResults.style.display = shown ? "none" : "block";
+
+}
+
+
+/* Collapse / expand folders */
+function toggleFolder(index){
+
+  const element =
+    document.getElementById("folder-"+index);
+
+  if(!element) return;
+
+  element.style.display =
+    element.style.display === "none"
+      ? "block"
+      : "none";
+
+}
+
+
+/* PDF PREVIEW */
+const previewModal = document.getElementById("previewModal");
+const previewFrame = document.getElementById("previewFrame");
+const previewTitle = document.getElementById("previewTitle");
+const fullPdf = document.getElementById("fullPdf");
+
+function openPreview(href, title){
+
+  previewTitle.textContent = title;
+  fullPdf.href = href;
+
+  /*
+    Browser PDF viewer is loaded inside the modal.
+    #page=1 asks supported browsers to start on page 1.
+  */
+  previewFrame.src = href + "#page=1";
+
+  previewModal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closePreview(event){
+
+  if(event && event.target !== previewModal) return;
+
+  previewModal.classList.remove("show");
+  previewFrame.src = "";
+  document.body.style.overflow = "";
+}
+
+/* ESC closes preview */
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape"){
+    closePreview();
+  }
+});
+
+
+/* Search */
+search.addEventListener("input",function(){
+
+  render(this.value);
+
+});
+
+
+/* Initial render */
+render();
+
+</script>
+
+</body>
+</html>
