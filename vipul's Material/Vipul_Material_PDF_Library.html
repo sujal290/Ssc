@@ -51,6 +51,16 @@ h1{font-size:25px;letter-spacing:-.6px;margin:0 0 5px}
 .card .top{grid-column:1;grid-row:1 / span 2}
 .card .tag{grid-column:3;grid-row:1 / span 2}
 .open{display:none}
+.file-actions{grid-column:3;grid-row:3;display:flex;justify-content:flex-end;gap:5px;margin-top:6px}
+.file-actions button{border:1px solid #d5d5da;background:#f7f7f9;color:#333;padding:5px 8px;border-radius:7px;font-size:9px;cursor:pointer}
+.file-actions button:hover{background:#e9f3ff;border-color:#9fc9f5;color:#0066cc}
+.file-actions .pdf-btn{background:#fff5f4;border-color:#f0c8c4;color:#c0392b}
+.file-actions .pdf-btn:hover{background:#ffeceb;border-color:#e6a7a1;color:#a93226}
+@media(max-width:700px){
+  .card{grid-template-columns:38px minmax(0,1fr)}
+  .file-actions{grid-column:2;grid-row:4;justify-content:flex-start}
+}
+
 .empty{display:none;text-align:center;color:var(--muted);padding:80px}
 
 /* Right preview pane */
@@ -374,9 +384,25 @@ function render(){
       <h3>${esc(x.title)}</h3>
       <div class="file" title="${esc(x.folder+"/"+x.name)}">${esc(displayName)}</div>
       <span class="tag">${LABELS[x.folder]} • ${label}</span>
+      <div class="file-actions">
+        <button type="button" class="preview-btn">👁 Preview</button>
+        <button type="button" class="pdf-btn">📄 PDF</button>
+      </div>
     `;
     card.addEventListener("click",()=>selectFile(x,card));
     card.addEventListener("dblclick",()=>openSameTab(x));
+
+    card.querySelector(".preview-btn").addEventListener("click",(e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      selectFile(x,card);
+    });
+
+    card.querySelector(".pdf-btn").addEventListener("click",(e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      openSameTab(x);
+    });
     grid.appendChild(card);
   });
 
