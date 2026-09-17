@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SCO Summit 2026 — SSC Revision</title>
+<style>
+:root{
+  --navy:#0b1730;--blue:#2563eb;--blue2:#1d4ed8;--sky:#eff6ff;
+  --bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;
+  --line:#e2e8f0;--green:#15803d;--greenbg:#dcfce7;
+  --yellow:#facc15;--red:#dc2626;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:linear-gradient(180deg,#101c37,#0b1327);color:#fff;padding:18px 12px;z-index:1000;display:flex;flex-direction:column}
+.brand{display:flex;gap:10px;align-items:center;padding:9px 11px 20px;border-bottom:1px solid #ffffff18}
+.brand-icon{width:38px;height:38px;border-radius:11px;background:#2563eb;display:grid;place-items:center;font-size:20px}
+.brand b{display:block;font-size:15px}.brand small{color:#91a4c7;font-size:9px}
+.label{color:#7183a4;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:18px 11px 8px}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{border:0;background:transparent;color:#b9c5d9;border-radius:10px;padding:10px;display:flex;align-items:center;gap:9px;text-align:left;cursor:pointer;font:inherit}
+.nav button:hover,.nav button.active{background:#2563eb;color:white}
+.nav .ico{width:24px;text-align:center}.nav span:last-child{font-size:12px;font-weight:650}
+.sidefoot{margin-top:auto;border-top:1px solid #ffffff18;padding:12px 11px;color:#7183a4;font-size:9px;line-height:1.5}
+.main{margin-left:245px}
+.hero{background:linear-gradient(135deg,#12234d,#1d4ed8);color:#fff;padding:28px 30px 30px;position:sticky;top:0;z-index:20;box-shadow:0 5px 22px #0f172a20}
+.hero-inner{max-width:1100px;margin:auto}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#ffffff18;color:#dbeafe;font-size:9px;font-weight:800;letter-spacing:.8px}
+h1{margin:11px 0 5px;font-size:29px;letter-spacing:-.5px}
+.hero p{margin:0;color:#cbdcff;font-size:13px}
+.search{margin-top:18px;width:100%;height:45px;border:0;border-radius:11px;padding:0 15px;font-size:13px;outline:0}
+.wrap{max-width:1100px;margin:auto;padding:24px 25px 45px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:18px}.stat span{font-size:10px;color:var(--muted)}
+.section{scroll-margin-top:125px;margin:18px 0}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:10px}
+.section-title h2{margin:0;font-size:19px}.section-title span{font-size:10px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 12px #0f172a08;overflow:hidden}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.fact{padding:14px;border:1px solid var(--line);background:#fff;border-radius:12px}
+.fact h3{margin:0 0 6px;font-size:12px;color:#1d4ed8}.fact p{margin:0;font-size:11.5px;line-height:1.55;color:#475569}
+.timeline{display:grid;gap:8px;padding:14px}
+.item{display:flex;gap:12px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #edf1f6}
+.year{min-width:64px;font-weight:850;color:#1d4ed8;font-size:11px}.item div:last-child{font-size:11.5px;line-height:1.5}
+.highlight{background:#eff6ff;border-left:4px solid #2563eb;padding:13px 14px;font-size:11.5px;line-height:1.6}
+.pillrow{display:flex;gap:7px;flex-wrap:wrap;padding:14px}
+.pill{background:#f1f5f9;border:1px solid var(--line);padding:7px 9px;border-radius:999px;font-size:10px;font-weight:700}
+.question{padding:16px;border-bottom:1px solid var(--line)}
+.question:last-child{border-bottom:0}
+.qtext{font-size:12.5px;font-weight:750;line-height:1.5;margin-bottom:9px}
+.options{display:grid;gap:6px}
+.option{border:1px solid #dbe3ed;background:#fff;border-radius:8px;padding:8px 10px;text-align:left;font-size:11px;cursor:pointer}
+.option:hover{background:#f8fafc}
+.option.correct{background:var(--greenbg);border-color:#86efac;color:var(--green);font-weight:750}
+.option.wrong{background:#fee2e2;border-color:#fecaca;color:#b91c1c}
+.answer{display:none;margin-top:8px;font-size:10px;color:var(--green);font-weight:800}
+.question.done .answer{display:block}
+.revision{padding:15px}
+.revision ul{margin:0;padding-left:20px}.revision li{margin:6px 0;font-size:11.5px;line-height:1.5}
+.topbtn{position:fixed;right:18px;bottom:18px;width:38px;height:38px;border:0;border-radius:50%;background:#2563eb;color:white;cursor:pointer;display:none}
+.empty{display:none;text-align:center;padding:30px;color:var(--muted);background:white;border:1px dashed #cbd5e1;border-radius:12px}
+.footer{text-align:center;color:#94a3b8;font-size:9px;padding:0 20px 30px}
+.menu{display:none}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:.2s;width:245px}.sidebar.open{transform:translateX(0)}
+ .main{margin-left:0}.menu{display:block;position:fixed;top:12px;left:12px;z-index:1100;width:40px;height:40px;border:0;border-radius:10px;background:white;box-shadow:0 5px 18px #0003;font-size:18px}
+ .overlay{display:none;position:fixed;inset:0;background:#0f172a88;z-index:900}.overlay.show{display:block}
+ .hero{padding:21px 16px 23px}.hero h1{padding-left:47px;font-size:24px}.hero p{padding-left:47px}.hero .badge{margin-left:47px}
+ .wrap{padding:17px 11px 35px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-icon">🌐</div><div><b>SCO 2026</b><small>SSC REVISION</small></div></div>
+  <div class="label">QUICK NAVIGATION</div>
+  <nav class="nav">
+    <button class="active" onclick="go('overview')"><span class="ico">📌</span><span>Overview</span></button>
+    <button onclick="go('summit')"><span class="ico">🏛️</span><span>26th Summit</span></button>
+    <button onclick="go('india')"><span class="ico">🇮🇳</span><span>India & PM Address</span></button>
+    <button onclick="go('declaration')"><span class="ico">📜</span><span>Bishkek Declaration</span></button>
+    <button onclick="go('initiatives')"><span class="ico">⚡</span><span>Key Initiatives</span></button>
+    <button onclick="go('questions')"><span class="ico">❓</span><span>Revision Questions</span></button>
+    <button onclick="go('revision')"><span class="ico">🧠</span><span>30-Second Revision</span></button>
+    <button onclick="go('sourcepdf')"><span class="ico">📑</span><span>Original PDF</span></button>
+  </nav>
+  <div class="sidefoot">Based on the uploaded SCO Summit 2026 PDF.<br>28 pages • Notes + Questions</div>
+</aside>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="main">
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">SSC • CURRENT AFFAIRS • 2026</span>
+    <h1>🌐 SCO Summit 2026</h1>
+    <p>Complete exam-oriented revision notes & practice questions</p>
+    <input id="search" class="search" placeholder="🔎 Search SCO, Bishkek, Pakistan, India, cybersecurity...">
+  </div>
+</header>
+
+<main class="wrap">
+
+<div class="stats">
+  <div class="stat"><b>2001</b><span>SCO Established</span></div>
+  <div class="stat"><b>10</b><span>Member States</span></div>
+  <div class="stat"><b>26th</b><span>Summit</span></div>
+  <div class="stat"><b>7</b><span>Revision Questions</span></div>
+</div>
+
+<section class="section" id="overview">
+  <div class="section-title"><h2>SCO — Basic Facts</h2><span>Foundation</span></div>
+  <div class="grid">
+    <div class="fact"><h3>What is SCO?</h3><p>A Eurasian political, economic and security alliance. The uploaded material describes it as the world's largest regional organisation in terms of geographical coverage and population.</p></div>
+    <div class="fact"><h3>Established</h3><p>15 June 2001. Headquarters: Beijing, China.</p></div>
+    <div class="fact"><h3>Shanghai Five</h3><p>The SCO originated as the Shanghai Five in 1996 to address regional security and border-related concerns.</p></div>
+    <div class="fact"><h3>Expansion</h3><p>India and Pakistan became full members in 2017. Iran joined in 2023 and Belarus joined in 2024.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title"><h2>Founding Members</h2><span>2001</span></div>
+  <div class="card"><div class="pillrow">
+    <span class="pill">🇨🇳 China</span><span class="pill">🇷🇺 Russia</span><span class="pill">🇰🇿 Kazakhstan</span>
+    <span class="pill">🇰🇬 Kyrgyzstan</span><span class="pill">🇹🇯 Tajikistan</span><span class="pill">🇺🇿 Uzbekistan</span>
+  </div></div>
+</section>
+
+<section class="section" id="summit">
+  <div class="section-title"><h2>26th SCO Summit — 2026</h2><span>Bishkek, Kyrgyzstan</span></div>
+  <div class="card">
+    <div class="timeline">
+      <div class="item"><div class="year">31 Aug–1 Sep</div><div>The 26th SCO Summit took place in <b>Bishkek, Kyrgyzstan</b>, marking the 25th anniversary of the bloc.</div></div>
+      <div class="item"><div class="year">Theme</div><div><b>“25 Years of the SCO: Together for Sustainable Peace, Development and Prosperity”</b></div></div>
+      <div class="item"><div class="year">Host</div><div>Kyrgyz President <b>Sadyr Japarov</b>, closing Kyrgyzstan's 2025–2026 rotating chairmanship.</div></div>
+      <div class="item"><div class="year">2026–27</div><div>Pakistan assumed the SCO chairmanship for the 2026–27 term. Its theme: <b>“Turning Vision into Action: Connectivity, Innovation and Shared Prosperity”</b>.</div></div>
+      <div class="item"><div class="year">Tourism</div><div><b>Lahore</b> received the status of SCO Tourism and Cultural Capital for 2026–2027.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="india">
+  <div class="section-title"><h2>India & PM Modi's Address</h2><span>Exam Focus</span></div>
+  <div class="grid">
+    <div class="fact"><h3>Three-Pillar Framework</h3><p><b>Security, Connectivity and Opportunity</b> were highlighted by Prime Minister Narendra Modi at the summit.</p></div>
+    <div class="fact"><h3>Terrorism</h3><p>He called for dismantling the ecosystem of terror financing, radicalization and safe havens, and stated that terrorism can never be a strategic asset for any state.</p></div>
+    <div class="fact"><h3>Afghanistan</h3><p>India's humanitarian aid to Afghanistan was highlighted, along with the link between Eurasian peace and Afghanistan's stability.</p></div>
+    <div class="fact"><h3>Kabul</h3><p>The address urged for an inclusive government in Kabul.</p></div>
+  </div>
+</section>
+
+<section class="section" id="declaration">
+  <div class="section-title"><h2>Bishkek Declaration</h2><span>Key outcomes</span></div>
+  <div class="card">
+    <div class="revision">
+      <ul>
+        <li>Covered multilateral cooperation in politics, security, trade, investment, energy, industry, ecology, tourism and new technologies.</li>
+        <li>Leaders adopted the Bishkek Declaration along with <b>four MoUs</b> and <b>over twenty decisions</b>.</li>
+        <li>Areas included climate action, energy conservation, nuclear safety and digital cooperation.</li>
+        <li>The declaration addressed counter-terrorism and the “three evils”: <b>terrorism, separatism and extremism</b>.</li>
+        <li>The uploaded material records positions on Iran and West Asia, including support for diplomatic resolutions and Iran's peaceful nuclear programme under the NPT.</li>
+        <li>English was approved for official/working-language recognition within the SCO Charter framework, alongside the earlier Russian and Chinese framework described in the material.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="initiatives">
+  <div class="section-title"><h2>Major Initiatives & Agreements</h2><span>2026</span></div>
+  <div class="grid">
+    <div class="fact"><h3>🛡️ Cybersecurity</h3><p>2026–2028 International Information Security Cooperation Plan to coordinate responses to cyber threats and digital sabotage.</p></div>
+    <div class="fact"><h3>💊 Anti-Narcotics</h3><p>Stricter regulatory frameworks for the SCO Anti-Narcotics Centre, which the material says will operate out of Dushanbe, targeting cross-border trafficking and synthetic drugs through 2030.</p></div>
+    <div class="fact"><h3>🌱 Green Technology</h3><p>Green Technology Corridor roadmap for <b>2026–2030</b>, covering clean-energy efficiency, climate adaptation and sustainable industrial innovation.</p></div>
+    <div class="fact"><h3>🌿 Biodiversity</h3><p>Joint Action Plan for Conservation and Sustainable Management of Biodiversity for <b>2026–2031</b>.</p></div>
+    <div class="fact"><h3>🚢 Connectivity</h3><p>Action Plan for Development of Ports and Logistics Centres for <b>2026–2030</b>, including transit infrastructure and automated digital customs systems.</p></div>
+    <div class="fact"><h3>🔬 India-led Initiatives</h3><p>SCO Civilisation Dialogue Forum, Young Scientist Forum and Young Author's Conclave were listed among Indian-led proposals.</p></div>
+  </div>
+</section>
+
+<section class="section" id="questions">
+  <div class="section-title"><h2>Revision Questions</h2><span>Click an option</span></div>
+  <div class="card" id="questionBox"></div>
+</section>
+
+<section class="section" id="revision">
+  <div class="section-title"><h2>🧠 30-Second Revision</h2><span>Last-minute recall</span></div>
+  <div class="card">
+    <div class="revision">
+      <ul>
+        <li><b>SCO:</b> Eurasian political, economic and security alliance.</li>
+        <li><b>Established:</b> 15 June 2001 • Headquarters: Beijing.</li>
+        <li><b>Origin:</b> Shanghai Five, 1996.</li>
+        <li><b>India + Pakistan:</b> Full members, 2017.</li>
+        <li><b>Iran:</b> 2023 • <b>Belarus:</b> 2024.</li>
+        <li><b>26th Summit:</b> Bishkek, Kyrgyzstan • 31 Aug–1 Sep 2026.</li>
+        <li><b>Theme:</b> 25 Years of the SCO: Together for Sustainable Peace, Development and Prosperity.</li>
+        <li><b>Pakistan chairmanship:</b> 2026–27.</li>
+        <li><b>Lahore:</b> SCO Tourism and Cultural Capital, 2026–27.</li>
+        <li><b>Three pillars:</b> Security • Connectivity • Opportunity.</li>
+        <li><b>Green Technology Corridor:</b> 2026–2030.</li>
+        <li><b>Biodiversity Action Plan:</b> 2026–2031.</li>
+        <li><b>Ports & Logistics Action Plan:</b> 2026–2030.</li>
+        <li><b>Cybersecurity Plan:</b> 2026–2028.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div id="empty" class="empty">No matching topic found.</div>
+</main>
+
+<section class="section" id="sourcepdf">
+  <div class="section-title">
+    <h2>📑 Original SCO Summit 2026 PDF</h2>
+    <span>28 pages</span>
+  </div>
+  <div class="card" style="padding:14px">
+    <div class="highlight">
+      The original uploaded PDF is included with this HTML. Keep
+      <b>SCO_Summit_2026_Source.pdf</b> in the same folder as this HTML file.
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+      <a href="./hismedimmg/26th SCO Summit.pdf" target="_blank"
+         style="display:inline-block;text-decoration:none;background:#2563eb;color:#fff;padding:9px 12px;border-radius:8px;font-size:11px;font-weight:750">
+        Open Original PDF ↗
+      </a>
+      <a href="./hismedimmg/26th SCO Summit.pdf#page=1" target="_blank"
+         style="display:inline-block;text-decoration:none;background:#eff6ff;color:#1d4ed8;padding:9px 12px;border-radius:8px;font-size:11px;font-weight:750">
+        Preview PDF ↗
+      </a>
+    </div>
+    <iframe
+      src="./hismedimmg/26th SCO Summit.pdf#page=1"
+      title="Original SCO Summit 2026 PDF"
+      style="margin-top:14px;width:100%;height:650px;border:1px solid #e2e8f0;border-radius:10px;background:#eef2f7">
+    </iframe>
+  </div>
+</section>
+
+<div class="footer">SCO Summit 2026 • SSC Revision HTML • Original PDF included</div>
+</div>
+
+<button class="topbtn" id="topbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const qs=[
+ {q:"The 26th SCO Summit 2026 was held in which city?",o:["Bishkek","Tashkent","Astana","Dushanbe"],a:0},
+ {q:"Which country assumed the SCO chairmanship for 2026–27?",o:["India","China","Russia","Pakistan"],a:3},
+ {q:"Which statements are correct? 1. The 26th summit was in Bishkek. 2. SCO was formally established in 2001. 3. India became a full member in 2017.",o:["1 only","1 and 2 only","2 and 3 only","1, 2 and 3"],a:3},
+ {q:"Which was one of the three pillars highlighted by PM Narendra Modi?",o:["Security","Sovereignty","Sustainability","Stability"],a:0},
+ {q:"Which city was designated SCO Tourism and Cultural Capital for 2026–27?",o:["Rawalpindi","Lahore","Islamabad","Tashkent"],a:1},
+ {q:"Which country was among the founding members of SCO in 2001?",o:["Belarus","Kazakhstan","India","Iran"],a:1},
+ {q:"Which statements about initiatives are correct? 1. Biodiversity plan: 2026–31. 2. Ports/logistics plan: 2026–30. 3. Green Technology Corridor: 2027–32.",o:["1 and 2 only","1 and 3 only","2 and 3 only","1, 2 and 3"],a:0}
+];
+
+const box=document.getElementById("questionBox");
+qs.forEach((x,i)=>{
+ const q=document.createElement("div");q.className="question";
+ q.innerHTML=`<div class="qtext">Q${i+1}. ${x.q}</div><div class="options"></div><div class="answer">✓ Correct Answer: ${String.fromCharCode(65+x.a)} — ${x.o[x.a]}</div>`;
+ const opts=q.querySelector(".options");
+ x.o.forEach((o,j)=>{
+   const b=document.createElement("button");b.className="option";b.textContent=`${String.fromCharCode(65+j)}. ${o}`;
+   b.onclick=()=>{
+     if(q.classList.contains("done"))return;
+     q.classList.add("done");
+     [...opts.children].forEach((el,k)=>{if(k===x.a)el.classList.add("correct")});
+     if(j!==x.a)b.classList.add("wrong");
+   };opts.appendChild(b);
+ });box.appendChild(q);
+});
+
+function go(id){
+ document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
+ closeMenu();
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+ const map={overview:0,summit:1,india:2,declaration:3,initiatives:4,questions:5,revision:6,sourcepdf:7};
+ document.querySelectorAll(".nav button")[map[id]]?.classList.add("active");
+}
+function toggleMenu(){
+ document.getElementById("sidebar").classList.toggle("open");
+ document.getElementById("overlay").classList.toggle("show");
+}
+function closeMenu(){
+ document.getElementById("sidebar").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+}
+document.getElementById("search").addEventListener("input",e=>{
+ const term=e.target.value.toLowerCase().trim();
+ let found=false;
+ document.querySelectorAll(".section").forEach(s=>{
+   const match=!term||s.innerText.toLowerCase().includes(term);
+   s.style.display=match?"block":"none"; if(match)found=true;
+ });
+ document.getElementById("empty").style.display=found?"none":"block";
+});
+window.addEventListener("scroll",()=>{
+ document.getElementById("topbtn").style.display=scrollY>500?"block":"none";
+});
+</script>
+</body>
+</html>
