@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karst Topography — SSC CGL 2026 Master Notes</title>
+<style>
+:root{
+  --bg:#07111f; --panel:#0d1b2e; --panel2:#10243b; --text:#edf5ff; --muted:#a9bdd2;
+  --cyan:#58d9ff; --gold:#ffd166; --green:#67e8a5; --red:#ff7b8a; --line:#25415d;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 20% 0%,#12314d 0,#07111f 35%,#040a12 100%);
+font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);line-height:1.65}
+.container{max-width:1250px;margin:auto;padding:28px}
+.hero{padding:42px 34px;border:1px solid #284866;border-radius:28px;background:linear-gradient(135deg,#102b45cc,#091626ee);
+box-shadow:0 25px 70px #0008;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-160px;top:-180px;background:#58d9ff14}
+.badge{display:inline-block;padding:7px 14px;border-radius:999px;background:#58d9ff18;color:var(--cyan);border:1px solid #58d9ff55;font-weight:800;font-size:12px;letter-spacing:1px}
+h1{font-size:clamp(34px,6vw,70px);line-height:1.05;margin:16px 0 12px}
+h2{font-size:30px;margin-top:0} h3{color:var(--cyan)}
+.subtitle{font-size:18px;color:var(--muted);max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin:22px 0}
+.card{background:linear-gradient(180deg,#10243b,#0a1727);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 35px #0004}
+.card strong{color:var(--gold)}
+.nav{position:sticky;top:0;z-index:20;background:#07111fee;backdrop-filter:blur(15px);border-bottom:1px solid #28415b}
+.navin{max-width:1250px;margin:auto;display:flex;gap:8px;overflow:auto;padding:10px 28px}
+.nav a{white-space:nowrap;color:#c9d9e9;text-decoration:none;padding:8px 12px;border-radius:10px;font-size:13px}
+.nav a:hover{background:#58d9ff18;color:#fff}
+section{margin:38px 0}.label{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+table{width:100%;border-collapse:collapse;background:#081524;border-radius:16px;overflow:hidden}
+th,td{padding:14px;border-bottom:1px solid #21384f;text-align:left;vertical-align:top}
+th{color:var(--gold);background:#10263e}td{color:#dbe9f6}
+.callout{padding:18px 20px;border-left:4px solid var(--cyan);background:#58d9ff0d;border-radius:0 14px 14px 0;margin:18px 0}
+.warn{border-left-color:var(--red);background:#ff7b8a0c}.success{border-left-color:var(--green);background:#67e8a50c}
+.memory{font-size:20px;font-weight:800;text-align:center;padding:20px;border:1px dashed #58d9ff77;border-radius:16px;background:#58d9ff09}
+svg{width:100%;height:auto;display:block}.figure{background:#f7f5ee;border-radius:20px;padding:14px;margin:20px 0;box-shadow:0 18px 45px #0005}.caption{color:var(--muted);font-size:13px;text-align:center;margin-top:8px}
+.feature{display:grid;grid-template-columns:90px 1fr;gap:16px;align-items:center}.icon{height:72px;width:72px;border-radius:18px;background:#58d9ff14;border:1px solid #58d9ff44;display:grid;place-items:center;font-size:32px}
+details{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:10px 0;background:#0b1a2b}summary{cursor:pointer;font-weight:800;color:#dff6ff}
+.quiz button{margin:7px 6px 0 0;padding:11px 15px;border:1px solid #31506d;border-radius:10px;background:#10243a;color:#eaf6ff;cursor:pointer}
+.quiz button:hover{border-color:var(--cyan)} .answer{margin-top:10px;color:var(--green);font-weight:800}
+.footer{text-align:center;color:#8298ad;padding:35px 0}
+@media(max-width:650px){.container{padding:15px}.hero{padding:28px 20px}.navin{padding:9px 15px}th,td{padding:10px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="navin">
+<a href="#overview">Overview</a><a href="#formation">Formation</a><a href="#surface">Surface</a><a href="#caves">Cave Features</a><a href="#compare">Compare</a><a href="#traps">SSC Traps</a><a href="#quiz">Quiz</a>
+</div></div>
+
+<main class="container">
+<header class="hero" id="overview">
+<span class="badge">SSC CGL 2026 • GEOGRAPHY • MASTER NOTES</span>
+<h1>KARST<br>TOPOGRAPHY</h1>
+<p class="subtitle">A high-yield visual chapter on limestone landscapes, sinkholes, underground drainage and cave depositional features — built for identification-based SSC questions.</p>
+<div class="grid">
+<div class="card"><strong>Rock</strong><br>Limestone is the classic soluble rock associated with karst landscapes.</div>
+<div class="card"><strong>Main agent</strong><br>Groundwater, especially weakly acidic water containing dissolved CO₂.</div>
+<div class="card"><strong>Signature</strong><br>Surface depressions + disappearing streams + underground drainage + caves.</div>
+</div>
+</header>
+
+<section id="formation">
+<div class="label">01 • Core concept</div><h2>How does Karst Topography form?</h2>
+<div class="card">
+<p>Rainwater absorbs carbon dioxide from the atmosphere and soil, forming weak <b>carbonic acid</b>. This water enters joints, cracks and bedding planes in soluble limestone. Over time, dissolution enlarges these pathways and produces a distinctive surface and underground drainage system.</p>
+<div class="memory">Rainwater + CO₂ → weak carbonic acid → limestone dissolution → underground drainage → karst features</div>
+</div>
+
+<div class="figure">
+<svg viewBox="0 0 1100 500" role="img" aria-label="Vector diagram of karst formation">
+<defs>
+<linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#bfeaff"/><stop offset="1" stop-color="#f8f1d9"/></linearGradient>
+<linearGradient id="rock" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#e9d9a8"/><stop offset="1" stop-color="#b89c68"/></linearGradient>
+<marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#147ea1"/></marker>
+</defs>
+<rect width="1100" height="500" rx="18" fill="url(#sky)"/>
+<path d="M0 230 Q130 190 250 235 Q360 160 500 225 Q630 150 760 220 Q900 165 1100 220 L1100 500 L0 500Z" fill="url(#rock)"/>
+<path d="M0 270 Q160 235 290 275 Q390 215 505 275 Q650 220 780 270 Q930 215 1100 260" fill="none" stroke="#80683f" stroke-width="6"/>
+<!-- cracks -->
+<path d="M300 210 L335 295 L320 355 M500 205 L470 285 L495 345 M720 205 L690 285 L715 360" fill="none" stroke="#735a38" stroke-width="7"/>
+<!-- surface depression -->
+<path d="M120 230 Q180 315 245 230" fill="none" stroke="#795f3b" stroke-width="7"/>
+<!-- underground channel -->
+<path d="M235 360 Q320 320 405 380 Q510 440 620 365 Q735 285 840 350" fill="none" stroke="#147ea1" stroke-width="20"/>
+<path d="M250 350 Q330 315 405 375" fill="none" stroke="#d7fbff" stroke-width="5" marker-end="url(#arr)"/>
+<path d="M510 425 Q580 405 640 365" fill="none" stroke="#d7fbff" stroke-width="5" marker-end="url(#arr)"/>
+<!-- rain -->
+<g stroke="#147ea1" stroke-width="5">
+<path d="M160 70v75" marker-end="url(#arr)"/><path d="M330 55v105" marker-end="url(#arr)"/><path d="M570 65v105" marker-end="url(#arr)"/><path d="M820 55v110" marker-end="url(#arr)"/>
+</g>
+<text x="42" y="42" font-size="24" font-weight="700" fill="#17384a">RAINWATER + CO₂</text>
+<text x="55" y="200" font-size="23" font-weight="700" fill="#553f20">LIMESTONE SURFACE</text>
+<text x="300" y="330" font-size="22" font-weight="700" fill="#0b526d">DISSOLUTION ALONG CRACKS</text>
+<text x="700" y="415" font-size="22" font-weight="700" fill="#0b526d">SUBTERRANEAN CHANNEL</text>
+</svg>
+<div class="caption">Vector schematic: water enters limestone through joints and develops underground drainage.</div>
+</div>
+</section>
+
+<section id="surface">
+<div class="label">02 • Surface landforms</div><h2>Karst Surface Features</h2>
+<div class="grid">
+<div class="card feature"><div class="icon">🕳️</div><div><h3>Doline</h3>A closed depression or sinkhole produced mainly by solution and/or collapse. <strong>Think: basic karst sinkhole.</strong></div></div>
+<div class="card feature"><div class="icon">〰️</div><div><h3>Uvala</h3>A larger, irregular depression commonly associated with the enlargement/coalescence of dolines.</div></div>
+<div class="card feature"><div class="icon">🏞️</div><div><h3>Polje</h3>A very large, enclosed karst depression, commonly with a relatively flat floor and intermittent drainage.</div></div>
+<div class="card feature"><div class="icon">⬇️</div><div><h3>Ponor</h3>An opening through which surface water disappears into the underground karst drainage system; also called a swallow hole in many texts.</div></div>
+<div class="card feature"><div class="icon">🪨</div><div><h3>Limestone Pavement</h3>Exposed limestone surface broken into blocks by joints, with solution grooves and channels.</div></div>
+<div class="card feature"><div class="icon">⛰️</div><div><h3>Karst Tower / Cone</h3>Residual limestone hills produced by prolonged dissolution and denudation; towers are steep-sided, cones are more conical.</div></div>
+</div>
+
+<div class="figure">
+<svg viewBox="0 0 1100 430" aria-label="Karst surface features diagram">
+<rect width="1100" height="430" rx="18" fill="#eef6ef"/>
+<path d="M0 220 Q100 190 190 225 Q260 300 350 220 Q430 180 510 225 Q600 285 700 215 Q800 175 900 220 Q1000 190 1100 220 L1100 430 L0 430Z" fill="#c7aa73"/>
+<!-- doline -->
+<path d="M85 220 Q145 325 210 220" fill="none" stroke="#765a37" stroke-width="12"/>
+<!-- uvala -->
+<path d="M270 225 Q350 350 450 220" fill="none" stroke="#765a37" stroke-width="12"/>
+<!-- polje -->
+<path d="M500 255 Q610 340 750 255 L750 300 Q620 380 500 300Z" fill="#9bcf9d"/>
+<!-- ponor -->
+<ellipse cx="635" cy="295" rx="22" ry="10" fill="#243b2b"/>
+<!-- towers -->
+<path d="M820 220 L835 95 L875 75 L910 220Z" fill="#a9854d"/>
+<path d="M940 220 L965 125 L1000 100 L1035 220Z" fill="#b89459"/>
+<text x="95" y="390" font-size="25" font-weight="800" fill="#3e2d18">DOLINE</text>
+<text x="300" y="390" font-size="25" font-weight="800" fill="#3e2d18">UVALA</text>
+<text x="560" y="390" font-size="25" font-weight="800" fill="#3e2d18">POLJE</text>
+<text x="590" y="285" font-size="18" font-weight="800" fill="#fff">PONOR</text>
+<text x="835" y="55" font-size="24" font-weight="800" fill="#3e2d18">KARST TOWERS</text>
+</svg>
+<div class="caption">Conceptual surface-landform identification diagram.</div>
+</div>
+</section>
+
+<section id="caves">
+<div class="label">03 • Cave features</div><h2>Karst Cave Depositional Features</h2>
+<div class="callout success"><b>SSC GOLDEN RULE:</b> Stalactite hangs from the ceiling; stalagmite rises from the floor. If they join, they may form a column/pillar.</div>
+
+<div class="figure">
+<svg viewBox="0 0 1100 570" aria-label="High resolution vector diagram of stalactites and stalagmites">
+<defs><linearGradient id="cave" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#352b25"/><stop offset="1" stop-color="#120f0e"/></linearGradient>
+<linearGradient id="min" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#fff0c0"/><stop offset="1" stop-color="#9d633c"/></linearGradient></defs>
+<rect width="1100" height="570" rx="18" fill="url(#cave)"/>
+<path d="M0 110 Q150 70 300 120 Q450 60 600 115 Q780 60 1100 105 L1100 0 L0 0Z" fill="#241c18"/>
+<!-- stalactites -->
+<g fill="url(#min)" stroke="#f8d98b" stroke-width="2">
+<path d="M120 100 L145 250 L170 100Z"/><path d="M235 105 L260 205 L285 105Z"/><path d="M370 100 L395 285 L420 100Z"/><path d="M510 100 L535 225 L560 100Z"/><path d="M690 105 L715 270 L740 105Z"/><path d="M850 105 L875 235 L900 105Z"/>
+</g>
+<!-- stalagmites -->
+<g fill="url(#min)" stroke="#f8d98b" stroke-width="2">
+<path d="M110 490 L145 290 L180 490Z"/><path d="M240 490 L270 330 L300 490Z"/><path d="M365 490 L405 270 L445 490Z"/><path d="M505 490 L535 350 L565 490Z"/><path d="M675 490 L715 300 L755 490Z"/><path d="M850 490 L880 335 L910 490Z"/>
+</g>
+<!-- column -->
+<path d="M640 105 L665 285 L690 490 L625 490 L650 285 L615 105Z" fill="url(#min)" stroke="#f8d98b" stroke-width="3"/>
+<!-- straw -->
+<g stroke="#f8d98b" stroke-width="5"><path d="M50 105v90"/><path d="M930 105v105"/><path d="M970 105v70"/></g>
+<text x="35" y="50" fill="#fff" font-size="28" font-weight="900">CAVE CEILING</text>
+<text x="40" y="540" fill="#fff" font-size="28" font-weight="900">CAVE FLOOR</text>
+<text x="135" y="235" fill="#58d9ff" font-size="23" font-weight="900">STALACTITE ↓</text>
+<text x="150" y="325" fill="#67e8a5" font-size="23" font-weight="900">STALAGMITE ↑</text>
+<text x="650" y="280" fill="#ffd166" font-size="23" font-weight="900">COLUMN / PILLAR</text>
+<text x="910" y="220" fill="#fff" font-size="18" font-weight="700">STRAW</text>
+</svg>
+<div class="caption">Vector cave diagram — direction is the fastest way to solve identification questions.</div>
+</div>
+
+<table>
+<thead><tr><th>Feature</th><th>Where?</th><th>How to identify in SSC</th></tr></thead>
+<tbody>
+<tr><td><b>Stalactite</b></td><td>Ceiling</td><td>Hangs downward ↓</td></tr>
+<tr><td><b>Stalagmite</b></td><td>Floor</td><td>Grows upward ↑</td></tr>
+<tr><td><b>Column / Pillar</b></td><td>Ceiling to floor</td><td>May form when stalactite and stalagmite join</td></tr>
+<tr><td><b>Stalactite straw</b></td><td>Ceiling</td><td>Thin, hollow, tube-like deposit</td></tr>
+<tr><td><b>Drapery</b></td><td>Sloping cave surface</td><td>Curtain-like sheet/ridges</td></tr>
+<tr><td><b>Flowstone</b></td><td>Floor/walls</td><td>Sheet-like coating formed by flowing mineral-rich water</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="compare">
+<div class="label">04 • Never confuse</div><h2>Stalactite vs Stalagmite</h2>
+<div class="grid">
+<div class="card"><h3>STALACTITE ↓</h3><p>Attached to the <b>ceiling</b>. Mineral-rich water drips downward and deposits material.</p><div class="memory">TITE → ceiling / DOWN</div></div>
+<div class="card"><h3>STALAGMITE ↑</h3><p>Builds upward from the <b>floor</b> where dripping water deposits material.</p><div class="memory">MITE → floor / UP</div></div>
+</div>
+<div class="callout"><b>Best memory:</b> “Stalactite holds tight to the ceiling.” The mnemonic is only for recall; the scientific distinction is the location and direction of growth.</div>
+</section>
+
+<section id="traps">
+<div class="label">05 • SSC CGL traps</div><h2>Common Option-Traps</h2>
+<details open><summary>Trap 1 — Stalagmite hanging from the ceiling</summary><p>Wrong. A stalagmite grows upward from the floor. Ceiling → stalactite.</p></details>
+<details><summary>Trap 2 — Stalactite rising from the floor</summary><p>Wrong. Floor → stalagmite.</p></details>
+<details><summary>Trap 3 — Cave pillar formed solely by wind abrasion</summary><p>Wrong. Karst cave deposits are associated with groundwater, dissolution and mineral precipitation. Wind abrasion is not the defining process here.</p></details>
+<details><summary>Trap 4 — Karst is mainly a volcanic landform</summary><p>Wrong. Karst is classically associated with soluble rocks, especially limestone, and groundwater action.</p></details>
+<details><summary>Trap 5 — Ponor is a cave deposit</summary><p>Wrong. A ponor is an opening where surface water enters the underground karst drainage system.</p></details>
+</section>
+
+<section>
+<div class="label">06 • One-page revision</div><h2>Ultra-Fast Revision Sheet</h2>
+<table>
+<tr><th>Term</th><th>One-line recall</th></tr>
+<tr><td>Karst</td><td>Limestone landscape dominated by solution and underground drainage.</td></tr>
+<tr><td>Doline</td><td>Closed depression / sinkhole.</td></tr>
+<tr><td>Uvala</td><td>Larger, commonly coalesced karst depression.</td></tr>
+<tr><td>Polje</td><td>Very large enclosed karst depression, often flat-floored.</td></tr>
+<tr><td>Ponor</td><td>Surface-water entry into underground drainage.</td></tr>
+<tr><td>Limestone pavement</td><td>Exposed jointed limestone with solution grooves.</td></tr>
+<tr><td>Stalactite</td><td>Ceiling ↓</td></tr>
+<tr><td>Stalagmite</td><td>Floor ↑</td></tr>
+<tr><td>Column/Pillar</td><td>Stalactite + stalagmite may join.</td></tr>
+<tr><td>Flowstone</td><td>Sheet-like cave deposit.</td></tr>
+<tr><td>Drapery</td><td>Curtain-like cave deposit.</td></tr>
+</table>
+</section>
+
+<section id="quiz" class="quiz">
+<div class="label">07 • Quick test</div><h2>SSC CGL Practice — 10 Questions</h2>
+<div id="questions"></div>
+</section>
+
+<footer class="footer">PARMAR-STYLE GEOGRAPHY NOTES • KARST TOPOGRAPHY • SSC CGL 2026<br>Designed as a visual revision chapter. Open offline in any modern browser.</footer>
+</main>
+
+<script>
+const qs=[
+["Which feature hangs from a cave ceiling?","Stalactite",["Stalagmite","Stalactite","Ponor","Polje"]],
+["Which feature grows upward from a cave floor?","Stalagmite",["Stalactite","Uvala","Stalagmite","Doline"]],
+["A ponor is best described as:","An opening where surface water enters underground drainage",["A cave pillar","An opening where surface water enters underground drainage","A limestone tower","A cave ceiling deposit"]],
+["Which is a very large enclosed karst depression?","Polje",["Doline","Ponor","Polje","Stalactite"]],
+["Uvala is generally associated with:","A larger irregular depression formed by enlargement/coalescence of dolines",["A cave ceiling deposit","A larger irregular depression formed by enlargement/coalescence of dolines","A volcanic cone","A river delta"]],
+["Karst topography is classically associated with:","Soluble limestone and groundwater",["Granite and wind","Limestone and groundwater","Basalt and glaciers","Sandstone and tides"]],
+["Which pair is correctly matched?","Stalactite — ceiling",["Stalagmite — ceiling","Stalactite — ceiling","Ponor — cave deposit","Polje — stalagmite"]],
+["A column/pillar in a cave may form when:","A stalactite and stalagmite join",["Wind erodes the cave","A stalactite and stalagmite join","A ponor closes","A doline fills with lava"]],
+["Flowstone is generally:","A sheet-like mineral deposit formed by flowing water",["A volcanic lava flow","A sheet-like mineral deposit formed by flowing water","A sinkhole","A limestone joint"]],
+["The fastest memory rule is:","Stalactite ceiling; stalagmite floor",["Stalactite floor; stalagmite ceiling","Both grow only on the floor","Stalactite ceiling; stalagmite floor","Both are surface depressions"]]
+];
+const root=document.getElementById("questions");
+qs.forEach((q,i)=>{
+ const d=document.createElement("div"); d.className="card";
+ d.innerHTML=`<h3>Q${i+1}. ${q[0]}</h3>`;
+ q[2].forEach(opt=>{
+   const b=document.createElement("button"); b.textContent=opt;
+   b.onclick=()=>{d.querySelectorAll("button").forEach(x=>x.disabled=true); const a=document.createElement("div"); a.className="answer"; a.textContent=(opt===q[1]?"✓ Correct":"✗ Incorrect — Correct answer: "+q[1]); d.appendChild(a);}
+   d.appendChild(b);
+ });
+ root.appendChild(d);
+});
+</script>
+</body>
+</html>
