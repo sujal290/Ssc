@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSC Compilations | CGL 2026 • 30 Sep Shift 2 • Maths</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1e2433;--mu:#6b7280;--bd:#e3e7f0;--pr:#4f46e5;--ok:#16a34a;--okb:#dcfce7;--no:#dc2626;--nob:#fee2e2}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1220;--card:#181c30;--tx:#e8eaf3;--mu:#98a0b8;--bd:#2a3050;--okb:#12351f;--nob:#3b1717}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:16px 14px 90px}
+header{text-align:center;padding:18px 0 8px}
+h1{margin:0;font-size:1.5rem}
+header p{margin:4px 0 0;color:var(--mu);font-size:.9rem}
+.prog{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;font-size:.85rem;color:var(--mu);display:flex;justify-content:space-between;align-items:center}
+.bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;width:0;background:var(--pr);transition:width .3s}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:14px 0}
+.q h3{margin:0 0 12px;font-size:1.02rem;font-weight:600}
+.q h3 span{color:var(--pr);margin-right:6px}
+.opt{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1.5px solid var(--bd);border-radius:10px;margin:8px 0;cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--pr)}
+.opt b{width:26px;height:26px;border-radius:50%;background:var(--bd);display:grid;place-items:center;font-size:.8rem;flex:none}
+.opt.sel{border-color:var(--pr);background:rgba(79,70,229,.08)}
+.opt.sel b{background:var(--pr);color:#fff}
+.locked .opt{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okb)}
+.opt.ok b{background:var(--ok);color:#fff}
+.opt.bad{border-color:var(--no);background:var(--nob)}
+.opt.bad b{background:var(--no);color:#fff}
+.sol{display:none;margin-top:12px;padding:12px;border-left:4px solid var(--ok);background:var(--okb);border-radius:8px;font-size:.93rem}
+.locked .sol{display:block}
+.sol.w{border-color:var(--no);background:var(--nob)}
+.sol strong{display:block;margin-bottom:4px}
+.tag{font-size:.75rem;color:var(--mu);margin-top:8px}
+.btns{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--bd);padding:10px;display:flex;gap:10px;justify-content:center}
+button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 26px;cursor:pointer}
+#sub{background:var(--pr);color:#fff}
+#rst{background:var(--bd);color:var(--tx)}
+#res{display:none;text-align:center;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin:14px 0}
+#res .sc{font-size:2.4rem;font-weight:800;color:var(--pr)}
+#res .st{display:flex;justify-content:center;gap:18px;margin-top:8px;font-size:.95rem}
+
+.brand{text-align:center;padding:26px 14px 22px;background:linear-gradient(135deg,#4f46e5,#7c3aed 60%,#db2777);color:#fff;border-radius:0 0 26px 26px;box-shadow:0 8px 24px rgba(79,70,229,.35)}
+.brand h1{font-size:1.9rem;letter-spacing:2px;font-weight:800;margin:0}
+.brand p{margin:4px 0 0;font-size:.85rem;opacity:.9;letter-spacing:1px}
+.hide{display:none!important}
+#tg{position:fixed;inset:0;z-index:50;background:rgba(10,12,25,.72);backdrop-filter:blur(4px);display:grid;place-items:center;padding:18px}
+.modal{background:var(--card);border-radius:20px;max-width:380px;width:100%;padding:26px 22px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.4);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+.tgi{width:72px;height:72px;border-radius:50%;background:#229ED9;margin:0 auto 14px;display:grid;place-items:center}
+.modal h2{margin:0 0 6px;font-size:1.3rem}
+.modal p{margin:0 0 18px;color:var(--mu);font-size:.92rem}
+.jn{display:block;width:100%;background:#229ED9;color:#fff;text-decoration:none;font-weight:700;padding:13px;border-radius:12px;margin-bottom:10px}
+.sk{background:none;color:var(--mu);font-weight:600;padding:8px;width:100%}
+.hcard{margin:26px 14px;background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:24px 20px;text-align:center;box-shadow:0 10px 30px rgba(79,70,229,.12);position:relative;overflow:hidden}
+.hcard:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#4f46e5,#db2777)}
+.badge{display:inline-block;background:rgba(79,70,229,.12);color:var(--pr);font-weight:700;font-size:.75rem;padding:5px 12px;border-radius:99px;letter-spacing:1px}
+.hcard h2{margin:14px 0 4px;font-size:1.6rem;letter-spacing:.5px}
+.hcard h3{margin:0 0 16px;font-size:1.05rem;color:var(--mu);font-weight:600}
+.meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.meta span{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:6px 12px;font-size:.82rem}
+#start{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-size:1.05rem;padding:14px 44px;border-radius:14px;box-shadow:0 6px 16px rgba(79,70,229,.4)}
+.hl{display:block;margin-top:16px;color:#229ED9;font-weight:600;font-size:.88rem;text-decoration:none}
+
+:root{--bg:#0a0d22;--card:rgba(255,255,255,.06);--tx:#eef0ff;--mu:#a3a9c9;--bd:rgba(255,255,255,.12);--pr:#8b5cf6;--ok:#22c55e;--okb:rgba(34,197,94,.14);--no:#ef4444;--nob:rgba(239,68,68,.14)}
+body{background:radial-gradient(circle at 15% 10%,#3b1d8f 0,transparent 40%),radial-gradient(circle at 85% 30%,#0e6b8f 0,transparent 38%),radial-gradient(circle at 40% 95%,#8f1d63 0,transparent 40%),var(--bg);background-attachment:fixed;min-height:100vh}
+#fx{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#fx span{position:absolute;bottom:-60px;font-size:28px;color:rgba(255,255,255,.09);font-weight:700;animation:fl 16s linear infinite}
+@keyframes fl{to{transform:translateY(-115vh) rotate(360deg)}}
+#tg,#home,#app,.btns{position:relative;z-index:2}#tg{position:fixed}.btns{position:fixed}
+.q,.hcard,.modal,#res{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd)}
+.brand{background:none;box-shadow:none;padding:34px 14px 8px}
+.brand h1{font-size:2.1rem;letter-spacing:3px;background:linear-gradient(90deg,#a78bfa,#f472b6,#fbbf24,#a78bfa);background-size:250%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite;filter:drop-shadow(0 0 14px rgba(167,139,250,.55))}
+@keyframes sh{to{background-position:250%}}
+.brand p{display:inline-block;margin-top:8px;padding:5px 16px;border:1px solid var(--bd);border-radius:99px;background:var(--card);font-size:.72rem;letter-spacing:2.5px;color:var(--mu)}
+.hcard{max-width:420px;margin:24px auto;padding:28px 22px;border-radius:26px;box-shadow:0 20px 60px rgba(139,92,246,.3)}
+.hcard:before{height:4px;background:linear-gradient(90deg,#8b5cf6,#ec4899,#f59e0b)}
+.cal{width:92px;margin:0 auto 14px;border-radius:18px;overflow:hidden;background:#fff;color:#111;box-shadow:0 10px 24px rgba(0,0,0,.4);transform:rotate(-4deg);animation:bob 3s ease-in-out infinite}
+.cal small{display:block;background:linear-gradient(135deg,#ef4444,#ec4899);color:#fff;font-weight:800;letter-spacing:2px;padding:5px 0;font-size:.8rem}
+.cal b{display:block;font-size:2.8rem;line-height:1.1;padding:4px 0 8px}
+@keyframes bob{50%{transform:rotate(3deg) translateY(-6px)}}
+.badge{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:5px 16px}
+.hcard h2{font-size:2rem;letter-spacing:2px;margin:12px 0 2px}
+.hcard h3{color:var(--mu)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 22px}
+.stats div{background:rgba(255,255,255,.05);border:1px solid var(--bd);border-radius:14px;padding:10px 4px}
+.stats b{display:block;font-size:1.3rem}.stats small{color:var(--mu);font-size:.7rem}
+#start{position:relative;overflow:hidden;background:linear-gradient(135deg,#8b5cf6,#ec4899);width:100%;animation:pl 2s infinite}
+#start:after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sw 2.5s infinite}
+@keyframes sw{to{left:130%}}@keyframes pl{50%{box-shadow:0 0 0 10px rgba(236,72,153,.15)}}
+.tgi{position:relative;background:linear-gradient(135deg,#38bdf8,#229ED9)}
+.tgi:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #38bdf8;animation:rg 1.8s infinite}
+@keyframes rg{to{transform:scale(1.5);opacity:0}}
+.modal{background:rgba(20,24,55,.92);border-radius:24px}
+.jn{background:linear-gradient(135deg,#38bdf8,#229ED9);box-shadow:0 8px 20px rgba(34,158,217,.4)}
+.prog{background:rgba(10,13,34,.7);backdrop-filter:blur(10px);padding:10px 4px}
+.bar{height:8px}.bar i{background:linear-gradient(90deg,#8b5cf6,#ec4899,#f59e0b)}
+.q{border-radius:20px;animation:up .5s both}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.q h3 span{display:inline-block;background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff;border-radius:9px;padding:1px 9px;margin-right:8px}
+.opt{border-radius:14px;background:rgba(255,255,255,.04)}
+.opt:hover{transform:translateX(5px);border-color:#a78bfa;background:rgba(139,92,246,.12)}
+.opt.sel{background:rgba(139,92,246,.22);box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+.opt b{background:rgba(255,255,255,.12)}.opt.sel b{background:linear-gradient(135deg,#8b5cf6,#ec4899)}
+.locked .opt:hover{transform:none}
+.btns{background:rgba(10,13,34,.85);backdrop-filter:blur(12px);border-top:1px solid var(--bd)}
+#sub{background:linear-gradient(135deg,#8b5cf6,#ec4899)}#rst{background:rgba(255,255,255,.1)}
+#res{border-radius:24px;padding:24px}
+.ring{width:150px;height:150px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:conic-gradient(#ec4899 calc(var(--p)*1%),rgba(255,255,255,.1) 0)}
+.ring>div{width:118px;height:118px;border-radius:50%;background:#12163a;display:grid;place-content:center}
+.ring b{font-size:1.9rem;display:block}.ring small{color:var(--mu)}
+.msg{font-size:1.15rem;font-weight:700;margin-bottom:6px}
+
+/* Clean quiz screen */
+#app{--card:#fff;--tx:#1e2433;--mu:#6b7280;--bd:#e3e7f0;--pr:#4f46e5;--ok:#16a34a;--okb:#dcfce7;--no:#dc2626;--nob:#fee2e2;color:#1e2433;background:#f4f6fb;min-height:100vh}
+#app .brand{background:linear-gradient(135deg,#4f46e5,#7c3aed 60%,#db2777);border-radius:0 0 22px 22px;padding:20px 14px 18px;box-shadow:0 6px 18px rgba(79,70,229,.3)}
+#app .brand h1{font-size:1.5rem;letter-spacing:2px;background:none;color:#fff;animation:none;filter:none}
+#app .brand p{margin-top:4px;padding:3px 14px;background:rgba(255,255,255,.18);border:0;color:#fff}
+#app .prog{background:#f4f6fb;backdrop-filter:none}
+#app .bar{height:6px;background:#e3e7f0}#app .bar i{background:#4f46e5}
+#app .q,#app #res{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid #e3e7f0;border-radius:14px;animation:none;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+#app .q h3 span{background:none;color:#4f46e5;padding:0;margin-right:6px}
+#app .opt{background:#fff;border-radius:10px}
+#app .opt:hover{transform:none;background:rgba(79,70,229,.05);border-color:#4f46e5}
+#app .opt b{background:#e3e7f0;color:#1e2433}
+#app .opt.sel{background:rgba(79,70,229,.08);box-shadow:none;border-color:#4f46e5}
+#app .opt.sel b{background:#4f46e5;color:#fff}
+#app .opt.ok{background:#dcfce7;border-color:#16a34a}#app .opt.ok b{background:#16a34a;color:#fff}
+#app .opt.bad{background:#fee2e2;border-color:#dc2626}#app .opt.bad b{background:#dc2626;color:#fff}
+#app .ring{background:conic-gradient(#4f46e5 calc(var(--p)*1%),#e3e7f0 0)}#app .ring>div{background:#fff}
+.btns{background:#fff;backdrop-filter:none;border-top:1px solid #e3e7f0}
+#sub{background:#4f46e5}#rst{background:#e3e7f0;color:#1e2433}
+#lang{position:fixed;top:10px;right:10px;z-index:100;background:#fff;color:#4f46e5;border:2px solid #4f46e5;padding:6px 14px;border-radius:99px;font-size:.85rem;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<button id="lang">हिंदी</button>
+<div id="fx"><span style="left:6%;animation-delay:0s">∑</span><span style="left:20%;animation-delay:4s">π</span><span style="left:36%;animation-delay:8s">√</span><span style="left:52%;animation-delay:2s">∫</span><span style="left:68%;animation-delay:6s">÷</span><span style="left:82%;animation-delay:10s">θ</span><span style="left:92%;animation-delay:12s">%</span></div>
+<div id="tg"><div class="modal"><div class="tgi"><svg width="38" height="38" viewBox="0 0 24 24" fill="#fff"><path d="M9.8 15.6l-.4 4c.6 0 .8-.3 1.2-.6l2.8-2.6 5.8 4.2c1 .6 1.8.3 2.1-1l3.8-17.6c.4-1.6-.6-2.2-1.6-1.8L1.4 9.6c-1.5.6-1.5 1.5-.3 1.9l5.7 1.8L20 5.1c.6-.4 1.2-.2.7.2z"/></svg></div><h2 data-k="tgh"></h2><p data-k="tgp"></p><a class="jn" id="jn" href="https://t.me/SSC_COMPILATIONS_2025" target="_blank" rel="noopener" data-k="join"></a><button class="sk" id="skip" data-k="skip"></button></div></div>
+<div id="home" class="hide"><div class="brand"><h1>SSC COMPILATIONS</h1><p>CGL 2026 • 30 SEP • SHIFT 2</p></div>
+<div class="hcard"><div class="cal"><small>SEP</small><b>30</b></div><span class="badge">CGL 2026 • SHIFT 2</span><h2 data-k="maths"></h2><h3 data-k="hh3"></h3><div class="stats"><div><b id="tot">21</b><small data-k="qs"></small></div><div><b>∞</b><small data-k="nt"></small></div><div><b>✓</b><small data-k="sl"></small></div></div><button id="start" data-k="start"></button><a class="hl" href="https://t.me/SSC_COMPILATIONS_2025" target="_blank" rel="noopener">✈ @SSC_COMPILATIONS_2025</a></div></div>
+<div id="app" class="hide">
+<div class="brand"><h1>SSC COMPILATIONS</h1><p>CGL 2026 • 30 SEP • SHIFT 2 • MATHS</p></div>
+<div class="wrap">
+<div class="prog"><span id="cnt">0 / 21 attempted</span><span data-k="tt"></span></div>
+<div class="bar"><i id="pb"></i></div>
+<div id="res"></div>
+<div id="quiz"></div>
+</div></div>
+<div class="btns hide" id="btns"><button id="rst" data-k="rst"></button><button id="sub" data-k="sub"></button></div>
+
+<script>
+const Q=[
+{n:1,q:["Find the distance between the points (7, 5) and (4, 1).","बिंदु (7, 5) और (4, 1) के बीच की दूरी ज्ञात कीजिए।"],o:["4","5","6","7"],a:1,s:["Distance = √[(7−4)² + (5−1)²] = √(9 + 16) = √25 = <b>5</b>","दूरी = √[(7−4)² + (5−1)²] = √(9 + 16) = √25 = <b>5</b>"]},
+{n:2,q:["A regular hexagon is inscribed in a circle of radius 21 cm. Find the area of the hexagon.","एक वृत्त में षट्भुज (regular hexagon) बना है। वृत्त की त्रिज्या 21 cm है, तो षट्भुज का क्षेत्रफल = ?"],o:["441√3 cm²","661.5√3 cm²","882√3 cm²","220.5√3 cm²"],a:1,s:["Side of a hexagon inscribed in a circle = radius = 21 cm<br>Area = (3√3/2) × a² = (3√3/2) × 441 = <b>661.5√3 cm²</b> (≈ 1145.8 cm²)","वृत्त में बने षट्भुज की भुजा = त्रिज्या = 21 cm<br>क्षेत्रफल = (3√3/2) × a² = (3√3/2) × 441 = <b>661.5√3 cm²</b> (≈ 1145.8 cm²)"]},
+{n:3,q:["The radii of two circles are 3 cm and 5 cm. The direct common tangent (DCT) is twice the length of the transverse common tangent (TCT). Find d² (d = distance between the centres).","दो वृत्तों की त्रिज्या 3 cm और 5 cm है। Direct common tangent (DCT) की लंबाई, transverse common tangent (TCT) की 2 गुना है। तो d² = ? (d = केंद्रों के बीच की दूरी)"],o:["64","72","84","100"],a:2,s:["DCT² = d² − (r₁−r₂)² = d² − 4<br>TCT² = d² − (r₁+r₂)² = d² − 64<br>DCT = 2·TCT ⇒ d² − 4 = 4(d² − 64)<br>3d² = 252 ⇒ d² = <b>84</b>","DCT² = d² − (r₁−r₂)² = d² − 4<br>TCT² = d² − (r₁+r₂)² = d² − 64<br>DCT = 2·TCT ⇒ d² − 4 = 4(d² − 64)<br>3d² = 252 ⇒ d² = <b>84</b>"]},
+{n:4,q:["If x + 1/x = 3√2, find the value of x/(x² − 1).","यदि x + 1/x = 3√2 हो, तो x/(x² − 1) का मान = ?"],o:["1/√14","1/√18","√14","1/√7"],a:0,s:["x/(x²−1) = 1/(x − 1/x)<br>(x − 1/x)² = (x + 1/x)² − 4 = 18 − 4 = 14 ⇒ x − 1/x = √14<br>Value = <b>1/√14</b>","x/(x²−1) = 1/(x − 1/x)<br>(x − 1/x)² = (x + 1/x)² − 4 = 18 − 4 = 14 ⇒ x − 1/x = √14<br>अतः मान = <b>1/√14</b>"]},
+{n:5,q:["If tanθ + cotθ = 2, find cot⁴θ + tan⁴θ.","यदि tanθ + cotθ = 2 हो, तो cot⁴θ + tan⁴θ = ?"],o:["1","2","4","0"],a:1,s:["tanθ + 1/tanθ = 2 ⇒ tanθ = 1 (θ = 45°)<br>cot⁴θ + tan⁴θ = 1 + 1 = <b>2</b>","tanθ + 1/tanθ = 2 ⇒ tanθ = 1 (θ = 45°)<br>cot⁴θ + tan⁴θ = 1 + 1 = <b>2</b>"]},
+{n:6,q:["If sinθ + cosθ = 5/4, find tanθ + cotθ.","यदि sinθ + cosθ = 5/4 हो, तो tanθ + cotθ = ?"],o:["9/32","32/9","16/5","5/4"],a:1,s:["Squaring: 1 + 2sinθcosθ = 25/16 ⇒ sinθcosθ = 9/32<br>tanθ + cotθ = 1/(sinθ·cosθ) = <b>32/9</b>","दोनों तरफ वर्ग: 1 + 2sinθcosθ = 25/16 ⇒ sinθcosθ = 9/32<br>tanθ + cotθ = 1/(sinθ·cosθ) = <b>32/9</b>"]},
+{n:7,q:["If x = 3 and y = 2, find the value of (x³ − y³)/(x² + y² + xy) + (x³ + y³)/(x² − xy + y²).","यदि x = 3, y = 2 हो, तो (x³ − y³)/(x² + y² + xy) + (x³ + y³)/(x² − xy + y²) का मान = ?"],o:["5","6","7","1"],a:1,s:["(x³−y³)/(x²+xy+y²) = x − y = 1<br>(x³+y³)/(x²−xy+y²) = x + y = 5<br>Sum = 1 + 5 = <b>6</b>","(x³−y³)/(x²+xy+y²) = x − y = 1<br>(x³+y³)/(x²−xy+y²) = x + y = 5<br>योग = 1 + 5 = <b>6</b>"]},
+{n:8,q:["(x + 2)² − (x − 2)² = ?","(x + 2)² − (x − 2)² = ?"],o:["4x","8x","16x","8"],a:1,s:["a² − b² = (a+b)(a−b)<br>= (x+2+x−2)(x+2−x+2) = (2x)(4) = <b>8x</b><br>(or use (a+b)² − (a−b)² = 4ab = 4·x·2 = 8x)","a² − b² = (a+b)(a−b)<br>= (x+2+x−2)(x+2−x+2) = (2x)(4) = <b>8x</b><br>(या सूत्र: (a+b)² − (a−b)² = 4ab = 4·x·2 = 8x)"]},
+{n:9,q:["In triangle ABC, D and E lie on AB and AC respectively such that DE ∥ BC. If AD = 3 cm, DB = 2 cm and DE = 4 cm, find BC.","त्रिभुज ABC में भुजा AB और AC पर क्रमशः D और E बिंदु इस प्रकार हैं कि DE ∥ BC है। यदि AD = 3 cm, DB = 2 cm और DE = 4 cm हो, तो BC = ?"],o:["6 cm","20/3 cm","7 cm","8 cm"],a:1,s:["DE ∥ BC ⇒ △ADE ~ △ABC<br>AB = AD + DB = 5<br>DE/BC = AD/AB ⇒ 4/BC = 3/5 ⇒ BC = <b>20/3 cm</b> (≈ 6.67 cm)","DE ∥ BC ⇒ △ADE ~ △ABC<br>AB = AD + DB = 5<br>DE/BC = AD/AB ⇒ 4/BC = 3/5 ⇒ BC = <b>20/3 cm</b> (≈ 6.67 cm)"]},
+{n:10,q:["A tangent QT is drawn from point Q to a circle with centre O (T is the point of contact). If OT = 6 cm and OQ = 10 cm, find the area of △OQT.","एक वृत्त पर बिंदु Q से स्पर्श रेखा QT खींची जाती है (T स्पर्श बिंदु)। यदि OT = 6 cm और OQ = 10 cm हो, तो △OQT का क्षेत्रफल = ?"],o:["20 cm²","24 cm²","30 cm²","48 cm²"],a:1,s:["OT ⊥ QT (radius ⊥ tangent)<br>QT = √(OQ² − OT²) = √(100 − 36) = 8<br>Area = ½ × 6 × 8 = <b>24 cm²</b>","OT ⊥ QT (त्रिज्या ⊥ स्पर्श रेखा)<br>QT = √(OQ² − OT²) = √(100 − 36) = 8<br>क्षेत्रफल = ½ × 6 × 8 = <b>24 cm²</b>"]},
+{n:11,q:["The base of a pyramid is a rectangle of 8 × 6. Its height is 1.5 times the longer side of the base. Find the volume of the pyramid.","एक पिरामिड का आधार 8 × 6 का आयत है। पिरामिड की ऊँचाई, आधार की लंबी भुजा की 1.5 गुना है। पिरामिड का आयतन = ?"],o:["96 cm³","144 cm³","192 cm³","288 cm³"],a:2,s:["Height = 1.5 × 8 = 12<br>Volume = ⅓ × (base area) × h = ⅓ × 48 × 12 = <b>192 cm³</b>","ऊँचाई = 1.5 × 8 = 12<br>आयतन = ⅓ × (आधार क्षेत्रफल) × h = ⅓ × 48 × 12 = <b>192 cm³</b>"]},
+{n:12,q:["Two circles have radii 15 cm and 20 cm. The arcs subtend angles of 60° and 45° at their centres respectively. Find the ratio of the lengths of the arcs.","दो वृत्तों की त्रिज्याएँ 15 cm और 20 cm हैं। उनके चापों द्वारा केंद्र पर बने कोण क्रमशः 60° और 45° हैं। चापों की लंबाई का अनुपात = ?"],o:["1 : 1","3 : 4","4 : 3","2 : 3"],a:0,s:["Arc = (θ/360) × 2πr<br>First = (60/360) × 2π × 15 = 5π<br>Second = (45/360) × 2π × 20 = 5π<br>Ratio = <b>1 : 1</b>","चाप = (θ/360) × 2πr<br>पहला = (60/360) × 2π × 15 = 5π<br>दूसरा = (45/360) × 2π × 20 = 5π<br>अनुपात = <b>1 : 1</b>"]},
+{n:13,q:["If √2 = 1.414, find the value of (4 + √2)/√2.","यदि √2 = 1.414 हो, तो (4 + √2)/√2 का मान = ?"],o:["3.414","3.828","4.414","5.656"],a:1,s:["(4 + √2)/√2 = 4/√2 + 1 = 2√2 + 1<br>= 2(1.414) + 1 = 2.828 + 1 = <b>3.828</b>","(4 + √2)/√2 = 4/√2 + 1 = 2√2 + 1<br>= 2(1.414) + 1 = 2.828 + 1 = <b>3.828</b>"]},
+{n:15,q:["Two equal parallel chords lie on opposite sides of the centre of a circle, 22 cm apart. If the radius is 61 cm, find the length of each chord.","एक वृत्त में केंद्र के दोनों ओर (opposite sides) दो समान्तर और बराबर जीवाएँ हैं, जिनके बीच की दूरी 22 cm है। वृत्त की त्रिज्या 61 cm है, तो जीवा की लंबाई = ?"],o:["110 cm","120 cm","122 cm","60 cm"],a:1,s:["Chords are equal ⇒ each is 22/2 = 11 cm from the centre<br>Half chord = √(61² − 11²) = √(3721 − 121) = √3600 = 60<br>Chord = 2 × 60 = <b>120 cm</b>","जीवाएँ बराबर हैं ⇒ केंद्र से प्रत्येक की दूरी = 22/2 = 11 cm<br>आधी जीवा = √(61² − 11²) = √(3721 − 121) = √3600 = 60<br>जीवा = 2 × 60 = <b>120 cm</b>"]},
+{n:16,q:["A 90-litre mixture has milk and water in the ratio 8 : 7. Some mixture is removed and replaced with an equal amount of pure water so that the ratio becomes 4 : 5. How much water was added?","90 लीटर मिश्रण में दूध : पानी = 8 : 7 है। उसमें से कुछ मिश्रण निकालकर उतना ही शुद्ध पानी मिलाया जाता है ताकि अनुपात 4 : 5 हो जाए। कितना पानी मिलाया?"],o:["12 L","15 L","18 L","20 L"],a:1,s:["Milk = 90 × 8/15 = 48 L, water = 42 L<br>Total stays 90 L, ratio 4:5 ⇒ milk = 90 × 4/9 = 40 L<br>Milk lost = 48 − 40 = 8 L, which is 8/15 of the removed mixture<br>Mixture removed = 8 × 15/8 = 15 L<br>Water added = <b>15 L</b>","दूध = 90 × 8/15 = 48 L, पानी = 42 L<br>अंत में कुल 90 L और अनुपात 4:5 ⇒ दूध = 90 × 4/9 = 40 L<br>दूध घटा = 48 − 40 = 8 L, जो मिश्रण का 8/15 भाग है<br>निकाला गया मिश्रण = 8 × 15/8 = 15 L<br>अतः मिलाया गया पानी = <b>15 L</b>"]},
+{n:17,q:["Two articles are each sold for ₹990. One is sold at a 10% profit and the other at a 10% loss. Find the overall profit or loss percentage.","दो वस्तुएँ प्रत्येक ₹990 में बेची जाती हैं। एक पर 10% लाभ और दूसरी पर 10% हानि होती है। कुल लाभ/हानि % = ?"],o:[["1% loss","1% हानि"],["1% profit","1% लाभ"],["2% loss","2% हानि"],["No profit, no loss","न लाभ न हानि"]],a:0,s:["CP of first = 990 × 100/110 = 900<br>CP of second = 990 × 100/90 = 1100<br>Total CP = 2000, total SP = 1980<br>Loss = 20 ⇒ loss% = 20/2000 × 100 = <b>1% loss</b><br>(Shortcut: equal profit and loss % on the same SP ⇒ loss = (10/10)² = 1%)","पहली का CP = 990 × 100/110 = 900<br>दूसरी का CP = 990 × 100/90 = 1100<br>कुल CP = 2000, कुल SP = 1980<br>हानि = 20 ⇒ हानि% = 20/2000 × 100 = <b>1% हानि</b><br>(shortcut: समान % लाभ-हानि पर हानि = (10/10)² = 1%)"]},
+{n:18,q:["The diameter of a circle is 28 cm. Find its area.","एक वृत्त का व्यास 28 cm है। उसका क्षेत्रफल = ?"],o:["308 cm²","616 cm²","1232 cm²","154 cm²"],a:1,s:["r = 28/2 = 14<br>Area = πr² = (22/7) × 14 × 14 = <b>616 cm²</b>","r = 28/2 = 14<br>क्षेत्रफल = πr² = (22/7) × 14 × 14 = <b>616 cm²</b>"]},
+{n:19,q:["A and B invest ₹12000 and ₹20000 respectively for one year. A gets an extra 10% of the total profit. If the total profit is ₹9600, find A's profit.","A और B क्रमशः ₹12000 और ₹20000 एक वर्ष के लिए लगाते हैं। A को कुल लाभ का अतिरिक्त 10% मिलता है। यदि कुल लाभ ₹9600 हो, तो A का लाभ = ?"],o:["₹3240","₹4200","₹5400","₹4800"],a:1,s:["A's extra = 10% of 9600 = 960<br>Remaining profit = 9600 − 960 = 8640, shared in the ratio 12000 : 20000 = 3 : 5<br>A's share = 8640 × 3/8 = 3240<br>A's total profit = 960 + 3240 = <b>₹4200</b>","A का अतिरिक्त = 10% × 9600 = 960<br>शेष लाभ = 9600 − 960 = 8640, अनुपात 12000 : 20000 = 3 : 5<br>A का हिस्सा = 8640 × 3/8 = 3240<br>A का कुल लाभ = 960 + 3240 = <b>₹4200</b>"]},
+{n:20,q:["The marked price is ₹80000. Three successive discounts of 15%, 20% and 10% are given. Find the selling price.","अंकित मूल्य ₹80000 पर 15%, 20% और 10% की तीन क्रमिक छूट दी जाती है। विक्रय मूल्य (SP) = ?"],o:["₹48960","₹49600","₹50400","₹51200"],a:0,s:["SP = 80000 × (85/100) × (80/100) × (90/100)<br>= 80000 × 0.85 × 0.8 × 0.9 = <b>₹48960</b>","SP = 80000 × (85/100) × (80/100) × (90/100)<br>= 80000 × 0.85 × 0.8 × 0.9 = <b>₹48960</b>"]},
+{n:21,q:["A sum of money becomes ₹875 in 3 years and ₹950 in 4 years at simple interest. Find the principal.","कोई राशि साधारण ब्याज पर 3 वर्ष में ₹875 और 4 वर्ष में ₹950 हो जाती है। मूलधन = ?"],o:["₹600","₹650","₹700","₹725"],a:1,s:["SI for 1 year = 950 − 875 = 75<br>SI for 3 years = 225<br>Principal = 875 − 225 = <b>₹650</b>","1 वर्ष का SI = 950 − 875 = 75<br>3 वर्ष का SI = 225<br>मूलधन = 875 − 225 = <b>₹650</b>"]},
+{n:22,q:["The slant height of a cone is 10 cm and its height is 8 cm. Find its volume.","एक शंकु की तिर्यक ऊँचाई 10 cm और ऊँचाई 8 cm है। शंकु का आयतन = ?"],o:["96π cm³","128π cm³","288π cm³","48π cm³"],a:0,s:["r = √(l² − h²) = √(100 − 64) = 6<br>Volume = ⅓πr²h = ⅓ × π × 36 × 8 = <b>96π cm³</b> (≈ 301.7 cm³)","r = √(l² − h²) = √(100 − 64) = 6<br>आयतन = ⅓πr²h = ⅓ × π × 36 × 8 = <b>96π cm³</b> (≈ 301.7 cm³)"]}
+];
+const U={
+tgh:["Join Our Telegram Channel","हमारे टेलीग्राम चैनल से जुड़ें"],tgp:["Get daily SSC shift papers, compilations and updates.","रोज़ाना SSC शिफ्ट पेपर, कम्पाइलेशन और अपडेट पाएं।"],
+join:["Join Telegram Channel","टेलीग्राम चैनल जॉइन करें"],skip:["Skip for now","अभी छोड़ें"],maths:["MATHS","गणित"],
+hh3:["30 SEP • Maths Questions","30 SEP • गणित प्रश्न"],qs:["QUESTIONS","प्रश्न"],nt:["NO TIMER","कोई टाइमर नहीं"],sl:["SOLUTIONS","हल"],
+start:["🚀 Start Quiz","🚀 क्विज़ शुरू करें"],rst:["Reset","रीसेट"],sub:["Submit Quiz","सबमिट करें"],tt:["Take your time 🙂","आराम से हल करें 🙂"]};
+const L_=["L","L"];let L=0,ans=Array(Q.length).fill(-1),done=false;
+const A=["A","B","C","D"],t=x=>typeof x==="string"?x:x[L];
+const quiz=document.getElementById("quiz");
+function txt(){document.querySelectorAll("[data-k]").forEach(e=>e.textContent=U[e.dataset.k][L]);document.getElementById("tot").textContent=Q.length;document.getElementById("lang").textContent=L?"English":"हिंदी";document.documentElement.lang=L?"hi":"en";}
+function render(){
+ quiz.innerHTML=Q.map((x,i)=>{
+  const st=ans[i]<0?["⚪ Skipped","⚪ छोड़ा"]:ans[i]===x.a?["✅ Correct","✅ सही"]:["❌ Wrong","❌ गलत"];
+  const opts=x.o.map((o,j)=>{let c="opt";if(done){if(j===x.a)c+=" ok";else if(j===ans[i])c+=" bad";}else if(j===ans[i])c+=" sel";
+   return `<div class="${c}" data-i="${i}" data-j="${j}"><b>${A[j]}</b><span>${t(o)}</span></div>`}).join("");
+  const sol=done?`<div class="sol${ans[i]>=0&&ans[i]!==x.a?" w":""}"><strong>${st[L]} — ${L?"सही उत्तर":"Correct Answer"}: ${A[x.a]}) ${t(x.o[x.a])}</strong>${x.s[L]}</div>`:"";
+  return `<div class="q${done?" locked":""}" id="q${i}"><h3><span>Q${x.n}.</span>${x.q[L]}</h3>${opts}${sol}</div>`}).join("");
+ upd();if(done)showRes();
+}
+function upd(){const n=ans.filter(v=>v>=0).length;document.getElementById("cnt").textContent=n+" / "+Q.length+(L?" हल किए":" attempted");document.getElementById("pb").style.width=(n/Q.length*100)+"%";}
+function showRes(){
+ let c=0,w=0,s=0;Q.forEach((x,i)=>{if(ans[i]<0)s++;else if(ans[i]===x.a)c++;else w++;});
+ const pct=Math.round(c/Q.length*100);
+ const ms=pct>=80?["🔥 Excellent!","🔥 ज़बरदस्त!"]:pct>=50?["👍 Good attempt!","👍 अच्छा प्रयास!"]:["💪 Keep practising!","💪 और अभ्यास करो!"];
+ const r=document.getElementById("res");r.style.display="block";
+ r.innerHTML=`<div class="msg">${ms[L]}</div><div class="ring" style="--p:${pct}"><div><b>${c}/${Q.length}</b><small>${pct}%</small></div></div><div class="st"><span>✅ ${c} ${L?"सही":"Correct"}</span><span>❌ ${w} ${L?"गलत":"Wrong"}</span><span>⚪ ${s} ${L?"छोड़े":"Skipped"}</span></div>`;
+}
+quiz.addEventListener("click",e=>{
+ if(done)return;const o=e.target.closest(".opt");if(!o)return;
+ const i=+o.dataset.i,j=+o.dataset.j;ans[i]=j;
+ document.querySelectorAll("#q"+i+" .opt").forEach(el=>el.classList.toggle("sel",+el.dataset.j===j));upd();
+});
+document.getElementById("sub").onclick=()=>{
+ if(done)return;const un=ans.filter(v=>v<0).length;
+ if(un&&!confirm(L?un+" प्रश्न छूटे हैं। फिर भी सबमिट करें?":un+" question(s) unattempted. Submit anyway?"))return;
+ done=true;render();window.scrollTo({top:0,behavior:"smooth"});
+};
+document.getElementById("rst").onclick=()=>{ans=Array(Q.length).fill(-1);done=false;document.getElementById("res").style.display="none";render();window.scrollTo({top:0,behavior:"smooth"});};
+document.getElementById("lang").onclick=()=>{L=1-L;txt();render();};
+const go=(a,b)=>{document.getElementById(a).classList.add("hide");document.getElementById(b).classList.remove("hide");window.scrollTo(0,0);};
+const closeTg=()=>{document.getElementById("tg").classList.add("hide");document.getElementById("home").classList.remove("hide");};
+document.getElementById("skip").onclick=closeTg;
+document.getElementById("jn").onclick=()=>setTimeout(closeTg,400);
+document.getElementById("start").onclick=()=>{go("home","app");document.getElementById("btns").classList.remove("hide");};
+txt();render();
+</script>
+
+</body>
+</html>
